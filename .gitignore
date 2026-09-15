@@ -1,4 +1,27 @@
-*.log
+```
+# Dependencies
+vendor/
+node_modules/
+
+# Build artifacts
+public/build/
+bootstrap/cache/
+storage/logs/
+storage/framework/
+
+# Environment
+.env
+.env.local
+.env.*
+!.env.example
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
 .DS_Store
 .env.backup
 .env.production
@@ -24,3 +47,23 @@ _ide_helper.php
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Logs
+*.log
+
+# Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Distribution
+dist/
+build/
+target/
+```
