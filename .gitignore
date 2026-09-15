@@ -1,26 +1,41 @@
-```
-# Dependencies
-vendor/
-node_modules/
+# Compiled and build artifacts
+*.pyc
+__pycache__/
+*.o
+*.obj
+*.class
+*.exe
+*.dll
+*.so
+*.a
+*.out
 
-# Build artifacts
-public/build/
-bootstrap/cache/
-storage/logs/
-storage/framework/
+# Dependencies
+node_modules/
+vendor/
+composer.lock
+*.lock
+**/vendor/
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+*.cache
 
 # Environment
 .env.local
 .env.*
-!.env.example
+**/.env
+**/.env.*
 
 # Editors
 .vscode/
 .idea/
-*.swp
-*.swo
-
-# OS
+*.sublime-project
+*.sublime-workspace
 .DS_Store
 .env.backup
 .env.production
@@ -47,22 +62,35 @@ Homestead.json
 Homestead.yaml
 Thumbs.db
 
-# Logs
-*.log
-
-# Cache
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-
-# Coverage
-coverage/
-htmlcov/
-.coverage
-
-# Distribution
+# Build and distribution
 dist/
 build/
 target/
-```
+coverage/
+htmlcov/
+.nyc_output/
+*.gcda
+*.gcno
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Thumbs.db:encryptable
+
+# PHP specific
+*.php~
+**/storage/logs/*
+**/bootstrap/cache/*
+**/vendor/composer/installed.json
+
+# Laravel specific (if applicable)
+public/storage
+public/hot
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
