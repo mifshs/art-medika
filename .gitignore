@@ -10,7 +10,6 @@ storage/logs/
 storage/framework/
 
 # Environment
-.env
 .env.local
 .env.*
 !.env.example
