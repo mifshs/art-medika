@@ -6,6 +6,8 @@
     <title>Медицинская клиника - Ваше здоровье наша забота</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+    <x-header>
+</x-header>
 <body>
     
     {{-- Hero секция медицинской клиники --}}
