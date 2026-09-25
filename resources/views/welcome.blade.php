@@ -83,6 +83,10 @@
         </div>
         
     </section>
+    <section class="mt-[120px]">
+        <x-output-string>
+        </x-output-string>
+    </section>
 
 </body>
 </html>
