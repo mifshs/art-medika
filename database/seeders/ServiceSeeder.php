@@ -12,19 +12,19 @@ class ServiceSeeder extends Seeder
 
     public function run(): void
     {
-        // ── Уровень 1: направления (сетка на странице «Услуги» и футер) ──
+        // ── Уровень 1: направления ──
         $roots = [];
         $rootList = [
-            'plasticheskaya-hirurgiya'    => 'Пластическая хирургия',
-            'kosmetologiya'               => 'Косметология',
-            'top-produkty'                => 'Топ-продукты',
-            'dermatologiya'               => 'Дерматология',
-            'otorinolaringologiya'        => 'Оториноларингология',
-            'lor-hirurgiya'               => 'ЛОР-хирургия',
+            'plasticheskaya-hirurgiya'       => 'Пластическая хирургия',
+            'kosmetologiya'                  => 'Косметология',
+            'top-produkty'                   => 'Топ-продукты',
+            'dermatologiya'                  => 'Дерматология',
+            'otorinolaringologiya'           => 'Оториноларингология',
+            'lor-hirurgiya'                  => 'ЛОР-хирургия',
             'nevrologiya-i-refleksoterapiya' => 'Неврология и рефлексотерапия',
-            'esteticheskaya-ginekologiya' => 'Эстетическая гинекология',
-            'terapevticheskiy-priem'      => 'Терапевтический приём',
-            'massazh'                     => 'Массаж',
+            'esteticheskaya-ginekologiya'    => 'Эстетическая гинекология',
+            'terapevticheskiy-priem'         => 'Терапевтический приём',
+            'massazh'                        => 'Массаж',
         ];
         $i = 1;
         foreach ($rootList as $slug => $name) {
@@ -40,13 +40,14 @@ class ServiceSeeder extends Seeder
         }
 
         // ── Уровень 2: группы пластической хирургии ──
+        // техгруппа нужна для консультаций/прайса, в аккордеоне скрыта фильтром в компоненте.
         $groupList = [
-            'plastika-litsa'                  => 'Пластика лица',
-            'plastika-grudi'                  => 'Пластика груди',
-            'plastika-tela'                   => 'Пластика тела',
+            'plastika-litsa'                   => 'Пластика лица',
+            'plastika-grudi'                   => 'Пластика груди',
+            'plastika-tela'                    => 'Пластика тела',
             'intimnaya-plastika-dlya-muzhchin' => 'Интимная пластика для мужчин',
-            'kombo-operacii'                  => 'Комбо-операции',
-            'drugie-uslugi'                   => 'Другие услуги',
+            'kombo-operacii'                   => 'Комбо-операции',
+            'drugie-uslugi'                    => 'Другие услуги',
             'plasticheskaya-i-esteticheskaya-hirurgiya' => 'Пластическая и эстетическая хирургия',
         ];
         $groups = [];
@@ -65,9 +66,9 @@ class ServiceSeeder extends Seeder
 
         // ── Уровень 3: группы прайса с кодами МИС ──
         $priceGroups = [
-            'mammoplastika'   => ['МАММОПЛАСТИКА',   '3.2.4', 'plastika-grudi'],
+            'mammoplastika'    => ['МАММОПЛАСТИКА',   '3.2.4', 'plastika-grudi'],
             'abdominoplastika' => ['АБДОМИНОПЛАСТИКА', '3.2.5', 'plastika-tela'],
-            'bodilift'        => ['БОДИЛИФТ',        '3.2.6', 'plastika-tela'],
+            'bodilift'         => ['БОДИЛИФТ',        '3.2.6', 'plastika-tela'],
         ];
         $pg = [];
         foreach ($priceGroups as $slug => [$name, $mis, $parentSlug]) {
@@ -81,14 +82,13 @@ class ServiceSeeder extends Seeder
             );
         }
 
-        // ── Услуги: консультации (одиночные цены) ──
+        // ── Консультации (крепятся к техгруппе, в карточки не попадают) ──
         $consults = [
             ['b01-057-003', 'B01.057.003', '3.2.1', 'Первичная консультация пластического хирурга', 'up_to', 40, 2500,
                 'Прием пациента, сбор анамнеза заболевания, объективный осмотр, определение необходимого объема обследования, выбор концепции ведения и лечения пациента, разъяснение пациенту информации о заболевании, ведение медицинской документации.'],
             ['b01-057-004-povtornaya', 'B01.057.004', '3.2.2', 'Повторная консультация пластического хирурга', 'exact', 30, 2500,
                 'Прием пациента, разъяснение пациенту информации о результатах обследования, объективный осмотр, краткое разъяснение пациенту информации о заболевании, возможных методах и этапах лечения.'],
-            ['osmotr-posle-lecheniya', 'B01.057.004', '3.2.3', 'Осмотр после лечения в течение 1 месяца', 'up_to', 10, null,
-                null],
+            ['osmotr-posle-lecheniya', 'B01.057.004', '3.2.3', 'Осмотр после лечения в течение 1 месяца', 'up_to', 10, null, null],
         ];
         foreach ($consults as [$slug, $nom, $mis, $name, $dType, $dMin, $price, $desc]) {
             $groups['plasticheskaya-i-esteticheskaya-hirurgiya']->services()->updateOrCreate(
@@ -101,9 +101,8 @@ class ServiceSeeder extends Seeder
             );
         }
 
-        // ── Услуги с ценами по категориям сложности I/II/III ──
+        // ── Услуги прайса по категориям I/II/III (крепятся к уровню 3) ──
         $priced = [
-            // [slug, nom, mis, name, duration_min, [I, II, III], parentGroup]
             ['mammo-1', 'A16.20.085', '3.2.4.1', 'Увеличение молочной железы (Маммопластика) (без стоимости имплантов)', 120, [112000, 137000, 147000], 'mammoplastika'],
             ['mammo-2', 'A16.20.085', '3.2.4.2', 'Увеличение молочной железы (маммопластика) с коррекцией ареол (без стоимости имплантов)', 90, [127000, 147000, 162000], 'mammoplastika'],
             ['mammo-3', 'A16.20.085', '3.2.4.3', 'Редукционная (уменьшение) пластика молочной железы', 120, [140000, 165000, 240000], 'mammoplastika'],
@@ -116,35 +115,84 @@ class ServiceSeeder extends Seeder
             ['bodilift-1', 'A16.30.058', '3.2.6.1', 'Верхний бодилифт', 120, [182000, 212000, 262000], 'bodilift'],
             ['bodilift-2', 'A16.30.058', '3.2.6.2', 'Торсопластика (Бодилифт)', null, [262000, 362000, 412000], 'bodilift'],
         ];
-        foreach ($priced as $i => [$slug, $nom, $mis, $name, $dMin, $prices, $groupSlug]) {
+        foreach ($priced as $idx => [$slug, $nom, $mis, $name, $dMin, $prices, $groupSlug]) {
             $pg[$groupSlug]->services()->updateOrCreate(
                 ['slug' => $slug],
                 [
                     'nomenclature_code' => $nom, 'mis_code' => $mis, 'name' => $name,
                     'duration_type' => 'exact', 'duration_min' => $dMin,
                     'price_cat_1' => $prices[0], 'price_cat_2' => $prices[1], 'price_cat_3' => $prices[2],
-                    'sort_order' => $i + 1,
+                    'sort_order' => $idx + 1,
                 ],
             );
         }
 
-        // ── Пластика лица: 6 услуг, у блефаропластики полный контент ──
+        // ════════════════════════════════════════════════════════════
+        //  ЕДИНСТВЕННЫЙ блок услуг для карточек аккордеона.
+        //  delete() перед созданием гарантирует отсутствие дублей
+        //  даже при повторном db:seed без fresh.
+        // ════════════════════════════════════════════════════════════
+
+        // Пластика лица
+        $groups['plastika-litsa']->services()->delete();
         $face = [
-            'blefaroplastika'    => 'Блефаропластика',
-            'rinoplastika'       => 'Ринопластика',
-            'otoplastika'        => 'Отопластика',
-            'feyslifting'        => 'Фэйслифтинг',
-            'korrekciya-gub'     => 'Коррекция губ',
-            'nitevoy-lifting'    => 'Нитевой лифтинг',
+            'blefaroplastika' => 'Блефаропластика',
+            'rinoplastika'    => 'Ринопластика',
+            'otoplastika'     => 'Отопластика',
+            'feyslifting'     => 'Фэйслифтинг',
+            'korrekciya-gub'  => 'Коррекция губ',
+            'nitevoy-lifting' => 'Нитевой лифтинг',
         ];
-        $i = 1;
+        $fi = 1;
         foreach ($face as $slug => $name) {
             $groups['plastika-litsa']->services()->updateOrCreate(
                 ['slug' => $slug],
-                ['name' => $name, 'sort_order' => $i++],
+                ['name' => $name, 'sort_order' => $fi++],
             );
         }
 
+        // Остальные группы (slug с префиксом группы — уникальны, ни с чем не коллизируют)
+        $groupServices = [
+            'plastika-grudi' => [
+                'grudi-mammoplastika' => 'Маммопластика',
+                'grudi-lipofilling'   => 'Липофилинг',
+            ],
+            'plastika-tela' => [
+                'tela-abdominoplastika' => 'Абдоминопластика',
+                'tela-brahioplastika'   => 'Брахиопластика',
+                'tela-liposakciya'      => 'Липосакция',
+                'tela-podtyazhka-beder' => 'Подтяжка бедер',
+            ],
+            'intimnaya-plastika-dlya-muzhchin' => [
+                'intim-muzhchin' => 'Интимная пластика для мужчин',
+            ],
+            'kombo-operacii' => [
+                'kombo-1' => 'Маммопластика + Абдоминопластика + Лабиопластика',
+                'kombo-2' => 'Маммопластика + Абдоминопластика',
+                'kombo-3' => 'Маммопластика + Ринопластика',
+                'kombo-4' => 'Маммопластика + Блефаропластика',
+                'kombo-5' => 'Блефаропластика + Липосакция живота и талии + Липофилинг груди',
+            ],
+            'drugie-uslugi' => [
+                'dr-obsledovanie'  => 'Обследование перед операцией',
+                'dr-podgotovka'    => 'Подготовка к операции',
+                'dr-pamyatka'      => 'Памятка пациенту перед операцией',
+                'dr-reabilitaciya' => 'Программа реабилитации после операции',
+                'dr-placenta'      => 'Плацентарные технологии',
+            ],
+        ];
+        foreach ($groupServices as $groupSlug => $list) {
+            $groups[$groupSlug]->services()->delete();
+            $j = 1;
+            foreach ($list as $slug => $name) {
+                $groups[$groupSlug]->services()->updateOrCreate(
+                    ['slug' => $slug],
+                    ['name' => $name, 'sort_order' => $j++],
+                );
+            }
+        }
+
+        // ── Полный контент блефаропластики ──
         $blepharo = Service::where('slug', 'blefaroplastika')->first();
         $blepharo->update([
             'description' => 'Блефаропластика — пластическая операция, направленная на изменение и коррекцию формы век, а также разреза глаз.',
@@ -160,7 +208,7 @@ class ServiceSeeder extends Seeder
             'execution' => 'Операция выполняется под местным наркозом. Он имеет ряд преимуществ перед общим. От местного наркоза проще и легче отходить, он не несет тяжелых последствий в отличии от общего. Стоимость операции существенно дешевле.',
         ]);
 
-        // Кейсы «виды» (с заголовком) и «результаты» (пары до/после)
+        // ── Кейсы «виды» и «результаты» ──
         $cases = [
             ['type', 'Верхняя блефаропластика', 'Решение проблем нависание век, изменение разреза глаз.', 'blepharo-type-upper'],
             ['type', 'Нижняя трансконъюнктивальная блефаропластика', 'Избавление от морщин, мешков под глазами.', 'blepharo-type-lower'],
@@ -169,9 +217,9 @@ class ServiceSeeder extends Seeder
             ['result', null, null, 'blepharo-res-3'],
             ['result', null, null, 'blepharo-res-4'],
         ];
-        foreach ($cases as $i => [$kind, $title, $desc, $seed]) {
+        foreach ($cases as $ci => [$kind, $title, $desc, $seed]) {
             $case = $blepharo->cases()->updateOrCreate(
-                ['kind' => $kind, 'title' => $title, 'sort_order' => $i + 1],
+                ['kind' => $kind, 'title' => $title, 'sort_order' => $ci + 1],
                 ['description' => $desc],
             );
             $this->attachMedia($case, 'before', "$seed-before", 'До', '600/400');

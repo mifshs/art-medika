@@ -11,23 +11,28 @@ class Accordion extends Component
 
     public function mount(): void
     {
-        // 1 запрос: корни + их группы + услуги групп (без N+1 на услуги)
         $roots = ServiceCategory::query()
-            ->whereNull('parent_id')          // уровень 1 = плашки
-            ->with('children.services')       // уровень 2 = карточки, их услуги = пункты
+            ->whereNull('parent_id')
+            ->with(['children' => function ($q) {
+                $q->whereNotIn('slug', ['plasticheskaya-i-esteticheskaya-hirurgiya'])
+                  ->orderBy('sort_order')
+                  ->with(['services' => fn ($s) => $s->orderBy('sort_order')]);
+            }])
             ->orderBy('sort_order')
             ->get();
 
-        // маппим в чистые скалярные массивы — Livewire сериализует их без проблем
         $this->directions = $roots->map(fn ($root) => [
             'title' => $root->name,
             'cards' => $root->children->map(fn ($group) => [
                 'title'    => $group->name,
-                'image'    => $group->coverUrl(),     // null, если фото нет
-                'services' => $group->services->map(fn ($s) => [
-                    'label' => $s->name,
-                    'url'   => url('/uslugi/' . $s->slug), // подставь свой роут, когда будет
-                ])->values(),
+                'image'    => $group->coverUrl(),
+                'services' => $group->services
+                    ->unique('name')          // ← режет дубли по названию, что бы их ни наплодило
+                    ->values()
+                    ->map(fn ($s) => [
+                        'label' => $s->name,
+                        'url'   => url('/uslugi/' . $s->slug),
+                    ])->values(),
             ])->values(),
         ])->values()->all();
     }
