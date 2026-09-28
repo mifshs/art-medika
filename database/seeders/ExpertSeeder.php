@@ -13,16 +13,18 @@ class ExpertSeeder extends Seeder
 
     public function run(): void
     {
+        // ── Отделения (фильтр-вкладки на странице специалистов) ──
+        $departments = [];
         $i = 1;
         foreach ([
-            'rukovodstvo' => 'Руководство',
+            'rukovodstvo'                => 'Руководство',
             'poliklinicheskoe-otdelenie' => 'Поликлиническое отделение',
-            'hirurgiya' => 'Хирургия',
+            'hirurgiya'                  => 'Хирургия',
             'esteticheskaya-ginekologiya' => 'Эстетическая гинекология',
-            'kosmetologiya' => 'Косметология',
-            'dermatologiya' => 'Дерматология',
-            'lor-hirurgiya' => 'Лор-хирургия',
-            'otorinolaringologiya' => 'Оториноларингология',
+            'kosmetologiya'              => 'Косметология',
+            'dermatologiya'              => 'Дерматология',
+            'lor-hirurgiya'              => 'Лор-хирургия',
+            'otorinolaringologiya'       => 'Оториноларингология',
         ] as $slug => $name) {
             $departments[$slug] = Department::updateOrCreate(
                 ['slug' => $slug],
@@ -30,6 +32,16 @@ class ExpertSeeder extends Seeder
             );
         }
 
+        // ── Аватары из репозитория ──
+        $avatars = [
+            'kuznecova-irina'     => 'avatar/irina.png',
+            'busygina-anastasiya' => 'avatar/anastasia.png',
+            'perevezencev-yuriy'  => 'avatar/juri.png',
+            'sergeeva-evgeniya'   => 'avatar/evgenia.png',
+            'dr-gaja'             => 'cover/side-view-doctor-checking-patient-before-rhinoplasty 1.png',
+        ];
+
+        // ── Специалисты ──
         $experts = [
             'kuznecova-irina' => [
                 'name' => 'Кузнецова Ирина Сергеевна',
@@ -58,10 +70,13 @@ class ExpertSeeder extends Seeder
                 'positive_percent' => 90,
                 'activities' => [
                     'Диагностика, профилактика и консервативное лечение заболеваний лор-органов у детей и взрослых',
-                    'Отоскопия', 'Риноскопия', 'Ларингоскопия',
+                    'Отоскопия',
+                    'Риноскопия',
+                    'Ларингоскопия',
                     'Ультразвуковое исследование пазух носа с применением европейского оборудования высокого класса безопасности',
                     'Аппаратное лечение: на аппарате «Кавитар», «ТОНЗИЛЛОР», «ФОТОХРОМ»',
-                    'Лазеротерапия', 'Криотерапия',
+                    'Лазеротерапия',
+                    'Криотерапия',
                 ],
             ],
             'dr-gaja' => [
@@ -85,10 +100,10 @@ class ExpertSeeder extends Seeder
                     'activities'       => $data['activities'] ?? null,
                 ],
             );
-            $this->attachMedia($models[$slug], 'avatar', "expert-$slug", $data['name'], '600/800');
+            $this->attachMedia($models[$slug], 'avatar', $avatars[$slug], $data['name']);
         }
 
-        // ── Образование и аккредитация Сергеевой (экран карточки врача) ──
+        // ── Образование Сергеевой (таблица из Федерального реестра) ──
         $sergeeva = $models['sergeeva-evgeniya'];
 
         foreach ([
@@ -99,23 +114,27 @@ class ExpertSeeder extends Seeder
             ['Сертификационный цикл', '«Современный инновационный университет»', 2020, 'Оториноларингология'],
             ['Сертификационный цикл', '«Современный инновационный университет»', 2020, 'Организация здравоохранения и общественное здоровье'],
             ['Повышение квалификации', '«Центр профессионального образования»', 2025, 'Оториноларингология'],
-        ] as $i => [$level, $org, $year, $qual]) {
+        ] as $n => [$level, $org, $year, $qual]) {
             $sergeeva->educations()->updateOrCreate(
                 ['issued_year' => $year, 'qualification' => $qual],
-                ['level' => $level, 'organization' => $org, 'sort_order' => $i + 1],
+                ['level' => $level, 'organization' => $org, 'sort_order' => $n + 1],
             );
         }
 
+        // ── Аккредитация (сертификация) специалиста ──
         foreach ([
             ['Сертификат', 'Оториноларингология', 'Врач-оториноларинголог', '2020-11-17', '2025-11-17', 'Пролонгирован по приказу до 31.12.2026'],
             ['Сертификат', 'Организация здравоохранения и общественное здоровье', 'Специалист в области организации здравоохранения и общественного здоровья', '2020-10-20', '2025-10-20', 'Пролонгирован по приказу до 31.12.2026'],
-        ] as $i => [$type, $spec, $pos, $issued, $expires, $note]) {
+        ] as $n => [$type, $spec, $pos, $issued, $expires, $note]) {
             $sergeeva->accreditations()->updateOrCreate(
                 ['specialty' => $spec],
                 [
-                    'doc_type' => $type, 'position' => $pos,
-                    'issued_at' => $issued, 'expires_at' => $expires,
-                    'note' => $note, 'sort_order' => $i + 1,
+                    'doc_type'   => $type,
+                    'position'   => $pos,
+                    'issued_at'  => $issued,
+                    'expires_at' => $expires,
+                    'note'       => $note,
+                    'sort_order' => $n + 1,
                 ],
             );
         }

@@ -16,12 +16,23 @@ class ContentSeeder extends Seeder
 
     public function run(): void
     {
+        // ── Категории контента (теги карточек) ──
         $categories = [];
-        foreach (['kosmetologiya' => 'Косметология', 'hirurgiya' => 'Хирургия', 'krasota-v-tebe' => 'Красота в тебе'] as $slug => $name) {
+        foreach ([
+            'kosmetologiya'  => 'Косметология',
+            'hirurgiya'      => 'Хирургия',
+            'krasota-v-tebe' => 'Красота в тебе',
+        ] as $slug => $name) {
             $categories[$slug] = ContentCategory::updateOrCreate(['slug' => $slug], ['name' => $name]);
         }
 
         // ── Новости и статьи ──
+        $newsCovers = [
+            'osvezhitsya-no-ne-bolee'       => 'gallery/news.png',
+            'otzyvy-pacientov-nasha-gordost' => 'cover/project1.png',
+            'final-4-sezona-krasota-v-tebe' => 'cover/concert2.png',
+        ];
+
         $news = [
             [
                 'slug' => 'osvezhitsya-no-ne-bolee',
@@ -54,23 +65,29 @@ class ContentSeeder extends Seeder
                 'content' => '<p>Международный социальный проект-преображение «Красота в тебе» завершился финальным шоу, на котором участницы показали результаты преображения.</p>',
             ],
         ];
+
         foreach ($news as $item) {
             $model = News::updateOrCreate(
                 ['slug' => $item['slug']],
                 [
                     'content_category_id' => $categories[$item['category']]->id,
-                    'expert_id' => $item['author'] ? Expert::where('slug', $item['author'])->value('id') : null,
-                    'type' => $item['type'],
-                    'title' => $item['title'],
-                    'excerpt' => $item['excerpt'],
-                    'content' => $item['content'],
-                    'published_at' => $item['published_at'],
+                    'expert_id'           => $item['author'] ? Expert::where('slug', $item['author'])->value('id') : null,
+                    'type'                => $item['type'],
+                    'title'               => $item['title'],
+                    'excerpt'             => $item['excerpt'],
+                    'content'             => $item['content'],
+                    'published_at'        => $item['published_at'],
                 ],
             );
-            $this->attachMedia($model, 'cover', "news-{$item['slug']}", $item['title']);
+            $this->attachMedia($model, 'cover', $newsCovers[$item['slug']], $item['title']);
         }
 
         // ── Акции ──
+        $promoCovers = [
+            'nitevoy-lifting-lepestok-skidka-50' => 'cover/woman-lifting.png',
+            'pure-molecule'                      => 'cover/attractive-woman-apply-facial-cream-anti-aging-product1 2.png',
+        ];
+
         $promotions = [
             [
                 'slug' => 'nitevoy-lifting-lepestok-skidka-50',
@@ -91,22 +108,23 @@ class ContentSeeder extends Seeder
                 'content' => '<p>МОЛЕКУЛА - программа комплексного омоложения организма, уникальная разработка европейских врачей-косметологов.</p>',
             ],
         ];
+
         foreach ($promotions as $p) {
             $model = Promotion::updateOrCreate(
                 ['slug' => $p['slug']],
                 [
-                    'service_id' => $p['service'] ? Service::where('slug', $p['service'])->value('id') : null,
-                    'title' => $p['title'],
-                    'excerpt' => $p['excerpt'],
-                    'content' => $p['content'],
+                    'service_id'       => $p['service'] ? Service::where('slug', $p['service'])->value('id') : null,
+                    'title'            => $p['title'],
+                    'excerpt'          => $p['excerpt'],
+                    'content'          => $p['content'],
                     'discount_percent' => $p['discount'],
-                    'published_at' => $p['published_at'],
+                    'published_at'     => $p['published_at'],
                 ],
             );
-            $this->attachMedia($model, 'cover', "promo-{$p['slug']}", $p['title']);
+            $this->attachMedia($model, 'cover', $promoCovers[$p['slug']], $p['title']);
         }
 
-        // ── Проекты ──
+        // ── Проект «Красота в тебе» со всеми блоками ──
         $project = Project::updateOrCreate(
             ['slug' => 'krasota-v-tebe'],
             [
@@ -123,8 +141,10 @@ class ContentSeeder extends Seeder
                 'published_at' => '2025-04-07',
             ],
         );
-        $this->attachMedia($project, 'cover', 'project-krasota-v-tebe', 'Красота в тебе', '1600/700');
+        $this->attachMedia($project, 'cover', 'cover/concert.png', 'Красота в тебе');
 
+        // Форматы работы
+        $formatCovers = ['gallery/gallery-cell1.png', 'gallery/gallery-cell2.png', 'gallery/gallery-cell3.png'];
         foreach ([
             ['Индивидуальное преображение', 'Это отправная точка к новым возможностям, вдохновению и качественным переменам в жизни.'],
             ['Женский клуб «Красота в тебе»', 'Масштабное сообщество, открывающее женщинам широкие возможности для мотивации, вдохновения, самореализации, отдыха общения и развития'],
@@ -134,9 +154,10 @@ class ContentSeeder extends Seeder
                 ['title' => $title],
                 ['description' => $desc, 'sort_order' => $i + 1],
             );
-            $this->attachMedia($format, 'cover', "project-format-$i", $title, '700/500');
+            $this->attachMedia($format, 'cover', $formatCovers[$i], $title);
         }
 
+        // Этапы проекта
         foreach ([
             'Оффлайн кастинг', 'Пресс-конференция', 'Работа с психологом',
             'Преображение у пластического хирурга', 'Красивая медицина от Арт-Медики',
@@ -146,6 +167,7 @@ class ContentSeeder extends Seeder
             $project->stages()->updateOrCreate(['title' => $title], ['sort_order' => $i + 1]);
         }
 
+        // Партнеры
         foreach ([
             ['Dr. Gaja', 'Итальянский пластический хирург'],
             ['Ирина Кузнецова', 'Эксперт по красивой медицине'],
@@ -157,13 +179,33 @@ class ContentSeeder extends Seeder
             $project->partners()->updateOrCreate(['name' => $name], ['role' => $role, 'sort_order' => $i + 1]);
         }
 
-        // Галерея проекта — несколько фото в одной коллекции
-        foreach (range(1, 4) as $n) {
+        // Галерея проекта
+        $galleryPaths = [
+            'cover/concert2.png',
+            'cover/concert2-adapt.png',
+            'cover/concert3.png',
+            'gallery/perchatki.png',
+        ];
+        foreach ($galleryPaths as $n => $path) {
+            $base = config('media.base_url');
             $project->media()->updateOrCreate(
-                ['collection' => 'gallery', 'path' => "seed/project-gallery-$n"],
-                ['disk' => 'external', 'url' => "https://picsum.photos/seed/project-gallery-$n/1200/800", 'alt' => "Фото проекта $n"],
+                ['collection' => 'gallery', 'path' => $path],
+                [
+                    'disk' => 'github',
+                    'url'  => $base
+                        ? rtrim($base, '/') . '/' . implode('/', array_map('rawurlencode', explode('/', $path)))
+                        : 'https://picsum.photos/seed/project-gallery-' . $n . '/1200/800',
+                    'alt'  => 'Фото проекта',
+                    'sort_order' => $n + 1,
+                ],
             );
         }
+
+        // ── Остальные проекты ──
+        $otherCovers = [
+            'dostupnaya-plasticheskaya-hirurgiya-iz-milana' => 'cover/project2.png',
+            'evropeyskaya-blefaroplastika-2025'             => 'cover/project3.png',
+        ];
 
         foreach ([
             ['dostupnaya-plasticheskaya-hirurgiya-iz-milana', 'Доступная пластическая хирургия из Милана в России', 'Российско-Итальянский проект. Сертифицированный пластический хирург с правом оперирования на территории нашей страны Dr.Gaja внедряет авторские методики.'],
@@ -173,7 +215,7 @@ class ContentSeeder extends Seeder
                 ['slug' => $slug],
                 ['title' => $title, 'excerpt' => $excerpt, 'published_at' => '2025-04-07'],
             );
-            $this->attachMedia($model, 'cover', "project-$slug", $title);
+            $this->attachMedia($model, 'cover', $otherCovers[$slug], $title);
         }
     }
 }

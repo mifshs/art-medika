@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Service;
 use App\Models\ServiceCategory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -50,7 +49,7 @@ class MainPageServicesSeeder extends Seeder
             }
         }
 
-        // ── 2. Косметология: новые карточки-группы + их ссылки ──
+        // ── 2. Косметология: новые карточки-группы + их ссылки + обложки ──
         $cosmetology = ServiceCategory::where('slug', 'kosmetologiya')->firstOrFail();
 
         $cosmoGroups = [
@@ -70,6 +69,15 @@ class MainPageServicesSeeder extends Seeder
                 'Итальянский нитевой лифтинг Happy lift', 'Нитевые технологии Gruzdev Trend',
             ]],
         ];
+
+        $cosmoCovers = [
+            'apparatnaya-kosmetologiya'           => 'cover/laser-system.png',
+            'inekcionnaya-kosmetologiya'          => 'cover/close-up-woman-lip-filler-procedure 1.png',
+            'uhody-za-licom-i-telom'              => 'cover/cosmetologist-doing-face-treatment-applying-face-mask 1.png',
+            'lazernaya-sistema-fotona-sp-dynamis' => 'cover/image 34.png',
+            'nitevoy-lifting-kosmetologiya'       => 'cover/woman-lifting.png',
+        ];
+
         $i = 1;
         foreach ($cosmoGroups as $slug => [$name, $services]) {
             $group = ServiceCategory::updateOrCreate(
@@ -80,7 +88,7 @@ class MainPageServicesSeeder extends Seeder
                     'sort_order' => $i++,
                 ],
             );
-            $this->attachMedia($group, 'cover', "cat-$slug", $name);
+            $this->attachMedia($group, 'cover', $cosmoCovers[$slug], $name);
 
             foreach ($services as $n => $serviceName) {
                 $group->services()->updateOrCreate(

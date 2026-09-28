@@ -15,6 +15,10 @@ class MiscSeeder extends Seeder
     public function run(): void
     {
         // ── Отзывы-кейсы (блок «Кейсы клиентов») ──
+        $base = rtrim((string) config('media.base_url'), '/');
+        $gh = fn (string $p) => $base
+            ? $base . '/' . implode('/', array_map('rawurlencode', explode('/', $p)))
+            : null;
         foreach ([
             ['Ольга', 5, 'К неврологу Фархутдиновой Э.Р. обратилась в первый раз. Узнала об этой специальности на портале Продокторов и при выборе ориентировалась на рейтинг.', 'Мне полностью понравилось, как прошёл приём у Эльмиры Ринатовны. Считаю, что всё было прекрасно. Специалист опросила, выполнила осмотр, а по итогу визита дала необходимые рекомендации.'],
             ['Ольга', 5, 'К Навиковой Татьяне Васильевне я обратилась не прямо в первый раз. Когда искала, к какому именно врачу записаться, ориентировалась на опыт работы врача, а также доктор подошёл по цене.', 'Мне понравилось, что от Татьяны Васильевны я услышала информацию по своей проблеме, также врач правильно подобрала терапию. Насколько помню, длилось посещение около часа.'],
@@ -38,13 +42,18 @@ class MiscSeeder extends Seeder
 
         // ── Документы (ссылки на PDF, не файлы в проекте) ──
         foreach ([
-            ['Лицензии', 'Лицензия на осуществление медицинской деятельности', 'https://example.com/docs/license.pdf', '2024-01-01'],
-            ['Реквизиты', 'Реквизиты ООО «МКЦ «Арт-Медика»', 'https://example.com/docs/requisites.pdf', '2024-01-01'],
-            ['Политики', 'Политика обработки персональных данных', 'https://example.com/docs/privacy.pdf', '2024-01-01'],
-        ] as $i => [$cat, $title, $url, $date]) {
+            ['Лицензии', 'Лицензия на осуществление медицинской деятельности', 'docs/sertificate1.png', '2024-01-01'],
+            ['Лицензии', 'Приложение к лицензии (сертификаты специалистов)', 'docs/sertificate2.png', '2024-01-01'],
+            ['Реквизиты', 'Логотип и фирменный блок клиники', 'docs/logo.png', '2024-01-01'],
+        ] as $i => [$cat, $title, $file, $date]) {
             Document::updateOrCreate(
                 ['title' => $title],
-                ['category' => $cat, 'file_url' => $url, 'published_at' => $date, 'sort_order' => $i + 1],
+                [
+                    'category' => $cat,
+                    'file_url' => $gh($file) ?? 'https://example.com/docs/placeholder.pdf',
+                    'published_at' => $date,
+                    'sort_order' => $i + 1,
+                ],
             );
         }
 
@@ -69,6 +78,12 @@ class MiscSeeder extends Seeder
             'vk'       => 'https://vk.com/artmedica',
             'telegram' => 'https://t.me/artmedica',
             'ok'       => 'https://ok.ru/artmedica',
+        ]);
+        Setting::set('logo', $gh('docs/logo.png') ?? 'https://picsum.photos/seed/art-medika-logo/400/160');
+        Setting::set('social_icons', [
+            'vk'       => $gh('docs/Vk_logo.png')             ?? 'https://picsum.photos/seed/vk-icon/64/64',
+            'telegram' => $gh('docs/Telegram_logo 1.png')     ?? 'https://picsum.photos/seed/tg-icon/64/64',
+            'max'      => $gh('docs/max-messenger-sign-logo 1.png') ?? 'https://picsum.photos/seed/max-icon/64/64',
         ]);
         Setting::set('video_url', 'https://vk.com/video-1_2');
         Setting::set('disclaimer', 'ИМЕЮТСЯ ПРОТИВОПОКАЗАНИЯ. НЕОБХОДИМА КОНСУЛЬТАЦИЯ СПЕЦИАЛИСТА');

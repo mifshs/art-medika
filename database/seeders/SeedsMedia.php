@@ -6,13 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 trait SeedsMedia
 {
-    protected function attachMedia(Model $model, string $collection, string $seed, string $alt = '', string $size = '900/600'): void
+    protected function attachMedia(Model $model, string $collection, string $repoPath, string $alt = ''): void
     {
+        $base = config('media.base_url');
+
+        $url = $base
+            ? rtrim($base, '/') . '/' . implode('/', array_map('rawurlencode', explode('/', $repoPath)))
+            : 'https://picsum.photos/seed/' . md5($repoPath) . '/900/600';
+
         $model->media()->updateOrCreate(
-            ['collection' => $collection, 'path' => "seed/$seed"],
+            ['collection' => $collection, 'path' => $repoPath],
             [
-                'disk' => 'external',
-                'url'  => "https://picsum.photos/seed/$seed/$size",
+                'disk' => 'github',
+                'url'  => $url,
                 'alt'  => $alt,
             ],
         );

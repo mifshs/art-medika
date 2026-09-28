@@ -12,19 +12,33 @@ class ServiceSeeder extends Seeder
 
     public function run(): void
     {
+        // ── Карта обложек для 10 корневых направлений ──
+        $rootCovers = [
+            'plasticheskaya-hirurgiya'       => 'gallery/services1.png',
+            'kosmetologiya'                  => 'gallery/services2.png',
+            'top-produkty'                   => 'gallery/services3.png',
+            'dermatologiya'                  => 'gallery/services4.png',
+            'otorinolaringologiya'           => 'gallery/services5.png',
+            'lor-hirurgiya'                  => 'gallery/services6.png',
+            'nevrologiya-i-refleksoterapiya' => 'gallery/services7.png',
+            'esteticheskaya-ginekologiya'    => 'gallery/services8.png',
+            'terapevticheskiy-priem'         => 'gallery/services9.png',
+            'massazh'                        => 'gallery/services10.png',
+        ];
+
         // ── Уровень 1: направления (сетка на странице «Услуги» и футер) ──
         $roots = [];
         $rootList = [
-            'plasticheskaya-hirurgiya'    => 'Пластическая хирургия',
-            'kosmetologiya'               => 'Косметология',
-            'top-produkty'                => 'Топ-продукты',
-            'dermatologiya'               => 'Дерматология',
-            'otorinolaringologiya'        => 'Оториноларингология',
-            'lor-hirurgiya'               => 'ЛОР-хирургия',
-            'nevrologiya-i-refleksoterapiya' => 'Неврология и рефлексотерапия',
-            'esteticheskaya-ginekologiya' => 'Эстетическая гинекология',
-            'terapevticheskiy-priem'      => 'Терапевтический приём',
-            'massazh'                     => 'Массаж',
+            'plasticheskaya-hirurgiya'          => 'Пластическая хирургия',
+            'kosmetologiya'                     => 'Косметология',
+            'top-produkty'                      => 'Топ-продукты',
+            'dermatologiya'                     => 'Дерматология',
+            'otorinolaringologiya'              => 'Оториноларингология',
+            'lor-hirurgiya'                     => 'ЛОР-хирургия',
+            'nevrologiya-i-refleksoterapiya'    => 'Неврология и рефлексотерапия',
+            'esteticheskaya-ginekologiya'       => 'Эстетическая гинекология',
+            'terapevticheskiy-priem'            => 'Терапевтический приём',
+            'massazh'                           => 'Массаж',
         ];
         $i = 1;
         foreach ($rootList as $slug => $name) {
@@ -36,17 +50,17 @@ class ServiceSeeder extends Seeder
                     'sort_order' => $i++,
                 ],
             );
-            $this->attachMedia($roots[$slug], 'cover', "cat-$slug", $name);
+            $this->attachMedia($roots[$slug], 'cover', $rootCovers[$slug], $name);
         }
 
         // ── Уровень 2: группы пластической хирургии ──
         $groupList = [
-            'plastika-litsa'                  => 'Пластика лица',
-            'plastika-grudi'                  => 'Пластика груди',
-            'plastika-tela'                   => 'Пластика тела',
-            'intimnaya-plastika-dlya-muzhchin' => 'Интимная пластика для мужчин',
-            'kombo-operacii'                  => 'Комбо-операции',
-            'drugie-uslugi'                   => 'Другие услуги',
+            'plastika-litsa'                    => 'Пластика лица',
+            'plastika-grudi'                    => 'Пластика груди',
+            'plastika-tela'                     => 'Пластика тела',
+            'intimnaya-plastika-dlya-muzhchin'  => 'Интимная пластика для мужчин',
+            'kombo-operacii'                    => 'Комбо-операции',
+            'drugie-uslugi'                     => 'Другие услуги',
             'plasticheskaya-i-esteticheskaya-hirurgiya' => 'Пластическая и эстетическая хирургия',
         ];
         $groups = [];
@@ -63,11 +77,25 @@ class ServiceSeeder extends Seeder
             );
         }
 
+        // Обложки групп пластической хирургии
+        $groupCovers = [
+            'plastika-litsa'                    => 'gallery/service11.png',
+            'plastika-grudi'                    => 'gallery/service12.png',
+            'plastika-tela'                     => 'gallery/service13.png',
+            'intimnaya-plastika-dlya-muzhchin'  => 'gallery/service14.png',
+            'kombo-operacii'                    => 'gallery/service15.png',
+            'drugie-uslugi'                     => 'gallery/service16.png',
+            'plasticheskaya-i-esteticheskaya-hirurgiya' => 'cover/room.png',
+        ];
+        foreach ($groupCovers as $gSlug => $gPath) {
+            $this->attachMedia($groups[$gSlug], 'cover', $gPath, $groups[$gSlug]->name);
+        }
+
         // ── Уровень 3: группы прайса с кодами МИС ──
         $priceGroups = [
-            'mammoplastika'   => ['МАММОПЛАСТИКА',   '3.2.4', 'plastika-grudi'],
+            'mammoplastika'    => ['МАММОПЛАСТИКА',   '3.2.4', 'plastika-grudi'],
             'abdominoplastika' => ['АБДОМИНОПЛАСТИКА', '3.2.5', 'plastika-tela'],
-            'bodilift'        => ['БОДИЛИФТ',        '3.2.6', 'plastika-tela'],
+            'bodilift'         => ['БОДИЛИФТ',         '3.2.6', 'plastika-tela'],
         ];
         $pg = [];
         foreach ($priceGroups as $slug => [$name, $mis, $parentSlug]) {
@@ -87,23 +115,26 @@ class ServiceSeeder extends Seeder
                 'Прием пациента, сбор анамнеза заболевания, объективный осмотр, определение необходимого объема обследования, выбор концепции ведения и лечения пациента, разъяснение пациенту информации о заболевании, ведение медицинской документации.'],
             ['b01-057-004-povtornaya', 'B01.057.004', '3.2.2', 'Повторная консультация пластического хирурга', 'exact', 30, 2500,
                 'Прием пациента, разъяснение пациенту информации о результатах обследования, объективный осмотр, краткое разъяснение пациенту информации о заболевании, возможных методах и этапах лечения.'],
-            ['osmotr-posle-lecheniya', 'B01.057.004', '3.2.3', 'Осмотр после лечения в течение 1 месяца', 'up_to', 10, null,
-                null],
+            ['osmotr-posle-lecheniya', 'B01.057.004', '3.2.3', 'Осмотр после лечения в течение 1 месяца', 'up_to', 10, null, null],
         ];
         foreach ($consults as [$slug, $nom, $mis, $name, $dType, $dMin, $price, $desc]) {
             $groups['plasticheskaya-i-esteticheskaya-hirurgiya']->services()->updateOrCreate(
                 ['slug' => $slug],
                 [
-                    'nomenclature_code' => $nom, 'mis_code' => $mis, 'name' => $name,
-                    'description' => $desc, 'duration_type' => $dType, 'duration_min' => $dMin,
-                    'price' => $price, 'sort_order' => (int) substr($mis, -1),
+                    'nomenclature_code' => $nom,
+                    'mis_code'          => $mis,
+                    'name'              => $name,
+                    'description'       => $desc,
+                    'duration_type'     => $dType,
+                    'duration_min'      => $dMin,
+                    'price'             => $price,
+                    'sort_order'        => (int) substr($mis, -1),
                 ],
             );
         }
 
         // ── Услуги с ценами по категориям сложности I/II/III ──
         $priced = [
-            // [slug, nom, mis, name, duration_min, [I, II, III], parentGroup]
             ['mammo-1', 'A16.20.085', '3.2.4.1', 'Увеличение молочной железы (Маммопластика) (без стоимости имплантов)', 120, [112000, 137000, 147000], 'mammoplastika'],
             ['mammo-2', 'A16.20.085', '3.2.4.2', 'Увеличение молочной железы (маммопластика) с коррекцией ареол (без стоимости имплантов)', 90, [127000, 147000, 162000], 'mammoplastika'],
             ['mammo-3', 'A16.20.085', '3.2.4.3', 'Редукционная (уменьшение) пластика молочной железы', 120, [140000, 165000, 240000], 'mammoplastika'],
@@ -116,26 +147,31 @@ class ServiceSeeder extends Seeder
             ['bodilift-1', 'A16.30.058', '3.2.6.1', 'Верхний бодилифт', 120, [182000, 212000, 262000], 'bodilift'],
             ['bodilift-2', 'A16.30.058', '3.2.6.2', 'Торсопластика (Бодилифт)', null, [262000, 362000, 412000], 'bodilift'],
         ];
-        foreach ($priced as $i => [$slug, $nom, $mis, $name, $dMin, $prices, $groupSlug]) {
+        foreach ($priced as $n => [$slug, $nom, $mis, $name, $dMin, $prices, $groupSlug]) {
             $pg[$groupSlug]->services()->updateOrCreate(
                 ['slug' => $slug],
                 [
-                    'nomenclature_code' => $nom, 'mis_code' => $mis, 'name' => $name,
-                    'duration_type' => 'exact', 'duration_min' => $dMin,
-                    'price_cat_1' => $prices[0], 'price_cat_2' => $prices[1], 'price_cat_3' => $prices[2],
-                    'sort_order' => $i + 1,
+                    'nomenclature_code' => $nom,
+                    'mis_code'          => $mis,
+                    'name'              => $name,
+                    'duration_type'     => 'exact',
+                    'duration_min'      => $dMin,
+                    'price_cat_1'       => $prices[0],
+                    'price_cat_2'       => $prices[1],
+                    'price_cat_3'       => $prices[2],
+                    'sort_order'        => $n + 1,
                 ],
             );
         }
 
-        // ── Пластика лица: 6 услуг, у блефаропластики полный контент ──
+        // ── Пластика лица: 6 услуг-заглушек, у блефаропластики полный контент ──
         $face = [
-            'blefaroplastika'    => 'Блефаропластика',
-            'rinoplastika'       => 'Ринопластика',
-            'otoplastika'        => 'Отопластика',
-            'feyslifting'        => 'Фэйслифтинг',
-            'korrekciya-gub'     => 'Коррекция губ',
-            'nitevoy-lifting'    => 'Нитевой лифтинг',
+            'blefaroplastika' => 'Блефаропластика',
+            'rinoplastika'    => 'Ринопластика',
+            'otoplastika'     => 'Отопластика',
+            'feyslifting'     => 'Фэйслифтинг',
+            'korrekciya-gub'  => 'Коррекция губ',
+            'nitevoy-lifting' => 'Нитевой лифтинг',
         ];
         $i = 1;
         foreach ($face as $slug => $name) {
@@ -162,20 +198,20 @@ class ServiceSeeder extends Seeder
 
         // Кейсы «виды» (с заголовком) и «результаты» (пары до/после)
         $cases = [
-            ['type', 'Верхняя блефаропластика', 'Решение проблем нависание век, изменение разреза глаз.', 'blepharo-type-upper'],
-            ['type', 'Нижняя трансконъюнктивальная блефаропластика', 'Избавление от морщин, мешков под глазами.', 'blepharo-type-lower'],
-            ['result', null, null, 'blepharo-res-1'],
-            ['result', null, null, 'blepharo-res-2'],
-            ['result', null, null, 'blepharo-res-3'],
-            ['result', null, null, 'blepharo-res-4'],
+            ['type',   'Верхняя блефаропластика',                       'Решение проблем нависание век, изменение разреза глаз.', 'gallery/compare1.png', 'gallery/compare2.png'],
+            ['type',   'Нижняя трансконъюнктивальная блефаропластика', 'Избавление от морщин, мешков под глазами.',              'gallery/compare3.png', 'gallery/compare4.png'],
+            ['result', null,                                            null,                                                     'gallery/compare5.png', 'gallery/compare6.png'],
+            ['result', null,                                            null,                                                     'gallery/compare7.png', 'gallery/facelift.png'],
+            ['result', null,                                            null,                                                     'gallery/facelift2.png', 'gallery/facelift2.png'],
+            ['result', null,                                            null,                                                     'gallery/compare1.png', 'gallery/compare5.png'],
         ];
-        foreach ($cases as $i => [$kind, $title, $desc, $seed]) {
+        foreach ($cases as $i => [$kind, $title, $desc, $before, $after]) {
             $case = $blepharo->cases()->updateOrCreate(
                 ['kind' => $kind, 'title' => $title, 'sort_order' => $i + 1],
                 ['description' => $desc],
             );
-            $this->attachMedia($case, 'before', "$seed-before", 'До', '600/400');
-            $this->attachMedia($case, 'after', "$seed-after", 'После', '600/400');
+            $this->attachMedia($case, 'before', $before, 'До');
+            $this->attachMedia($case, 'after',  $after,  'После');
         }
     }
 }
