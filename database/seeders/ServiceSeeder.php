@@ -54,6 +54,7 @@ class ServiceSeeder extends Seeder
         }
 
         // ── Уровень 2: группы пластической хирургии ──
+        // техгруппа нужна для консультаций/прайса, в аккордеоне скрыта фильтром в компоненте.
         $groupList = [
             'plastika-litsa'                    => 'Пластика лица',
             'plastika-grudi'                    => 'Пластика груди',
@@ -109,7 +110,7 @@ class ServiceSeeder extends Seeder
             );
         }
 
-        // ── Услуги: консультации (одиночные цены) ──
+        // ── Консультации (крепятся к техгруппе, в карточки не попадают) ──
         $consults = [
             ['b01-057-003', 'B01.057.003', '3.2.1', 'Первичная консультация пластического хирурга', 'up_to', 40, 2500,
                 'Прием пациента, сбор анамнеза заболевания, объективный осмотр, определение необходимого объема обследования, выбор концепции ведения и лечения пациента, разъяснение пациенту информации о заболевании, ведение медицинской документации.'],
@@ -133,7 +134,7 @@ class ServiceSeeder extends Seeder
             );
         }
 
-        // ── Услуги с ценами по категориям сложности I/II/III ──
+        // ── Услуги прайса по категориям I/II/III (крепятся к уровню 3) ──
         $priced = [
             ['mammo-1', 'A16.20.085', '3.2.4.1', 'Увеличение молочной железы (Маммопластика) (без стоимости имплантов)', 120, [112000, 137000, 147000], 'mammoplastika'],
             ['mammo-2', 'A16.20.085', '3.2.4.2', 'Увеличение молочной железы (маммопластика) с коррекцией ареол (без стоимости имплантов)', 90, [127000, 147000, 162000], 'mammoplastika'],
@@ -164,7 +165,14 @@ class ServiceSeeder extends Seeder
             );
         }
 
-        // ── Пластика лица: 6 услуг-заглушек, у блефаропластики полный контент ──
+        // ════════════════════════════════════════════════════════════
+        //  ЕДИНСТВЕННЫЙ блок услуг для карточек аккордеона.
+        //  delete() перед созданием гарантирует отсутствие дублей
+        //  даже при повторном db:seed без fresh.
+        // ════════════════════════════════════════════════════════════
+
+        // Пластика лица
+        $groups['plastika-litsa']->services()->delete();
         $face = [
             'blefaroplastika' => 'Блефаропластика',
             'rinoplastika'    => 'Ринопластика',
@@ -173,14 +181,56 @@ class ServiceSeeder extends Seeder
             'korrekciya-gub'  => 'Коррекция губ',
             'nitevoy-lifting' => 'Нитевой лифтинг',
         ];
-        $i = 1;
+        $fi = 1;
         foreach ($face as $slug => $name) {
             $groups['plastika-litsa']->services()->updateOrCreate(
                 ['slug' => $slug],
-                ['name' => $name, 'sort_order' => $i++],
+                ['name' => $name, 'sort_order' => $fi++],
             );
         }
 
+        // Остальные группы (slug с префиксом группы — уникальны, ни с чем не коллизируют)
+        $groupServices = [
+            'plastika-grudi' => [
+                'grudi-mammoplastika' => 'Маммопластика',
+                'grudi-lipofilling'   => 'Липофилинг',
+            ],
+            'plastika-tela' => [
+                'tela-abdominoplastika' => 'Абдоминопластика',
+                'tela-brahioplastika'   => 'Брахиопластика',
+                'tela-liposakciya'      => 'Липосакция',
+                'tela-podtyazhka-beder' => 'Подтяжка бедер',
+            ],
+            'intimnaya-plastika-dlya-muzhchin' => [
+                'intim-muzhchin' => 'Интимная пластика для мужчин',
+            ],
+            'kombo-operacii' => [
+                'kombo-1' => 'Маммопластика + Абдоминопластика + Лабиопластика',
+                'kombo-2' => 'Маммопластика + Абдоминопластика',
+                'kombo-3' => 'Маммопластика + Ринопластика',
+                'kombo-4' => 'Маммопластика + Блефаропластика',
+                'kombo-5' => 'Блефаропластика + Липосакция живота и талии + Липофилинг груди',
+            ],
+            'drugie-uslugi' => [
+                'dr-obsledovanie'  => 'Обследование перед операцией',
+                'dr-podgotovka'    => 'Подготовка к операции',
+                'dr-pamyatka'      => 'Памятка пациенту перед операцией',
+                'dr-reabilitaciya' => 'Программа реабилитации после операции',
+                'dr-placenta'      => 'Плацентарные технологии',
+            ],
+        ];
+        foreach ($groupServices as $groupSlug => $list) {
+            $groups[$groupSlug]->services()->delete();
+            $j = 1;
+            foreach ($list as $slug => $name) {
+                $groups[$groupSlug]->services()->updateOrCreate(
+                    ['slug' => $slug],
+                    ['name' => $name, 'sort_order' => $j++],
+                );
+            }
+        }
+
+        // ── Полный контент блефаропластики ──
         $blepharo = Service::where('slug', 'blefaroplastika')->first();
         $blepharo->update([
             'description' => 'Блефаропластика — пластическая операция, направленная на изменение и коррекцию формы век, а также разреза глаз.',
@@ -196,7 +246,7 @@ class ServiceSeeder extends Seeder
             'execution' => 'Операция выполняется под местным наркозом. Он имеет ряд преимуществ перед общим. От местного наркоза проще и легче отходить, он не несет тяжелых последствий в отличии от общего. Стоимость операции существенно дешевле.',
         ]);
 
-        // Кейсы «виды» (с заголовком) и «результаты» (пары до/после)
+        // ── Кейсы «виды» и «результаты» ──
         $cases = [
             ['type',   'Верхняя блефаропластика',                       'Решение проблем нависание век, изменение разреза глаз.', 'gallery/compare1.png', 'gallery/compare2.png'],
             ['type',   'Нижняя трансконъюнктивальная блефаропластика', 'Избавление от морщин, мешков под глазами.',              'gallery/compare3.png', 'gallery/compare4.png'],
@@ -205,9 +255,9 @@ class ServiceSeeder extends Seeder
             ['result', null,                                            null,                                                     'gallery/facelift2.png', 'gallery/facelift2.png'],
             ['result', null,                                            null,                                                     'gallery/compare1.png', 'gallery/compare5.png'],
         ];
-        foreach ($cases as $i => [$kind, $title, $desc, $before, $after]) {
+        foreach ($cases as $ci => [$kind, $title, $desc, $seed]) {
             $case = $blepharo->cases()->updateOrCreate(
-                ['kind' => $kind, 'title' => $title, 'sort_order' => $i + 1],
+                ['kind' => $kind, 'title' => $title, 'sort_order' => $ci + 1],
                 ['description' => $desc],
             );
             $this->attachMedia($case, 'before', $before, 'До');

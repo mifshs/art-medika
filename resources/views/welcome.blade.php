@@ -59,8 +59,7 @@
         ></a>
     </section>
     <section class="mt-[120px]">
-        <x-output-string>
-        </x-output-string>
+       <livewire:services.accordion />
     </section>
 
 </body>
