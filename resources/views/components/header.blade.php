@@ -14,7 +14,7 @@
             <a href="#" class="text-lg text-black transition-colors hover:text-[#37241B]">О клинике</a>
             <a href="#" class="text-lg text-black transition-colors hover:text-[#37241B]">Услуги</a>
             <a href="#" class="text-lg text-black transition-colors hover:text-[#37241B]">Специалисты</a>
-            <a href="#" class="text-lg text-black transition-colors hover:text-[#37241B]">Акции</a>
+            <a href="/stock" class="text-lg text-black transition-colors hover:text-[#37241B]">Акции</a>
             <a href="#" class="text-lg text-black transition-colors hover:text-[#37241B]">Документы</a>
             <a href="#" class="text-lg text-black transition-colors hover:text-[#37241B]">Контакты</a>
         </nav>
