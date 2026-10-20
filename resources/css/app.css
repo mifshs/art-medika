@@ -1,3 +1,55 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Swiper: приглушаем неактивные стрелки навигации */
+.swiper-button-disabled {
+    opacity: 0.4;
+}
+
+/* Swiper 14 инжектит свои стили после Tailwind (display:block, width/height:100% на .swiper-slide),
+   поэтому ширины и отображение слайдов задаём правилами с более высоким каскадом. */
+.swiper .swiper-slide.hidden,
+:is(#results-track, #experts-track, #projects-track, #reviews-track) .swiper-slide.hidden {
+    display: none;
+}
+
+#results-track .swiper-slide  { display: flex; width: 86%; }
+#experts-track .swiper-slide  { width: 210px; }
+/* Проекты: все карточки одной высоты — растягиваются до самой высокой (раньше это делал items-stretch) */
+#projects-track .swiper-slide { display: flex; flex-direction: column; width: 86%; height: auto; }
+/* Отзывы: фиксированный размер карточки (текст ограничен Str::limit), чтобы блок не менял высоту */
+#reviews-track .swiper-slide  { display: flex; flex-direction: column; overflow: hidden; width: 86%; height: 420px; }
+
+@media (min-width: 640px) {
+    #results-track .swiper-slide                        { width: 60%; }
+    #reviews-track .swiper-slide                        { width: 60%; height: 420px; }
+    #experts-track .swiper-slide                        { width: 310px; }
+    #projects-track .swiper-slide:first-child           { width: 80%; }
+    #projects-track .swiper-slide:not(:first-child)     { width: 46%; }
+}
+
+@media (min-width: 1024px) {
+    #results-track .swiper-slide { width: calc((100% - 16px) / 2); }
+    #reviews-track .swiper-slide { width: calc(50% - 16px); height: 380px; }
+    #experts-track .swiper-slide { width: 310px; }
+    #projects-track .swiper-slide:first-child { width: 640px; display: grid; grid-template-columns: 46% 1fr; }
+    #projects-track .swiper-slide:not(:first-child) { width: 310px; }
+}
+
+@media (min-width: 1920px) {
+    #results-track .swiper-slide { width: 560px; }
+    #experts-track .swiper-slide { width: 415px; }
+    #projects-track .swiper-slide:first-child { width: 846px; }
+    #projects-track .swiper-slide:not(:first-child) { width: 413px; }
+    #reviews-track .swiper-slide { width: calc(50% - 16px); height: 430px; }
+}
+
+/* Поля с горизонтальной прокруткой без видимой полосы прокрутки */
+.no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}

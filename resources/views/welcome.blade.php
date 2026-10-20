@@ -10,7 +10,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-page font-sans text-body antialiased">
-<x-header></x-header>
+<x-header class="fixed"></x-header>
 
 {{-- ================= HERO ================= --}}
 <section class="relative">
@@ -118,24 +118,27 @@
             @endforeach
         </div>
 
-        <div id="results-track" data-tab-content="results" class="no-scrollbar snap-track mt-4 flex gap-3 lg:mt-6 lg:gap-4 2xl:gap-6">
-            @foreach ($cases as $case)
-                @php
-                    $service = $case->service?->name ?: 'Все';
-                    $caption = $case->title ?: 'Результат';
-                @endphp
-                <figure data-tag="{{ $service }}" class="flex w-[86%] shrink-0 gap-2 sm:w-[60%] lg:w-[calc((100%-16px)/2)] 2xl:w-[560px] 2xl:gap-2.5">
-                    <img src="{{ $case->beforeUrl() }}" alt="{{ $caption }}: вид до" width="640" height="800" loading="lazy" class="h-[254px] w-1/2 min-w-0 rounded-2xl object-cover sm:h-[300px] lg:h-[360px] 2xl:h-[480px]">
-                    <img src="{{ $case->afterUrl() }}" alt="{{ $caption }}: вид после" width="640" height="800" loading="lazy" class="h-[254px] w-1/2 min-w-0 rounded-2xl object-cover sm:h-[300px] lg:h-[360px] 2xl:h-[480px]">
-                </figure>
-            @endforeach
+        <div id="results-track" data-tab-content="results" class="swiper mt-4 lg:mt-6" aria-label="Результаты операций"
+             data-swiper='{"navigation":{"prevEl":"#results-prev","nextEl":"#results-next"},"spaceBetween":12,"breakpoints":{"1024":{"spaceBetween":16},"1920":{"spaceBetween":24}}}'>
+            <div class="swiper-wrapper">
+                @foreach ($cases as $case)
+                    @php
+                        $service = $case->service?->name ?: 'Все';
+                        $caption = $case->title ?: 'Результат';
+                    @endphp
+                    <figure data-tag="{{ $service }}" class="swiper-slide gap-2 2xl:gap-2.5">
+                        <img src="{{ $case->beforeUrl() }}" alt="{{ $caption }}: вид до" width="640" height="800" loading="lazy" class="h-[254px] w-1/2 min-w-0 rounded-2xl object-cover sm:h-[300px] lg:h-[360px] 2xl:h-[480px]">
+                        <img src="{{ $case->afterUrl() }}" alt="{{ $caption }}: вид после" width="640" height="800" loading="lazy" class="h-[254px] w-1/2 min-w-0 rounded-2xl object-cover sm:h-[300px] lg:h-[360px] 2xl:h-[480px]">
+                    </figure>
+                @endforeach
+            </div>
         </div>
 
         <div class="mt-6 flex items-center justify-between lg:mt-8">
-            <button type="button" data-slide-target="#results-track" data-dir="-1" aria-label="Предыдущие фото" class="grid h-11 w-11 place-items-center rounded-[10px] bg-brand text-white transition-colors hover:bg-brandh 2xl:h-14 2xl:w-14">
+            <button type="button" id="results-prev" aria-label="Предыдущие фото" class="grid h-11 w-11 place-items-center rounded-[10px] bg-brand text-white transition-opacity hover:bg-brandh 2xl:h-14 2xl:w-14">
                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m0 0l6-6m-6 6l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
-            <button type="button" data-slide-target="#results-track" data-dir="1" aria-label="Следующие фото" class="grid h-11 w-11 place-items-center rounded-[10px] bg-brand text-white transition-colors hover:bg-brandh 2xl:h-14 2xl:w-14">
+            <button type="button" id="results-next" aria-label="Следующие фото" class="grid h-11 w-11 place-items-center rounded-[10px] bg-brand text-white transition-opacity hover:bg-brandh 2xl:h-14 2xl:w-14">
                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
         </div>
@@ -162,25 +165,28 @@
             @endforeach
         </div>
 
-        <div id="experts-track" data-tab-content="experts" class="no-scrollbar snap-track mt-4 flex gap-3 lg:mt-6 lg:gap-4">
-            @foreach ($experts as $expert)
-                <article data-tag="{{ $expert->department?->name ?: 'Все' }}" class="group relative aspect-[0.67] w-[210px] shrink-0 overflow-hidden rounded-2xl sm:w-[310px] 2xl:w-[415px]">
-                    <img src="{{ $expert->avatarUrl() }}" alt="{{ $expert->name }}" width="560" height="640" loading="lazy"
-                         class="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]">
-                    <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
-                    <div class="relative z-10 flex h-full flex-col justify-end p-5 2xl:p-7">
-                        <h3 class="text-[15px] font-semibold leading-snug text-white sm:text-[19px] 2xl:text-[23px]">{{ $expert->name }}</h3>
-                        <p class="mt-1.5 text-[12px] leading-snug text-white/85 sm:text-[13px] 2xl:text-[15px]">{{ \Illuminate\Support\Str::limit($expert->position, 180, end: '…') }}</p>
-                    </div>
-                </article>
-            @endforeach
+        <div id="experts-track" data-tab-content="experts" class="swiper mt-4 lg:mt-6" aria-label="Наши специалисты"
+             data-swiper='{"navigation":{"prevEl":"#experts-prev","nextEl":"#experts-next"},"spaceBetween":12,"breakpoints":{"1024":{"spaceBetween":16}}}'>
+            <div class="swiper-wrapper">
+                @foreach ($experts as $expert)
+                    <article data-tag="{{ $expert->department?->name ?: 'Все' }}" class="swiper-slide group relative aspect-[0.67] overflow-hidden rounded-2xl">
+                        <img src="{{ $expert->avatarUrl() }}" alt="{{ $expert->name }}" width="560" height="640" loading="lazy"
+                             class="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]">
+                        <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
+                        <div class="relative z-10 flex h-full flex-col justify-end p-5 2xl:p-7">
+                            <h3 class="text-[15px] font-semibold leading-snug text-white sm:text-[19px] 2xl:text-[23px]">{{ $expert->name }}</h3>
+                            <p class="mt-1.5 text-[12px] leading-snug text-white/85 sm:text-[13px] 2xl:text-[15px]">{{ \Illuminate\Support\Str::limit($expert->position, 180, end: '…') }}</p>
+                        </div>
+                    </article>
+                @endforeach
+            </div>
         </div>
 
         <div class="mt-6 flex items-center justify-between lg:mt-8">
-            <button type="button" data-slide-target="#experts-track" data-dir="-1" aria-label="Предыдущие специалисты" class="grid h-11 w-11 place-items-center rounded-[10px] bg-brand text-white transition-colors hover:bg-brandh 2xl:h-14 2xl:w-14">
+            <button type="button" id="experts-prev" aria-label="Предыдущие специалисты" class="grid h-11 w-11 place-items-center rounded-[10px] bg-brand text-white transition-opacity hover:bg-brandh 2xl:h-14 2xl:w-14">
                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m0 0l6-6m-6 6l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
-            <button type="button" data-slide-target="#experts-track" data-dir="1" aria-label="Следующие специалисты" class="grid h-11 w-11 place-items-center rounded-[10px] bg-brand text-white transition-colors hover:bg-brandh 2xl:h-14 2xl:w-14">
+            <button type="button" id="experts-next" aria-label="Следующие специалисты" class="grid h-11 w-11 place-items-center rounded-[10px] bg-brand text-white transition-opacity hover:bg-brandh 2xl:h-14 2xl:w-14">
                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
         </div>
@@ -201,62 +207,65 @@
         </div>
 
         @if ($projectBig)
-            <div id="projects-track" class="no-scrollbar snap-track mt-8 flex items-stretch gap-4 lg:mt-12 lg:gap-5 2xl:gap-6">
-                <article class="flex w-[86%] shrink-0 flex-col rounded-[20px] bg-surface p-4 sm:w-[80%] sm:p-5 lg:h-[420px] lg:w-[640px] lg:grid lg:grid-cols-[46%_1fr] lg:gap-6 lg:p-5 2xl:h-[560px] 2xl:w-[846px] 2xl:gap-8 2xl:p-6">
-                    <img src="{{ $projectBig->coverUrl() }}" alt="{{ $projectBig->title }}" width="1024" height="576"
-                         class="h-[240px] w-full rounded-[14px] object-cover sm:h-[300px] lg:h-full">
-                    <div class="flex min-w-0 flex-col pt-5 lg:py-1 lg:pr-6 2xl:pr-8">
-                        <div class="flex items-start justify-between gap-4">
-                            <p class="text-[14px] text-body sm:text-[15px] 2xl:text-[16px]">Проекты</p>
-                            <a href="#" aria-label="Открыть проект «{{ $projectBig->title }}»" class="shrink-0 text-ink transition-colors hover:text-brand">
-                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                            </a>
+            <div id="projects-track" class="swiper mt-8 lg:mt-12" aria-label="Проекты"
+                 data-swiper='{"navigation":{"prevEl":"#projects-prev","nextEl":"#projects-next"},"spaceBetween":16,"breakpoints":{"1024":{"spaceBetween":20},"1920":{"spaceBetween":24}}}'>
+                <div class="swiper-wrapper">
+                    <article class="swiper-slide rounded-[20px] bg-surface p-4 sm:p-5 lg:grid-cols-[46%_1fr] lg:gap-6 lg:p-5 2xl:gap-8 2xl:p-6">
+                        <img src="{{ $projectBig->coverUrl() }}" alt="{{ $projectBig->title }}" width="1024" height="576"
+                             class="h-[240px] w-full rounded-[14px] object-cover sm:h-[300px] lg:h-full">
+                        <div class="flex min-w-0 flex-col pt-5 lg:py-1 lg:pr-6 2xl:pr-8">
+                            <div class="flex items-start justify-between gap-4">
+                                <p class="text-[14px] text-body sm:text-[15px] 2xl:text-[16px]">Проекты</p>
+                                <a href="#" aria-label="Открыть проект «{{ $projectBig->title }}»" class="shrink-0 text-ink transition-colors hover:text-brand">
+                                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </a>
+                            </div>
+                            <div class="my-auto py-5 lg:py-4">
+                                <h3 class="text-[22px] font-semibold leading-tight text-ink sm:text-[26px] 2xl:text-[32px]">{{ $projectBig->title }}</h3>
+                                <p class="mt-4 text-[14px] leading-relaxed text-body sm:text-[16px] 2xl:mt-5 2xl:text-[17px]">
+                                    {{ \Illuminate\Support\Str::limit($projectBig->excerpt ?? '', 220, end: '…') }}
+                                </p>
+                            </div>
+                            <p class="text-[14px] text-steel 2xl:text-[15px]">{{ $projectBig->published_at ? \Illuminate\Support\Carbon::parse($projectBig->published_at)->format('d.m.Y') : '' }}</p>
                         </div>
-                        <div class="my-auto py-5 lg:py-4">
-                            <h3 class="text-[22px] font-semibold leading-tight text-ink sm:text-[26px] 2xl:text-[32px]">{{ $projectBig->title }}</h3>
-                            <p class="mt-4 text-[14px] leading-relaxed text-body sm:text-[16px] 2xl:mt-5 2xl:text-[17px]">
-                                {{ \Illuminate\Support\Str::limit($projectBig->excerpt ?? '', 220, end: '…') }}
-                            </p>
-                        </div>
-                        <p class="text-[14px] text-steel 2xl:text-[15px]">{{ $projectBig->published_at ? \Illuminate\Support\Carbon::parse($projectBig->published_at)->format('d.m.Y') : '' }}</p>
-                    </div>
-                </article>
-
-                @foreach ($projectSmall as $project)
-                    <article class="flex w-[86%] shrink-0 flex-col rounded-[20px] bg-surface p-4 sm:w-[46%] sm:p-5 lg:w-[310px] 2xl:w-[413px]">
-                        <div class="flex items-start justify-between gap-3">
-                            <p class="text-[14px] text-body sm:text-[15px] 2xl:text-[16px]">Проекты</p>
-                            <a href="#" aria-label="Открыть проект «{{ $project->title }}»" class="shrink-0 text-ink transition-colors hover:text-brand">
-                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                            </a>
-                        </div>
-                        <img src="{{ $project->coverUrl() }}" alt="{{ $project->title }}" width="800" height="800" loading="lazy"
-                             class="mt-4 h-[200px] w-full rounded-[14px] object-cover sm:h-[240px] lg:h-[260px] 2xl:h-[360px]">
-                        <h3 class="mt-5 line-clamp-2 text-[17px] font-semibold leading-snug text-ink sm:text-[19px] 2xl:text-[21px]">{{ $project->title }}</h3>
-                        <p class="mt-auto pt-4 text-[14px] text-steel 2xl:text-[15px]">{{ $project->published_at ? \Illuminate\Support\Carbon::parse($project->published_at)->format('d.m.Y') : '' }}</p>
                     </article>
-                @endforeach
 
-                @foreach ($projectFormats as $format)
-                    <article class="flex w-[86%] shrink-0 flex-col rounded-[20px] bg-surface p-4 sm:w-[46%] sm:p-5 lg:w-[310px] 2xl:w-[413px]">
-                        <div class="flex items-start justify-between gap-3">
-                            <p class="text-[14px] text-body sm:text-[15px] 2xl:text-[16px]">Проекты</p>
-                            <a href="#" aria-label="Открыть проект «{{ $format->name }}»" class="shrink-0 text-ink transition-colors hover:text-brand">
-                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                            </a>
-                        </div>
-                        <img src="{{ $format->coverUrl() }}" alt="{{ $format->name }}" width="800" height="800" loading="lazy"
-                             class="mt-4 h-[200px] w-full rounded-[14px] object-cover sm:h-[240px] lg:h-[260px] 2xl:h-[360px]">
-                        <h3 class="mt-auto line-clamp-2 pt-5 text-[17px] font-semibold leading-snug text-ink sm:text-[19px] 2xl:text-[21px]">{{ $format->name }}</h3>
-                    </article>
-                @endforeach
+                    @foreach ($projectSmall as $project)
+                        <article class="swiper-slide rounded-[20px] bg-surface p-4 sm:p-5">
+                            <div class="flex items-start justify-between gap-3">
+                                <p class="text-[14px] text-body sm:text-[15px] 2xl:text-[16px]">Проекты</p>
+                                <a href="#" aria-label="Открыть проект «{{ $project->title }}»" class="shrink-0 text-ink transition-colors hover:text-brand">
+                                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </a>
+                            </div>
+                            <img src="{{ $project->coverUrl() }}" alt="{{ $project->title }}" width="800" height="800" loading="lazy"
+                                 class="mt-4 h-[200px] w-full rounded-[14px] object-cover sm:h-[240px] lg:h-[260px] 2xl:h-[360px]">
+                            <h3 class="mt-5 line-clamp-2 text-[17px] font-semibold leading-snug text-ink sm:text-[19px] 2xl:text-[21px]">{{ $project->title }}</h3>
+                            <p class="mt-auto pt-4 text-[14px] text-steel 2xl:text-[15px]">{{ $project->published_at ? \Illuminate\Support\Carbon::parse($project->published_at)->format('d.m.Y') : '' }}</p>
+                        </article>
+                    @endforeach
+
+                    @foreach ($projectFormats as $format)
+                        <article class="swiper-slide rounded-[20px] bg-surface p-4 sm:p-5">
+                            <div class="flex items-start justify-between gap-3">
+                                <p class="text-[14px] text-body sm:text-[15px] 2xl:text-[16px]">Проекты</p>
+                                <a href="#" aria-label="Открыть проект «{{ $format->name }}»" class="shrink-0 text-ink transition-colors hover:text-brand">
+                                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </a>
+                            </div>
+                            <img src="{{ $format->coverUrl() }}" alt="{{ $format->name }}" width="800" height="800" loading="lazy"
+                                 class="mt-4 h-[200px] w-full rounded-[14px] object-cover sm:h-[240px] lg:h-[260px] 2xl:h-[360px]">
+                            <h3 class="mt-auto line-clamp-2 pt-5 text-[17px] font-semibold leading-snug text-ink sm:text-[19px] 2xl:text-[21px]">{{ $format->name }}</h3>
+                        </article>
+                    @endforeach
+                </div>
             </div>
 
             <div class="mt-6 flex items-center justify-between lg:mt-8">
-                <button type="button" data-slide-target="#projects-track" data-dir="-1" aria-label="Предыдущие проекты" class="grid h-11 w-11 place-items-center rounded-[10px] bg-brand text-white transition-colors hover:bg-brandh 2xl:h-14 2xl:w-14">
+                <button type="button" id="projects-prev" aria-label="Предыдущие проекты" class="grid h-11 w-11 place-items-center rounded-[10px] bg-brand text-white transition-opacity hover:bg-brandh 2xl:h-14 2xl:w-14">
                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m0 0l6-6m-6 6l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
-                <button type="button" data-slide-target="#projects-track" data-dir="1" aria-label="Следующие проекты" class="grid h-11 w-11 place-items-center rounded-[10px] bg-brand text-white transition-colors hover:bg-brandh 2xl:h-14 2xl:w-14">
+                <button type="button" id="projects-next" aria-label="Следующие проекты" class="grid h-11 w-11 place-items-center rounded-[10px] bg-brand text-white transition-opacity hover:bg-brandh 2xl:h-14 2xl:w-14">
                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
             </div>
@@ -301,9 +310,11 @@
         </div>
 
         @if ($reviews->isNotEmpty())
-            <div id="reviews-track" class="no-scrollbar snap-track mt-8 flex gap-4 lg:mt-12 lg:gap-8">
-                @foreach ($reviews as $review)
-                    <article class="flex w-[86%] flex-col rounded-2xl bg-surface p-5 sm:w-[60%] sm:p-7 lg:w-[calc(50%-16px)] 2xl:p-9">
+            <div id="reviews-track" class="swiper mt-8 lg:mt-12" aria-label="Отзывы клиентов"
+                 data-swiper='{"navigation":{"prevEl":"#reviews-prev","nextEl":"#reviews-next"},"spaceBetween":16,"breakpoints":{"1024":{"spaceBetween":32}}}'>
+                <div class="swiper-wrapper">
+                    @foreach ($reviews as $review)
+                        <article class="swiper-slide rounded-2xl bg-surface p-5 sm:p-7 2xl:p-9">
                         <div class="flex items-start justify-between gap-4">
                             <div>
                                 <h3 class="text-[20px] font-semibold leading-tight text-ink sm:text-[22px] 2xl:text-[26px]">{{ $review->author_name }}</h3>
@@ -331,15 +342,16 @@
                         </div>
 
                         <p class="mt-auto pt-5 text-[14px] text-steel sm:pt-6 2xl:text-[16px]">{{ $review->published_at?->format('d.m.Y') }}</p>
-                    </article>
-                @endforeach
+                        </article>
+                    @endforeach
+                </div>
             </div>
 
-            <div class="mt-6 flex items-center justify-between lg:mt-8">
-                <button type="button" data-slide-target="#reviews-track" data-dir="-1" aria-label="Предыдущие отзывы" class="grid h-11 w-11 place-items-center rounded-[10px] bg-brand text-white transition-colors hover:bg-brandh 2xl:h-14 2xl:w-14">
+            <div class="mt-6 flex items-center justify-between lg:mt-8 mb-[120px]">
+                <button type="button" id="reviews-prev" aria-label="Предыдущие отзывы" class="grid h-11 w-11 place-items-center rounded-[10px] bg-brand text-white transition-opacity hover:bg-brandh 2xl:h-14 2xl:w-14">
                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m0 0l6-6m-6 6l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
-                <button type="button" data-slide-target="#reviews-track" data-dir="1" aria-label="Следующие отзывы" class="grid h-11 w-11 place-items-center rounded-[10px] bg-brand text-white transition-colors hover:bg-brandh 2xl:h-14 2xl:w-14">
+                <button type="button" id="reviews-next" aria-label="Следующие отзывы" class="grid h-11 w-11 place-items-center rounded-[10px] bg-brand text-white transition-opacity hover:bg-brandh 2xl:h-14 2xl:w-14">
                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
             </div>
@@ -350,17 +362,6 @@
 <x-footer></x-footer>
 
 <script>
-    document.querySelectorAll('[data-slide-target]').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            var track = document.querySelector(btn.dataset.slideTarget);
-            if (!track) return;
-            var card = track.firstElementChild;
-            if (!card) return;
-            var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || '16') || 16;
-            track.scrollBy({ left: btn.dataset.dir * (card.getBoundingClientRect().width + gap), behavior: 'smooth' });
-        });
-    });
-
     document.querySelectorAll('[data-tabfilter]').forEach(function (btn) {
         btn.addEventListener('click', function () {
             var group = btn.dataset.tabGroup;
@@ -382,6 +383,10 @@
                 track.querySelectorAll('[data-tag]').forEach(function (card) {
                     card.classList.toggle('hidden', value !== 'all' && card.dataset.tag !== value);
                 });
+                if (track._swiper) {
+                    track._swiper.update();
+                    track._swiper.slideTo(0, 0);
+                }
             });
         });
     });

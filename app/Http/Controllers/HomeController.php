@@ -48,7 +48,7 @@ class HomeController extends Controller
         $aboutImage = Setting::get('about_image')
             ?? config('media.base_url') . '/cover/room.png';
         $workImage  = Setting::get('work_image')
-            ?? config('media.base_url') . '/gallery/perchatki.png';
+            ?? config('media.base_url') . '/cover/side-view-doctor-checking-patient-before-rhinoplasty%201.png';
 
         return view('welcome', compact(
             'contacts',

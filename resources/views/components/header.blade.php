@@ -22,7 +22,7 @@
             </span>
         </a>
 
-        <nav class="hidden items-center gap-10 text-base font-medium text-body lg:flex">
+        <nav class="hidden items-center gap-10 text-base font-medium text-body xl:flex">
             @foreach ($nav as $item)
                 <a class="transition-colors hover:text-brand" href="{{ $item['href'] }}">{{ $item['label'] }}</a>
             @endforeach

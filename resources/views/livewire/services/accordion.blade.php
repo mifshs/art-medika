@@ -21,7 +21,7 @@
 
             <div x-show="open" x-collapse x-cloak
                  class="rounded-b-2xl bg-white pb-6 pt-2 sm:pb-8">
-                <div class="grid grid-cols-1 gap-4 px-4 sm:px-6 lg:grid-cols-2 2xl:grid-cols-3 2xl:gap-6 2xl:px-8">
+                <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 2xl:grid-cols-3 2xl:gap-6 ">
                     @foreach ($direction['cards'] as $card)
                         <x-service-card
                             :title="$card['title']"
