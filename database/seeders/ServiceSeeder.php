@@ -255,7 +255,7 @@ class ServiceSeeder extends Seeder
             ['result', null,                                            null,                                                     'gallery/facelift2.png', 'gallery/facelift2.png'],
             ['result', null,                                            null,                                                     'gallery/compare1.png', 'gallery/compare5.png'],
         ];
-        foreach ($cases as $ci => [$kind, $title, $desc, $seed]) {
+        foreach ($cases as $ci => [$kind, $title, $desc, $before, $after]) {
             $case = $blepharo->cases()->updateOrCreate(
                 ['kind' => $kind, 'title' => $title, 'sort_order' => $ci + 1],
                 ['description' => $desc],
