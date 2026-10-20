@@ -7,7 +7,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('/stock', 'stock');
+Route::view('/stock', 'project-stock');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
