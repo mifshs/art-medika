@@ -12,7 +12,7 @@
     ];
 @endphp
 
-<header class="bg-white">
+<header x-data="{ menu: false }" class="bg-white">
     <div class="mx-auto flex w-full max-w-[1720px] items-center justify-between gap-6 px-4 py-5 sm:px-6 md:px-10 2xl:px-0">
         <a href="{{ url('/') }}" class="flex shrink-0 items-center gap-2.5">
             <img src="{{ $logo }}" alt="Знак клиники Арт-Медика" class="h-9 w-auto sm:h-11">
@@ -34,13 +34,13 @@
                 <div class="text-[13px] leading-snug text-muted">{{ $contacts['address'] ?? '' }}<br>{{ $contacts['work_hours'] ?? '' }}</div>
             </div>
             <a href="/stock" class="hidden rounded-full bg-brand px-7 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-brandh sm:block">Записаться</a>
-            <button type="button" id="burger" aria-expanded="false" aria-controls="mobile-menu" class="grid h-11 w-11 place-items-center rounded-xl border border-border lg:hidden">
+            <button type="button" @click="menu = !menu" :aria-expanded="menu" aria-controls="mobile-menu" class="grid h-11 w-11 place-items-center rounded-xl border border-border lg:hidden">
                 <svg width="20" height="14" viewBox="0 0 20 14" fill="none" aria-hidden="true"><path d="M1 1h18M1 7h18M1 13h18" stroke="#212529" stroke-width="1.6" stroke-linecap="round"/></svg>
             </button>
         </div>
     </div>
 
-    <div id="mobile-menu" class="hidden border-t border-border px-4 py-4 lg:hidden">
+    <div id="mobile-menu" x-show="menu" x-collapse x-cloak class="lg:hidden border-t border-border px-4 py-4">
         <nav class="grid gap-1 text-[15px] font-medium text-body">
             @foreach ($nav as $item)
                 <a class="rounded-lg px-3 py-2 hover:bg-surface" href="{{ $item['href'] }}">{{ $item['label'] }}</a>

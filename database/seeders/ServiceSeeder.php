@@ -255,10 +255,24 @@ class ServiceSeeder extends Seeder
             ['result', null,                                            null,                                                     'gallery/facelift2.png', 'gallery/facelift2.png'],
             ['result', null,                                            null,                                                     'gallery/compare1.png', 'gallery/compare5.png'],
         ];
-        foreach ($cases as $ci => [$kind, $title, $desc, $seed]) {
+        foreach ($cases as $ci => [$kind, $title, $desc, $before, $after]) {
             $case = $blepharo->cases()->updateOrCreate(
                 ['kind' => $kind, 'title' => $title, 'sort_order' => $ci + 1],
                 ['description' => $desc],
+            );
+            $this->attachMedia($case, 'before', $before, 'До');
+            $this->attachMedia($case, 'after',  $after,  'После');
+        }
+
+        // ── Кейсы «результаты» маммопластики (gallery t1/t2/t3) ──
+        $mammo = Service::where('slug', 'mammo-1')->first();
+        foreach ([
+            ['gallery/t1.png', 'gallery/t2.png'],
+            ['gallery/t2.png', 'gallery/t3.png'],
+        ] as $i => [$before, $after]) {
+            $case = $mammo->cases()->updateOrCreate(
+                ['kind' => 'result', 'title' => null, 'sort_order' => 7 + $i],
+                ['description' => null],
             );
             $this->attachMedia($case, 'before', $before, 'До');
             $this->attachMedia($case, 'after',  $after,  'После');

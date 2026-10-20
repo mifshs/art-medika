@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Swiper: приглушаем неактивные стрелки навигации */
+/* Alpine: до инициализации скрываем x-cloak блоки */
+[x-cloak] {
+    display: none !important;
+}
+
+/* Alpine: приглушаем неактивные стрелки навигации */
 .swiper-button-disabled {
     opacity: 0.4;
 }
@@ -35,6 +40,16 @@
     #experts-track .swiper-slide { width: 310px; }
     #projects-track .swiper-slide:first-child { width: 640px; display: grid; grid-template-columns: 46% 1fr; }
     #projects-track .swiper-slide:not(:first-child) { width: 310px; }
+}
+
+/* Кейсы маммопластики (t1/t2/t3, фото 560x373): карточка во всю ширину фото, без обрезки.
+   На мобильных пара встает в столбик на всю ширину, с 640px — рядом с высотой из исходных классов. */
+#results-track .swiper-slide.case-natural { width: 100%; flex-direction: column; }
+#results-track .swiper-slide.case-natural img { width: 100%; height: auto; }
+
+@media (min-width: 640px) {
+    #results-track .swiper-slide.case-natural { width: max-content; flex-direction: row; }
+    #results-track .swiper-slide.case-natural img { width: auto; }
 }
 
 @media (min-width: 1920px) {

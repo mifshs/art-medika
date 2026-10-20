@@ -126,7 +126,7 @@
                         $service = $case->service?->name ?: 'Все';
                         $caption = $case->title ?: 'Результат';
                     @endphp
-                    <figure data-tag="{{ $service }}" class="swiper-slide gap-2 2xl:gap-2.5">
+                    <figure data-tag="{{ $service }}" class="{{ $case->service?->slug === 'mammo-1' ? 'case-natural' : '' }} swiper-slide gap-2 2xl:gap-2.5">
                         <img src="{{ $case->beforeUrl() }}" alt="{{ $caption }}: вид до" width="640" height="800" loading="lazy" class="h-[254px] w-1/2 min-w-0 rounded-2xl object-cover sm:h-[300px] lg:h-[360px] 2xl:h-[480px]">
                         <img src="{{ $case->afterUrl() }}" alt="{{ $caption }}: вид после" width="640" height="800" loading="lazy" class="h-[254px] w-1/2 min-w-0 rounded-2xl object-cover sm:h-[300px] lg:h-[360px] 2xl:h-[480px]">
                     </figure>

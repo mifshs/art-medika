@@ -85,7 +85,7 @@ class MiscSeeder extends Seeder
             'telegram' => $gh('docs/Telegram_logo 1.png')     ?? 'https://picsum.photos/seed/tg-icon/64/64',
             'max'      => $gh('docs/max-messenger-sign-logo 1.png') ?? 'https://picsum.photos/seed/max-icon/64/64',
         ]);
-        Setting::set('video_url', 'https://vk.com/video-1_2');
+        Setting::set('video_url', 'https://vkvideo.ru/video-211242323_456240899');
         Setting::set('disclaimer', 'ИМЕЮТСЯ ПРОТИВОПОКАЗАНИЯ. НЕОБХОДИМА КОНСУЛЬТАЦИЯ СПЕЦИАЛИСТА');
     }
 }
