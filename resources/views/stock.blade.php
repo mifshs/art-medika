@@ -29,5 +29,8 @@
             </p>
         </div>
     </div>
+    <div class="lg:px-10 mt-[40px]">
+        <livewire:stock.project-list />
+    </div>
 </body>
 </html>
