@@ -16,10 +16,6 @@
     <div class="mx-auto flex w-full max-w-[1720px] items-center justify-between gap-6 px-4 py-5 sm:px-6 md:px-10 2xl:px-0">
         <a href="{{ url('/') }}" class="flex shrink-0 items-center gap-2.5">
             <img src="{{ $logo }}" alt="Знак клиники Арт-Медика" class="h-9 w-auto sm:h-11">
-            <span class="flex flex-col leading-none">
-                <span class="font-serif text-[21px] italic font-semibold tracking-tight text-brand sm:text-[25px]">Арт-Медика</span>
-                <span class="mt-1 text-[9px] text-brand sm:text-[10px]">медико-косметологический центр</span>
-            </span>
         </a>
 
         <nav class="hidden items-center gap-10 text-base font-medium text-body xl:flex">
