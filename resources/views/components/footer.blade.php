@@ -41,10 +41,6 @@
             <div>
                 <a href="{{ url('/') }}" class="flex items-center gap-2.5">
                     <img src="{{ $logo }}" alt="Знак клиники Арт-Медика" class="h-10 w-auto sm:h-12">
-                    <span class="flex flex-col leading-none">
-                        <span class="font-serif text-[21px] italic font-semibold tracking-tight text-brand sm:text-[25px]">Арт-Медика</span>
-                        <span class="mt-1 text-[9px] text-brand sm:text-[10px]">медико-косметологический центр</span>
-                    </span>
                 </a>
 
                 <div class="mt-6 flex items-center gap-2.5">
