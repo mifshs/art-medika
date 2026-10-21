@@ -4,7 +4,7 @@
     $phoneTel = preg_replace('/\D+/', '', (string) ($contacts['phone'] ?? ''));
     $nav      = [
         ['href' => '/o-centre',      'label' => 'О клинике'],
-        ['href' => '#uslugi',        'label' => 'Услуги'],
+        ['href' => route('services'), 'label' => 'Услуги'],
         ['href' => '#spetsialisty',  'label' => 'Специалисты'],
         ['href' => '/stock',         'label' => 'Акции'],
         ['href' => '/documents',     'label' => 'Документы'],
@@ -24,15 +24,12 @@
             @endforeach
         </nav>
 
-        <div class="flex items-center gap-4">
+        <div class="flex shrink-0 items-center gap-4">
             <div class="hidden text-right md:block">
                 <a href="tel:{{ $phoneTel }}" class="block text-[17px] font-bold text-ink transition-colors hover:text-brand">{{ $contacts['phone'] ?? '' }}</a>
                 <div class="text-[13px] leading-snug text-muted">{{ $contacts['address'] ?? '' }}<br>{{ $contacts['work_hours'] ?? '' }}</div>
             </div>
-            <a href="/stock" class="hidden rounded-full bg-brand px-7 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-brandh sm:block">Записаться</a>
-            <button type="button" @click="menu = !menu" :aria-expanded="menu" aria-controls="mobile-menu" class="grid h-11 w-11 place-items-center rounded-xl border border-border lg:hidden">
-                <svg width="20" height="14" viewBox="0 0 20 14" fill="none" aria-hidden="true"><path d="M1 1h18M1 7h18M1 13h18" stroke="#212529" stroke-width="1.6" stroke-linecap="round"/></svg>
-            </button>
+            <a href="/stock" class="rounded-full bg-brand px-5 py-3 text-[14px] font-semibold text-white transition-colors hover:bg-brandh sm:px-7 sm:py-3.5 sm:text-[15px]">Записаться</a>
         </div>
     </div>
 
