@@ -14,7 +14,7 @@ class PromotionController extends Controller
             ->orderByRaw('published_at IS NULL, published_at DESC, id DESC')
             ->paginate(4);
 
-        return view('stock', compact('promotions'));
+        return view('project-stock', compact('promotions'));
     }
 
     public function show(Promotion $promotion)
