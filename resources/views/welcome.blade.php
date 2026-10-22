@@ -197,10 +197,10 @@
 <section id="proekty" class="mt-14 px-4 sm:px-6 lg:mt-24">
     <div class="mx-auto w-full max-w-[1720px]">
         <div class="grid gap-4 lg:grid-cols-[1fr_2fr] lg:gap-10">
-            <p class="inline-flex items-baseline gap-2 text-[18px] font-semibold text-steel lg:text-[22px] 2xl:text-[30px]">
+            <a href="{{ route('projects') }}" class="inline-flex items-baseline gap-2 text-[18px] font-semibold text-steel transition-colors hover:text-brand lg:text-[22px] 2xl:text-[30px]">
                 Проекты
                 <svg class="h-[0.8em] w-[0.8em] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </p>
+            </a>
             <h2 class="text-[26px] font-semibold leading-[1.25] tracking-[-0.01em] text-brand sm:text-[32px] lg:text-[36px] 2xl:text-[44px] lg:[text-indent:240px] 2xl:[text-indent:320px]">
                 Собираем для вас актуальные проекты в сфере медицины и эстетической хирургии
             </h2>

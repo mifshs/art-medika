@@ -10,7 +10,7 @@
         ['href' => '/o-centre',   'label' => 'О клинике'],
         ['href' => '#spetsialisty', 'label' => 'Специалисты'],
         ['href' => '#uslugi',     'label' => 'Услуги'],
-        ['href' => '#proekty',    'label' => 'Проекты'],
+        ['href' => route('projects'), 'label' => 'Проекты'],
         ['href' => '/stock',      'label' => 'Акции'],
         ['href' => '/news',       'label' => 'Новости'],
         ['href' => '/prices',     'label' => 'Цены'],
