@@ -3,7 +3,8 @@
 @php
     $coverUrl = $project->coverUrl();
     $date = $project->published_at ? \Illuminate\Support\Carbon::parse($project->published_at)->format('d.m.Y') : '';
-    $excerpt = \Illuminate\Support\Str::limit($project->excerpt ?? $project->description ?? '', 260, end: '…');
+    $designExcerpt = config('projects.texts.' . $project->slug);
+    $excerpt = $designExcerpt ?: \Illuminate\Support\Str::limit($project->excerpt ?? $project->description ?? '', 260, end: '…');
 @endphp
 
 <article id="project-{{ $project->slug }}" class="group scroll-mt-8 overflow-hidden rounded-[20px] bg-surface sm:rounded-[24px]">
