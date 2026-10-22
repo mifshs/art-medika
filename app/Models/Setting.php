@@ -24,6 +24,6 @@ class Setting extends Model
 
     public static function set(string $key, $value): void
     {
-        static::updateOrCreate(['key', $key], ['value' => $value]);
+        static::updateOrCreate(['key' => $key], ['value' => $value]);
     }
 }
