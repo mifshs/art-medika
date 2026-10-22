@@ -27,7 +27,7 @@
             Проекты
             <img src="<?php echo e(asset('images/Arrow_right_light.svg')); ?>" alt="" class="w-[30px] sm:w-[38px] lg:w-[50px]" aria-hidden="true">
         </h1>
-        <p class="max-w-[1140px] text-[22px] font-medium leading-tight text-[#1D293D] sm:text-[28px] lg:text-[36px] 2xl:text-[40px]">
+        <p class="max-w-[1140px] text-[22px] font-medium leading-tight text-[#1D293D] [text-indent:26%] sm:text-[28px] lg:text-[36px] 2xl:text-[40px]">
             Подбираем для вас самые актуальные
             и интересные проекты из нашей практики, медицины
             и эстетической хирургии, с заботой о вас

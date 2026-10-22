@@ -254,7 +254,7 @@ if (isset($__slots)) unset($__slots);
                         <div class="flex min-w-0 flex-col pt-5 lg:py-1 lg:pr-6 2xl:pr-8">
                             <div class="flex items-start justify-between gap-4">
                                 <p class="text-[14px] text-body sm:text-[15px] 2xl:text-[16px]">Проекты</p>
-                                <a href="#" aria-label="Открыть проект «<?php echo e($projectBig->title); ?>»" class="shrink-0 text-ink transition-colors hover:text-brand">
+                                <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($projectBig->slug); ?>" aria-label="Открыть проект «<?php echo e($projectBig->title); ?>»" class="shrink-0 text-ink transition-colors hover:text-brand">
                                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </a>
                             </div>
@@ -265,7 +265,7 @@ if (isset($__slots)) unset($__slots);
 
                                 </p>
                             </div>
-                            <p class="text-[14px] text-steel 2xl:text-[15px]"><?php echo e($projectBig->published_at ? \Illuminate\Support\Carbon::parse($projectBig->published_at)->format('d.m.Y') : ''); ?></p>
+                            <p class="text-[14px] text-[#91B5D5] 2xl:text-[15px]"><?php echo e($projectBig->published_at ? \Illuminate\Support\Carbon::parse($projectBig->published_at)->format('d.m.Y') : ''); ?></p>
                         </div>
                     </article>
 
@@ -273,14 +273,14 @@ if (isset($__slots)) unset($__slots);
                         <article class="swiper-slide rounded-[20px] bg-surface p-4 sm:p-5">
                             <div class="flex items-start justify-between gap-3">
                                 <p class="text-[14px] text-body sm:text-[15px] 2xl:text-[16px]">Проекты</p>
-                                <a href="#" aria-label="Открыть проект «<?php echo e($project->title); ?>»" class="shrink-0 text-ink transition-colors hover:text-brand">
+                                <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($project->slug); ?>" aria-label="Открыть проект «<?php echo e($project->title); ?>»" class="shrink-0 text-ink transition-colors hover:text-brand">
                                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </a>
                             </div>
                             <img src="<?php echo e($project->coverUrl()); ?>" alt="<?php echo e($project->title); ?>" width="800" height="800" loading="lazy"
                                  class="mt-4 h-[200px] w-full rounded-[14px] object-cover sm:h-[240px] lg:h-[260px] 2xl:h-[360px]">
                             <h3 class="mt-5 line-clamp-2 text-[17px] font-semibold leading-snug text-ink sm:text-[19px] 2xl:text-[21px]"><?php echo e($project->title); ?></h3>
-                            <p class="mt-auto pt-4 text-[14px] text-steel 2xl:text-[15px]"><?php echo e($project->published_at ? \Illuminate\Support\Carbon::parse($project->published_at)->format('d.m.Y') : ''); ?></p>
+                            <p class="mt-auto pt-4 text-[14px] text-[#91B5D5] 2xl:text-[15px]"><?php echo e($project->published_at ? \Illuminate\Support\Carbon::parse($project->published_at)->format('d.m.Y') : ''); ?></p>
                         </article>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
@@ -288,13 +288,13 @@ if (isset($__slots)) unset($__slots);
                         <article class="swiper-slide rounded-[20px] bg-surface p-4 sm:p-5">
                             <div class="flex items-start justify-between gap-3">
                                 <p class="text-[14px] text-body sm:text-[15px] 2xl:text-[16px]">Проекты</p>
-                                <a href="#" aria-label="Открыть проект «<?php echo e($format->name); ?>»" class="shrink-0 text-ink transition-colors hover:text-brand">
+                                <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($projectBig->slug); ?>" aria-label="Открыть проект «<?php echo e($format->title); ?>»" class="shrink-0 text-ink transition-colors hover:text-brand">
                                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </a>
                             </div>
-                            <img src="<?php echo e($format->coverUrl()); ?>" alt="<?php echo e($format->name); ?>" width="800" height="800" loading="lazy"
+                            <img src="<?php echo e($format->coverUrl()); ?>" alt="<?php echo e($format->title); ?>" width="800" height="800" loading="lazy"
                                  class="mt-4 h-[200px] w-full rounded-[14px] object-cover sm:h-[240px] lg:h-[260px] 2xl:h-[360px]">
-                            <h3 class="mt-auto line-clamp-2 pt-5 text-[17px] font-semibold leading-snug text-ink sm:text-[19px] 2xl:text-[21px]"><?php echo e($format->name); ?></h3>
+                            <h3 class="mt-auto line-clamp-2 pt-5 text-[17px] font-semibold leading-snug text-ink sm:text-[19px] 2xl:text-[21px]"><?php echo e($format->title); ?></h3>
                         </article>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                 </div>

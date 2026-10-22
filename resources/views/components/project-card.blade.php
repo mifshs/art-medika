@@ -6,7 +6,7 @@
     $excerpt = \Illuminate\Support\Str::limit($project->excerpt ?? $project->description ?? '', 260, end: '…');
 @endphp
 
-<article class="group overflow-hidden rounded-[20px] bg-surface sm:rounded-[24px]">
+<article id="project-{{ $project->slug }}" class="group scroll-mt-8 overflow-hidden rounded-[20px] bg-surface sm:rounded-[24px]">
     <div class="grid gap-0 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-0">
         {{-- Изображение --}}
         <div class="relative overflow-hidden">
@@ -25,7 +25,7 @@
             {{-- Верхняя строка: метка + стрелка --}}
             <div class="flex items-start justify-between gap-4">
                 <p class="text-[13px] text-muted sm:text-[14px] 2xl:text-[15px]">Проекты</p>
-                <a href="#" aria-label="Открыть проект «{{ $project->title }}»"
+                <a href="#project-{{ $project->slug }}" aria-label="Открыть проект «{{ $project->title }}»"
                    class="shrink-0 text-ink transition-colors hover:text-brand">
                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
@@ -45,7 +45,7 @@
 
             {{-- Кнопка «Подробнее» --}}
             <div class="mt-5 sm:mt-6">
-                <a href="#"
+                <a href="#project-{{ $project->slug }}"
                    class="inline-block rounded-[10px] bg-brand px-6 py-3 text-[13px] font-semibold text-white transition-colors hover:bg-brandh sm:px-7 sm:py-3.5 sm:text-[14px]">
                     Подробнее
                 </a>
@@ -53,7 +53,7 @@
 
             {{-- Дата --}}
             @if ($date)
-                <p class="mt-4 text-[13px] text-steel sm:mt-5 sm:text-[14px] 2xl:text-[15px]">{{ $date }}</p>
+                <p class="mt-4 text-[13px] text-[#91B5D5] sm:mt-5 sm:text-[14px] 2xl:text-[15px]">{{ $date }}</p>
             @endif
         </div>
     </div>

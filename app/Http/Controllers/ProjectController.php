@@ -11,7 +11,7 @@ class ProjectController extends Controller
         $projects = Project::query()
             ->where('is_active', true)
             ->with('media')
-            ->orderByRaw('published_at IS NULL, published_at DESC, id DESC')
+            ->orderBy('id')
             ->get();
 
         return view('projects', compact('projects'));
