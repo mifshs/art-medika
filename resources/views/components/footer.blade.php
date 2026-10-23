@@ -33,7 +33,7 @@
     ];
 @endphp
 
-<footer id="contacts" class="bg-[#EDF1F7]">
+<footer id="contacts" class="bg-[#EDF1F7] font-onest lg:font-sans">
     {{-- Мобильная версия футера (до lg) --}}
     <div class="px-4 py-8 lg:hidden">
         {{-- 1. Верхняя строка: Логотип слева, соцсети справа --}}

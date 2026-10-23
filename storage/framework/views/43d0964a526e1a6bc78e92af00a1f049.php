@@ -33,7 +33,7 @@
     ];
 ?>
 
-<footer id="contacts" class="bg-[#EDF1F7]">
+<footer id="contacts" class="bg-[#EDF1F7] font-onest lg:font-sans">
     
     <div class="px-4 py-8 lg:hidden">
         

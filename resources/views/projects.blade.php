@@ -6,27 +6,28 @@
     <title>Проекты — Медико-косметологический центр «Арт-Медика»</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&subset=cyrillic,cyrillic-ext&display=swap" rel="stylesheet">
+    {{-- Шрифт макета — Onest, применяется только на странице «Проекты» --}}
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-page font-sans text-body antialiased">
+  <body class="bg-page font-onest text-body antialiased">
 
 <x-header></x-header>
 
 <main class="mx-auto w-full max-w-[1720px] px-[18px] pb-14 sm:px-6 md:px-10 lg:pb-24 2xl:px-0">
-    {{-- Хлебные крошки --}}
-    <nav aria-label="Хлебные крошки" class="flex items-center gap-2 pt-5 sm:pt-6 text-[14px] sm:text-[15px] text-body">
-        <a href="{{ url('/') }}" class="transition-colors hover:text-brand">Арт-Медика</a>
+    {{-- Хлебные крошки (макет: Onest 18px, цвет #37241B) --}}
+    <nav aria-label="Хлебные крошки" class="flex items-center gap-2 pt-5 sm:pt-6 text-[15px] sm:text-[16px] 2xl:text-[18px] text-brand">
+        <a href="{{ url('/') }}" class="transition-colors duration-200 hover:text-brandh">Арт-Медика</a>
         <img src="{{ asset('images/_.svg') }}" alt="" class="h-3 w-auto" aria-hidden="true">
-        <span class="font-medium text-ink">Проекты</span>
+        <span class="font-medium">Проекты</span>
     </nav>
 
-    {{-- Заголовок раздела: выравнивание по левому краю с красной строкой [text-indent] на мобильном (102px) и десктопе (240px/320px) --}}
+    {{-- Заголовок раздела: метка слева, интро справа с красной строкой (макет: indent 102px / 290px) --}}
     <div class="mt-7 sm:mt-8 lg:mt-14">
         <div class="grid gap-4 lg:grid-cols-[1fr_2fr] lg:gap-10">
-            {{-- Левая колонка: метка «Проекты ↗» --}}
+            {{-- Левая колонка: метка «Проекты ↗» (макет: Onest 40px, medium, #91B5D5) --}}
             <div>
-                <p class="inline-flex items-baseline gap-2 text-[20px] font-semibold text-[#91B5D5] sm:text-[24px] lg:text-[28px] 2xl:text-[32px]">
+                <p class="inline-flex items-baseline gap-2 text-[24px] font-medium text-[#91B5D5] sm:text-[28px] lg:text-[32px] 2xl:text-[40px]">
                     Проекты
                     <svg class="h-[0.8em] w-[0.8em] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -34,12 +35,14 @@
                 </p>
             </div>
 
-            {{-- Правая колонка: заголовок фирменным цветом text-brand (#37241B) с красной строкой [text-indent] и точным переносом строк под оба макета --}}
-            <h1 class="text-[20px] font-semibold leading-[1.32] text-brand text-left sm:text-[24px] lg:text-[36px] 2xl:text-[40px] lg:leading-[1.25] tracking-[-0.01em] [text-indent:102px] lg:[text-indent:240px] 2xl:[text-indent:320px]">
-                Подбираем для вас<br class="lg:hidden">
-                самые актуальные<span class="lg:inline hidden"> </span><br class="hidden lg:inline">
-                и интересные проекты из нашей практики,<br class="lg:hidden">
-                медицины и эстетической<br class="lg:hidden">
+            {{-- Правая колонка: интро дословно из макета, шрифт Onest 24px/40px, weight 500, #37241B --}}
+            <h1 class="text-[24px] font-medium leading-[1.3] text-brand text-left sm:text-[26px] lg:text-[36px] 2xl:text-[40px] [text-indent:102px] lg:[text-indent:240px] 2xl:[text-indent:290px]">
+                Подбираем для вас<br class="sm:hidden">
+                самых актуальных<br class="max-sm:hidden">
+                и интересные<br class="sm:hidden">
+                проекты из нашей практики,<br class="sm:hidden">
+                медицины<br class="max-sm:hidden">
+                и эстетической<br class="sm:hidden">
                 хирургии, с заботой о вас
             </h1>
         </div>

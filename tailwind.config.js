@@ -14,6 +14,7 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
+                onest: ['Onest', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 page:    '#FFFFFF',

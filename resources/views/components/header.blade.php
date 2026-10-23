@@ -12,8 +12,8 @@
     ];
 @endphp
 
-<header x-data="{ menu: false }" class="bg-white">
-    <div class="relative mx-auto flex w-full max-w-[1720px] items-center justify-between gap-6 px-4 py-5 sm:px-6 md:px-10 2xl:px-0">
+<header x-data="{ menu: false }" class="bg-white font-onest">
+    <div class="relative mx-auto flex w-full max-w-[1720px] items-center justify-between gap-6 px-4 py-3 sm:py-5 sm:px-6 md:px-10 2xl:px-0">
         <button type="button" @click="menu = !menu" :aria-expanded="menu" aria-controls="mobile-menu" class="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-border lg:hidden">
             <svg width="20" height="14" viewBox="0 0 20 14" fill="none" aria-hidden="true"><path d="M1 1h18M1 7h18M1 13h18" stroke="#212529" stroke-width="1.6" stroke-linecap="round"/></svg>
         </button>
@@ -26,7 +26,7 @@
             </span>
         </a>
 
-        <nav class="hidden items-center gap-10 text-base font-medium text-body xl:flex">
+        <nav class="hidden items-center gap-10 text-[18px] font-medium text-body xl:flex">
             @foreach ($nav as $item)
                 <a class="transition-colors hover:text-brand" href="{{ $item['href'] }}">{{ $item['label'] }}</a>
             @endforeach
@@ -35,9 +35,11 @@
         <div class="flex shrink-0 items-center gap-4">
             <div class="hidden text-right md:block">
                 <a href="tel:{{ $phoneTel }}" class="block text-[17px] font-bold text-ink transition-colors hover:text-brand">{{ $contacts['phone'] ?? '' }}</a>
-                <div class="text-[13px] leading-snug text-muted">{{ $contacts['address'] ?? '' }}<br>{{ $contacts['work_hours'] ?? '' }}</div>
+                {{-- Адрес и график (макет: Onest 600/400 16px, #37241B) --}}
+                <div class="mt-0.5 text-[16px] font-semibold leading-[22px] text-brand">{{ $contacts['address'] ?? '' }}</div>
+                <div class="text-[16px] leading-[22px] text-brand">{{ $contacts['work_hours'] ?? '' }}</div>
             </div>
-            <a href="/stock" class="rounded-full bg-brand px-5 py-3 text-[14px] font-semibold text-white transition-colors hover:bg-brandh sm:px-7 sm:py-3.5 sm:text-[15px]">Записаться</a>
+            <a href="/stock" class="rounded-full bg-brand px-5 py-3 text-[14px] max-sm:font-normal font-semibold text-white transition-colors hover:bg-brandh sm:px-7 sm:py-3.5 sm:text-[16px]">Записаться</a>
         </div>
     </div>
 
