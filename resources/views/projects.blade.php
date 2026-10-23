@@ -13,7 +13,7 @@
 
 <x-header></x-header>
 
-<main class="mx-auto w-full max-w-[1720px] px-4 pb-14 sm:px-6 md:px-10 lg:pb-24 2xl:px-0">
+<main class="mx-auto w-full max-w-[1720px] px-[18px] pb-14 sm:px-6 md:px-10 lg:pb-24 2xl:px-0">
     {{-- Хлебные крошки --}}
     <nav aria-label="Хлебные крошки" class="flex items-center gap-2 pt-5 sm:pt-6 text-[14px] sm:text-[15px] text-body">
         <a href="{{ url('/') }}" class="transition-colors hover:text-brand">Арт-Медика</a>
@@ -21,8 +21,8 @@
         <span class="font-medium text-ink">Проекты</span>
     </nav>
 
-    {{-- Заголовок раздела: фирменная двухколоночная сетка с красной строкой [text-indent] на десктопе и центрированием на мобильном --}}
-    <div class="mt-8 lg:mt-14">
+    {{-- Заголовок раздела: выравнивание по левому краю с красной строкой [text-indent] на мобильном (102px) и десктопе (240px/320px) --}}
+    <div class="mt-7 sm:mt-8 lg:mt-14">
         <div class="grid gap-4 lg:grid-cols-[1fr_2fr] lg:gap-10">
             {{-- Левая колонка: метка «Проекты ↗» --}}
             <div>
@@ -34,11 +34,11 @@
                 </p>
             </div>
 
-            {{-- Правая колонка: заголовок фирменным цветом text-brand (#37241B) с точным переносом строк по мобильному макету и отступом первой строки text-indent на десктопе --}}
-            <h1 class="text-[17px] font-semibold leading-[1.35] text-brand text-center sm:text-[22px] lg:text-[34px] lg:text-left lg:leading-[1.25] 2xl:text-[40px] tracking-[-0.01em] lg:[text-indent:240px] 2xl:[text-indent:320px]">
+            {{-- Правая колонка: заголовок фирменным цветом text-brand (#37241B) с красной строкой [text-indent] и точным переносом строк под оба макета --}}
+            <h1 class="text-[20px] font-semibold leading-[1.32] text-brand text-left sm:text-[24px] lg:text-[36px] 2xl:text-[40px] lg:leading-[1.25] tracking-[-0.01em] [text-indent:102px] lg:[text-indent:240px] 2xl:[text-indent:320px]">
                 Подбираем для вас<br class="lg:hidden">
-                самые актуальные и интересные<br class="lg:hidden">
-                проекты из нашей практики,<br class="lg:hidden">
+                самые актуальные<span class="lg:inline hidden"> </span><br class="hidden lg:inline">
+                и интересные проекты из нашей практики,<br class="lg:hidden">
                 медицины и эстетической<br class="lg:hidden">
                 хирургии, с заботой о вас
             </h1>

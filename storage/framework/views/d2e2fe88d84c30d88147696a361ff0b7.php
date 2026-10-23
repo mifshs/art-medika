@@ -31,7 +31,7 @@
 <?php unset($__componentOriginal2a2e454b2e62574a80c8110e5f128b60); ?>
 <?php endif; ?>
 
-<main class="mx-auto w-full max-w-[1720px] px-4 pb-14 sm:px-6 md:px-10 lg:pb-24 2xl:px-0">
+<main class="mx-auto w-full max-w-[1720px] px-[18px] pb-14 sm:px-6 md:px-10 lg:pb-24 2xl:px-0">
     
     <nav aria-label="Хлебные крошки" class="flex items-center gap-2 pt-5 sm:pt-6 text-[14px] sm:text-[15px] text-body">
         <a href="<?php echo e(url('/')); ?>" class="transition-colors hover:text-brand">Арт-Медика</a>
@@ -40,7 +40,7 @@
     </nav>
 
     
-    <div class="mt-8 lg:mt-14">
+    <div class="mt-7 sm:mt-8 lg:mt-14">
         <div class="grid gap-4 lg:grid-cols-[1fr_2fr] lg:gap-10">
             
             <div>
@@ -53,10 +53,10 @@
             </div>
 
             
-            <h1 class="text-[17px] font-semibold leading-[1.35] text-brand text-center sm:text-[22px] lg:text-[34px] lg:text-left lg:leading-[1.25] 2xl:text-[40px] tracking-[-0.01em] lg:[text-indent:240px] 2xl:[text-indent:320px]">
+            <h1 class="text-[20px] font-semibold leading-[1.32] text-brand text-left sm:text-[24px] lg:text-[36px] 2xl:text-[40px] lg:leading-[1.25] tracking-[-0.01em] [text-indent:102px] lg:[text-indent:240px] 2xl:[text-indent:320px]">
                 Подбираем для вас<br class="lg:hidden">
-                самые актуальные и интересные<br class="lg:hidden">
-                проекты из нашей практики,<br class="lg:hidden">
+                самые актуальные<span class="lg:inline hidden"> </span><br class="hidden lg:inline">
+                и интересные проекты из нашей практики,<br class="lg:hidden">
                 медицины и эстетической<br class="lg:hidden">
                 хирургии, с заботой о вас
             </h1>
