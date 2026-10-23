@@ -16,6 +16,7 @@ Route::get('/stock', [PromotionController::class, 'index'])->name('stock');
 Route::get('/stock/{promotion:slug}', [PromotionController::class, 'show'])->name('stock.show');
 
 Route::get('/proekty', [ProjectController::class, 'index'])->name('projects');
+Route::get('/proekty/{project:slug}', [ProjectController::class, 'show'])->name('projects.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
