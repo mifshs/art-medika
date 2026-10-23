@@ -53,8 +53,12 @@
             </div>
 
             
-            <h1 class="text-[19px] font-semibold leading-[1.3] text-brand text-center sm:text-[24px] lg:text-[34px] lg:text-left lg:leading-[1.25] 2xl:text-[40px] tracking-[-0.01em] max-lg:max-w-[350px] max-lg:mx-auto lg:[text-indent:240px] 2xl:[text-indent:320px]">
-                Подбираем для вас самые актуальные и интересные проекты из нашей практики, медицины и эстетической хирургии, с заботой о вас
+            <h1 class="text-[17px] font-semibold leading-[1.35] text-brand text-center sm:text-[22px] lg:text-[34px] lg:text-left lg:leading-[1.25] 2xl:text-[40px] tracking-[-0.01em] lg:[text-indent:240px] 2xl:[text-indent:320px]">
+                Подбираем для вас<br class="lg:hidden">
+                самые актуальные и интересные<br class="lg:hidden">
+                проекты из нашей практики,<br class="lg:hidden">
+                медицины и эстетической<br class="lg:hidden">
+                хирургии, с заботой о вас
             </h1>
         </div>
     </div>
