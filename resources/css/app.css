@@ -70,3 +70,8 @@
 .no-scrollbar::-webkit-scrollbar {
     display: none;
 }
+
+/* Страница «Цены на услуги»: аккордеон на <details>, стрелка поворачивается при раскрытии */
+details.price-card summary::-webkit-details-marker { display: none; }
+details.price-card .acc-arrow { transition: transform 0.3s ease; }
+details.price-card[open] .acc-arrow { transform: rotate(180deg); }
