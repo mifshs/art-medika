@@ -97,6 +97,15 @@ return new class extends Migration
 
         // 3. Обложки корневых направлений (дублируем строки gallery как cover)
         foreach (self::COVER_MAP as $file => $slug) {
+            $category = DB::table('service_categories')
+                ->where('slug', $slug)
+                ->whereNull('parent_id')
+                ->first(['id', 'name']);
+            $categoryId = $category->id ?? null;
+            if (!$categoryId) {
+                continue;
+            }
+
             $exists = DB::table('media')
                 ->where('collection', 'cover')
                 ->where('model_type', $type)
@@ -107,7 +116,11 @@ return new class extends Migration
                     ->where('collection', 'cover')
                     ->where('model_type', $type)
                     ->where('path', 'gallery/' . $file . '.png')
-                    ->update(['model_id' => $categoryId, 'updated_at' => now()]);
+                    ->update([
+                        'model_id'   => $categoryId,
+                        'alt'        => $category->name,
+                        'updated_at' => now(),
+                    ]);
                 continue;
             }
 
@@ -117,8 +130,7 @@ return new class extends Migration
                 ->where('path', 'gallery/' . $file . '.png')
                 ->first();
 
-            $categoryId = DB::table('service_categories')->where('slug', $slug)->whereNull('parent_id')->value('id');
-            if (!$src || !$categoryId) {
+            if (!$src) {
                 continue;
             }
 

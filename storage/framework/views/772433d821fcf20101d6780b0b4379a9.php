@@ -31,7 +31,7 @@ unset($__defined_vars, $__key, $__value); ?>
 <?php
     $cover = $category->coverUrl();
 
-    // Мобильный порядок карточек (макет image-1.png) — литеральные классы для Tailwind JIT:
+    // Мобильный порядок карточек (макет 1752:4915) — литеральные классы для Tailwind JIT:
     // kosmetologiya → 1, otorinolaringologiya → 2, lor-hirurgiya → 3, massazh → 4,
     // esteticheskaya-ginekologiya → 5, dermatologiya → 6, top-produkty → 7,
     // plasticheskaya-hirurgiya → 8, nevrologiya-i-refleksoterapiya → 9, terapevticheskiy-priem → 10.
@@ -50,13 +50,13 @@ unset($__defined_vars, $__key, $__value); ?>
     $orderClass = $orderClasses[$category->slug] ?? '';
 ?>
 
-<a href="<?php echo e(route('services.show', $category->slug)); ?>" aria-label="Направление «<?php echo e($category->name); ?>»"
-   class="group block rounded-[12px] py-2 -my-2 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand <?php echo e($orderClass); ?>">
+
+<div class="group block rounded-[12px] py-2 -my-2 <?php echo e($orderClass); ?>">
     
-    <div class="relative aspect-[12/7] w-full overflow-hidden rounded-[12px] bg-hero sm:rounded-[16px]">
+    <div class="relative aspect-[8/5] w-full overflow-hidden rounded-[12px] bg-hero sm:aspect-[12/7] sm:rounded-[16px]">
         <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($cover): ?>
             <img src="<?php echo e($cover); ?>" alt="Направление клиники: <?php echo e($category->name); ?>" loading="lazy"
-                 class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]">
+                 class="absolute inset-0 h-full w-full object-cover">
         <?php else: ?>
             <div class="absolute inset-0 grid place-items-center">
                 <span class="font-serif text-[21px] italic font-semibold tracking-tight text-brand">Арт-Медика</span>
@@ -64,24 +64,26 @@ unset($__defined_vars, $__key, $__value); ?>
         <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
     </div>
 
-    <h3 class="mt-[25px] text-[24px] font-medium leading-tight text-body transition-colors group-hover:text-brand sm:mt-7 sm:text-[28px] xl:text-[32px] 2xl:text-[36px]">
+    
+    <h3 class="mt-[25px] text-[24px] font-medium leading-[32px] text-[#1C1B1F] sm:mt-7 sm:leading-tight sm:text-[28px] sm:text-body xl:text-[32px] 2xl:text-[36px] 2xl:leading-[44px]">
         <?php echo e($category->name); ?>
 
     </h3>
 
     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($category->description): ?>
         
-        <p class="mt-6 hidden max-w-[680px] text-[15px] leading-snug text-[#A09CAB] max-sm:block">
+        <p class="mt-2.5 hidden max-w-[680px] text-[16px] leading-[24px] text-[#A09CAB] max-sm:block">
             <?php echo e($category->description); ?>
 
         </p>
     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($category->subtitle): ?>
-        <p class="mt-2 max-w-[680px] text-[14px] leading-snug text-body max-sm:hidden sm:mt-2.5 sm:text-[15px] xl:text-[17px] 2xl:text-[18px]">
+        
+        <p class="mt-2 max-w-[680px] text-[14px] leading-snug text-body max-sm:hidden sm:mt-2.5 sm:text-[15px] xl:text-[17px] 2xl:max-w-[850px] 2xl:text-[20px] 2xl:leading-[28px]">
             <?php echo e($category->subtitle); ?>
 
         </p>
     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
-</a>
+</div>
 <?php /**PATH F:\xampp\htdocs\art-medic\art-medika\resources\views/components/service-category-card.blade.php ENDPATH**/ ?>

@@ -12,44 +12,61 @@ class ServiceSeeder extends Seeder
 
     public function run(): void
     {
-        // ── Карта обложек для 10 корневых направлений ──
+        // ── Карта обложек для 10 корневых направлений (сверено с макетами) ──
         $rootCovers = [
-            'plasticheskaya-hirurgiya'       => 'gallery/services1.png',
-            'kosmetologiya'                  => 'gallery/services2.png',
-            'top-produkty'                   => 'gallery/services3.png',
-            'dermatologiya'                  => 'gallery/services4.png',
-            'otorinolaringologiya'           => 'gallery/services5.png',
-            'lor-hirurgiya'                  => 'gallery/services6.png',
-            'nevrologiya-i-refleksoterapiya' => 'gallery/services7.png',
-            'esteticheskaya-ginekologiya'    => 'gallery/services8.png',
-            'terapevticheskiy-priem'         => 'gallery/services9.png',
-            'massazh'                        => 'gallery/services10.png',
+            'kosmetologiya'                  => 'gallery/services1.png',
+            'top-produkty'                   => 'gallery/services2.png',
+            'otorinolaringologiya'           => 'gallery/services4.png',
+            'lor-hirurgiya'                  => 'gallery/services3.png',
+            'esteticheskaya-ginekologiya'    => 'gallery/services7.png',
+            'dermatologiya'                  => 'gallery/services5.png',
+            'massazh'                        => 'gallery/services8.png',
+            'plasticheskaya-hirurgiya'       => 'gallery/services6.png',
+            'nevrologiya-i-refleksoterapiya' => 'gallery/services9.png',
+            'terapevticheskiy-priem'         => 'gallery/services10.png',
         ];
 
-        // ── Уровень 1: направления (сетка на странице «Услуги» и футер) ──
+        // ── Уникальные подписи мобильного макета (image-7.png) ──
+        $rootDescriptions = [
+            'kosmetologiya'                  => 'Сохраняем молодость и подчеркиваем вашу естественную красоту.',
+            'otorinolaringologiya'           => 'Экспертная диагностика и лечение заболеваний лор-органов.',
+            'lor-hirurgiya'                  => 'Профессиональная забота о здоровье уха, горла и носа',
+            'massazh'                        => 'Оздоровление организма и глубокое расслабление через тело.',
+            'esteticheskaya-ginekologiya'    => 'Деликатные решения для женского здоровья и уверенности.',
+            'dermatologiya'                  => 'Экспертные решения для здоровья и безупречного вида вашей кожи.',
+            'top-produkty'                   => 'Селективный уход для поддержания красоты в домашних условиях.',
+            'plasticheskaya-hirurgiya'       => 'Эстетическая коррекция для гармонии вашей внешности.',
+            'nevrologiya-i-refleksoterapiya' => 'Восстановление функций нервной системы методами классической и восточной медицины.',
+            'terapevticheskiy-priem'         => 'Профессиональная оценка состояния организма и эффективное лечение.',
+        ];
+
+        // ── Уровень 1: направления в порядке десктопного макета ──
         $roots = [];
         $rootList = [
-            'plasticheskaya-hirurgiya'          => 'Пластическая хирургия',
             'kosmetologiya'                     => 'Косметология',
             'top-produkty'                      => 'Топ-продукты',
-            'dermatologiya'                     => 'Дерматология',
             'otorinolaringologiya'              => 'Оториноларингология',
             'lor-hirurgiya'                     => 'ЛОР-хирургия',
-            'nevrologiya-i-refleksoterapiya'    => 'Неврология и рефлексотерапия',
             'esteticheskaya-ginekologiya'       => 'Эстетическая гинекология',
-            'terapevticheskiy-priem'            => 'Терапевтический приём',
+            'dermatologiya'                     => 'Дерматология',
             'massazh'                           => 'Массаж',
+            'plasticheskaya-hirurgiya'          => 'Пластическая хирургия',
+            'nevrologiya-i-refleksoterapiya'    => 'Неврология и рефлексотерапия',
+            'terapevticheskiy-priem'            => 'Терапевтический приём',
         ];
         $i = 1;
         foreach ($rootList as $slug => $name) {
             $roots[$slug] = ServiceCategory::updateOrCreate(
                 ['slug' => $slug],
                 [
-                    'name'       => $name,
-                    'subtitle'   => 'Сохраняем молодость и подчеркиваем вашу естественную красоту',
-                    'sort_order' => $i++,
+                    'name'        => $name,
+                    'subtitle'    => 'Сохраняем молодость и подчеркиваем вашу естественную красоту',
+                    'description' => $rootDescriptions[$slug],
+                    'sort_order'  => $i++,
                 ],
             );
+            // Удаляем прежнюю обложку, чтобы повторный сид не оставлял старую картинку
+            $roots[$slug]->media()->where('collection', 'cover')->delete();
             $this->attachMedia($roots[$slug], 'cover', $rootCovers[$slug], $name);
         }
 
