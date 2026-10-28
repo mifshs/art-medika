@@ -48,12 +48,21 @@
             </div>
         </div>
 
-        {{-- Другие акции: показываем 2 карточки --}}
+        {{-- Другие акции: слайдер по 2 карточки на слайд (1 на мобиле) --}}
         @if ($promotions->isNotEmpty())
-            <div class="mt-14 grid gap-5 sm:grid-cols-2">
-                @foreach ($promotions->take(2) as $card)
-                    <x-promotion-card :promotion="$card" />
-                @endforeach
+            @php $chunks = $promotions->chunk(2); @endphp
+            <div class="mt-14 swiper" data-swiper='{"slidesPerView": 1, "spaceBetween": 20}'>
+                <div class="swiper-wrapper">
+                    @foreach ($chunks as $chunk)
+                        <div class="swiper-slide">
+                            <div class="grid gap-5 sm:grid-cols-2">
+                                @foreach ($chunk as $card)
+                                    <x-promotion-card :promotion="$card" />
+                                @endforeach
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         @endif
 

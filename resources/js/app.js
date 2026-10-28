@@ -1,8 +1,4 @@
-
-
 import Alpine from 'alpinejs';
-
-
 
 import collapse from '@alpinejs/collapse';
 
@@ -19,47 +15,62 @@ document.querySelectorAll('[data-swiper]').forEach(function (el) {
     var config;
     try { config = JSON.parse(el.dataset.swiper || '{}'); } catch (error) { config = {}; }
 
-    // Ищем ближайший контейнер с кнопками (nav рядом со swiper)
-    var wrapper = el.parentElement;
-
-    var prevBtn = wrapper.querySelector('.swiper-btn-prev');
-    var nextBtn = wrapper.querySelector('.swiper-btn-next');
-    var pageBtns = wrapper.querySelectorAll('.swiper-page-btn');
-
-    var swiper = new Swiper(el, {
+    // Базовые опции, сохраняющие поведение на главной (slidesPerView: 'auto' по умолчанию, если не задано)
+    var baseOptions = {
         modules: [Navigation],
-        ...config,
-        navigation: {
-            nextEl: nextBtn,
-            prevEl: prevBtn,
-        },
-    });
+        slidesPerView: 'auto',
+    };
 
-    // Привязываем кнопки пагинации (цифры 1, 2, 3...)
-    pageBtns.forEach(function (btn) {
-        btn.addEventListener('click', function (e) {
-            e.preventDefault();
-            var idx = parseInt(btn.getAttribute('data-slide-index'), 10);
-            swiper.slideTo(idx);
-        });
-    });
+    // Если в JSON явно передана навигация (например, селекторы кнопок на главной: prevEl, nextEl)
+    var mergedNavigation = config.navigation || {};
 
-    // Подсветка активной кнопки при переключении слайда
-    function updateActivePageBtn() {
-        var activeIndex = swiper.activeIndex;
-        pageBtns.forEach(function (btn) {
-            var idx = parseInt(btn.getAttribute('data-slide-index'), 10);
-            if (idx === activeIndex) {
-                btn.classList.add('border-border', 'bg-white');
-                btn.classList.remove('border-transparent');
-            } else {
-                btn.classList.remove('border-border', 'bg-white');
-                btn.classList.add('border-transparent');
-            }
-        });
+    // Если навигация не была задана через JSON, проверяем наличие кнопок рядом (.swiper-btn-prev / .swiper-btn-next)
+    var wrapper = el.parentElement;
+    if (wrapper) {
+        var prevBtn = wrapper.querySelector('.swiper-btn-prev');
+        var nextBtn = wrapper.querySelector('.swiper-btn-next');
+        if (prevBtn && !mergedNavigation.prevEl) {
+            mergedNavigation.prevEl = prevBtn;
+        }
+        if (nextBtn && !mergedNavigation.nextEl) {
+            mergedNavigation.nextEl = nextBtn;
+        }
     }
 
-    swiper.on('slideChange', updateActivePageBtn);
+    var swiperOptions = Object.assign({}, baseOptions, config, {
+        navigation: mergedNavigation,
+    });
+
+    var swiper = new Swiper(el, swiperOptions);
+    el._swiper = swiper;
+
+    // Пагинация цифрами для страниц со .swiper-page-btn
+    if (wrapper) {
+        var pageBtns = wrapper.querySelectorAll('.swiper-page-btn');
+        if (pageBtns.length > 0) {
+            pageBtns.forEach(function (btn) {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    var idx = parseInt(btn.getAttribute('data-slide-index'), 10);
+                    swiper.slideTo(idx);
+                });
+            });
+
+            swiper.on('slideChange', function () {
+                var activeIndex = swiper.activeIndex;
+                pageBtns.forEach(function (btn) {
+                    var idx = parseInt(btn.getAttribute('data-slide-index'), 10);
+                    if (idx === activeIndex) {
+                        btn.classList.add('border-border', 'bg-white');
+                        btn.classList.remove('border-transparent');
+                    } else {
+                        btn.classList.remove('border-border', 'bg-white');
+                        btn.classList.add('border-transparent');
+                    }
+                });
+            });
+        }
+    }
 });
 
 window.Alpine = Alpine;
