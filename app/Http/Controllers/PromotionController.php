@@ -12,7 +12,7 @@ class PromotionController extends Controller
             ->active()
             ->with(['media', 'service'])
             ->orderByRaw('published_at IS NULL, published_at DESC, id DESC')
-            ->paginate(4);
+            ->get();
 
         return view('project-stock', compact('promotions'));
     }
@@ -26,8 +26,9 @@ class PromotionController extends Controller
         $promotions = Promotion::query()
             ->active()
             ->with(['media', 'service'])
+            ->where('id', '!=', $promotion->id)
             ->orderByRaw('published_at IS NULL, published_at DESC, id DESC')
-            ->paginate(4);
+            ->get();
 
         return view('stock-detail', ['promotion' => $promotion, 'promotions' => $promotions]);
     }

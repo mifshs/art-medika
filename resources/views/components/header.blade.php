@@ -3,11 +3,11 @@
     $logo     = \App\Models\Setting::get('logo') ?: asset('images/logo.png');
     $phoneTel = preg_replace('/\D+/', '', (string) ($contacts['phone'] ?? ''));
     $nav      = [
-        ['href' => '/o-centre',      'label' => 'О клинике'],
-        ['href' => route('services'), 'label' => 'Услуги'],
+        ['href' => '/',      'label' => 'О клинике'],
+        ['href' => '/uslugi', 'label' => 'Услуги'],
         ['href' => '#spetsialisty',  'label' => 'Специалисты'],
         ['href' => '/stock',         'label' => 'Акции'],
-        ['href' => '/documents',     'label' => 'Документы'],
+        ['href' => '/faq',     'label' => 'Документы'],
         ['href' => '#contacts',      'label' => 'Контакты'],
     ];
 @endphp

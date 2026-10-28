@@ -29,12 +29,21 @@
             </p>
         </div>
 
-        {{-- Карточки акций: данные из БД --}}
+        {{-- Карточки акций: группируем по 4 (2×2 на десктопе, 1 колонка на мобиле) --}}
         @if ($promotions->isNotEmpty())
-            <div class="mt-10 grid gap-5 sm:grid-cols-2 2xl:mt-12 2xl:gap-5">
-                @foreach ($promotions as $promotion)
-                    <x-promotion-card :promotion="$promotion" />
-                @endforeach
+            @php $chunks = $promotions->chunk(4); @endphp
+            <div class="mt-10 swiper" data-swiper='{"slidesPerView": 1, "spaceBetween": 20}'>
+                <div class="swiper-wrapper">
+                    @foreach ($chunks as $chunk)
+                        <div class="swiper-slide">
+                            <div class="grid gap-5 sm:grid-cols-2">
+                                @foreach ($chunk as $promotion)
+                                    <x-promotion-card :promotion="$promotion" />
+                                @endforeach
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         @else
             <div class="mt-10 rounded-[24px] bg-surface px-8 py-16 text-center">
@@ -43,14 +52,14 @@
             </div>
         @endif
 
-        {{-- Пагинация в стиле макета --}}
-        @if ($promotions->hasPages())
+        {{-- Пагинация в стиле макета: ← 1 [2] 3 ... 15 → --}}
+        @if ($promotions->count() > 4)
             @php
-                $current = $promotions->currentPage();
-                $last = $promotions->lastPage();
+                $totalPages = $promotions->chunk(4)->count();
+                // Генерируем массив страниц с многоточием (как в макете)
                 $pages = [];
-                foreach (range(1, $last) as $i) {
-                    if ($i == 1 || $i == $last || ($i >= $current - 1 && $i <= $current + 1)) {
+                foreach (range(1, $totalPages) as $i) {
+                    if ($i <= 3 || $i == $totalPages) {
                         $pages[] = $i;
                     } elseif (end($pages) !== '…') {
                         $pages[] = '…';
@@ -58,55 +67,36 @@
                 }
             @endphp
             <nav aria-label="Пагинация акций" class="mt-10 flex items-center justify-between gap-4 max-sm:flex-wrap max-sm:justify-center">
-                @if ($promotions->onFirstPage())
-                    <span aria-hidden="true"
-                          class="grid h-10 w-10 place-items-center rounded-[10px] bg-surfaceh text-white/40">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.7"
-                             stroke="currentColor" class="h-5 w-5" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12H4.75M4.75 12 11 5.75M4.75 12 11 18.25"/>
-                        </svg>
-                    </span>
-                @else
-                    <a href="{{ $promotions->previousPageUrl() }}" rel="prev" aria-label="Предыдущая страница"
-                       class="grid h-10 w-10 place-items-center rounded-[10px] bg-brand text-white transition-colors hover:bg-brandh">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.7"
-                             stroke="currentColor" class="h-5 w-5" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12H4.75M4.75 12 11 5.75M4.75 12 11 18.25"/>
-                        </svg>
-                    </a>
-                @endif
+                <button type="button" aria-label="Предыдущая страница"
+                        class="swiper-btn-prev grid h-10 w-10 place-items-center rounded-[10px] bg-brand text-white transition-colors hover:bg-brandh">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.7"
+                         stroke="currentColor" class="h-5 w-5" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12H4.75M4.75 12 11 5.75M4.75 12 11 18.25"/>
+                    </svg>
+                </button>
 
                 <ul class="flex items-center gap-2">
                     @foreach ($pages as $page)
                         @if ($page === '…')
-                            <li><span class="px-1 text-muted" aria-hidden="true">{{ $page }}</span></li>
-                        @elseif ($page == $current)
-                            <li><span aria-current="page"
-                                      class="grid h-10 min-w-[40px] place-items-center rounded-[10px] border border-border bg-white px-3 text-[14px] font-semibold text-ink">{{ $page }}</span></li>
+                            <li><span class="px-1 text-muted" aria-hidden="true">…</span></li>
                         @else
-                            <li><a href="{{ $promotions->url($page) }}"
-                                   class="grid h-10 min-w-[40px] place-items-center rounded-[10px] border border-transparent px-3 text-[14px] text-body transition-colors hover:border-border hover:bg-white">{{ $page }}</a></li>
+                            <li>
+                                <button type="button" data-slide-index="{{ $page - 1 }}"
+                                        class="swiper-page-btn grid h-10 min-w-[40px] place-items-center rounded-[10px] border {{ $page === 1 ? 'border-border bg-white' : 'border-transparent' }} px-3 text-[14px] font-semibold text-ink transition-colors hover:border-border hover:bg-white">
+                                    {{ $page }}
+                                </button>
+                            </li>
                         @endif
                     @endforeach
                 </ul>
 
-                @if ($promotions->onLastPage())
-                    <span aria-hidden="true"
-                          class="grid h-10 w-10 place-items-center rounded-[10px] bg-surfaceh text-white/40">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.7"
-                             stroke="currentColor" class="h-5 w-5" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h14.75M19.25 12 13 5.75M19.25 12 13 18.25"/>
-                        </svg>
-                    </span>
-                @else
-                    <a href="{{ $promotions->nextPageUrl() }}" rel="next" aria-label="Следующая страница"
-                       class="grid h-10 w-10 place-items-center rounded-[10px] bg-brand text-white transition-colors hover:bg-brandh">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.7"
-                             stroke="currentColor" class="h-5 w-5" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h14.75M19.25 12 13 5.75M19.25 12 13 18.25"/>
-                        </svg>
-                    </a>
-                @endif
+                <button type="button" aria-label="Следующая страница"
+                        class="swiper-btn-next grid h-10 w-10 place-items-center rounded-[10px] bg-brand text-white transition-colors hover:bg-brandh">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.7"
+                         stroke="currentColor" class="h-5 w-5" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h14.75M19.25 12 13 5.75M19.25 12 13 18.25"/>
+                    </svg>
+                </button>
             </nav>
         @endif
     </main>

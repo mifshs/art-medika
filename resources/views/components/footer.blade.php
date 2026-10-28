@@ -7,9 +7,9 @@
     $phoneTel    = preg_replace('/\D+/', '', (string) ($contacts['phone'] ?? ''));
 
     $companyNav = [
-        ['href' => '/o-centre',   'label' => 'О клинике'],
+        ['href' => '/',   'label' => 'О клинике'],
         ['href' => '#spetsialisty', 'label' => 'Специалисты'],
-        ['href' => '#uslugi',     'label' => 'Услуги'],
+        ['href' => '/uslugi',     'label' => 'Услуги'],
         ['href' => route('projects'), 'label' => 'Проекты'],
         ['href' => '/stock',      'label' => 'Акции'],
         ['href' => '/news',       'label' => 'Новости'],

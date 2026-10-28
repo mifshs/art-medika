@@ -34,14 +34,14 @@
                 </div>
             @endforeach
         </div>
-
-        @if (($contacts['phone'] ?? ''))
-            <a href="tel:{{ preg_replace('/\D+/', '', $contacts['phone']) }}" aria-label="Позвонить в клинику"
-               class="absolute right-4 top-3 grid h-12 w-12 place-items-center rounded-full bg-brand text-white shadow-lg ring-1 ring-white/40 transition-colors hover:bg-brandh sm:right-8 sm:top-8 lg:right-10 lg:top-1/2 lg:-translate-y-1/2 xl:h-14 xl:w-14 2xl:right-0">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3h2.2c.7 0 1.3.5 1.4 1.2l.5 2.8c.1.6-.2 1.2-.7 1.5l-1.4.8a12.4 12.4 0 0 0 5.9 5.9l.8-1.4c.3-.5.9-.8 1.5-.7l2.8.5c.7.1 1.2.7 1.2 1.4v2.2c0 .9-.7 1.7-1.6 1.6C11 19.9 4.2 13.2 5 4.6 5 3.7 5.8 3 6.6 3Z" fill="currentColor"/></svg>
-            </a>
-        @endif
     </div>
+
+    @if (($contacts['phone'] ?? ''))
+        <a href="tel:{{ preg_replace('/\D+/', '', $contacts['phone']) }}" aria-label="Позвонить в клинику"
+           class="absolute bottom-4 right-4 grid h-12 w-12 place-items-center rounded-full bg-brand text-white shadow-lg ring-1 ring-white/40 transition-colors hover:bg-brandh sm:bottom-8 sm:right-8 lg:bottom-10 lg:right-10 xl:h-14 xl:w-14 2xl:bottom-0 2xl:right-0">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3h2.2c.7 0 1.3.5 1.4 1.2l.5 2.8c.1.6-.2 1.2-.7 1.5l-1.4.8a12.4 12.4 0 0 0 5.9 5.9l.8-1.4c.3-.5.9-.8 1.5-.7l2.8.5c.7.1 1.2.7 1.2 1.4v2.2c0 .9-.7 1.7-1.6 1.6C11 19.9 4.2 13.2 5 4.6 5 3.7 5.8 3 6.6 3Z" fill="currentColor"/></svg>
+        </a>
+    @endif
 </section>
 
 {{-- ================= УСЛУГИ (аккордеон из Livewire, данные из БД) ================= --}}
