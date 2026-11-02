@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
@@ -8,9 +10,14 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SpecialistController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/o-centre', [AboutController::class, 'index'])->name('about');
+Route::get('/o-klinike', fn () => redirect()->route('about'));
+Route::get('/about', fn () => redirect()->route('about'));
 
 Route::get('/uslugi', [ServiceController::class, 'index'])->name('services');
 Route::get('/uslugi/{category:slug}', [ServiceController::class, 'show'])->name('services.show');
@@ -23,6 +30,11 @@ Route::get('/stock/{promotion:slug}', [PromotionController::class, 'show'])->nam
 Route::get('/proekty', [ProjectController::class, 'index'])->name('projects');
 Route::get('/proekty/{project:slug}', [ProjectController::class, 'show'])->name('projects.show');
 
+Route::get('/spetsialisty', [SpecialistController::class, 'index'])->name('specialists');
+Route::get('/spetsialisty/{expert:slug}', [SpecialistController::class, 'show'])->name('specialists.show');
+Route::get('/specialists', fn () => redirect()->route('specialists'));
+Route::get('/specialists/{expert:slug}', fn (\App\Models\Expert $expert) => redirect()->route('specialists.show', $expert));
+
 Route::get('/news', [NewsController::class, 'index'])->name('news');
 Route::get('/news/{news:slug}', [NewsController::class, 'show'])->name('news.show');
 Route::get('/novosti', fn () => redirect()->route('news'));
@@ -30,6 +42,10 @@ Route::get('/novosti/{news:slug}', fn (\App\Models\News $news) => redirect()->ro
 
 Route::get('/faq', [FaqController::class, 'index'])->name('faq');
 Route::get('/voprosy-i-otvety', fn () => redirect()->route('faq'));
+
+Route::get('/documents', [DocumentController::class, 'index'])->name('documents');
+Route::get('/documents/download/{document}', [DocumentController::class, 'download'])->name('documents.download');
+Route::get('/dokumenty', fn () => redirect()->route('documents'));
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -8,7 +8,7 @@
 
     $companyNav = [
         ['href' => '/',   'label' => 'О клинике'],
-        ['href' => '#spetsialisty', 'label' => 'Специалисты'],
+        ['href' => '/spetsialisty', 'label' => 'Специалисты'],
         ['href' => '/uslugi',     'label' => 'Услуги'],
         ['href' => route('projects'), 'label' => 'Проекты'],
         ['href' => '/stock',      'label' => 'Акции'],
