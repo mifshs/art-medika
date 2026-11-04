@@ -25,16 +25,53 @@ class ServiceController extends Controller
         return view('services', compact('categories', 'intro'));
     }
 
+    /** Определение: категория или конкретная услуга */
+    public function resolve(string $slug)
+    {
+        $category = ServiceCategory::where('slug', $slug)->first();
+        if ($category) {
+            return $this->show($category);
+        }
+
+        $service = Service::where('slug', $slug)->firstOrFail();
+        return $this->showService($service);
+    }
+
+    /** Детальная страница конкретной услуги (например, Блефаропластика) */
+    public function showService(Service $service)
+    {
+        abort_unless($service->is_active, 404);
+
+        $service->load(['category.parent', 'cases.media', 'experts.media', 'experts.department']);
+
+        $category = $service->category;
+
+        // Если это не блефаропластика (нет контента проблем/подготовки/кейсов)
+        $hasFullContent = !empty($service->problems) || !empty($service->preparation) || $service->cases->isNotEmpty();
+
+        return view('service-detail', [
+            'service'        => $service,
+            'category'       => $category,
+            'hasFullContent' => $hasFullContent,
+        ]);
+    }
+
     /** Направление: поднаправления с ценами и длительностью услуг */
     public function show(ServiceCategory $category)
     {
         abort_unless($category->is_active, 404);
 
-        if ($category->parent_id) {
-            return redirect()->route('services.show', $category->parent->slug);
-        }
-
         $category->load('media');
+
+        // Если это подкатегория второго уровня (например, plastika-litsa или другие группы)
+        if ($category->parent_id) {
+            $services = $category->allServices()->active()->orderBy('sort_order')->orderBy('id')->get();
+
+            return view('service-subgroup', [
+                'category' => $category,
+                'services' => $services,
+            ]);
+        }
 
         // Все услуги направления в одном запросе, раскладываем по поднаправлениям
         $services = $category->allServices()->active()->orderBy('sort_order')->orderBy('id')->get();

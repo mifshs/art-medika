@@ -22,13 +22,13 @@
     $orderClass = $orderClasses[$category->slug] ?? '';
 @endphp
 
-{{-- Направление не кликабельно (в макете нет перехода на отдельные страницы) --}}
-<div class="group block rounded-[12px] py-2 -my-2 {{ $orderClass }}">
+{{-- Направление кликабельно: ведёт на страницу услуг направления --}}
+<a href="{{ route('services.show', $category->slug) }}" class="group block rounded-[12px] py-2 -my-2 transition-opacity hover:opacity-90 {{ $orderClass }}">
     {{-- Обложка направления из БД (media, collection «cover»); мобайл 8:5 (242px при 388), десктоп 12:7 --}}
     <div class="relative aspect-[8/5] w-full overflow-hidden rounded-[12px] bg-hero sm:aspect-[12/7] sm:rounded-[16px]">
         @if ($cover)
             <img src="{{ $cover }}" alt="Направление клиники: {{ $category->name }}" loading="lazy"
-                 class="absolute inset-0 h-full w-full object-cover">
+                 class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]">
         @else
             <div class="absolute inset-0 grid place-items-center">
                 <span class="font-serif text-[21px] italic font-semibold tracking-tight text-brand">Арт-Медика</span>
@@ -37,7 +37,7 @@
     </div>
 
     {{-- Заголовок (макет: Onest 500; 24/32 мобайл #1C1B1F, 36/44 десктоп #212529) --}}
-    <h3 class="mt-[25px] text-[24px] font-medium leading-[32px] text-[#1C1B1F] sm:mt-7 sm:leading-tight sm:text-[28px] sm:text-body xl:text-[32px] 2xl:text-[36px] 2xl:leading-[44px]">
+    <h3 class="mt-[25px] text-[24px] font-medium leading-[32px] text-[#1C1B1F] transition-colors group-hover:text-brand sm:mt-7 sm:leading-tight sm:text-[28px] sm:text-body xl:text-[32px] 2xl:text-[36px] 2xl:leading-[44px]">
         {{ $category->name }}
     </h3>
 
@@ -54,4 +54,4 @@
             {{ $category->subtitle }}
         </p>
     @endif
-</div>
+</a>

@@ -51,12 +51,12 @@ unset($__defined_vars, $__key, $__value); ?>
 ?>
 
 
-<div class="group block rounded-[12px] py-2 -my-2 <?php echo e($orderClass); ?>">
+<a href="<?php echo e(route('services.show', $category->slug)); ?>" class="group block rounded-[12px] py-2 -my-2 transition-opacity hover:opacity-90 <?php echo e($orderClass); ?>">
     
     <div class="relative aspect-[8/5] w-full overflow-hidden rounded-[12px] bg-hero sm:aspect-[12/7] sm:rounded-[16px]">
         <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($cover): ?>
             <img src="<?php echo e($cover); ?>" alt="Направление клиники: <?php echo e($category->name); ?>" loading="lazy"
-                 class="absolute inset-0 h-full w-full object-cover">
+                 class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]">
         <?php else: ?>
             <div class="absolute inset-0 grid place-items-center">
                 <span class="font-serif text-[21px] italic font-semibold tracking-tight text-brand">Арт-Медика</span>
@@ -65,7 +65,7 @@ unset($__defined_vars, $__key, $__value); ?>
     </div>
 
     
-    <h3 class="mt-[25px] text-[24px] font-medium leading-[32px] text-[#1C1B1F] sm:mt-7 sm:leading-tight sm:text-[28px] sm:text-body xl:text-[32px] 2xl:text-[36px] 2xl:leading-[44px]">
+    <h3 class="mt-[25px] text-[24px] font-medium leading-[32px] text-[#1C1B1F] transition-colors group-hover:text-brand sm:mt-7 sm:leading-tight sm:text-[28px] sm:text-body xl:text-[32px] 2xl:text-[36px] 2xl:leading-[44px]">
         <?php echo e($category->name); ?>
 
     </h3>
@@ -85,5 +85,5 @@ unset($__defined_vars, $__key, $__value); ?>
 
         </p>
     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
-</div>
+</a>
 <?php /**PATH C:\xampp\htdocs\art-medika\resources\views/components/service-category-card.blade.php ENDPATH**/ ?>
