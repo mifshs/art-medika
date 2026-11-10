@@ -21,7 +21,7 @@ Route::get('/o-klinike', fn () => redirect()->route('about'));
 Route::get('/about', fn () => redirect()->route('about'));
 
 Route::get('/uslugi', [ServiceController::class, 'index'])->name('services');
-Route::get('/uslugi/{category:slug}', [ServiceController::class, 'show'])->name('services.show');
+Route::get('/uslugi/{slug}', [ServiceController::class, 'resolve'])->name('services.show');
 
 Route::get('/prices', [PriceController::class, 'index'])->name('prices');
 
