@@ -14,7 +14,7 @@
         ['href' => '/stock',      'label' => 'Акции'],
         ['href' => '/news',       'label' => 'Новости'],
         ['href' => '/prices',     'label' => 'Цены'],
-        ['href' => '#contacts',   'label' => 'Контакты'],
+        ['href' => '/kontakty',   'label' => 'Контакты'],
         ['href' => '/documents',  'label' => 'Документы'],
         ['href' => '/faq',        'label' => 'Вопросы и ответы'],
     ];
@@ -38,12 +38,8 @@
     <div class="px-4 py-8 lg:hidden">
         
         <div class="flex items-center justify-between gap-4">
-            <a href="<?php echo e(url('/')); ?>" class="flex items-center gap-2">
-                <img src="<?php echo e($logo); ?>" alt="Знак клиники Арт-Медика" class="h-9 w-auto">
-                <span class="flex flex-col leading-none">
-                    <span class="font-serif text-[18px] italic font-semibold tracking-tight text-brand">Арт-Медика</span>
-                    <span class="text-[7.5px] text-brand">медико-косметологический центр</span>
-                </span>
+            <a href="<?php echo e(url('/')); ?>" class="flex items-center transition-opacity hover:opacity-90">
+                <img src="<?php echo e(asset('images/logo.svg')); ?>" alt="Медико-косметологический центр «Арт-Медика»" class="h-8 w-auto sm:h-9">
             </a>
 
             <div class="flex items-center gap-2">
@@ -91,10 +87,11 @@
         </div>
 
         
-        <a href="#root" aria-label="Версия для слабовидящих" class="mt-5 inline-flex items-center gap-2 transition-colors hover:text-brandh">
+        <button type="button" data-bvi-toggle aria-label="Включить версию для слабовидящих"
+                class="mt-5 inline-flex items-center gap-2 text-left transition-all duration-200 hover:text-brandh active:scale-95 focus-visible:outline-offset-2">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="text-ink"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.7"/></svg>
             <span class="text-[12px] font-medium text-ink">Версия для слабовидящих</span>
-        </a>
+        </button>
 
         
         <p class="mt-3 text-[11px] leading-relaxed text-muted">
@@ -108,8 +105,8 @@
 
             
             <div>
-                <a href="<?php echo e(url('/')); ?>" class="flex items-center gap-2.5">
-                    <img src="<?php echo e($logo); ?>" alt="Знак клиники Арт-Медика" class="h-10 w-auto sm:h-12">
+                <a href="<?php echo e(url('/')); ?>" class="flex items-center transition-opacity hover:opacity-90">
+                    <img src="<?php echo e(asset('images/logo.svg')); ?>" alt="Медико-косметологический центр «Арт-Медика»" class="h-10 w-auto sm:h-12">
                 </a>
 
                 <div class="mt-6 flex items-center gap-2.5">
@@ -122,12 +119,13 @@
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                 </div>
 
-                <a href="#root" aria-label="Версия для слабовидящих" class="mt-6 inline-flex items-center gap-2.5 transition-colors hover:text-brandh">
+                <button type="button" data-bvi-toggle aria-label="Включить версию для слабовидящих"
+                        class="mt-6 inline-flex items-center gap-2.5 text-left transition-all duration-200 hover:text-brandh active:scale-95 focus-visible:outline-offset-2">
                     <span class="grid h-7 w-7 place-items-center rounded-full bg-brand">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="text-white"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.7"/></svg>
                     </span>
                     <span class="text-[15px] font-semibold text-brand">Версия для слабовидящих</span>
-                </a>
+                </button>
 
                 <p class="mt-5 text-[13px] leading-relaxed text-body">© Медико-косметологический центр Арт-медика <?php echo e(now()->year); ?><br>Категория 18+</p>
             </div>

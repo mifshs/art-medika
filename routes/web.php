@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HomeController;
@@ -46,6 +47,9 @@ Route::get('/voprosy-i-otvety', fn () => redirect()->route('faq'));
 Route::get('/documents', [DocumentController::class, 'index'])->name('documents');
 Route::get('/documents/download/{document}', [DocumentController::class, 'download'])->name('documents.download');
 Route::get('/dokumenty', fn () => redirect()->route('documents'));
+
+Route::get('/kontakty', [ContactController::class, 'index'])->name('contacts');
+Route::get('/contacts', fn () => redirect()->route('contacts'));
 
 Route::get('/dashboard', function () {
     return view('dashboard');

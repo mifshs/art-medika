@@ -6,6 +6,8 @@ import Swiper from 'swiper';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 
+import './bvi';
+
 document.addEventListener('alpine:init', () => {
     Alpine.plugin(collapse);
 });

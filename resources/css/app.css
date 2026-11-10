@@ -75,3 +75,309 @@
 details.price-card summary::-webkit-details-marker { display: none; }
 details.price-card .acc-arrow { transition: transform 0.3s ease; }
 details.price-card[open] .acc-arrow { transform: rotate(180deg); }
+
+/* ==========================================================================
+   1. Доступность с клавиатуры (Keyboard Navigation & Focus Visible)
+   ========================================================================== */
+
+/* Быстрый переход к содержимому при первом нажатии Tab */
+.skip-to-content {
+    position: absolute;
+    top: -9999px;
+    left: 16px;
+    z-index: 999999;
+    padding: 12px 24px;
+    background-color: #37241B;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 9999px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    transition: top 0.2s ease;
+}
+.skip-to-content:focus {
+    top: 16px;
+}
+
+/* Высококонтрастный фокус при навигации через Tab: никогда не сливается с фоном */
+:focus-visible {
+    outline: 3px solid #2563EB !important;
+    outline-offset: 3px !important;
+    border-radius: 4px;
+    box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 6px rgba(37, 99, 235, 0.45) !important;
+    transition: outline-offset 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Скругления фокуса для круглых кнопок и аватарок */
+.rounded-full:focus-visible {
+    border-radius: 9999px !important;
+}
+
+/* Фокус на элементах с тёмным фоном (кнопки бренда, бейджи) */
+.bg-brand:focus-visible,
+.bg-brand :focus-visible,
+.bg-ink:focus-visible,
+.bg-ink :focus-visible {
+    outline: 3px solid #60A5FA !important;
+    outline-offset: 3px !important;
+    box-shadow: 0 0 0 2px #1E293B, 0 0 0 6px rgba(96, 165, 250, 0.6) !important;
+}
+
+/* ==========================================================================
+   2. Анимации интерактивных элементов (Hover и Active) - плавные и мягкие
+   ========================================================================== */
+
+/* Плавный переход для всех интерактивных элементов */
+a, button, [role="button"], summary, input, select, textarea {
+    transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Мягкий и деликатный тактильный отклик для кнопок и круглых иконок */
+button:active:not(:disabled),
+.rounded-full:active,
+[role="button"]:active {
+    transform: scale(0.985);
+    transition-duration: 0.12s;
+}
+
+/* Обычные текстовые ссылки не сжимаются геометрически, а мягко приглушаются */
+a[href]:active {
+    opacity: 0.75;
+    transform: none;
+}
+
+/* Отдельные элементы, где scale не должен деформировать контейнер */
+summary:active,
+input:active,
+select:active,
+textarea:active,
+.no-scale:active {
+    transform: none !important;
+}
+
+/* Hover-эффекты для карточек */
+.hover-lift {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+}
+.hover-lift:active {
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   3. Режим для слабовидящих (BVI - Accessibility Mode)
+   ========================================================================== */
+
+/* Панель инструментов */
+.bvi-toolbar {
+    background: #FFFFFF;
+    color: #000000;
+    border-color: #000000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.bvi-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    border: 2px solid currentColor;
+    border-radius: 6px;
+    background: transparent;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    line-height: 1;
+}
+.bvi-btn:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+.bvi-btn:active {
+    transform: scale(0.95);
+}
+.bvi-btn-active {
+    background: #000000 !important;
+    color: #FFFFFF !important;
+    border-color: #000000 !important;
+}
+.bvi-btn-exit {
+    background: #DC2626 !important;
+    color: #FFFFFF !important;
+    border-color: #DC2626 !important;
+}
+.bvi-btn-exit:hover {
+    background: #B91C1C !important;
+}
+
+/* Базовый режим BVI */
+.bvi-active {
+    font-family: Arial, sans-serif !important;
+    letter-spacing: 0.04em !important;
+}
+
+.bvi-active body {
+    line-height: 1.6 !important;
+}
+
+.bvi-active a {
+    text-decoration: underline !important;
+    text-underline-offset: 3px !important;
+    font-weight: 600 !important;
+}
+
+/* Размеры шрифтов BVI */
+.bvi-active.bvi-font-normal {
+    font-size: 17px !important;
+}
+.bvi-active.bvi-font-large {
+    font-size: 20px !important;
+}
+.bvi-active.bvi-font-large h1,
+.bvi-active.bvi-font-large h2 {
+    font-size: 1.4em !important;
+}
+.bvi-active.bvi-font-xlarge {
+    font-size: 23px !important;
+}
+.bvi-active.bvi-font-xlarge h1,
+.bvi-active.bvi-font-xlarge h2 {
+    font-size: 1.6em !important;
+}
+
+/* Цветовая схема: Черно-белая (Ч/Б) */
+.bvi-active.bvi-theme-bw,
+.bvi-active.bvi-theme-bw body {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+}
+.bvi-active.bvi-theme-bw header,
+.bvi-active.bvi-theme-bw footer,
+.bvi-active.bvi-theme-bw section,
+.bvi-active.bvi-theme-bw div[class*="bg-"],
+.bvi-active.bvi-theme-bw a[class*="bg-"],
+.bvi-active.bvi-theme-bw button[class*="bg-"] {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+}
+.bvi-active.bvi-theme-bw * {
+    color: #000000 !important;
+}
+.bvi-active.bvi-theme-bw .bvi-btn-active {
+    background: #000000 !important;
+    color: #FFFFFF !important;
+}
+.bvi-active.bvi-theme-bw .bvi-btn-exit {
+    background: #000000 !important;
+    color: #FFFFFF !important;
+}
+.bvi-active.bvi-theme-bw div[class*="rounded-"],
+.bvi-active.bvi-theme-bw article,
+.bvi-active.bvi-theme-bw nav {
+    border: 2px solid #000000 !important;
+}
+
+/* Цветовая схема: Инверсия (белый на черном) */
+.bvi-active.bvi-theme-invert,
+.bvi-active.bvi-theme-invert body {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+}
+.bvi-active.bvi-theme-invert header,
+.bvi-active.bvi-theme-invert footer,
+.bvi-active.bvi-theme-invert section,
+.bvi-active.bvi-theme-invert div[class*="bg-"],
+.bvi-active.bvi-theme-invert a[class*="bg-"],
+.bvi-active.bvi-theme-invert button[class*="bg-"] {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+    border-color: #FFFFFF !important;
+}
+.bvi-active.bvi-theme-invert * {
+    color: #FFFFFF !important;
+}
+.bvi-active.bvi-theme-invert .bvi-toolbar {
+    background: #000000 !important;
+    border-color: #FFFFFF !important;
+}
+.bvi-active.bvi-theme-invert .bvi-btn {
+    border-color: #FFFFFF !important;
+    color: #FFFFFF !important;
+}
+.bvi-active.bvi-theme-invert .bvi-btn-active {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+}
+.bvi-active.bvi-theme-invert .bvi-btn-exit {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+}
+.bvi-active.bvi-theme-invert div[class*="rounded-"],
+.bvi-active.bvi-theme-invert article,
+.bvi-active.bvi-theme-invert nav {
+    border: 2px solid #FFFFFF !important;
+}
+
+/* Цветовая схема: Синий */
+.bvi-active.bvi-theme-blue,
+.bvi-active.bvi-theme-blue body {
+    background-color: #E2F0FB !important;
+    color: #063462 !important;
+}
+.bvi-active.bvi-theme-blue header,
+.bvi-active.bvi-theme-blue footer,
+.bvi-active.bvi-theme-blue section,
+.bvi-active.bvi-theme-blue div[class*="bg-"],
+.bvi-active.bvi-theme-blue a[class*="bg-"],
+.bvi-active.bvi-theme-blue button[class*="bg-"] {
+    background-color: #E2F0FB !important;
+    color: #063462 !important;
+    border-color: #063462 !important;
+}
+.bvi-active.bvi-theme-blue * {
+    color: #063462 !important;
+}
+.bvi-active.bvi-theme-blue .bvi-toolbar {
+    background: #C7E2F8 !important;
+    border-color: #063462 !important;
+}
+.bvi-active.bvi-theme-blue .bvi-btn {
+    border-color: #063462 !important;
+    color: #063462 !important;
+}
+.bvi-active.bvi-theme-blue .bvi-btn-active {
+    background: #063462 !important;
+    color: #FFFFFF !important;
+}
+.bvi-active.bvi-theme-blue .bvi-btn-exit {
+    background: #063462 !important;
+    color: #FFFFFF !important;
+}
+.bvi-active.bvi-theme-blue div[class*="rounded-"],
+.bvi-active.bvi-theme-blue article,
+.bvi-active.bvi-theme-blue nav {
+    border: 2px solid #063462 !important;
+}
+
+/* Отключение изображений */
+.bvi-active.bvi-images-off img:not(.bvi-keep),
+.bvi-active.bvi-images-off [style*="background-image"] {
+    filter: grayscale(100%) contrast(150%) opacity(0.2) !important;
+}
+
+/* Фокус в BVI режиме */
+.bvi-active :focus-visible {
+    outline: 4px solid #F59E0B !important;
+    outline-offset: 4px !important;
+    box-shadow: 0 0 0 2px #000000 !important;
+}
+

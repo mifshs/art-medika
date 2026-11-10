@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Новости — Медико-косметологический центр «Арт-Медика»</title>
+    <?php if (isset($component)) { $__componentOriginal82e3f864bb766fbb95cb0a10b750823c = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal82e3f864bb766fbb95cb0a10b750823c = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.favicon','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('favicon'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes([]); ?> <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal82e3f864bb766fbb95cb0a10b750823c)): ?>
+<?php $attributes = $__attributesOriginal82e3f864bb766fbb95cb0a10b750823c; ?>
+<?php unset($__attributesOriginal82e3f864bb766fbb95cb0a10b750823c); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal82e3f864bb766fbb95cb0a10b750823c)): ?>
+<?php $component = $__componentOriginal82e3f864bb766fbb95cb0a10b750823c; ?>
+<?php unset($__componentOriginal82e3f864bb766fbb95cb0a10b750823c); ?>
+<?php endif; ?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     

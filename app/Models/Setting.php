@@ -17,7 +17,11 @@ class Setting extends Model
     {
         static $cache = [];
         if (! isset($cache[$key])) {
-            $cache[$key] = static::where('key', $key)->value('value') ?? $default;
+            try {
+                $cache[$key] = static::where('key', $key)->value('value') ?? $default;
+            } catch (\Throwable $e) {
+                return $default;
+            }
         }
         return $cache[$key];
     }

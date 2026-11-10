@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Арт-Медика — медико-эстетический центр</title>
+    <x-favicon></x-favicon>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,24 +14,26 @@
 <x-header class="fixed"></x-header>
 
 {{-- ================= HERO ================= --}}
-<section class="relative">
-    <img src="{{ $heroImage }}" alt="Врач клиники осматривает пациентку" width="1408" height="800"
-         class="block h-[420px] w-full object-cover object-[60%_20%] sm:h-[520px] lg:h-auto lg:min-h-[560px]">
-    <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/25 via-black/0 to-black/15" aria-hidden="true"></div>
+<section class="relative overflow-hidden font-onest">
+    <img src="{{ $heroImage }}" alt="Врач клиники осматривает пациентку" width="1920" height="960"
+         class="block h-[560px] w-full object-cover object-[55%_30%] sm:h-[640px] lg:h-[720px] 2xl:h-[820px]">
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/25 via-black/5 to-black/20" aria-hidden="true"></div>
 
-    <div class="absolute inset-0 mx-auto flex w-full max-w-[1720px] flex-col px-4 pb-10 pt-8 sm:px-6 lg:pb-14 lg:pt-12 2xl:px-0">
-        <h1 class="max-w-[760px] text-[30px] font-semibold leading-[1.18] tracking-[-0.01em] text-white sm:text-[40px] lg:text-[50px] 2xl:text-[56px]">
-            Ваше здоровье — наша забота
-        </h1>
-        <p class="mt-3 max-w-[560px] text-[15px] leading-snug text-white/90 sm:text-[16px] lg:mt-4 lg:max-w-[620px] lg:text-[18px]">
-            Медико-косметологический центр с современным оборудованием и опытными специалистами
-        </p>
+    <div class="absolute inset-0 mx-auto flex w-full max-w-[1720px] flex-col justify-between px-4 pb-10 pt-10 sm:px-6 sm:pb-12 sm:pt-14 lg:px-10 lg:pb-16 lg:pt-16 2xl:px-0 2xl:pb-20 2xl:pt-20">
+        <div>
+            <h1 class="max-w-[850px] text-[34px] font-semibold leading-[1.14] tracking-[-0.015em] text-white sm:text-[46px] lg:text-[54px] 2xl:text-[62px]">
+                Ваше здоровье — наша забота
+            </h1>
+            <p class="mt-3.5 max-w-[580px] text-[16px] leading-[1.35] text-white/95 sm:text-[18px] lg:mt-4 lg:max-w-[620px] lg:text-[21px] 2xl:text-[23px]">
+                Медико-косметологический центр с современным оборудованием и опытными специалистами
+            </p>
+        </div>
 
-        <div class="mt-auto grid grid-cols-3 gap-2 sm:grid-cols-[auto_auto_auto] sm:justify-start sm:gap-5">
+        <div class="mt-auto flex flex-wrap items-stretch gap-3 sm:gap-4 lg:gap-5 2xl:gap-6">
             @foreach (array_slice((array) $heroStats, 0, 3) as $stat)
-                <div class="rounded-[14px] bg-[#454B55]/70 px-3.5 py-4 backdrop-blur-md sm:px-6 sm:py-6 lg:px-7 lg:py-7">
-                    <div class="text-[26px] font-semibold leading-none text-white sm:text-[36px] lg:text-[46px] 2xl:text-[62px]">{{ $stat['value'] ?? '' }}</div>
-                    <div class="mt-2 max-w-[180px] text-[12px] leading-snug text-white sm:text-[13px] lg:max-w-[230px] lg:text-[15px] 2xl:text-[19px]">{{ $stat['label'] ?? '' }}</div>
+                <div class="flex flex-col justify-between rounded-[18px] bg-[#3B4656]/65 p-5 backdrop-blur-md border border-white/10 sm:rounded-[22px] sm:p-6 lg:p-7 2xl:p-8 w-[calc(50%-6px)] sm:w-[210px] lg:w-[240px] 2xl:w-[270px] min-h-[145px] sm:min-h-[165px] lg:min-h-[185px] 2xl:min-h-[200px]">
+                    <div class="text-[36px] font-semibold leading-none text-white sm:text-[44px] lg:text-[52px] 2xl:text-[60px]">{{ $stat['value'] ?? '' }}</div>
+                    <div class="mt-3 text-[12px] leading-[1.3] text-white/95 sm:text-[13px] lg:text-[15px] 2xl:text-[16px]">{{ $stat['label'] ?? '' }}</div>
                 </div>
             @endforeach
         </div>
@@ -38,8 +41,8 @@
 
     @if (($contacts['phone'] ?? ''))
         <a href="tel:{{ preg_replace('/\D+/', '', $contacts['phone']) }}" aria-label="Позвонить в клинику"
-           class="absolute bottom-4 right-4 grid h-12 w-12 place-items-center rounded-full bg-brand text-white shadow-lg ring-1 ring-white/40 transition-colors hover:bg-brandh sm:bottom-8 sm:right-8 lg:bottom-10 lg:right-10 xl:h-14 xl:w-14 2xl:bottom-0 2xl:right-0">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3h2.2c.7 0 1.3.5 1.4 1.2l.5 2.8c.1.6-.2 1.2-.7 1.5l-1.4.8a12.4 12.4 0 0 0 5.9 5.9l.8-1.4c.3-.5.9-.8 1.5-.7l2.8.5c.7.1 1.2.7 1.2 1.4v2.2c0 .9-.7 1.7-1.6 1.6C11 19.9 4.2 13.2 5 4.6 5 3.7 5.8 3 6.6 3Z" fill="currentColor"/></svg>
+           class="absolute bottom-6 right-4 grid h-12 w-12 place-items-center rounded-full bg-brand text-white shadow-xl transition-all duration-200 hover:bg-brandh active:scale-95 focus-visible:outline-offset-2 sm:bottom-10 sm:right-6 lg:bottom-12 lg:right-10 2xl:bottom-16 2xl:right-0 xl:h-14 xl:w-14 2xl:h-16 2xl:w-16">
+            <svg class="h-6 w-6 2xl:h-7 2xl:w-7" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3h2.2c.7 0 1.3.5 1.4 1.2l.5 2.8c.1.6-.2 1.2-.7 1.5l-1.4.8a12.4 12.4 0 0 0 5.9 5.9l.8-1.4c.3-.5.9-.8 1.5-.7l2.8.5c.7.1 1.2.7 1.2 1.4v2.2c0 .9-.7 1.7-1.6 1.6C11 19.9 4.2 13.2 5 4.6 5 3.7 5.8 3 6.6 3Z" fill="currentColor"/></svg>
         </a>
     @endif
 </section>
