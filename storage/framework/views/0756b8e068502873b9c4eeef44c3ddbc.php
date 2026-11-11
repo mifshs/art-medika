@@ -105,7 +105,7 @@ $__split = function ($name, $params = []) {
 
 $__key = null;
 
-$__key ??= \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::generateKey('lw-3726934157-0', $__key);
+$__key ??= \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::generateKey('lw-193530626-0', $__key);
 
 $__html = app('livewire')->mount($__name, $__params, $__key);
 
@@ -492,4 +492,4 @@ if (isset($__slots)) unset($__slots);
 </script>
 </body>
 </html>
-<?php /**PATH E:\Xampp\htdocs\Art-medika\art-medika\resources\views/welcome.blade.php ENDPATH**/ ?>
+<?php /**PATH F:\xampp\htdocs\art-medic\art-medika\resources\views/welcome.blade.php ENDPATH**/ ?>

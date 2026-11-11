@@ -51,4 +51,4 @@
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
 </div>
-<?php /**PATH E:\Xampp\htdocs\Art-medika\art-medika\resources\views/livewire/services/accordion.blade.php ENDPATH**/ ?>
+<?php /**PATH F:\xampp\htdocs\art-medic\art-medika\resources\views/livewire/services/accordion.blade.php ENDPATH**/ ?>

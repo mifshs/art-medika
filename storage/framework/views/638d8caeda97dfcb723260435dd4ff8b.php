@@ -305,4 +305,4 @@
     <?php echo $__env->make('components.footer', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 </body>
 </html>
-<?php /**PATH C:\xampp\htdocs\art-medika\resources\views/service-detail.blade.php ENDPATH**/ ?>
+<?php /**PATH F:\xampp\htdocs\art-medic\art-medika\resources\views/service-detail.blade.php ENDPATH**/ ?>

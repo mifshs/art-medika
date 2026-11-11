@@ -21,14 +21,17 @@ class ProjectController extends Controller
     {
         abort_unless($project->is_active, 404);
 
-        $project->load(['media', 'formats', 'stages', 'partners']);
+        $project->load([
+            'media',
+            'formats.media',
+            'stages',
+            'partners' => fn ($q) => $q->orderBy('sort_order')->orderBy('id'),
+        ]);
 
-        $projects = Project::query()
-            ->where('is_active', true)
-            ->with(['media', 'formats', 'stages', 'partners'])
-            ->orderBy('id', 'asc')
-            ->get();
+        $partners = $project->partners()->orderBy('sort_order')->orderBy('id')->paginate(12);
 
-        return view('projects', compact('projects', 'project'));
+        $gallery = $project->gallery();
+
+        return view('projects-show', compact('project', 'partners', 'gallery'));
     }
 }

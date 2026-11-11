@@ -183,4 +183,4 @@
         </p>
     </div>
 </footer>
-<?php /**PATH E:\Xampp\htdocs\Art-medika\art-medika\resources\views/components/footer.blade.php ENDPATH**/ ?>
+<?php /**PATH F:\xampp\htdocs\art-medic\art-medika\resources\views/components/footer.blade.php ENDPATH**/ ?>

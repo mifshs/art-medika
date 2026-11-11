@@ -74,4 +74,4 @@ unset($__defined_vars, $__key, $__value); ?>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
     </ul>
 </div>
-<?php /**PATH E:\Xampp\htdocs\Art-medika\art-medika\resources\views/components/service-card.blade.php ENDPATH**/ ?>
+<?php /**PATH F:\xampp\htdocs\art-medic\art-medika\resources\views/components/service-card.blade.php ENDPATH**/ ?>
