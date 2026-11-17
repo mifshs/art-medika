@@ -8,7 +8,7 @@
             :aria-expanded="open"
             class="flex w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left sm:px-7 sm:py-5">
         {{-- Текст вопроса --}}
-        <span class="text-[15px] font-medium leading-snug text-[#1A1A1A] sm:text-[17px] 2xl:text-[18px]">
+        <span class="text-[15px] font-medium leading-snug text-brand sm:text-[17px] 2xl:text-[18px]">
             {{ $faq->question }}
         </span>
 

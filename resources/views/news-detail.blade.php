@@ -21,7 +21,7 @@
         <img src="{{ asset('images/_.svg') }}" alt="" class="h-3 w-auto" aria-hidden="true">
         <a href="{{ route('news') }}" class="transition-colors duration-200 hover:text-brandh">Новости</a>
         <img src="{{ asset('images/_.svg') }}" alt="" class="h-3 w-auto" aria-hidden="true">
-        <span class="font-medium text-ink line-clamp-1 max-w-[280px] sm:max-w-md lg:max-w-xl">
+        <span class="font-medium text-brand line-clamp-1 max-w-[280px] sm:max-w-md lg:max-w-xl">
             "{{ \Illuminate\Support\Str::limit($news->title, 40) }}"
         </span>
     </nav>
@@ -41,7 +41,7 @@
                     <path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </p>
-            <h1 class="mt-3 text-center text-[20px] font-semibold leading-[1.3] text-brand sm:text-left sm:text-[24px]">
+            <h1 class="mt-3 text-center text-[20px] font-medium leading-[1.3] text-brand sm:text-left sm:text-[24px]">
                 {{ $news->title }}
             </h1>
         </div>
@@ -84,7 +84,7 @@
 
         {{-- Правая колонка: содержание статьи, списки, цитаты и дата --}}
         <div class="flex flex-col justify-between">
-            <div class="space-y-4 text-[14px] leading-relaxed text-body sm:text-[15px] lg:text-[16px] 2xl:text-[17px] [&>p]:mt-0 [&>p+p]:mt-4 [&>ol]:my-4 [&>ol]:space-y-2 [&>ol]:pl-5 [&>ol]:list-decimal [&>blockquote]:my-5 [&>blockquote]:border-l-2 [&>blockquote]:border-brand [&>blockquote]:pl-4 [&>blockquote]:italic">
+            <div class="space-y-4 text-[16px] leading-relaxed text-body sm:text-[18px] lg:text-[20px] 2xl:text-[20px] 2xl:leading-[28px] [&>p]:mt-0 [&>p+p]:mt-4 [&>ol]:my-4 [&>ol]:space-y-2 [&>ol]:pl-5 [&>ol]:list-decimal [&>blockquote]:my-5 [&>blockquote]:border-l-2 [&>blockquote]:border-brand [&>blockquote]:pl-4 [&>blockquote]:italic">
                 {!! $news->content !!}
             </div>
 

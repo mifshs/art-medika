@@ -35,7 +35,7 @@
                 </p>
             </div>
 
-            <h1 class="text-center text-[18px] font-medium leading-[1.3] text-brand sm:text-[22px] lg:text-left lg:text-[28px] lg:[text-indent:140px] 2xl:text-[36px] 2xl:[text-indent:200px]">
+            <h1 class="text-left text-[22px] sm:text-[26px] font-medium leading-[1.3] 2xl:leading-[52px] text-brand [text-indent:72px] sm:[text-indent:102px] lg:text-[34px] 2xl:text-[40px] lg:[text-indent:240px] 2xl:[text-indent:290px]">
                 {{ $introText }}
             </h1>
         </div>
@@ -51,7 +51,7 @@
 
         {{-- Текст описания клиники и статистика --}}
         <div class="flex flex-col justify-between">
-            <div class="space-y-4 text-[14px] leading-relaxed text-body sm:text-[15px] lg:text-[16px] 2xl:text-[17px]">
+            <div class="space-y-4 text-[16px] leading-relaxed text-brand sm:text-[18px] lg:text-[20px] 2xl:text-[20px] 2xl:leading-[28px]">
                 <p>
                     Центр «Арт-Медика» — партнер ЮУГМУ, клиническая база «Межрегионального центра непрерывного медицинского и фармацевтического образования» (г. Москва). Наша клиника является участником международных проектов в направлении "Пластическая хирургия и косметология".
                 </p>
@@ -84,7 +84,7 @@
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12 2xl:gap-16 items-start">
             {{-- Левая колонка: Поликлиническое отделение --}}
             <div>
-                <h2 class="text-[22px] font-semibold text-brand sm:text-[26px] 2xl:text-[28px]">
+                <h2 class="text-[22px] font-medium text-brand sm:text-[26px] 2xl:text-[28px]">
                     Поликлиническое отделение
                 </h2>
                 <p class="mt-2 text-[13px] text-[#4A5568] sm:text-[14px] 2xl:text-[15px]">
@@ -106,7 +106,7 @@
                 @endphp
                 <ul class="mt-5 space-y-2.5 sm:space-y-3">
                     @foreach ($polyclinicDirections as $direction)
-                        <li class="flex items-center gap-2.5 text-[14px] font-medium text-body sm:text-[15px] 2xl:text-[16px]">
+                        <li class="flex items-center gap-2.5 text-[14px] font-medium text-brand sm:text-[15px] 2xl:text-[16px]">
                             <svg class="h-4 w-4 shrink-0 text-[#7E93AC]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path d="M7 17L17 7M17 7H8.5M17 7v8.5"/>
                             </svg>
@@ -119,7 +119,7 @@
             {{-- Правая колонка: Стационарное отделение --}}
             <div class="flex flex-col justify-between">
                 <div>
-                    <h2 class="text-[22px] font-semibold text-brand sm:text-[26px] 2xl:text-[28px]">
+                    <h2 class="text-[22px] font-medium text-brand sm:text-[26px] 2xl:text-[28px]">
                         Стационарное отделение
                     </h2>
                     <div class="mt-3 space-y-3 text-[13px] leading-relaxed text-[#4A5568] sm:text-[14px] 2xl:text-[15px]">

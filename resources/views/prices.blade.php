@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Цены на услуги клиники «Арт-Медика»: направления, поднаправления, стоимость и время приёма.">
     <title>Цены на услуги — Арт-Медика</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 @php
@@ -12,15 +15,15 @@
     $duration = fn ($service) => $service->duration_label ?? null;
     $blank    = fn ($value) => $value === null || $value === '' ? '' : $value;
     $dash     = fn ($value) => $value === null || $value === '' ? '—' : $value;
-    $headColsSimple = 'items-start gap-x-6 pb-2 text-[12px] leading-tight text-muted lg:grid lg:grid-cols-[150px_80px_minmax(0,1fr)_100px_110px_130px] 2xl:text-[13px]';
-    $headColsCat    = 'items-start gap-x-6 pb-2 text-[12px] leading-tight text-muted lg:grid lg:grid-cols-[150px_80px_minmax(0,1fr)_100px_110px_110px_110px_120px] 2xl:text-[13px]';
+    $headColsSimple = 'items-start gap-x-6 pb-2 text-[13px] leading-tight text-muted lg:grid lg:grid-cols-[150px_80px_minmax(0,1fr)_100px_110px_130px] 2xl:text-[14px] font-medium';
+    $headColsCat    = 'items-start gap-x-6 pb-2 text-[13px] leading-tight text-muted lg:grid lg:grid-cols-[150px_80px_minmax(0,1fr)_100px_110px_110px_110px_120px] 2xl:text-[14px] font-medium';
     $mutedCell  = 'hidden text-[13px] text-muted lg:block 2xl:text-[14px]';
-    $bodyCell   = 'hidden text-[14px] text-body lg:block 2xl:text-[15px]';
-    $nameCell   = 'hidden text-[15px] leading-snug text-body lg:block 2xl:text-[17px]';
-    $priceCell  = 'hidden text-[14px] font-medium text-body lg:block 2xl:text-[15px]';
+    $bodyCell   = 'hidden text-[15px] text-body lg:block 2xl:text-[16px]';
+    $nameCell   = 'hidden text-[16px] leading-snug text-body lg:block 2xl:text-[18px]';
+    $priceCell  = 'hidden text-[16px] font-semibold text-brand lg:block 2xl:text-[18px]';
     $footnote   = '*Категорию присваивает врач-хирург на консультации, в зависимости от состояния пациента.';
 @endphp
-<body>
+<body class="bg-page font-onest text-body antialiased">
     @include('components.header')
 
     <main class="mx-auto w-full max-w-[1720px] px-4 pb-20 sm:px-6 md:px-10 2xl:px-0">
@@ -33,18 +36,18 @@
 
         @foreach ($sections as $section)
             <section aria-labelledby="dep{{ $section['id'] }}" class="pt-12 2xl:pt-16">
-                <h2 id="dep{{ $section['id'] }}" class="text-right text-[20px] font-semibold text-ink 2xl:text-[24px]">{{ $section['name'] }}</h2>
+                <h2 id="dep{{ $section['id'] }}" class="text-right text-[20px] font-medium text-brand 2xl:text-[24px]">{{ $section['name'] }}</h2>
                 <div class="mt-5 space-y-4 sm:mt-6 sm:space-y-5">
                     @foreach ($section['cards'] as $card)
                         @php $openCard = $firstCard; $firstCard = false; @endphp
                         <details class="price-card rounded-[16px] bg-surfaceh" @if ($openCard) open @endif>
                             <summary class="flex list-none cursor-pointer items-center justify-between gap-4 rounded-[16px] px-6 py-5 transition-colors hover:bg-[#E2E7F1] sm:px-8 sm:py-6 2xl:px-10 2xl:py-7 [&::-webkit-details-marker]:hidden">
-                                <span class="min-w-0 text-[18px] font-medium text-ink sm:text-[20px] 2xl:text-[24px]">{{ $card['name'] }}</span>
+                                <span class="min-w-0 text-[18px] font-medium text-brand sm:text-[20px] 2xl:text-[24px]">{{ $card['name'] }}</span>
                                 <span class="flex shrink-0 items-center gap-4 sm:gap-7">
                                     @if ($card['min'] !== null)
                                         <span class="whitespace-nowrap text-[13px] text-muted sm:text-[14px] 2xl:text-[16px]">от {{ number_format($card['min'], 0, ',', ' ') }} ₽</span>
                                     @endif
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true" class="acc-arrow h-5 w-5 text-ink 2xl:h-6 2xl:w-6">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true" class="acc-arrow h-5 w-5 text-brand 2xl:h-6 2xl:w-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
                                     </svg>
                                 </span>

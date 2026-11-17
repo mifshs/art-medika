@@ -49,7 +49,7 @@
                             @click="open = !open"
                             :aria-expanded="open"
                             class="flex w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:text-brand sm:px-8 sm:py-6 2xl:px-10 2xl:py-7">
-                        <span class="text-[17px] font-semibold leading-tight text-body sm:text-[20px] lg:text-[22px] 2xl:text-[26px]">
+                        <span class="text-[17px] font-medium leading-tight text-brand sm:text-[20px] lg:text-[22px] 2xl:text-[26px]">
                             {{ $categoryName }}
                         </span>
 

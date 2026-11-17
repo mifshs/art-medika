@@ -43,7 +43,7 @@
                 @foreach ($services as $service)
                     <a href="{{ route('services.show', $service->slug) }}"
                        class="group flex h-[180px] w-full items-center justify-center rounded-[24px] bg-surface px-6 text-center transition-all duration-200 hover:bg-[#E9ECF8] hover:shadow-md sm:h-[210px] lg:h-[244px] lg:max-w-[559px]">
-                        <span class="text-[24px] font-medium leading-snug text-ink transition-colors group-hover:text-brand sm:text-[30px] lg:text-[40px]">
+                        <span class="text-[24px] font-medium leading-snug text-brand transition-colors group-hover:text-brandh sm:text-[30px] lg:text-[40px]">
                             {{ $service->name }}
                         </span>
                     </a>
@@ -58,7 +58,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                     </div>
-                    <h2 class="text-[24px] font-medium leading-tight text-ink sm:text-[32px] lg:text-[36px]">
+                    <h2 class="text-[24px] font-medium leading-tight text-brand sm:text-[32px] lg:text-[36px]">
                         Раздел в процессе наполнения
                     </h2>
                     <p class="mt-4 text-[16px] leading-relaxed text-muted sm:text-[20px]">
@@ -78,7 +78,7 @@
                         @endphp
                         @if ($phone)
                             <a href="tel:{{ $phoneTel }}"
-                               class="inline-flex items-center gap-2 rounded-full border border-border bg-white px-7 py-3.5 text-[15px] font-semibold text-ink transition-colors hover:border-brand hover:text-brand">
+                               class="inline-flex items-center gap-2 rounded-full border border-border bg-white px-7 py-3.5 text-[15px] font-semibold text-brand transition-colors hover:border-brand hover:text-brandh">
                                 Позвонить в клинику
                             </a>
                         @endif

@@ -1,8 +1,255 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&subset=cyrillic,cyrillic-ext&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800;900&subset=cyrillic,cyrillic-ext,latin&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    *, ::before, ::after {
+        font-family: 'Onest', sans-serif;
+    }
+
+    html {
+        font-family: 'Onest', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }
+
+    body {
+        font-family: 'Onest', sans-serif;
+        color: #212529;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Onest', sans-serif;
+        letter-spacing: 0;
+    }
+
+    p, span, a, button, input, textarea, select, table, label, summary, li {
+        font-family: 'Onest', sans-serif;
+    }
+}
+
+@layer components {
+    /* Токены типографики дизайн-системы «Арт-Медика» (Figma 1920 / 420) */
+
+    /* 1. Заголовки страниц (H1 интро): Onest 40px/48px, weight 500, #37241B (десктоп); 24px/30px (мобайл) */
+    .typography-h1 {
+        font-family: 'Onest', sans-serif;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 1.25;
+        color: #37241B;
+        letter-spacing: 0;
+    }
+    @media (min-width: 640px) {
+        .typography-h1 {
+            font-size: 28px;
+        }
+    }
+    @media (min-width: 1024px) {
+        .typography-h1 {
+            font-size: 36px;
+            line-height: 1.2;
+        }
+    }
+    @media (min-width: 1920px) {
+        .typography-h1 {
+            font-size: 40px;
+            line-height: 48px;
+        }
+    }
+
+    /* 2. Метка раздела со стрелкой: Onest 40px, weight 500, #91B5D5 (десктоп); 24px (мобайл) */
+    .typography-section-label {
+        font-family: 'Onest', sans-serif;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 1.2;
+        color: #91B5D5;
+        letter-spacing: 0;
+    }
+    @media (min-width: 640px) {
+        .typography-section-label {
+            font-size: 28px;
+        }
+    }
+    @media (min-width: 1024px) {
+        .typography-section-label {
+            font-size: 32px;
+        }
+    }
+    @media (min-width: 1920px) {
+        .typography-section-label {
+            font-size: 40px;
+        }
+    }
+
+    /* 3. Подзаголовок справа (например, «Социальный проект-преображение»): Onest 24px, weight 400, #91B5D5 */
+    .typography-subtitle {
+        font-family: 'Onest', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.3;
+        color: #91B5D5;
+        letter-spacing: 0;
+    }
+    @media (min-width: 640px) {
+        .typography-subtitle {
+            font-size: 20px;
+        }
+    }
+    @media (min-width: 1920px) {
+        .typography-subtitle {
+            font-size: 24px;
+        }
+    }
+
+    /* 4. Заголовки секций (H2): Onest 32px/40px (1920px: 36px/40px), weight 500, #37241B */
+    .typography-h2 {
+        font-family: 'Onest', sans-serif;
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 1.25;
+        color: #37241B;
+        letter-spacing: 0;
+    }
+    @media (min-width: 640px) {
+        .typography-h2 {
+            font-size: 26px;
+        }
+    }
+    @media (min-width: 1024px) {
+        .typography-h2 {
+            font-size: 32px;
+            line-height: 1.2;
+        }
+    }
+    @media (min-width: 1920px) {
+        .typography-h2 {
+            font-size: 36px;
+        }
+    }
+
+    /* 5. Заголовки карточек (H3): Onest 24px/36px, weight 500/600, #37241B */
+    .typography-h3 {
+        font-family: 'Onest', sans-serif;
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 1.22;
+        color: #37241B;
+        letter-spacing: 0;
+    }
+    @media (min-width: 640px) {
+        .typography-h3 {
+            font-size: 26px;
+        }
+    }
+    @media (min-width: 1024px) {
+        .typography-h3 {
+            font-size: 30px;
+        }
+    }
+    @media (min-width: 1920px) {
+        .typography-h3 {
+            font-size: 36px;
+        }
+    }
+
+    /* 6. Наборный текст (описания, карточки, статьи): Onest 400, 20px, line-height 28px, letter-spacing 0 */
+    .typography-body {
+        font-family: 'Onest', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: #212529;
+        letter-spacing: 0;
+    }
+    @media (min-width: 1024px) {
+        .typography-body {
+            font-size: 18px;
+            line-height: 26px;
+        }
+    }
+    @media (min-width: 1920px) {
+        .typography-body {
+            font-size: 20px;
+            line-height: 28px;
+        }
+    }
+
+    /* 7. Хлебные крошки: Onest 18px, weight 400/500, #37241B */
+    .typography-breadcrumbs {
+        font-family: 'Onest', sans-serif;
+        font-size: 15px;
+        line-height: 1.4;
+        color: #37241B;
+    }
+    @media (min-width: 640px) {
+        .typography-breadcrumbs {
+            font-size: 16px;
+        }
+    }
+    @media (min-width: 1920px) {
+        .typography-breadcrumbs {
+            font-size: 18px;
+        }
+    }
+
+    /* 8. Крупные акцентные цифры (блоки статистики): Onest 40px, weight 500, leading-none, #1D293D */
+    .typography-stat-num {
+        font-family: 'Onest', sans-serif;
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 1;
+        color: #1D293D;
+    }
+    @media (min-width: 640px) {
+        .typography-stat-num {
+            font-size: 34px;
+        }
+    }
+    @media (min-width: 1920px) {
+        .typography-stat-num {
+            font-size: 40px;
+        }
+    }
+    .typography-stat-label {
+        font-family: 'Onest', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.3;
+        color: #37241B;
+    }
+    @media (min-width: 640px) {
+        .typography-stat-label {
+            font-size: 16px;
+        }
+    }
+    @media (min-width: 1920px) {
+        .typography-stat-label {
+            font-size: 18px;
+        }
+    }
+
+    /* 9. Кнопки (Записаться, Подробнее): Onest 16px, weight 600, #FFFFFF */
+    .typography-btn {
+        font-family: 'Onest', sans-serif;
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 1;
+        letter-spacing: 0;
+    }
+    @media (min-width: 640px) {
+        .typography-btn {
+            font-size: 16px;
+        }
+    }
+}
 
 /* Alpine: до инициализации скрываем x-cloak блоки */
 [x-cloak] {

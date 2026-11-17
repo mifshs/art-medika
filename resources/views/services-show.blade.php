@@ -87,7 +87,7 @@
                                      class="h-full w-full rounded-[10px] object-cover">
                             @else
                                 <div class="grid h-full w-full place-items-center rounded-[10px] bg-[#E9ECF4]">
-                                    <span class="font-serif text-[24px] italic font-semibold tracking-tight text-brand">Арт-Медика</span>
+                                    <span class="text-[24px] font-medium tracking-tight text-brand">Арт-Медика</span>
                                 </div>
                             @endif
                         </div>

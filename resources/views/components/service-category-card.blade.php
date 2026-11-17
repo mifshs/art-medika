@@ -31,13 +31,13 @@
                  class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]">
         @else
             <div class="absolute inset-0 grid place-items-center">
-                <span class="font-serif text-[21px] italic font-semibold tracking-tight text-brand">Арт-Медика</span>
+                <span class="text-[20px] font-medium tracking-tight text-brand">Арт-Медика</span>
             </div>
         @endif
     </div>
 
-    {{-- Заголовок (макет: Onest 500; 24/32 мобайл #1C1B1F, 36/44 десктоп #212529) --}}
-    <h3 class="mt-[25px] text-[24px] font-medium leading-[32px] text-[#1C1B1F] transition-colors group-hover:text-brand sm:mt-7 sm:leading-tight sm:text-[28px] sm:text-body xl:text-[32px] 2xl:text-[36px] 2xl:leading-[44px]">
+    {{-- Заголовок (макет: Onest 500; 24/32 мобайл #37241B, 36/44 десктоп #37241B) --}}
+    <h3 class="mt-[25px] text-[24px] font-medium leading-[32px] text-brand transition-colors group-hover:text-brandh sm:mt-7 sm:leading-tight sm:text-[28px] xl:text-[32px] 2xl:text-[36px] 2xl:leading-[44px]">
         {{ $category->name }}
     </h3>
 
@@ -49,8 +49,8 @@
     @endif
 
     @if ($category->subtitle)
-        {{-- Описание десктопного макета: Onest 400 20/28 #212529, ширина 850 --}}
-        <p class="mt-2 max-w-[680px] text-[14px] leading-snug text-body max-sm:hidden sm:mt-2.5 sm:text-[15px] xl:text-[17px] 2xl:max-w-[850px] 2xl:text-[20px] 2xl:leading-[28px]">
+        {{-- Описание десктопного макета: Onest 400 20/28 #37241B, ширина 850 --}}
+        <p class="mt-2 max-w-[680px] text-[14px] leading-snug text-brand max-sm:hidden sm:mt-2.5 sm:text-[15px] xl:text-[17px] 2xl:max-w-[850px] 2xl:text-[20px] 2xl:leading-[28px]">
             {{ $category->subtitle }}
         </p>
     @endif

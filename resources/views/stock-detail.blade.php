@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
+<body class="bg-page font-onest text-body antialiased">
     @include('components.header')
     
 
@@ -19,10 +19,10 @@
 
     <main class="mx-auto w-full max-w-[1720px] px-4 pb-16 sm:px-6 md:px-10 2xl:px-0">
         {{-- Хлебные крошки --}}
-        <nav aria-label="Хлебные крошки" class="flex items-center gap-2 pt-6 text-[15px] text-body">
-            <a href="{{ url('/') }}" class="transition-colors hover:text-brand">Арт-Медика</a>
+        <nav aria-label="Хлебные крошки" class="flex items-center gap-2 pt-6 text-[15px] sm:text-[18px] text-brand">
+            <a href="{{ url('/') }}" class="transition-colors hover:text-brandh">Арт-Медика</a>
             <img src="{{ asset('images/_.svg') }}" alt="" class="h-3 w-auto" aria-hidden="true">
-            <span class="font-medium text-ink">{{ $sectionName }}</span>
+            <span class="font-medium">{{ $sectionName }}</span>
         </nav>
 
         {{-- Акция: синий заголовок и фото слева, текст справа --}}
@@ -40,7 +40,7 @@
             </div>
 
             <div class="flex min-w-0 flex-1 flex-col">
-                <p class="text-center text-[40px] font-semibold leading-snug text-brand max-lg:text-left max-lg:text-2xl">{{ $promotion->title }}</p>
+                <p class="text-center text-[40px] font-medium leading-snug text-brand max-lg:text-left max-lg:text-2xl">{{ $promotion->title }}</p>
 
                 <div class="mt-6 [&>p]:mt-0 [&>p+p]:mt-4 [&>p]:text-[28px] [&>p]:leading-relaxed [&>p]:text-body 2xl:text-[28px]">
                     {!! $promotion->content !!}

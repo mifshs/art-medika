@@ -39,8 +39,8 @@
             </div>
 
             {{-- ФИО специалиста --}}
-            <h3 class="mt-2 text-[18px] font-semibold leading-[1.25] text-body transition-colors group-hover:text-brand sm:text-[20px] lg:text-[22px] 2xl:text-[24px]">
-                <a href="{{ $detailUrl }}" class="transition-colors hover:text-brand">
+            <h3 class="mt-2 text-[18px] font-medium leading-[1.25] text-brand transition-colors group-hover:text-brandh sm:text-[20px] lg:text-[22px] 2xl:text-[24px]">
+                <a href="{{ $detailUrl }}" class="transition-colors hover:text-brandh">
                     {{ $expert->name }}
                 </a>
             </h3>

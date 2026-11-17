@@ -8,7 +8,7 @@
             <button type="button" @click="open = !open"
                     :class="open ? 'rounded-t-2xl' : 'rounded-2xl'"
                     class="flex h-16 w-full items-center justify-between bg-surfaceh px-6 text-left transition-colors hover:bg-[#E2E7F1] sm:h-24 sm:px-10">
-                <span class="text-[20px] font-semibold leading-tight text-brand sm:text-[24px] lg:text-[28px] 2xl:text-[32px]">
+                <span class="text-[20px] font-medium leading-tight text-brand sm:text-[24px] lg:text-[28px] 2xl:text-[32px]">
                     <?php echo e($direction['title']); ?>
 
                 </span>

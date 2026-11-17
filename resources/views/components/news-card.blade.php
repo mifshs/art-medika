@@ -37,8 +37,8 @@
         </a>
 
         {{-- Заголовок новости --}}
-        <h3 class="mt-4 text-[16px] font-semibold leading-[1.3] text-[#1A1A1A] transition-colors group-hover:text-brand sm:text-[18px] lg:text-[19px]">
-            <a href="{{ $detailUrl }}" class="transition-colors hover:text-brand">
+        <h3 class="mt-4 text-[16px] font-medium leading-[1.3] text-brand transition-colors group-hover:text-brandh sm:text-[18px] lg:text-[19px]">
+            <a href="{{ $detailUrl }}" class="transition-colors hover:text-brandh">
                 {{ $news->title }}
             </a>
         </h3>

@@ -25,10 +25,10 @@
 <?php endif; ?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
 </head>
-<body class="bg-page font-sans text-body antialiased">
+<body class="bg-page font-onest text-body antialiased">
 <?php if (isset($component)) { $__componentOriginal2a2e454b2e62574a80c8110e5f128b60 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal2a2e454b2e62574a80c8110e5f128b60 = $attributes; } ?>
 <?php $component = App\View\Components\Header::resolve([] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
@@ -57,19 +57,19 @@
 
     <div class="absolute inset-0 mx-auto flex w-full max-w-[1720px] flex-col justify-between px-4 pb-10 pt-10 sm:px-6 sm:pb-12 sm:pt-14 lg:px-10 lg:pb-16 lg:pt-16 2xl:px-0 2xl:pb-20 2xl:pt-20">
         <div>
-            <h1 class="max-w-[850px] text-[34px] font-semibold leading-[1.14] tracking-[-0.015em] text-white sm:text-[46px] lg:text-[54px] 2xl:text-[62px]">
+            <h1 class="max-w-[850px] text-[34px] font-medium leading-[1.14] tracking-[-0.015em] text-white sm:text-[46px] lg:text-[54px] 2xl:text-[62px]">
                 Ваше здоровье — наша забота
             </h1>
-            <p class="mt-3.5 max-w-[580px] text-[16px] leading-[1.35] text-white/95 sm:text-[18px] lg:mt-4 lg:max-w-[620px] lg:text-[21px] 2xl:text-[23px]">
+            <p class="mt-3.5 max-w-[580px] text-[16px] font-normal leading-[1.35] text-white/95 sm:text-[18px] lg:mt-4 lg:max-w-[620px] lg:text-[21px] 2xl:text-[23px]">
                 Медико-косметологический центр с современным оборудованием и опытными специалистами
             </p>
         </div>
 
         <div class="mt-auto flex flex-wrap items-stretch gap-3 sm:gap-4 lg:gap-5 2xl:gap-6">
             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = array_slice((array) $heroStats, 0, 3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $stat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="flex flex-col justify-between rounded-[18px] bg-[#3B4656]/65 p-5 backdrop-blur-md border border-white/10 sm:rounded-[22px] sm:p-6 lg:p-7 2xl:p-8 w-[calc(50%-6px)] sm:w-[210px] lg:w-[240px] 2xl:w-[270px] min-h-[145px] sm:min-h-[165px] lg:min-h-[185px] 2xl:min-h-[200px]">
-                    <div class="text-[36px] font-semibold leading-none text-white sm:text-[44px] lg:text-[52px] 2xl:text-[60px]"><?php echo e($stat['value'] ?? ''); ?></div>
-                    <div class="mt-3 text-[12px] leading-[1.3] text-white/95 sm:text-[13px] lg:text-[15px] 2xl:text-[16px]"><?php echo e($stat['label'] ?? ''); ?></div>
+                <div class="flex flex-col justify-between rounded-[14px] bg-[#1D293D]/40 p-4 backdrop-blur-[12px] border border-white/10 sm:rounded-[18px] sm:p-6 lg:p-7 2xl:p-8 w-[calc(50%-6px)] sm:w-[210px] lg:w-[240px] 2xl:w-[270px] min-h-[135px] sm:min-h-[160px] lg:min-h-[180px] 2xl:min-h-[200px]">
+                    <div class="text-[32px] font-medium leading-none text-white sm:text-[40px] lg:text-[48px] 2xl:text-[56px]"><?php echo e($stat['value'] ?? ''); ?></div>
+                    <div class="mt-2.5 text-[12px] font-normal leading-[1.3] text-white/95 sm:text-[13px] lg:text-[15px] 2xl:text-[16px]"><?php echo e($stat['label'] ?? ''); ?></div>
                 </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
         </div>
@@ -87,11 +87,11 @@
 <section id="uslugi" class="mt-14 px-4 sm:px-6 lg:mt-24">
     <div class="mx-auto w-full max-w-[1720px]">
         <div class="grid gap-4 lg:grid-cols-[1fr_2fr] lg:gap-10">
-            <p class="inline-flex items-baseline gap-2 text-[18px] font-semibold text-steel lg:text-[22px] 2xl:text-[30px]">
+            <p class="inline-flex items-baseline gap-2 text-[22px] font-medium text-steel sm:text-[26px] lg:text-[32px] 2xl:text-[40px]">
                 Услуги
                 <svg class="h-[0.8em] w-[0.8em] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </p>
-            <p class="text-[17px] leading-snug text-body sm:text-lg lg:text-[26px] lg:leading-[1.35] 2xl:text-[32px] lg:[text-indent:240px] 2xl:[text-indent:320px]">
+            <p class="text-[20px] sm:text-[24px] lg:text-[32px] 2xl:text-[36px] font-medium leading-[1.3] 2xl:leading-[46px] text-brand [text-indent:72px] sm:[text-indent:102px] lg:[text-indent:240px] 2xl:[text-indent:290px]">
                 В клинике «Арт-Медика» мы объединяем многолетний опыт врачей и современный арсенал медицинских возможностей, чтобы вы могли получать весь спектр медико-эстетических услуг.
             </p>
         </div>
@@ -125,11 +125,11 @@ if (isset($__slots)) unset($__slots);
 <section id="o-centre" class="mt-14 px-4 sm:px-6 lg:mt-24">
     <div class="mx-auto w-full max-w-[1720px]">
         <div class="grid gap-4 lg:grid-cols-[1fr_2fr] lg:gap-10">
-            <p class="inline-flex items-baseline gap-2 text-[18px] font-semibold text-steel lg:text-[22px] 2xl:text-[30px]">
+            <p class="inline-flex items-baseline gap-2 text-[22px] font-medium text-steel sm:text-[26px] lg:text-[32px] 2xl:text-[40px]">
                 О центре
                 <svg class="h-[0.8em] w-[0.8em] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </p>
-            <h2 class="text-[26px] font-semibold leading-[1.25] tracking-[-0.01em] text-brand sm:text-[32px] lg:text-[36px] 2xl:text-[44px] lg:[text-indent:240px] 2xl:[text-indent:320px]">
+            <h2 class="text-[22px] sm:text-[26px] lg:text-[34px] 2xl:text-[40px] font-medium leading-[1.3] 2xl:leading-[52px] text-brand [text-indent:72px] sm:[text-indent:102px] lg:[text-indent:240px] 2xl:[text-indent:290px]">
                 Повышение качества жизни пациентов в реальности, невзирая на сложность задачи
             </h2>
         </div>
@@ -138,17 +138,17 @@ if (isset($__slots)) unset($__slots);
             <img src="<?php echo e($aboutImage); ?>" alt="Процедурный кабинет клиники Арт-Медика" width="1200" height="800" loading="lazy"
                  class="h-[260px] w-full rounded-[24px] object-cover sm:h-[320px] lg:h-[480px] 2xl:h-[560px]">
             <div class="flex flex-col justify-center">
-                <p class="text-[15px] leading-relaxed text-body sm:text-base lg:text-[17px] 2xl:text-[19px]">
+                <p class="text-[15px] leading-relaxed text-brand sm:text-base lg:text-[17px] 2xl:text-[19px]">
                     «Арт-Медика» — многопрофильный медико-косметологический центр в Челябинске: поликлиническое отделение, стационар пластической хирургии, косметология, ЭСТЕТ-гинекология и оториноларингология в одном месте.
                 </p>
-                <p class="mt-4 text-[15px] leading-relaxed text-body sm:text-base lg:text-[17px] 2xl:text-[19px]">
+                <p class="mt-4 text-[15px] leading-relaxed text-brand sm:text-base lg:text-[17px] 2xl:text-[19px]">
                     Мы соединяем диагностику, лечение и эстетическую хирургию с современным оборудованием и программами реабилитации, чтобы пациент получал безопасный результат и внимание на каждом этапе.
                 </p>
                 <div class="mt-8 grid grid-cols-3 gap-3 sm:gap-4">
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = array_slice((array) $aboutStats, 0, 3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $stat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div class="rounded-2xl border border-border p-4 sm:p-5">
-                            <div class="text-[24px] font-semibold text-ink sm:text-[32px] lg:text-[38px] 2xl:text-[44px]"><?php echo e($stat['value'] ?? ''); ?></div>
-                            <div class="mt-1.5 text-[12px] leading-snug text-muted sm:text-[13px] lg:text-[14px] 2xl:text-[16px]"><?php echo e($stat['label'] ?? ''); ?></div>
+                        <div class="rounded-[16px] sm:rounded-[20px] bg-[#F4F7FF] p-4 sm:p-5">
+                            <div class="text-[28px] font-medium text-brand sm:text-[34px] lg:text-[40px] 2xl:text-[44px]"><?php echo e($stat['value'] ?? ''); ?></div>
+                            <div class="mt-1.5 text-[12px] font-normal leading-snug text-brand sm:text-[13px] lg:text-[14px] 2xl:text-[16px]"><?php echo e($stat['label'] ?? ''); ?></div>
                         </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                 </div>
@@ -161,11 +161,11 @@ if (isset($__slots)) unset($__slots);
 <section id="rezultaty" class="mt-14 px-4 sm:px-6 lg:mt-24">
     <div class="mx-auto w-full max-w-[1720px]">
         <div class="grid gap-4 lg:grid-cols-[1fr_2fr] lg:gap-10">
-            <p class="inline-flex items-baseline gap-2 text-[18px] font-semibold text-steel lg:text-[22px] 2xl:text-[30px]">
+            <p class="inline-flex items-baseline gap-2 text-[22px] font-medium text-steel sm:text-[26px] lg:text-[32px] 2xl:text-[40px]">
                 Результаты операций
                 <svg class="h-[0.8em] w-[0.8em] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </p>
-            <h2 class="text-[26px] font-semibold leading-[1.25] tracking-[-0.01em] text-brand sm:text-[32px] lg:text-[36px] 2xl:text-[44px] lg:[text-indent:240px] 2xl:[text-indent:320px]">
+            <h2 class="text-[22px] sm:text-[26px] lg:text-[34px] 2xl:text-[40px] font-medium leading-[1.3] 2xl:leading-[52px] text-brand [text-indent:72px] sm:[text-indent:102px] lg:[text-indent:240px] 2xl:[text-indent:290px]">
                 Мы гордимся результатами, которых достигаем вместе с нашими пациентами благодаря современным методикам и золотым рукам хирургов. Убедитесь сами, как тонко и естественно мы умеем работать с красотой.
             </h2>
         </div>
@@ -208,11 +208,11 @@ if (isset($__slots)) unset($__slots);
 <section id="spetsialisty" class="mt-14 px-4 sm:px-6 lg:mt-24">
     <div class="mx-auto w-full max-w-[1720px]">
         <div class="grid gap-4 lg:grid-cols-[1fr_2fr] lg:gap-10">
-            <p class="inline-flex items-baseline gap-2 text-[18px] font-semibold text-steel lg:text-[22px] 2xl:text-[30px]">
+            <p class="inline-flex items-baseline gap-2 text-[22px] font-medium text-steel sm:text-[26px] lg:text-[32px] 2xl:text-[40px]">
                 Наши специалисты
                 <svg class="h-[0.8em] w-[0.8em] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </p>
-            <h2 class="text-[26px] font-semibold leading-[1.25] tracking-[-0.01em] text-brand sm:text-[32px] lg:text-[36px] 2xl:text-[44px] lg:[text-indent:240px] 2xl:[text-indent:320px]">
+            <h2 class="text-[22px] sm:text-[26px] lg:text-[34px] 2xl:text-[40px] font-medium leading-[1.3] 2xl:leading-[52px] text-brand [text-indent:72px] sm:[text-indent:102px] lg:[text-indent:240px] 2xl:[text-indent:290px]">
                 Команда профессионалов, постоянно растущих в своих направлениях
             </h2>
         </div>
@@ -233,8 +233,8 @@ if (isset($__slots)) unset($__slots);
                              class="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]">
                         <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
                         <div class="relative z-10 flex h-full flex-col justify-end p-5 2xl:p-7">
-                            <h3 class="text-[15px] font-semibold leading-snug text-white sm:text-[19px] 2xl:text-[23px]"><?php echo e($expert->name); ?></h3>
-                            <p class="mt-1.5 text-[12px] leading-snug text-white/85 sm:text-[13px] 2xl:text-[15px]"><?php echo e(\Illuminate\Support\Str::limit($expert->position, 180, end: '…')); ?></p>
+                            <h3 class="text-[15px] font-medium leading-snug text-white sm:text-[19px] 2xl:text-[23px]"><?php echo e($expert->name); ?></h3>
+                            <p class="mt-1.5 text-[12px] font-normal leading-snug text-white/85 sm:text-[13px] 2xl:text-[15px]"><?php echo e(\Illuminate\Support\Str::limit($expert->position, 180, end: '…')); ?></p>
                         </div>
                     </article>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
@@ -256,11 +256,11 @@ if (isset($__slots)) unset($__slots);
 <section id="proekty" class="mt-14 px-4 sm:px-6 lg:mt-24">
     <div class="mx-auto w-full max-w-[1720px]">
         <div class="grid gap-4 lg:grid-cols-[1fr_2fr] lg:gap-10">
-            <a href="<?php echo e(route('projects')); ?>" class="inline-flex items-baseline gap-2 text-[18px] font-semibold text-steel transition-colors hover:text-brand lg:text-[22px] 2xl:text-[30px]">
+            <a href="<?php echo e(route('projects')); ?>" class="inline-flex items-baseline gap-2 text-[22px] font-medium text-steel transition-colors hover:text-brand sm:text-[26px] lg:text-[32px] 2xl:text-[40px]">
                 Проекты
                 <svg class="h-[0.8em] w-[0.8em] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <h2 class="text-[26px] font-semibold leading-[1.25] tracking-[-0.01em] text-brand sm:text-[32px] lg:text-[36px] 2xl:text-[44px] lg:[text-indent:240px] 2xl:[text-indent:320px]">
+            <h2 class="text-[22px] sm:text-[26px] lg:text-[34px] 2xl:text-[40px] font-medium leading-[1.3] 2xl:leading-[52px] text-brand [text-indent:72px] sm:[text-indent:102px] lg:[text-indent:240px] 2xl:[text-indent:290px]">
                 Собираем для вас актуальные проекты в сфере медицины и эстетической хирургии
             </h2>
         </div>
@@ -276,19 +276,19 @@ if (isset($__slots)) unset($__slots);
                         </a>
                         <div class="flex min-w-0 flex-col pt-5 lg:py-1 lg:pr-6 2xl:pr-8">
                             <div class="flex items-start justify-between gap-4">
-                                <a href="<?php echo e(route('projects')); ?>" class="text-[14px] text-body transition-colors hover:text-brand sm:text-[15px] 2xl:text-[16px]">Проекты</a>
-                                <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($projectBig->slug); ?>" aria-label="Открыть проект «<?php echo e($projectBig->title); ?>»" class="shrink-0 text-ink transition-colors hover:text-brand">
+                                <a href="<?php echo e(route('projects')); ?>" class="text-[14px] text-brand transition-colors hover:text-brandh sm:text-[15px] 2xl:text-[16px]">Проекты</a>
+                                <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($projectBig->slug); ?>" aria-label="Открыть проект «<?php echo e($projectBig->title); ?>»" class="shrink-0 text-brand transition-colors hover:text-brandh">
                                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </a>
                             </div>
                             <div class="my-auto py-5 lg:py-4">
-                                <h3 class="text-[22px] font-semibold leading-tight text-ink sm:text-[26px] 2xl:text-[32px]">
-                                    <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($projectBig->slug); ?>" class="transition-colors hover:text-brand">
+                                <h3 class="text-[22px] font-medium leading-tight text-brand sm:text-[26px] 2xl:text-[32px]">
+                                    <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($projectBig->slug); ?>" class="transition-colors hover:text-brandh">
                                         <?php echo e($projectBig->title); ?>
 
                                     </a>
                                 </h3>
-                                <p class="mt-4 text-[14px] leading-relaxed text-body sm:text-[16px] 2xl:mt-5 2xl:text-[17px]">
+                                <p class="mt-4 text-[14px] leading-relaxed text-brand sm:text-[16px] 2xl:mt-5 2xl:text-[17px]">
                                     <?php echo e(\Illuminate\Support\Str::limit($projectBig->excerpt ?? '', 220, end: '…')); ?>
 
                                 </p>
@@ -300,8 +300,8 @@ if (isset($__slots)) unset($__slots);
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $projectSmall; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $project): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <article class="swiper-slide rounded-[20px] bg-surface p-4 sm:p-5">
                             <div class="flex items-start justify-between gap-3">
-                                <a href="<?php echo e(route('projects')); ?>" class="text-[14px] text-body transition-colors hover:text-brand sm:text-[15px] 2xl:text-[16px]">Проекты</a>
-                                <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($project->slug); ?>" aria-label="Открыть проект «<?php echo e($project->title); ?>»" class="shrink-0 text-ink transition-colors hover:text-brand">
+                                <a href="<?php echo e(route('projects')); ?>" class="text-[14px] text-brand transition-colors hover:text-brandh sm:text-[15px] 2xl:text-[16px]">Проекты</a>
+                                <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($project->slug); ?>" aria-label="Открыть проект «<?php echo e($project->title); ?>»" class="shrink-0 text-brand transition-colors hover:text-brandh">
                                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </a>
                             </div>
@@ -309,8 +309,8 @@ if (isset($__slots)) unset($__slots);
                                 <img src="<?php echo e($project->coverUrl()); ?>" alt="<?php echo e($project->title); ?>" width="800" height="800" loading="lazy"
                                      class="h-[200px] w-full object-cover transition-transform duration-500 hover:scale-[1.03] sm:h-[240px] lg:h-[260px] 2xl:h-[360px]">
                             </a>
-                            <h3 class="mt-5 line-clamp-2 text-[17px] font-semibold leading-snug text-ink sm:text-[19px] 2xl:text-[21px]">
-                                <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($project->slug); ?>" class="transition-colors hover:text-brand">
+                            <h3 class="mt-5 line-clamp-2 text-[17px] font-medium leading-snug text-brand sm:text-[19px] 2xl:text-[21px]">
+                                <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($project->slug); ?>" class="transition-colors hover:text-brandh">
                                     <?php echo e($project->title); ?>
 
                                 </a>
@@ -322,8 +322,8 @@ if (isset($__slots)) unset($__slots);
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $projectFormats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $format): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <article class="swiper-slide rounded-[20px] bg-surface p-4 sm:p-5">
                             <div class="flex items-start justify-between gap-3">
-                                <a href="<?php echo e(route('projects')); ?>" class="text-[14px] text-body transition-colors hover:text-brand sm:text-[15px] 2xl:text-[16px]">Проекты</a>
-                                <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($projectBig->slug); ?>" aria-label="Открыть проект «<?php echo e($format->title); ?>»" class="shrink-0 text-ink transition-colors hover:text-brand">
+                                <a href="<?php echo e(route('projects')); ?>" class="text-[14px] text-brand transition-colors hover:text-brandh sm:text-[15px] 2xl:text-[16px]">Проекты</a>
+                                <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($projectBig->slug); ?>" aria-label="Открыть проект «<?php echo e($format->title); ?>»" class="shrink-0 text-brand transition-colors hover:text-brandh">
                                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                 </a>
                             </div>
@@ -331,8 +331,8 @@ if (isset($__slots)) unset($__slots);
                                 <img src="<?php echo e($format->coverUrl()); ?>" alt="<?php echo e($format->title); ?>" width="800" height="800" loading="lazy"
                                      class="h-[200px] w-full object-cover transition-transform duration-500 hover:scale-[1.03] sm:h-[240px] lg:h-[260px] 2xl:h-[360px]">
                             </a>
-                            <h3 class="mt-auto line-clamp-2 pt-5 text-[17px] font-semibold leading-snug text-ink sm:text-[19px] 2xl:text-[21px]">
-                                <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($projectBig->slug); ?>" class="transition-colors hover:text-brand">
+                            <h3 class="mt-auto line-clamp-2 pt-5 text-[17px] font-medium leading-snug text-brand sm:text-[19px] 2xl:text-[21px]">
+                                <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($projectBig->slug); ?>" class="transition-colors hover:text-brandh">
                                     <?php echo e($format->title); ?>
 
                                 </a>
@@ -358,11 +358,11 @@ if (isset($__slots)) unset($__slots);
 <section id="rabota" class="mt-14 px-4 sm:px-6 lg:mt-24">
     <div class="mx-auto w-full max-w-[1720px]">
         <div class="grid gap-4 lg:grid-cols-[1fr_2fr] lg:gap-10">
-            <p class="inline-flex items-baseline gap-2 text-[18px] font-semibold text-steel lg:text-[22px] 2xl:text-[30px]">
+            <p class="inline-flex items-baseline gap-2 text-[22px] font-medium text-steel sm:text-[26px] lg:text-[32px] 2xl:text-[40px]">
                 Наша работа
                 <svg class="h-[0.8em] w-[0.8em] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </p>
-            <h2 class="text-[26px] font-semibold leading-[1.25] tracking-[-0.01em] text-brand sm:text-[32px] lg:text-[36px] 2xl:text-[44px] lg:[text-indent:240px] 2xl:[text-indent:320px]">
+            <h2 class="text-[22px] sm:text-[26px] lg:text-[34px] 2xl:text-[40px] font-medium leading-[1.3] 2xl:leading-[52px] text-brand [text-indent:72px] sm:[text-indent:102px] lg:[text-indent:240px] 2xl:[text-indent:290px]">
                 Наша работа начинается с глубокой диагностики и детального планирования, а современное оборудование и сертифицированные материалы гарантируют безопасность на каждом этапе.
             </h2>
         </div>
@@ -381,11 +381,11 @@ if (isset($__slots)) unset($__slots);
 <section id="otzyvy" class="mt-14 px-4 sm:px-6 lg:mt-24">
     <div class="mx-auto w-full max-w-[1720px]">
         <div class="grid gap-4 lg:grid-cols-[1fr_2fr] lg:gap-10">
-            <p class="inline-flex items-baseline gap-2 text-[18px] font-semibold text-steel lg:text-[22px] 2xl:text-[30px]">
+            <p class="inline-flex items-baseline gap-2 text-[22px] font-medium text-steel sm:text-[26px] lg:text-[32px] 2xl:text-[40px]">
                 Кейсы клиентов
                 <svg class="h-[0.8em] w-[0.8em] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </p>
-            <h2 class="text-[26px] font-semibold leading-[1.25] tracking-[-0.01em] text-brand sm:text-[32px] lg:text-[36px] 2xl:text-[44px] lg:[text-indent:240px] 2xl:[text-indent:320px]">
+            <h2 class="text-[22px] sm:text-[26px] lg:text-[34px] 2xl:text-[40px] font-medium leading-[1.3] 2xl:leading-[52px] text-brand [text-indent:72px] sm:[text-indent:102px] lg:[text-indent:240px] 2xl:[text-indent:290px]">
                 Высокий уровень доверия и качества медицинской помощи подтверждает рейтинг нашей клиники — 4,5 на основе 118 отзывов о врачах на сайте «ПроДокторов».
             </h2>
         </div>
@@ -398,10 +398,10 @@ if (isset($__slots)) unset($__slots);
                         <article class="swiper-slide rounded-2xl bg-surface p-5 sm:p-7 2xl:p-9">
                         <div class="flex items-start justify-between gap-4">
                             <div>
-                                <h3 class="text-[20px] font-semibold leading-tight text-ink sm:text-[22px] 2xl:text-[26px]"><?php echo e($review->author_name); ?></h3>
+                                <h3 class="text-[20px] font-medium leading-tight text-brand sm:text-[22px] 2xl:text-[26px]"><?php echo e($review->author_name); ?></h3>
                                 <div class="mt-1.5 flex items-center gap-[3px]" aria-label="Оценка: <?php echo e($review->rating); ?> из 5">
                                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php for($i = 1; $i <= 5; $i++): ?>
-                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" class="<?php echo e($i <= (int) $review->rating ? 'text-ink' : 'text-[#D7DEEA]'); ?> sm:h-[17px] sm:w-[17px] 2xl:h-5 2xl:w-5" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9 2.9-6z"/></svg>
+                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" class="<?php echo e($i <= (int) $review->rating ? 'text-brand' : 'text-[#D7DEEA]'); ?> sm:h-[17px] sm:w-[17px] 2xl:h-5 2xl:w-5" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9 2.9-6z"/></svg>
                                     <?php endfor; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                                 </div>
                             </div>

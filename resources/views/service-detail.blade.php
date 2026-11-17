@@ -35,7 +35,7 @@
                 <img src="{{ asset('images/Arrow_right_light.svg') }}" alt="" class="w-[30px] sm:w-[40px] lg:w-[50px]" aria-hidden="true">
             </h1>
             @if ($service->description)
-                <p class="max-w-[1140px] text-[20px] font-medium leading-[1.25] text-brand sm:text-[28px] lg:text-[40px] lg:leading-[1.2]">
+                <p class="max-w-[1140px] text-[20px] sm:text-[24px] lg:text-[40px] lg:leading-[52px] font-medium text-brand [text-indent:72px] sm:[text-indent:102px] lg:[text-indent:240px] 2xl:[text-indent:290px]">
                     {{ $service->description }}
                 </p>
             @endif
@@ -45,17 +45,17 @@
             {{-- 1. БЛОК: Какие проблемы позволяет решить блефаропластика --}}
             @if (!empty($service->problems) && is_array($service->problems))
                 <section class="mt-14 sm:mt-18 lg:mt-24">
-                    <h2 class="text-[40px] font-semibold text-ink sm:text-[32px] lg:text-[36px]">
+                    <h2 class="text-[24px] font-medium text-brand sm:text-[30px] lg:text-[36px]">
                         Какие проблемы позволяет решить {{ mb_strtolower($service->name) }}
                     </h2>
 
                     <div class="mt-6 divide-y divide-border border-b border-border">
                         @foreach ($service->problems as $idx => $problem)
                             <div class="flex items-center gap-6 py-4 sm:gap-10 sm:py-5">
-                                <span class="w-8 shrink-0 text-[18px] font-medium text-muted sm:text-[40px]">
+                                <span class="w-8 shrink-0 text-[18px] font-medium text-muted sm:text-[24px] 2xl:text-[28px]">
                                     {{ $idx + 1 }}
                                 </span>
-                                <span class="text-[16px]  text-ink sm:text-[36px]">
+                                <span class="text-[16px] font-normal text-brand sm:text-[20px] 2xl:text-[24px]">
                                     {{ $problem }}
                                 </span>
                             </div>
@@ -83,7 +83,7 @@
                                 $patient2Url = $type->media->firstWhere('collection', 'after')?->url;
                             @endphp
                             <div class="flex flex-col">
-                                <h3 class="min-h-[50px] text-[18px]  leading-snug text-ink sm:text-[22px] lg:text-[36px]">
+                                <h3 class="min-h-[50px] text-[18px] font-medium leading-snug text-brand sm:text-[22px] lg:text-[28px] 2xl:text-[32px]">
                                     {{ $type->title }} {{ $type->description ? '— ' . mb_strtolower($type->description) : '' }}
                                 </h3>
 
@@ -116,7 +116,7 @@
                             Подготовка к операции
                             <img src="{{ asset('images/Arrow_right_light.svg') }}" alt="" class="w-[26px] sm:w-[36px]" aria-hidden="true">
                         </h2>
-                        <p class="max-w-[1140px] text-[16px] font-medium leading-relaxed text-ink sm:text-[20px] lg:text-[36px]">
+                        <p class="max-w-[1140px] text-[16px] font-normal leading-relaxed text-brand sm:text-[18px] lg:text-[20px] 2xl:text-[24px]">
                             {{ $service->preparation }}
                         </p>
                     </div>
@@ -125,29 +125,29 @@
 
             {{-- 4. БЛОК: Почему выбирают специалистов «Арт-Медики» (01, 02, 03, 04) --}}
             <section class="mt-14 sm:mt-18 lg:mt-24">
-                <h2 class="text-[22px] font-semibold text-ink sm:text-[28px] lg:text-[32px]">
+                <h2 class="text-[22px] font-medium text-brand sm:text-[28px] lg:text-[32px]">
                     Почему выбирают специалистов «Арт-Медики»
                 </h2>
 
                 <div class="mt-6 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4 lg:gap-6">
                     <div class="flex flex-col justify-between rounded-[20px] bg-surface p-5 sm:p-6 lg:min-h-[170px]">
-                        <span class="text-[28px] font-bold text-ink sm:text-[36px] lg:text-[40px]">01</span>
-                        <p class="mt-3 text-[14px] font-medium leading-snug text-ink sm:text-[16px]">Опытные пластические хирурги</p>
+                        <span class="text-[28px] font-medium text-brand sm:text-[36px] lg:text-[40px]">01</span>
+                        <p class="mt-3 text-[14px] font-medium leading-snug text-brand sm:text-[16px]">Опытные пластические хирурги</p>
                     </div>
 
                     <div class="flex flex-col justify-between rounded-[20px] bg-surface p-5 sm:p-6 lg:min-h-[170px]">
-                        <span class="text-[28px] font-bold text-ink sm:text-[36px] lg:text-[40px]">02</span>
-                        <p class="mt-3 text-[14px] font-medium leading-snug text-ink sm:text-[16px]">Современное оборудование</p>
+                        <span class="text-[28px] font-medium text-brand sm:text-[36px] lg:text-[40px]">02</span>
+                        <p class="mt-3 text-[14px] font-medium leading-snug text-brand sm:text-[16px]">Современное оборудование</p>
                     </div>
 
                     <div class="flex flex-col justify-between rounded-[20px] bg-surface p-5 sm:p-6 lg:min-h-[170px]">
-                        <span class="text-[28px] font-bold text-ink sm:text-[36px] lg:text-[40px]">03</span>
-                        <p class="mt-3 text-[14px] font-medium leading-snug text-ink sm:text-[16px]">Индивидуальный подход</p>
+                        <span class="text-[28px] font-medium text-brand sm:text-[36px] lg:text-[40px]">03</span>
+                        <p class="mt-3 text-[14px] font-medium leading-snug text-brand sm:text-[16px]">Индивидуальный подход</p>
                     </div>
 
                     <div class="flex flex-col justify-between rounded-[20px] bg-surface p-5 sm:p-6 lg:min-h-[170px]">
-                        <span class="text-[28px] font-bold text-ink sm:text-[36px] lg:text-[40px]">04</span>
-                        <p class="mt-3 text-[14px] font-medium leading-snug text-ink sm:text-[16px]">Комфортные условия стационара</p>
+                        <span class="text-[28px] font-medium text-brand sm:text-[36px] lg:text-[40px]">04</span>
+                        <p class="mt-3 text-[14px] font-medium leading-snug text-brand sm:text-[16px]">Комфортные условия стационара</p>
                     </div>
                 </div>
             </section>
@@ -160,7 +160,7 @@
                             Способ выполнения <br> блефаропластики
                             <img src="{{ asset('images/Arrow_right_light.svg') }}" alt="" class="w-[26px] sm:w-[36px]" aria-hidden="true">
                         </h2>
-                        <p class="max-w-[1140px] text-[16px] font-medium leading-relaxed text-ink sm:text-[20px] lg:text-[36px]">
+                        <p class="max-w-[1140px] text-[16px] font-normal leading-relaxed text-brand sm:text-[18px] lg:text-[20px] 2xl:text-[24px]">
                             {{ $service->execution }}
                         </p>
                     </div>
@@ -173,7 +173,7 @@
             @endphp
             @if ($resultCases->isNotEmpty())
                 <section class="mt-14 sm:mt-18 lg:mt-24">
-                    <h2 class="text-[22px] font-semibold text-ink sm:text-[28px] lg:text-[32px]">
+                    <h2 class="text-[22px] font-medium text-brand sm:text-[28px] lg:text-[32px]">
                         Результаты процедуры
                     </h2>
 

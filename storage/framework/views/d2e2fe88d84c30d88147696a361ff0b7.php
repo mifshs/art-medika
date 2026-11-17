@@ -94,7 +94,7 @@
         </div>
     <?php else: ?>
         <div class="mt-12 rounded-[20px] bg-[#F4F7FF] px-8 py-16 text-center">
-            <p class="text-[20px] font-medium text-ink">Активных проектов пока нет</p>
+            <p class="text-[20px] font-medium text-brand">Активных проектов пока нет</p>
             <p class="mt-2 text-[15px] text-muted">Заглядывайте позже — мы регулярно добавляем новые проекты.</p>
         </div>
     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>

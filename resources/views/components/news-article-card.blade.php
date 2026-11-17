@@ -34,7 +34,7 @@
                 </p>
 
                 {{-- Заголовок внутри анонса статьи --}}
-                <h4 class="mt-1 text-[13px] font-bold leading-snug text-[#1A1A1A] sm:text-[14px]">
+                <h4 class="mt-1 text-[13px] font-medium leading-snug text-brand sm:text-[14px]">
                     {{ $news->title }}
                 </h4>
 
@@ -83,8 +83,8 @@
             </div>
 
             {{-- Большой заголовок карточки --}}
-            <h3 class="my-auto py-2 text-[16px] font-semibold leading-[1.3] text-[#1A1A1A] transition-colors group-hover:text-brand sm:text-[18px] lg:py-4 lg:text-[24px] lg:font-medium lg:leading-[1.25] 2xl:text-[26px]">
-                <a href="{{ $detailUrl }}" class="transition-colors hover:text-brand">
+            <h3 class="my-auto py-2 text-[16px] font-medium leading-[1.3] text-brand transition-colors group-hover:text-brandh sm:text-[18px] lg:py-4 lg:text-[24px] lg:font-medium lg:leading-[1.25] 2xl:text-[26px]">
+                <a href="{{ $detailUrl }}" class="transition-colors hover:text-brandh">
                     {{ $news->title }}
                 </a>
             </h3>

@@ -34,21 +34,21 @@
 
         {{-- Правая колонка контента (на мобильных — под фото) --}}
         <div class="flex flex-col justify-between pt-3.5 sm:pt-4 lg:pt-1 lg:pb-1 lg:pr-4 2xl:pr-6">
-            {{-- Верхняя строка: Метка «Проекты» и стрелка ↗ (макет: Onest 16px, #1D293D) --}}
+            {{-- Верхняя строка: Метка «Проекты» и стрелка ↗ (макет: Onest 16px, #37241B) --}}
             <div class="flex items-center justify-between gap-4">
-                <span class="text-[15px] text-[#1D293D] 2xl:text-[16px]">Проекты</span>
+                <span class="text-[15px] text-brand 2xl:text-[16px]">Проекты</span>
                 <a href="{{ route('projects.show', $project) }}"
                    aria-label="Открыть проект «{{ $project->title }}»"
-                   class="shrink-0 text-[#1D293D] transition-colors hover:text-brand">
+                   class="shrink-0 text-brand transition-colors hover:text-brandh">
                     <svg class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path d="M7 17L17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </a>
             </div>
 
-            {{-- Заголовок (макет: Onest 24px / 36px, medium, #212529) --}}
-            <h2 class="mt-3 text-[24px] font-medium leading-[1.22] text-body sm:mt-5 sm:text-[26px] lg:text-[30px] 2xl:text-[36px] 2xl:leading-[1.22]">
-                <a href="{{ route('projects.show', $project) }}" class="transition-colors hover:text-brand">
+            {{-- Заголовок (макет: Onest 24px / 36px, medium, #37241B) --}}
+            <h2 class="mt-3 text-[24px] font-medium leading-[1.22] text-brand sm:mt-5 sm:text-[26px] lg:text-[30px] 2xl:text-[36px] 2xl:leading-[1.22]">
+                <a href="{{ route('projects.show', $project) }}" class="transition-colors hover:text-brandh">
                     {{ $project->title }}
                 </a>
             </h2>
@@ -56,14 +56,14 @@
             {{-- Описание: дословно из макета — обрезано в тех же местах (в т.ч. посимвольно «...»); без лишних переносов --}}
             @if ($desktopText)
                 @if ($mobileText)
-                    <p class="mt-2.5 text-[16px] leading-6 text-body sm:mt-0 sm:hidden" data-body="mobile">
+                    <p class="mt-2.5 text-[16px] leading-6 text-brand sm:mt-0 sm:hidden" data-body="mobile">
                         {{ $mobileText }}
                     </p>
-                    <p class="mt-0 hidden text-[16px] leading-6 text-body sm:mt-3.5 sm:block lg:text-[17px] 2xl:mt-4 2xl:text-[20px] 2xl:leading-7" data-body="desktop">
+                    <p class="mt-0 hidden text-[16px] leading-6 text-brand sm:mt-3.5 sm:block lg:text-[17px] 2xl:mt-4 2xl:text-[20px] 2xl:leading-7" data-body="desktop">
                         {{ $desktopText }}
                     </p>
                 @else
-                    <p class="mt-2.5 text-[16px] leading-6 text-body sm:mt-3.5 lg:text-[17px] 2xl:mt-4 2xl:text-[20px] 2xl:leading-7" data-body="desktop">
+                    <p class="mt-2.5 text-[16px] leading-6 text-brand sm:mt-3.5 lg:text-[17px] 2xl:mt-4 2xl:text-[20px] 2xl:leading-7" data-body="desktop">
                         {{ $desktopText }}
                     </p>
                 @endif

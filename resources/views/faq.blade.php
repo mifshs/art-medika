@@ -43,7 +43,7 @@
             </div>
 
             {{-- Правая колонка: вводный текст дословно из макета --}}
-            <h1 class="text-center text-[18px] font-medium leading-[1.3] text-brand sm:text-[22px] lg:text-left lg:text-[28px] lg:[text-indent:140px] 2xl:text-[36px] 2xl:[text-indent:200px]">
+            <h1 class="text-left text-[22px] sm:text-[26px] font-medium leading-[1.3] 2xl:leading-[52px] text-brand [text-indent:72px] sm:[text-indent:102px] lg:text-[34px] 2xl:text-[40px] lg:[text-indent:240px] 2xl:[text-indent:290px]">
                 {{ $introText }}
             </h1>
         </div>
@@ -59,7 +59,7 @@
     @else
         {{-- Состояние: нет добавленных вопросов --}}
         <div class="mt-12 rounded-[20px] bg-[#F4F7FF] px-8 py-16 text-center">
-            <p class="text-[20px] font-medium text-ink">Вопросы пока не добавлены</p>
+            <p class="text-[20px] font-medium text-brand">Вопросы пока не добавлены</p>
             <p class="mt-2 text-[15px] text-muted">Заглядывайте позже — мы регулярно обновляем информацию.</p>
         </div>
     @endif

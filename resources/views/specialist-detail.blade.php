@@ -21,7 +21,7 @@
         <img src="{{ asset('images/_.svg') }}" alt="" class="h-3 w-auto" aria-hidden="true">
         <a href="{{ route('specialists') }}" class="transition-colors duration-200 hover:text-brandh">Специалисты</a>
         <img src="{{ asset('images/_.svg') }}" alt="" class="h-3 w-auto" aria-hidden="true">
-        <span class="font-medium text-ink line-clamp-1 max-w-[280px] sm:max-w-md lg:max-w-xl">
+        <span class="font-medium text-brand line-clamp-1 max-w-[280px] sm:max-w-md lg:max-w-xl">
             {{ $expert->name }}
         </span>
     </nav>
@@ -120,7 +120,7 @@
     {{-- Блок «Направление деятельности:» (список в 2 колонки со стрелками ↗) --}}
     @if (!empty($expert->activities) && is_array($expert->activities))
         <div class="mt-10 rounded-[20px] bg-[#F4F7FD] p-5 sm:p-7 2xl:p-8">
-            <h2 class="text-[18px] font-semibold text-brand sm:text-[20px] 2xl:text-[22px]">
+            <h2 class="text-[18px] font-medium text-brand sm:text-[20px] 2xl:text-[22px]">
                 Направление деятельности:
             </h2>
             <div class="mt-4 grid grid-cols-1 gap-x-8 gap-y-3.5 md:grid-cols-2">
@@ -140,7 +140,7 @@
     @if ($expert->educations->isNotEmpty())
         <div x-data="{ open: true }" class="mt-6 rounded-[20px] bg-[#F4F7FD] p-5 transition-colors sm:p-7 2xl:p-8">
             <button type="button" @click="open = !open" :aria-expanded="open" class="flex w-full items-center justify-between text-left">
-                <span class="text-[16px] font-semibold text-brand sm:text-[19px] 2xl:text-[20px]">
+                <span class="text-[16px] font-medium text-brand sm:text-[19px] 2xl:text-[20px]">
                     Данные об образовании из Федерального реестра медицинских работников
                 </span>
                 <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center text-brand transition-transform duration-300"
@@ -182,7 +182,7 @@
     @if ($expert->accreditations->isNotEmpty())
         <div x-data="{ open: true }" class="mt-6 rounded-[20px] bg-[#F4F7FD] p-5 transition-colors sm:p-7 2xl:p-8">
             <button type="button" @click="open = !open" :aria-expanded="open" class="flex w-full items-center justify-between text-left">
-                <span class="text-[16px] font-semibold text-brand sm:text-[19px] 2xl:text-[20px]">
+                <span class="text-[16px] font-medium text-brand sm:text-[19px] 2xl:text-[20px]">
                     Аккредитация (сертификация) специалиста
                 </span>
                 <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center text-brand transition-transform duration-300"

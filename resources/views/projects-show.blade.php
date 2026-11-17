@@ -25,7 +25,7 @@
 
     {{-- Заголовок проекта и подзаголовок: десктоп в одну строку (слева заголовок, справа статус/подзаголовок) --}}
     <div class="mt-6 flex flex-col gap-1 sm:mt-8 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6 lg:mt-10">
-        <h1 class="text-[26px] font-medium leading-tight text-[#1D293D] sm:text-[32px] lg:text-[40px] tracking-tight">
+        <h1 class="text-[26px] font-medium leading-tight text-brand sm:text-[32px] lg:text-[40px] tracking-tight">
             {{ $project->detail_title }}
         </h1>
         @if ($project->subtitle)
@@ -52,18 +52,18 @@
         <section class="mt-10 sm:mt-12 lg:mt-16">
             <div class="grid grid-cols-1 gap-4 lg:grid-cols-[280px_1fr_1fr] lg:gap-12 2xl:grid-cols-[340px_1fr_1fr] 2xl:gap-16">
                 <div>
-                    <h2 class="text-[22px] font-semibold text-[#1D293D] sm:text-[26px] lg:text-[32px]">
+                    <h2 class="text-[22px] font-medium text-brand sm:text-[26px] lg:text-[32px]">
                         Описание проекта
                     </h2>
                 </div>
                 <div>
-                    <p class="text-[15px] font-normal leading-[1.6] text-body sm:text-[16px] lg:text-[18px]">
+                    <p class="text-[15px] font-normal leading-[1.6] text-brand sm:text-[16px] lg:text-[18px]">
                         {{ $project->description ?: $project->excerpt }}
                     </p>
                 </div>
                 <div>
                     @if ($project->mission)
-                        <p class="text-[15px] font-normal leading-[1.6] text-body sm:text-[16px] lg:text-[18px]">
+                        <p class="text-[15px] font-normal leading-[1.6] text-brand sm:text-[16px] lg:text-[18px]">
                             {{ $project->mission }}
                         </p>
                     @endif
@@ -77,10 +77,10 @@
                 <div class="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 lg:gap-5 2xl:gap-6">
                     @foreach ($project->stats as $stat)
                         <div class="rounded-[16px] bg-[#F4F7FF] p-4 sm:rounded-[20px] sm:p-5 lg:rounded-[24px] lg:p-7">
-                            <div class="text-[26px] font-semibold leading-none text-[#1D293D] sm:text-[32px] lg:text-[40px]">
+                            <div class="text-[26px] font-medium leading-none text-brand sm:text-[32px] lg:text-[40px]">
                                 {{ $stat['value'] ?? '' }}
                             </div>
-                            <div class="mt-2 text-[14px] font-normal text-[#1D293D] sm:mt-3 sm:text-[15px] lg:text-[17px] 2xl:text-[18px]">
+                            <div class="mt-2 text-[14px] font-normal text-brand sm:mt-3 sm:text-[15px] lg:text-[17px] 2xl:text-[18px]">
                                 {{ $stat['label'] ?? '' }}
                             </div>
                         </div>
@@ -93,7 +93,7 @@
         @if ($project->formats->isNotEmpty())
             <section class="mt-12 sm:mt-16 lg:mt-24" aria-labelledby="formats-heading">
                 <div class="flex items-center justify-between">
-                    <h2 id="formats-heading" class="text-[22px] font-semibold text-[#1D293D] sm:text-[26px] lg:text-[32px]">
+                    <h2 id="formats-heading" class="text-[22px] font-medium text-brand sm:text-[26px] lg:text-[32px]">
                         Форматы работы
                     </h2>
                     <button type="button"
@@ -128,7 +128,7 @@
 
                             {{-- Текст на карточке снизу --}}
                             <div class="absolute inset-x-0 bottom-0 p-5 sm:p-6 lg:p-7 text-white">
-                                <h3 class="text-[18px] font-semibold leading-tight text-white sm:text-[20px] lg:text-[22px]">
+                                <h3 class="text-[18px] font-medium leading-tight text-white sm:text-[20px] lg:text-[22px]">
                                     {{ $format->title }}
                                 </h3>
                                 @if ($format->description)
@@ -148,17 +148,17 @@
             <section class="mt-12 sm:mt-16 lg:mt-24" aria-labelledby="stages-heading">
                 <div class="grid grid-cols-1 gap-6 lg:grid-cols-[280px_1fr] lg:gap-12 2xl:grid-cols-[340px_1fr] 2xl:gap-16">
                     <div>
-                        <h2 id="stages-heading" class="text-[22px] font-semibold text-[#1D293D] sm:text-[26px] lg:text-[32px]">
+                        <h2 id="stages-heading" class="text-[22px] font-medium text-brand sm:text-[26px] lg:text-[32px]">
                             Этапы проекта
                         </h2>
                     </div>
                     <ol class="space-y-4 sm:space-y-5 lg:space-y-6">
                         @foreach ($project->stages as $index => $stage)
-                            <li class="flex items-baseline gap-6 sm:gap-10 lg:gap-14 text-[16px] text-[#1D293D] sm:text-[18px] lg:text-[20px]">
-                                <span class="w-6 shrink-0 font-normal text-[#1D293D] sm:w-8">
+                            <li class="flex items-baseline gap-6 sm:gap-10 lg:gap-14 text-[16px] text-brand sm:text-[18px] lg:text-[20px]">
+                                <span class="w-6 shrink-0 font-normal text-brand sm:w-8">
                                     {{ $stage->sort_order ?? ($index + 1) }}
                                 </span>
-                                <span class="font-normal text-[#1D293D]">
+                                <span class="font-normal text-brand">
                                     {{ $stage->title }}
                                 </span>
                             </li>
@@ -172,13 +172,13 @@
         @if ($gallery->isNotEmpty())
             <section class="mt-12 sm:mt-16 lg:mt-24" aria-labelledby="photos-heading">
                 <div class="flex items-center justify-between">
-                    <h2 id="photos-heading" class="text-[22px] font-semibold text-[#1D293D] sm:text-[26px] lg:text-[32px]">
+                    <h2 id="photos-heading" class="text-[22px] font-medium text-brand sm:text-[26px] lg:text-[32px]">
                         Фотографии
                     </h2>
                     @if ($gallery->count() > 1)
                         <div class="flex items-center gap-2">
                             <button type="button" id="photos-prev" aria-label="Предыдущее фото"
-                                    class="grid h-10 w-10 place-items-center rounded-[10px] bg-brand text-white transition-opacity hover:opacity-90 sm:h-11 sm:w-11">
+                                     class="grid h-10 w-10 place-items-center rounded-[10px] bg-brand text-white transition-opacity hover:opacity-90 sm:h-11 sm:w-11">
                                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
                                 </svg>
@@ -226,7 +226,7 @@
         {{-- ================= ПАРТНЕРЫ ================= --}}
         @if ($partners->isNotEmpty())
             <section class="mt-12 sm:mt-16 lg:mt-24" aria-labelledby="partners-heading">
-                <h2 id="partners-heading" class="text-[22px] font-semibold text-[#1D293D] sm:text-[26px] lg:text-[32px]">
+                <h2 id="partners-heading" class="text-[22px] font-medium text-brand sm:text-[26px] lg:text-[32px]">
                     Партнеры
                 </h2>
 
@@ -235,10 +235,10 @@
                     <div class="divide-y divide-[#E5E9F2] border-b border-[#E5E9F2]">
                         @foreach ($partners as $partner)
                             <div class="flex items-center justify-between py-4 lg:py-5">
-                                <span class="text-[18px] font-medium text-[#1D293D] lg:text-[20px]">
+                                <span class="text-[18px] font-medium text-brand lg:text-[20px]">
                                     {{ $partner->name }}
                                 </span>
-                                <span class="text-[16px] font-normal text-[#1D293D] lg:text-[18px]">
+                                <span class="text-[16px] font-normal text-brand lg:text-[18px]">
                                     {{ $partner->role }}
                                 </span>
                             </div>
@@ -251,12 +251,12 @@
                     <div class="divide-y divide-[#E5E9F2] border-b border-[#E5E9F2]">
                         @foreach ($partners as $partner)
                             <div class="py-4">
-                                <div class="text-[16px] font-medium text-[#1D293D]">
+                                <div class="text-[16px] font-medium text-brand">
                                     {{ $partner->name }}
                                 </div>
                                 @if ($partner->role)
                                     <div class="mt-2">
-                                        <span class="inline-block rounded-[10px] bg-[#F4F7FF] px-3.5 py-1.5 text-[14px] font-normal text-body">
+                                        <span class="inline-block rounded-[10px] bg-[#F4F7FF] px-3.5 py-1.5 text-[14px] font-normal text-brand">
                                             {{ $partner->role }}
                                         </span>
                                     </div>
@@ -292,24 +292,24 @@
 
                     {{-- Страница 1 --}}
                     <a href="{{ $partners->url(1) }}"
-                       class="grid h-10 w-10 place-items-center rounded-[8px] text-[15px] font-medium transition-colors sm:h-11 sm:w-11 sm:text-[16px] {{ $currentPage === 1 ? 'bg-white border border-[#CBD5E1] text-[#1D293D] font-semibold shadow-sm' : 'bg-[#F4F7FF] text-[#1D293D] hover:bg-[#E9ECF4]' }}">
+                       class="grid h-10 w-10 place-items-center rounded-[8px] text-[15px] font-medium transition-colors sm:h-11 sm:w-11 sm:text-[16px] {{ $currentPage === 1 ? 'bg-white border border-[#CBD5E1] text-brand font-semibold shadow-sm' : 'bg-[#F4F7FF] text-brand hover:bg-[#E9ECF4]' }}">
                         1
                     </a>
 
                     {{-- Страница 2 --}}
                     <a href="{{ $partners->url(2) }}"
-                       class="grid h-10 w-10 place-items-center rounded-[8px] text-[15px] font-medium transition-colors sm:h-11 sm:w-11 sm:text-[16px] {{ $currentPage === 2 ? 'bg-white border border-[#CBD5E1] text-[#1D293D] font-semibold shadow-sm' : 'bg-[#F4F7FF] text-[#1D293D] hover:bg-[#E9ECF4]' }}">
+                       class="grid h-10 w-10 place-items-center rounded-[8px] text-[15px] font-medium transition-colors sm:h-11 sm:w-11 sm:text-[16px] {{ $currentPage === 2 ? 'bg-white border border-[#CBD5E1] text-brand font-semibold shadow-sm' : 'bg-[#F4F7FF] text-brand hover:bg-[#E9ECF4]' }}">
                         2
                     </a>
 
                     {{-- Разделитель ... --}}
-                    <span class="grid h-10 w-8 place-items-center text-[15px] text-[#1D293D] sm:h-11 sm:text-[16px]">
+                    <span class="grid h-10 w-8 place-items-center text-[15px] text-brand sm:h-11 sm:text-[16px]">
                         ...
                     </span>
 
                     {{-- Страница 5 --}}
                     <a href="{{ $partners->url($lastPage) }}"
-                       class="grid h-10 w-10 place-items-center rounded-[8px] text-[15px] font-medium transition-colors sm:h-11 sm:w-11 sm:text-[16px] {{ $currentPage === $lastPage ? 'bg-white border border-[#CBD5E1] text-[#1D293D] font-semibold shadow-sm' : 'bg-[#F4F7FF] text-[#1D293D] hover:bg-[#E9ECF4]' }}">
+                       class="grid h-10 w-10 place-items-center rounded-[8px] text-[15px] font-medium transition-colors sm:h-11 sm:w-11 sm:text-[16px] {{ $currentPage === $lastPage ? 'bg-white border border-[#CBD5E1] text-brand font-semibold shadow-sm' : 'bg-[#F4F7FF] text-brand hover:bg-[#E9ECF4]' }}">
                         {{ $lastPage }}
                     </a>
 
@@ -337,7 +337,7 @@
         {{-- ================= ЗАГЛУШКА ДЛЯ НЕЗАПОЛНЕННОГО ПРОЕКТА ================= --}}
         {{-- Реализовано в точности как на странице услуг (например, Дерматология / service-detail) --}}
         @if ($project->excerpt)
-            <div class="mt-8 max-w-[1140px] text-[16px] font-normal leading-relaxed text-body sm:text-[18px] lg:text-[20px]">
+            <div class="mt-8 max-w-[1140px] text-[16px] font-normal leading-relaxed text-brand sm:text-[18px] lg:text-[20px]">
                 {{ $project->excerpt }}
             </div>
         @endif
@@ -349,17 +349,17 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
                 </div>
-                <h2 class="text-[22px] font-semibold leading-tight text-ink sm:text-[28px] lg:text-[34px]">
+                <h2 class="text-[22px] font-medium leading-tight text-brand sm:text-[28px] lg:text-[34px]">
                     Проект в процессе наполнения
                 </h2>
-                <p class="mt-4 text-[15px] leading-relaxed text-body sm:text-[17px]">
+                <p class="mt-4 text-[15px] leading-relaxed text-brand sm:text-[17px]">
                     Мы активно готовим подробные материалы, информацию о форматах участия, этапах и партнерах данного проекта.
                 </p>
                 <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
                     <a href="{{ url('/stock') }}" class="inline-flex h-12 items-center justify-center rounded-full bg-brand px-8 text-[16px] font-semibold text-white transition-colors hover:bg-brandh">
                         Записаться на консультацию
                     </a>
-                    <a href="{{ route('projects') }}" class="inline-flex h-12 items-center justify-center rounded-full border border-border bg-white px-8 text-[16px] font-semibold text-ink transition-colors hover:bg-slate-50">
+                    <a href="{{ route('projects') }}" class="inline-flex h-12 items-center justify-center rounded-full border border-border bg-white px-8 text-[16px] font-semibold text-brand transition-colors hover:bg-slate-50">
                         Все проекты
                     </a>
                 </div>

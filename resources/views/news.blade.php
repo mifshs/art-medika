@@ -43,7 +43,7 @@
             </div>
 
             {{-- Правая колонка: вводный текст (динамически из базы / настроек админ-панели) --}}
-            <h1 class="text-center text-[18px] font-medium leading-[1.3] text-brand sm:text-[22px] lg:text-left lg:text-[28px] lg:[text-indent:140px] 2xl:text-[36px] 2xl:[text-indent:200px]">
+            <h1 class="text-left text-[22px] sm:text-[26px] font-medium leading-[1.3] 2xl:leading-[52px] text-brand [text-indent:72px] sm:[text-indent:102px] lg:text-[34px] 2xl:text-[40px] lg:[text-indent:240px] 2xl:[text-indent:290px]">
                 {{ $introText }}
             </h1>
         </div>

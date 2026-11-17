@@ -22,7 +22,7 @@
         </span>
 
         {{-- Название документа --}}
-        <span class="text-[14px] font-medium leading-snug text-body transition-colors group-hover:text-brand sm:text-[16px] 2xl:text-[18px] break-words">
+        <span class="text-[14px] font-medium leading-snug text-brand transition-colors group-hover:text-brandh sm:text-[16px] 2xl:text-[18px] break-words">
             {{ $document->title }}
         </span>
     </div>

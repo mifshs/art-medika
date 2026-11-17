@@ -15,7 +15,7 @@
                      class="absolute inset-0 h-full w-full object-cover">
             @else
                 <div class="absolute inset-0 grid place-items-center">
-                    <span class="font-serif text-[21px] italic font-semibold tracking-tight text-brand">Арт-Медика</span>
+                    <span class="text-[20px] font-medium tracking-tight text-brand">Арт-Медика</span>
                 </div>
             @endif
         </div>
@@ -27,7 +27,7 @@
     <div class="flex items-start justify-between gap-4">
         <span class="min-w-0 truncate text-[16px] font-medium text-brand">{{ $tag }}</span>
         <a href="{{ route('stock.show', $promotion->slug) }}" aria-label="Открыть акцию: {{ $promotion->title }}"
-           class="shrink-0 rounded-md p-0.5 text-body transition-transform hover:translate-x-0.5 hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
+           class="shrink-0 rounded-md p-0.5 text-brand transition-transform hover:translate-x-0.5 hover:text-brandh focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor" aria-hidden="true"
                  class="h-[22px] w-[22px]">
@@ -38,10 +38,10 @@
 
     <!-- Центральная часть: Заголовок и описание -->
     <div class="mt-3 sm:mt-4">
-        <h3 class="text-[36px] font-semibold leading-snug text-ink 2xl:text-[26px]">{{ $promotion->title }}</h3>
+        <h3 class="text-[36px] font-semibold leading-snug text-brand 2xl:text-[26px]">{{ $promotion->title }}</h3>
 
         @if ($promotion->excerpt)
-            <p class="mt-2 overflow-hidden text-[20px] leading-relaxed text-body [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:4] 2xl:text-[15px]">{{ $promotion->excerpt }}</p>
+            <p class="mt-2 overflow-hidden text-[20px] leading-relaxed text-brand [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:4] 2xl:text-[15px]">{{ $promotion->excerpt }}</p>
         @endif
     </div>
 

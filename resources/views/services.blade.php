@@ -28,7 +28,7 @@
                 Услуги
                 <img src="{{ asset('images/Arrow_right_light.svg') }}" alt="" class="w-[50px] max-lg:w-[38px]" aria-hidden="true">
             </h1>
-            <p class="max-w-[1140px] text-[24px] font-medium leading-[32px] text-brand [text-indent:25%] lg:text-[40px] lg:leading-[52px] lg:[text-indent:290px]">
+            <p class="max-w-[1140px] text-[22px] sm:text-[24px] font-medium leading-[32px] text-brand [text-indent:72px] sm:[text-indent:102px] lg:text-[40px] lg:leading-[52px] lg:[text-indent:290px]">
                 {{ $intro }}
             </p>
         </div>
@@ -42,7 +42,7 @@
             </div>
         @else
             <div class="mt-12 rounded-[24px] bg-surface px-8 py-16 text-center">
-                <p class="text-[20px] font-medium text-ink">Направления появятся в ближайшее время</p>
+                <p class="text-[20px] font-medium text-brand">Направления появятся в ближайшее время</p>
                 <p class="mt-2 text-[15px] text-muted">Администраторы клиники скоро наполнят этот раздел.</p>
             </div>
         @endif
