@@ -175,22 +175,6 @@
                     <h2 id="photos-heading" class="text-[22px] font-medium text-brand sm:text-[26px] lg:text-[32px]">
                         Фотографии
                     </h2>
-                    @if ($gallery->count() > 1)
-                        <div class="flex items-center gap-2">
-                            <button type="button" id="photos-prev" aria-label="Предыдущее фото"
-                                     class="grid h-10 w-10 place-items-center rounded-[10px] bg-brand text-white transition-opacity hover:opacity-90 sm:h-11 sm:w-11">
-                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
-                                </svg>
-                            </button>
-                            <button type="button" id="photos-next" aria-label="Следующее фото"
-                                    class="grid h-10 w-10 place-items-center rounded-[10px] bg-brand text-white transition-opacity hover:opacity-90 sm:h-11 sm:w-11">
-                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
-                                </svg>
-                            </button>
-                        </div>
-                    @endif
                 </div>
 
                 {{-- Слайдер или главное фото галереи (в макете — сцена с участницами) --}}
@@ -266,7 +250,7 @@
                     </div>
                 </div>
 
-                {{-- Пагинация партнеров (в точности по макету: [<] [1] [2] ... [5] [>]) --}}
+                <!-- {{-- Пагинация партнеров (в точности по макету: [<] [1] [2] ... [5] [>]) --}}
                 <nav aria-label="Пагинация партнеров" class="mt-8 flex items-center gap-2 sm:mt-10 lg:mt-12">
                     {{-- Кнопка назад --}}
                     @if ($partners->onFirstPage())
@@ -331,7 +315,7 @@
                     @endif
                 </nav>
             </section>
-        @endif
+        @endif -->
 
     @else
         {{-- ================= ЗАГЛУШКА ДЛЯ НЕЗАПОЛНЕННОГО ПРОЕКТА ================= --}}
