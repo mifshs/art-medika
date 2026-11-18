@@ -15,7 +15,7 @@ class AboutController extends Controller
     {
         $aboutImage = Setting::get(
             'about_image',
-            'https://cdn.jsdelivr.net/gh/mifshs/art-medika-media@main/cover/room.png'
+            asset('storage/cover/room.png')
         );
 
         $aboutStats = Setting::get('about_stats', [

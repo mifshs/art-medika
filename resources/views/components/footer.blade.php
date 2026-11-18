@@ -20,16 +20,16 @@
     ];
 
     $serviceNav = [
-        'Пластическая хирургия',
-        'Косметология',
-        'Топ-продукты',
-        'Дерматология',
-        'Оториноларингология',
-        'Лор-хирургия',
-        'Неврология и рефлексотерапия',
-        'Эстетическая гинекология',
-        'Терапевтический приём',
-        'Массаж',
+        ['href' => url('/uslugi/plasticheskaya-hirurgiya'), 'label' => 'Пластическая хирургия'],
+        ['href' => url('/uslugi/kosmetologiya'), 'label' => 'Косметология'],
+        ['href' => url('/uslugi/top-produkty-osnovnoe'), 'label' => 'Топ-продукты'],
+        ['href' => url('/uslugi/dermatologiya-osnovnoe'), 'label' => 'Дерматология'],
+        ['href' => url('/uslugi/otorinolaringologiya-osnovnoe'), 'label' => 'Оториноларингология'],
+        ['href' => url('/uslugi/lor-hirurgiya-osnovnoe'), 'label' => 'Лор-хирургия'],
+        ['href' => url('/uslugi/nevrologiya-i-refleksoterapiya-osnovnoe'), 'label' => 'Неврология и рефлексотерапия'],
+        ['href' => url('/uslugi/esteticheskaya-ginekologiya-osnovnoe'), 'label' => 'Эстетическая гинекология'],
+        ['href' => url('/uslugi/terapevticheskiy-priem-osnovnoe'), 'label' => 'Терапевтический приём'],
+        ['href' => url('/uslugi/massazh-osnovnoe'), 'label' => 'Массаж'],
     ];
 @endphp
 
@@ -42,12 +42,12 @@
                 <img src="{{ asset('images/logo.svg') }}" alt="Медико-косметологический центр «Арт-Медика»" class="h-8 w-auto sm:h-9">
             </a>
 
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2.5">
                 @foreach ($socialIcons as $network => $icon)
                     <a href="{{ $socials[$network] ?? '#' }}" target="_blank" rel="noopener"
                        aria-label="Мы в {{ mb_strtoupper($network) }}"
-                       class="grid h-8 w-8 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-colors hover:bg-surfaceh">
-                        <img src="{{ $icon }}" alt="" class="h-8 w-8 object-contain">
+                       class="grid h-10 w-10 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-200 hover:scale-105 hover:bg-surfaceh">
+                        <img src="{{ $icon }}" alt="" class="h-10 w-10 object-contain">
                     </a>
                 @endforeach
             </div>
@@ -109,12 +109,12 @@
                     <img src="{{ asset('images/logo.svg') }}" alt="Медико-косметологический центр «Арт-Медика»" class="h-10 w-auto sm:h-12">
                 </a>
 
-                <div class="mt-6 flex items-center gap-2.5">
+                <div class="mt-6 flex items-center gap-3">
                     @foreach ($socialIcons as $network => $icon)
                         <a href="{{ $socials[$network] ?? '#' }}" target="_blank" rel="noopener"
                            aria-label="Мы в {{ mb_strtoupper($network) }}"
-                           class="grid h-9 w-9 place-items-center overflow-hidden rounded-full bg-white transition-colors hover:bg-surfaceh">
-                            <img src="{{ $icon }}" alt="" class="h-9 w-9" width="36" height="36">
+                           class="grid h-10 w-10 2xl:h-11 2xl:w-11 place-items-center overflow-hidden rounded-full bg-white transition-transform duration-200 hover:scale-105 hover:bg-surfaceh">
+                            <img src="{{ $icon }}" alt="" class="h-10 w-10 2xl:h-11 2xl:w-11" width="44" height="44">
                         </a>
                     @endforeach
                 </div>
@@ -132,7 +132,7 @@
 
             {{-- Колонка 2: Клиника --}}
             <nav aria-label="Клиника">
-                <p class="text-[16px] font-semibold text-ink 2xl:text-[17px]">Клиника</p>
+                <p class="text-[16px] font-bold text-ink 2xl:text-[18px]">Клиника</p>
                 <ul class="mt-4 space-y-3 text-[14px] text-body sm:text-[15px]">
                     @foreach ($companyNav as $item)
                         <li><a href="{{ $item['href'] }}" class="transition-colors hover:text-brand">{{ $item['label'] }}</a></li>
@@ -142,10 +142,10 @@
 
             {{-- Колонка 3: Услуги --}}
             <nav aria-label="Услуги">
-                <p class="text-[16px] font-semibold text-ink 2xl:text-[17px]">Услуги</p>
+                <p class="text-[16px] font-bold text-ink 2xl:text-[18px]">Услуги</p>
                 <ul class="mt-4 space-y-3 text-[14px] text-body sm:text-[15px]">
-                    @foreach ($serviceNav as $label)
-                        <li><a href="#uslugi" class="transition-colors hover:text-brand">{{ $label }}</a></li>
+                    @foreach ($serviceNav as $item)
+                        <li><a href="{{ $item['href'] }}" class="transition-colors hover:text-brand">{{ $item['label'] }}</a></li>
                     @endforeach
                 </ul>
             </nav>

@@ -113,7 +113,7 @@
                         @php
                             $formatCover = $format->coverUrl();
                         @endphp
-                        <article class="relative h-[420px] w-[82vw] shrink-0 snap-start overflow-hidden rounded-[20px] sm:h-[480px] md:h-[480px] md:w-auto lg:h-[520px] lg:rounded-[24px] 2xl:h-[560px] group">
+                        <article class="relative h-[420px] w-[82vw] shrink-0 snap-start overflow-hidden rounded-[20px] sm:h-[480px] md:h-[480px] md:w-auto lg:h-[520px] lg:rounded-[24px] 2xl:h-[560px] group select-none border-2 border-transparent transition-all duration-300 hover:border-brand/40 hover:shadow-lg">
                             @if ($formatCover)
                                 <img src="{{ $formatCover }}"
                                      alt="{{ $format->title }}"

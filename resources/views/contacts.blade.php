@@ -35,7 +35,7 @@
                 </p>
             </div>
 
-            <h1 class="text-center text-[18px] font-medium leading-[1.3] text-brand sm:text-[22px] lg:text-left lg:text-[28px] lg:[text-indent:140px] 2xl:text-[36px] 2xl:[text-indent:200px]">
+            <h1 class="max-w-[1140px] text-[24px] font-medium leading-[32px] text-brand [text-indent:25%] lg:text-[40px] lg:leading-[52px] lg:[text-indent:290px]">
                 {{ $introText }}
             </h1>
         </div>
@@ -93,14 +93,14 @@
             {{-- Блок 1: Адрес --}}
             <div class="flex flex-col justify-between rounded-[20px] bg-[#F5F8FF] p-6 sm:p-7 2xl:rounded-[24px] 2xl:p-8">
                 <div>
-                    <h2 class="text-[18px] font-bold text-ink sm:text-[20px] 2xl:text-[22px]">Адрес</h2>
+                    <h2 class="text-[20px] font-semibold text-ink sm:text-[22px] 2xl:text-[24px]">Адрес</h2>
                     <div class="mt-4 text-[14px] leading-relaxed text-body sm:text-[15px] 2xl:text-[16px]">
                         <p class="whitespace-pre-line">{{ $contacts['address'] ?? '454007, Челябинская область, г. Челябинск, проспект Ленина 12 "А" (рядом Театр ЧТЗ)' }}</p>
                     </div>
                 </div>
                 <div class="mt-5 pt-2">
                     <a href="https://yandex.ru/maps/?rtext=~{{ $mapCoordinates['lat'] }},{{ $mapCoordinates['lng'] }}" target="_blank" rel="noopener"
-                       class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#2563EB] transition-colors duration-200 hover:text-[#1D4ED8] focus-visible:outline-offset-2">
+                       class="inline-flex items-center gap-1.5 text-[13px] font-medium text-[#2563EB] transition-colors duration-200 hover:text-[#1D4ED8] focus-visible:outline-offset-2">
                         <span>Проложить маршрут в Яндекс.Картах</span>
                         <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                             <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
@@ -112,7 +112,7 @@
             {{-- Блок 2: Телефоны --}}
             <div class="flex flex-col justify-between rounded-[20px] bg-[#F5F8FF] p-6 sm:p-7 2xl:rounded-[24px] 2xl:p-8">
                 <div>
-                    <h2 class="text-[18px] font-bold text-ink sm:text-[20px] 2xl:text-[22px]">Телефоны</h2>
+                    <h2 class="text-[20px] font-semibold text-ink sm:text-[22px] 2xl:text-[24px]">Телефоны</h2>
                     <div class="mt-4 space-y-2 text-[14px] leading-relaxed text-body sm:text-[15px] 2xl:text-[16px]">
                         <p>
                             <a href="tel:+73517751918" class="font-medium text-ink transition-colors duration-200 hover:text-brand focus-visible:outline-offset-2">
@@ -133,7 +133,7 @@
             {{-- Блок 3: E-mail --}}
             <div class="flex flex-col justify-between rounded-[20px] bg-[#F5F8FF] p-6 sm:p-7 2xl:rounded-[24px] 2xl:p-8">
                 <div>
-                    <h2 class="text-[18px] font-bold text-ink sm:text-[20px] 2xl:text-[22px]">E-mail</h2>
+                    <h2 class="text-[20px] font-semibold text-ink sm:text-[22px] 2xl:text-[24px]">E-mail</h2>
                     <div class="mt-4 space-y-2 text-[14px] leading-relaxed text-body sm:text-[15px] 2xl:text-[16px]">
                         <p>
                             <a href="mailto:{{ $contacts['email_tests'] ?? 'sender@artmdc.ru' }}" class="font-medium text-ink underline decoration-[#B9C6E2] underline-offset-4 transition-colors duration-200 hover:text-brand focus-visible:outline-offset-2">
@@ -157,7 +157,7 @@
             {{-- Блок 4: Сообщения --}}
             <div class="flex flex-col justify-between rounded-[20px] bg-[#F5F8FF] p-6 sm:p-7 2xl:rounded-[24px] 2xl:p-8">
                 <div>
-                    <h2 class="text-[18px] font-bold text-ink sm:text-[20px] 2xl:text-[22px]">Сообщения</h2>
+                    <h2 class="text-[20px] font-semibold text-ink sm:text-[22px] 2xl:text-[24px]">Сообщения</h2>
                     <div class="mt-4 text-[14px] leading-relaxed text-body sm:text-[15px] 2xl:text-[16px]">
                         <p>
                             <a href="tel:+79123263460" class="font-medium text-ink transition-colors duration-200 hover:text-brand focus-visible:outline-offset-2">
@@ -172,7 +172,7 @@
             {{-- Блок 5: Режим работы --}}
             <div class="flex flex-col justify-between rounded-[20px] bg-[#F5F8FF] p-6 sm:p-7 2xl:rounded-[24px] 2xl:p-8">
                 <div>
-                    <h2 class="text-[18px] font-bold text-ink sm:text-[20px] 2xl:text-[22px]">Режим работы</h2>
+                    <h2 class="text-[20px] font-semibold text-ink sm:text-[22px] 2xl:text-[24px]">Режим работы</h2>
                     <div class="mt-4 text-[14px] leading-relaxed text-body sm:text-[15px] 2xl:text-[16px]">
                         <p class="font-medium text-ink">
                             {{ $contacts['work_hours'] ?? 'ПН-СБ с 9:00 до 20:00' }}

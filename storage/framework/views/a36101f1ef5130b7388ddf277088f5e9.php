@@ -43,12 +43,12 @@ unset($__defined_vars, $__key, $__value); ?>
     
     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($image): ?>
         <img src="<?php echo e($image); ?>" alt="" loading="lazy"
-             class="pointer-events-none absolute inset-0 h-full w-full object-cover">
+             class="pointer-events-none absolute inset-0 h-full w-full object-cover object-right">
     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
     
-    <div class="pointer-events-none absolute inset-0 bg-[rgba(182,211,255,0.2)]"></div>
-    <div class="pointer-events-none absolute inset-0 bg-[rgba(182,211,255,0.1)]"></div>
+    <div class="pointer-events-none absolute inset-0 bg-[#DEE8F8]/40"></div>
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#EBF2FC] via-[#EBF2FC]/80 to-transparent"></div>
 
     
     <h3 class="relative z-10 text-[36px] font-medium leading-tight text-[#212529] max-md:text-2xl">

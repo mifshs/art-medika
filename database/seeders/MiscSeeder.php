@@ -79,11 +79,11 @@ class MiscSeeder extends Seeder
             'telegram' => 'https://t.me/artmedica',
             'ok'       => 'https://ok.ru/artmedica',
         ]);
-        Setting::set('logo', $gh('docs/logo.png') ?? 'https://picsum.photos/seed/art-medika-logo/400/160');
+        Setting::set('logo', '/storage/docs/logo.png');
         Setting::set('social_icons', [
-            'vk'       => $gh('docs/Vk_logo.png')             ?? 'https://picsum.photos/seed/vk-icon/64/64',
-            'telegram' => $gh('docs/Telegram_logo 1.png')     ?? 'https://picsum.photos/seed/tg-icon/64/64',
-            'max'      => $gh('docs/max-messenger-sign-logo 1.png') ?? 'https://picsum.photos/seed/max-icon/64/64',
+            'vk'       => '/storage/docs/Vk_logo.png',
+            'telegram' => '/storage/docs/Telegram_logo 1.png',
+            'max'      => '/storage/docs/max-messenger-sign-logo 1.png',
         ]);
         Setting::set('video_url', 'https://vkvideo.ru/video-211242323_456240899');
         Setting::set('disclaimer', 'ИМЕЮТСЯ ПРОТИВОПОКАЗАНИЯ. НЕОБХОДИМА КОНСУЛЬТАЦИЯ СПЕЦИАЛИСТА');

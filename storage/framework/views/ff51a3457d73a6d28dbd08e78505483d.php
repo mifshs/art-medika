@@ -71,7 +71,7 @@
                 </p>
             </div>
 
-            <h1 class="text-center text-[18px] font-medium leading-[1.3] text-brand sm:text-[22px] lg:text-left lg:text-[28px] lg:[text-indent:140px] 2xl:text-[36px] 2xl:[text-indent:200px]">
+            <h1 class="text-[24px] font-semibold leading-[1.25] tracking-[-0.01em] text-brand sm:text-[32px] lg:text-[36px] 2xl:text-[44px] lg:[text-indent:240px] 2xl:[text-indent:320px]">
                 <?php echo e($introText); ?>
 
             </h1>
@@ -88,7 +88,7 @@
 
         
         <div class="flex flex-col justify-between">
-            <div class="space-y-4 text-[14px] leading-relaxed text-body sm:text-[15px] lg:text-[16px] 2xl:text-[17px]">
+            <div class="space-y-4 text-[14px] leading-relaxed text-body sm:text-[15px] lg:text-[26px] 2xl:text-[28px]">
                 <p>
                     Центр «Арт-Медика» — партнер ЮУГМУ, клиническая база «Межрегионального центра непрерывного медицинского и фармацевтического образования» (г. Москва). Наша клиника является участником международных проектов в направлении "Пластическая хирургия и косметология".
                 </p>
@@ -104,11 +104,11 @@
                         $isThirdOnMobile = ($index === 2);
                     ?>
                     <div class="flex flex-col justify-between rounded-[16px] bg-[#F4F7FD] p-4 2xl:p-5 <?php echo e($isThirdOnMobile ? 'max-sm:col-span-2' : ''); ?>">
-                        <span class="text-[24px] font-medium leading-none text-brand sm:text-[28px] 2xl:text-[34px]">
+                        <span class="text-[24px] font-medium leading-none text-brand sm:text-[28px] xl:text-[60px] 2xl:text-[64px]">
                             <?php echo e($stat['value'] ?? ''); ?>
 
                         </span>
-                        <span class="mt-2 text-[11px] leading-snug text-[#7E93AC] sm:text-[12px] 2xl:text-[13px]">
+                        <span class="mt-2 text-[11px] leading-snug text-brand sm:text-[12px] xl:text-[20px] 2xl:text-[24px]">
                             <?php echo e($stat['label'] ?? ''); ?>
 
                         </span>

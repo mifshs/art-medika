@@ -14,7 +14,7 @@
 
     <main class="mx-auto w-full max-w-[1720px] px-4 pb-16 sm:px-6 md:px-10 2xl:px-0">
         {{-- Хлебные крошки --}}
-        <nav aria-label="Хлебные крошки" class="flex items-center gap-2 pt-6 text-[15px] text-body">
+    <nav aria-label="Хлебные крошки" class="flex items-center gap-2 pt-5 text-[15px] text-brand sm:pt-6 sm:text-[16px] 2xl:text-[18px]">
             <a href="{{ url('/') }}" class="transition-colors hover:text-brand">Арт-Медика</a>
             <img src="{{ asset('images/_.svg') }}" alt="" class="h-3 w-auto" aria-hidden="true">
             <span class="font-medium text-ink">Акции</span>
@@ -26,7 +26,7 @@
                 Акции
                 <img src="{{ asset('images/Arrow_right_light.svg') }}" alt="" class="w-[50px] max-lg:w-[38px]" aria-hidden="true">
             </h1>
-            <p class="max-w-[1140px] text-[40px] font-medium leading-tight text-[#1D293D] max-lg:text-2xl">
+            <p class="max-w-[1140px] text-[40px] font-medium leading-tight text-brand max-lg:text-2xl">
                 Мы регулярно предлагаем выгодные акции и специальные предложения на популярные
                 услуги, чтобы вы могли получать качественную медицинскую помощь по привлекательной стоимости
             </p>

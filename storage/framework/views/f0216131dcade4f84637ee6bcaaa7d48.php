@@ -20,16 +20,16 @@
     ];
 
     $serviceNav = [
-        'Пластическая хирургия',
-        'Косметология',
-        'Топ-продукты',
-        'Дерматология',
-        'Оториноларингология',
-        'Лор-хирургия',
-        'Неврология и рефлексотерапия',
-        'Эстетическая гинекология',
-        'Терапевтический приём',
-        'Массаж',
+        ['href' => url('/uslugi/plasticheskaya-hirurgiya'), 'label' => 'Пластическая хирургия'],
+        ['href' => url('/uslugi/kosmetologiya'), 'label' => 'Косметология'],
+        ['href' => url('/uslugi/top-produkty-osnovnoe'), 'label' => 'Топ-продукты'],
+        ['href' => url('/uslugi/dermatologiya-osnovnoe'), 'label' => 'Дерматология'],
+        ['href' => url('/uslugi/otorinolaringologiya-osnovnoe'), 'label' => 'Оториноларингология'],
+        ['href' => url('/uslugi/lor-hirurgiya-osnovnoe'), 'label' => 'Лор-хирургия'],
+        ['href' => url('/uslugi/nevrologiya-i-refleksoterapiya-osnovnoe'), 'label' => 'Неврология и рефлексотерапия'],
+        ['href' => url('/uslugi/esteticheskaya-ginekologiya-osnovnoe'), 'label' => 'Эстетическая гинекология'],
+        ['href' => url('/uslugi/terapevticheskiy-priem-osnovnoe'), 'label' => 'Терапевтический приём'],
+        ['href' => url('/uslugi/massazh-osnovnoe'), 'label' => 'Массаж'],
     ];
 ?>
 
@@ -42,12 +42,12 @@
                 <img src="<?php echo e(asset('images/logo.svg')); ?>" alt="Медико-косметологический центр «Арт-Медика»" class="h-8 w-auto sm:h-9">
             </a>
 
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2.5">
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $socialIcons; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $network => $icon): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <a href="<?php echo e($socials[$network] ?? '#'); ?>" target="_blank" rel="noopener"
                        aria-label="Мы в <?php echo e(mb_strtoupper($network)); ?>"
-                       class="grid h-8 w-8 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-colors hover:bg-surfaceh">
-                        <img src="<?php echo e($icon); ?>" alt="" class="h-8 w-8 object-contain">
+                       class="grid h-10 w-10 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-200 hover:scale-105 hover:bg-surfaceh">
+                        <img src="<?php echo e($icon); ?>" alt="" class="h-10 w-10 object-contain">
                     </a>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
             </div>
@@ -109,12 +109,12 @@
                     <img src="<?php echo e(asset('images/logo.svg')); ?>" alt="Медико-косметологический центр «Арт-Медика»" class="h-10 w-auto sm:h-12">
                 </a>
 
-                <div class="mt-6 flex items-center gap-2.5">
+                <div class="mt-6 flex items-center gap-3">
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $socialIcons; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $network => $icon): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <a href="<?php echo e($socials[$network] ?? '#'); ?>" target="_blank" rel="noopener"
                            aria-label="Мы в <?php echo e(mb_strtoupper($network)); ?>"
-                           class="grid h-9 w-9 place-items-center overflow-hidden rounded-full bg-white transition-colors hover:bg-surfaceh">
-                            <img src="<?php echo e($icon); ?>" alt="" class="h-9 w-9" width="36" height="36">
+                           class="grid h-10 w-10 2xl:h-11 2xl:w-11 place-items-center overflow-hidden rounded-full bg-white transition-transform duration-200 hover:scale-105 hover:bg-surfaceh">
+                            <img src="<?php echo e($icon); ?>" alt="" class="h-10 w-10 2xl:h-11 2xl:w-11" width="44" height="44">
                         </a>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                 </div>
@@ -132,7 +132,7 @@
 
             
             <nav aria-label="Клиника">
-                <p class="text-[16px] font-semibold text-ink 2xl:text-[17px]">Клиника</p>
+                <p class="text-[16px] font-bold text-ink 2xl:text-[18px]">Клиника</p>
                 <ul class="mt-4 space-y-3 text-[14px] text-body sm:text-[15px]">
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $companyNav; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <li><a href="<?php echo e($item['href']); ?>" class="transition-colors hover:text-brand"><?php echo e($item['label']); ?></a></li>
@@ -142,10 +142,10 @@
 
             
             <nav aria-label="Услуги">
-                <p class="text-[16px] font-semibold text-ink 2xl:text-[17px]">Услуги</p>
+                <p class="text-[16px] font-bold text-ink 2xl:text-[18px]">Услуги</p>
                 <ul class="mt-4 space-y-3 text-[14px] text-body sm:text-[15px]">
-                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $serviceNav; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $label): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <li><a href="#uslugi" class="transition-colors hover:text-brand"><?php echo e($label); ?></a></li>
+                    <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $serviceNav; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li><a href="<?php echo e($item['href']); ?>" class="transition-colors hover:text-brand"><?php echo e($item['label']); ?></a></li>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                 </ul>
             </nav>

@@ -213,7 +213,7 @@ if (isset($__slots)) unset($__slots);
                 <svg class="h-[0.8em] w-[0.8em] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </p>
             <h2 class="text-[26px] font-semibold leading-[1.25] tracking-[-0.01em] text-brand sm:text-[32px] lg:text-[36px] 2xl:text-[44px] lg:[text-indent:240px] 2xl:[text-indent:320px]">
-                Команда профессионалов, постоянно растущих в своих направлениях
+                Наши специалисты — это команда профессионалов с многолетним опытом в пластической хирургии и косметологии. Они постоянно повышают своё мастерство, чтобы дарить вам гармонию, уверенность в себе и в своём теле.
             </h2>
         </div>
 
@@ -228,15 +228,15 @@ if (isset($__slots)) unset($__slots);
              data-swiper='{"navigation":{"prevEl":"#experts-prev","nextEl":"#experts-next"},"spaceBetween":12,"breakpoints":{"1024":{"spaceBetween":16}}}'>
             <div class="swiper-wrapper">
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $experts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $expert): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <article data-tag="<?php echo e($expert->department?->name ?: 'Все'); ?>" class="swiper-slide group relative aspect-[0.67] overflow-hidden rounded-2xl">
+                    <a href="<?php echo e(route('specialists.show', $expert->slug)); ?>" data-tag="<?php echo e($expert->department?->name ?: 'Все'); ?>" class="swiper-slide group relative aspect-[0.67] overflow-hidden rounded-2xl block select-none border-[3px] border-transparent transition-all duration-300 hover:border-brand hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2">
                         <img src="<?php echo e($expert->avatarUrl()); ?>" alt="<?php echo e($expert->name); ?>" width="560" height="640" loading="lazy"
                              class="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]">
                         <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
-                        <div class="relative z-10 flex h-full flex-col justify-end p-5 2xl:p-7">
+                        <div class="relative z-10 flex h-full flex-col justify-end p-5 2xl:p-7 pointer-events-none">
                             <h3 class="text-[15px] font-semibold leading-snug text-white sm:text-[19px] 2xl:text-[23px]"><?php echo e($expert->name); ?></h3>
                             <p class="mt-1.5 text-[12px] leading-snug text-white/85 sm:text-[13px] 2xl:text-[15px]"><?php echo e(\Illuminate\Support\Str::limit($expert->position, 180, end: '…')); ?></p>
                         </div>
-                    </article>
+                    </a>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
             </div>
         </div>
@@ -261,7 +261,7 @@ if (isset($__slots)) unset($__slots);
                 <svg class="h-[0.8em] w-[0.8em] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
             <h2 class="text-[26px] font-semibold leading-[1.25] tracking-[-0.01em] text-brand sm:text-[32px] lg:text-[36px] 2xl:text-[44px] lg:[text-indent:240px] 2xl:[text-indent:320px]">
-                Собираем для вас актуальные проекты в сфере медицины и эстетической хирургии
+                Подбираем для вас самые актуальные и интересные проекты из нашей практики, медицины и эстетической хирургии, с заботой о вас.
             </h2>
         </div>
 
@@ -269,24 +269,25 @@ if (isset($__slots)) unset($__slots);
             <div id="projects-track" class="swiper mt-8 lg:mt-12" aria-label="Проекты"
                  data-swiper='{"navigation":{"prevEl":"#projects-prev","nextEl":"#projects-next"},"spaceBetween":16,"breakpoints":{"1024":{"spaceBetween":20},"1920":{"spaceBetween":24}}}'>
                 <div class="swiper-wrapper">
-                    <article class="swiper-slide rounded-[20px] bg-surface p-4 sm:p-5 lg:grid-cols-[46%_1fr] lg:gap-6 lg:p-5 2xl:gap-8 2xl:p-6">
-                        <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($projectBig->slug); ?>" class="block overflow-hidden rounded-[14px]">
+                    <article class="swiper-slide group relative select-none cursor-pointer rounded-[20px] bg-surface p-4 sm:p-5 lg:grid-cols-[46%_1fr] lg:gap-6 lg:p-5 2xl:gap-8 2xl:p-6 border-[3px] border-transparent transition-all duration-300 hover:border-brand hover:shadow-lg">
+                        <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($projectBig->slug); ?>" class="absolute inset-0 z-10 rounded-[inherit] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2" aria-label="Открыть проект «<?php echo e($projectBig->title); ?>»"></a>
+                        <div class="block overflow-hidden rounded-[14px]">
                             <img src="<?php echo e($projectBig->coverUrl()); ?>" alt="<?php echo e($projectBig->title); ?>" width="1024" height="576"
-                                 class="h-[240px] w-full object-cover transition-transform duration-500 hover:scale-[1.02] sm:h-[300px] lg:h-full">
-                        </a>
-                        <div class="flex min-w-0 flex-col pt-5 lg:py-1 lg:pr-6 2xl:pr-8">
+                                 class="h-[240px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02] sm:h-[300px] lg:h-full">
+                        </div>
+                        <div class="flex min-w-0 flex-col pt-5 lg:py-1 lg:pr-6 2xl:pr-8 pointer-events-none">
                             <div class="flex items-start justify-between gap-4">
-                                <a href="<?php echo e(route('projects')); ?>" class="text-[14px] text-body transition-colors hover:text-brand sm:text-[15px] 2xl:text-[16px]">Проекты</a>
-                                <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($projectBig->slug); ?>" aria-label="Открыть проект «<?php echo e($projectBig->title); ?>»" class="shrink-0 text-ink transition-colors hover:text-brand">
+                                <span class="text-[14px] text-body sm:text-[15px] 2xl:text-[16px]">Проекты</span>
+                                <span class="shrink-0 text-ink transition-colors group-hover:text-brand">
                                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                </a>
+                                </span>
                             </div>
                             <div class="my-auto py-5 lg:py-4">
                                 <h3 class="text-[22px] font-semibold leading-tight text-ink sm:text-[26px] 2xl:text-[32px]">
-                                    <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($projectBig->slug); ?>" class="transition-colors hover:text-brand">
+                                    <span class="transition-colors group-hover:text-brand">
                                         <?php echo e($projectBig->title); ?>
 
-                                    </a>
+                                    </span>
                                 </h3>
                                 <p class="mt-4 text-[14px] leading-relaxed text-body sm:text-[16px] 2xl:mt-5 2xl:text-[17px]">
                                     <?php echo e(\Illuminate\Support\Str::limit($projectBig->excerpt ?? '', 220, end: '…')); ?>
@@ -298,44 +299,46 @@ if (isset($__slots)) unset($__slots);
                     </article>
 
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $projectSmall; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $project): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <article class="swiper-slide rounded-[20px] bg-surface p-4 sm:p-5">
+                        <article class="swiper-slide group relative select-none cursor-pointer rounded-[20px] bg-surface p-4 sm:p-5 border-[3px] border-transparent transition-all duration-300 hover:border-brand hover:shadow-lg">
+                            <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($project->slug); ?>" class="absolute inset-0 z-10 rounded-[inherit] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2" aria-label="Открыть проект «<?php echo e($project->title); ?>»"></a>
                             <div class="flex items-start justify-between gap-3">
-                                <a href="<?php echo e(route('projects')); ?>" class="text-[14px] text-body transition-colors hover:text-brand sm:text-[15px] 2xl:text-[16px]">Проекты</a>
-                                <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($project->slug); ?>" aria-label="Открыть проект «<?php echo e($project->title); ?>»" class="shrink-0 text-ink transition-colors hover:text-brand">
+                                <span class="text-[14px] text-body sm:text-[15px] 2xl:text-[16px]">Проекты</span>
+                                <span class="shrink-0 text-ink transition-colors group-hover:text-brand">
                                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                </a>
+                                </span>
                             </div>
-                            <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($project->slug); ?>" class="mt-4 block overflow-hidden rounded-[14px]">
+                            <div class="mt-4 block overflow-hidden rounded-[14px]">
                                 <img src="<?php echo e($project->coverUrl()); ?>" alt="<?php echo e($project->title); ?>" width="800" height="800" loading="lazy"
-                                     class="h-[200px] w-full object-cover transition-transform duration-500 hover:scale-[1.03] sm:h-[240px] lg:h-[260px] 2xl:h-[360px]">
-                            </a>
+                                     class="h-[200px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03] sm:h-[240px] lg:h-[260px] 2xl:h-[360px]">
+                            </div>
                             <h3 class="mt-5 line-clamp-2 text-[17px] font-semibold leading-snug text-ink sm:text-[19px] 2xl:text-[21px]">
-                                <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($project->slug); ?>" class="transition-colors hover:text-brand">
+                                <span class="transition-colors group-hover:text-brand">
                                     <?php echo e($project->title); ?>
 
-                                </a>
+                                </span>
                             </h3>
                             <p class="mt-auto pt-4 text-[14px] text-[#91B5D5] 2xl:text-[15px]"><?php echo e($project->published_at ? \Illuminate\Support\Carbon::parse($project->published_at)->format('d.m.Y') : ''); ?></p>
                         </article>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $projectFormats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $format): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <article class="swiper-slide rounded-[20px] bg-surface p-4 sm:p-5">
+                        <article class="swiper-slide group relative select-none cursor-pointer rounded-[20px] bg-surface p-4 sm:p-5 border-[3px] border-transparent transition-all duration-300 hover:border-brand hover:shadow-lg">
+                            <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($projectBig->slug); ?>" class="absolute inset-0 z-10 rounded-[inherit] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2" aria-label="Открыть проект «<?php echo e($format->title); ?>»"></a>
                             <div class="flex items-start justify-between gap-3">
-                                <a href="<?php echo e(route('projects')); ?>" class="text-[14px] text-body transition-colors hover:text-brand sm:text-[15px] 2xl:text-[16px]">Проекты</a>
-                                <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($projectBig->slug); ?>" aria-label="Открыть проект «<?php echo e($format->title); ?>»" class="shrink-0 text-ink transition-colors hover:text-brand">
+                                <span class="text-[14px] text-body sm:text-[15px] 2xl:text-[16px]">Проекты</span>
+                                <span class="shrink-0 text-ink transition-colors group-hover:text-brand">
                                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                </a>
+                                </span>
                             </div>
-                            <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($projectBig->slug); ?>" class="mt-4 block overflow-hidden rounded-[14px]">
+                            <div class="mt-4 block overflow-hidden rounded-[14px]">
                                 <img src="<?php echo e($format->coverUrl()); ?>" alt="<?php echo e($format->title); ?>" width="800" height="800" loading="lazy"
-                                     class="h-[200px] w-full object-cover transition-transform duration-500 hover:scale-[1.03] sm:h-[240px] lg:h-[260px] 2xl:h-[360px]">
-                            </a>
+                                     class="h-[200px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03] sm:h-[240px] lg:h-[260px] 2xl:h-[360px]">
+                            </div>
                             <h3 class="mt-auto line-clamp-2 pt-5 text-[17px] font-semibold leading-snug text-ink sm:text-[19px] 2xl:text-[21px]">
-                                <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($projectBig->slug); ?>" class="transition-colors hover:text-brand">
+                                <span class="transition-colors group-hover:text-brand">
                                     <?php echo e($format->title); ?>
 
-                                </a>
+                                </span>
                             </h3>
                         </article>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
@@ -395,7 +398,7 @@ if (isset($__slots)) unset($__slots);
                  data-swiper='{"navigation":{"prevEl":"#reviews-prev","nextEl":"#reviews-next"},"spaceBetween":16,"breakpoints":{"1024":{"spaceBetween":32}}}'>
                 <div class="swiper-wrapper">
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $reviews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $review): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <article class="swiper-slide rounded-2xl bg-surface p-5 sm:p-7 2xl:p-9">
+                        <article class="swiper-slide select-none rounded-2xl bg-surface p-5 sm:p-7 2xl:p-9 border-[3px] border-transparent transition-all duration-300 hover:border-brand hover:shadow-lg">
                         <div class="flex items-start justify-between gap-4">
                             <div>
                                 <h3 class="text-[20px] font-semibold leading-tight text-ink sm:text-[22px] 2xl:text-[26px]"><?php echo e($review->author_name); ?></h3>

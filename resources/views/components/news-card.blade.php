@@ -9,21 +9,23 @@
 @endphp
 
 {{-- Карточка новости (макет Figma: фон #F3F6FD, скруглённые углы, шрифт Onest) --}}
-<article class="group relative flex h-full flex-col justify-between rounded-[20px] bg-[#F3F6FD] p-4 transition-all duration-300 hover:shadow-md sm:rounded-[24px] sm:p-5 lg:p-6">
-    <div class="flex flex-col">
+<article class="group relative select-none cursor-pointer flex h-full flex-col justify-between rounded-[20px] bg-[#F3F6FD] p-4 border-[3px] border-transparent transition-all duration-300 hover:border-brand hover:shadow-lg sm:rounded-[24px] sm:p-5 lg:p-6">
+    {{-- Ссылка на всю карточку --}}
+    <a href="{{ $detailUrl }}" class="absolute inset-0 z-10 rounded-[inherit] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2" aria-label="Открыть «{{ $news->title }}»"></a>
+
+    <div class="flex flex-col pointer-events-none">
         {{-- Верхняя строка: Категория контента и стрелка перехода ↗ --}}
         <div class="flex items-center justify-between gap-2 text-[13px] text-[#7E93AC] sm:text-[14px]">
             <span>{{ $typeLabel }} / {{ $categoryName }}</span>
-            <a href="{{ $detailUrl }}" aria-label="Открыть «{{ $news->title }}»"
-               class="inline-flex h-5 w-5 shrink-0 items-center justify-center text-[#1A1A1A] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+            <span class="inline-flex h-5 w-5 shrink-0 items-center justify-center text-[#1A1A1A] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand">
                 <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M7 17L17 7H8.5M17 7v8.5"/>
                 </svg>
-            </a>
+            </span>
         </div>
 
         {{-- Фотография с внутренними скруглёнными краями --}}
-        <a href="{{ $detailUrl }}" class="mt-3 block overflow-hidden rounded-[14px] sm:rounded-[18px]">
+        <div class="mt-3 block overflow-hidden rounded-[14px] sm:rounded-[18px]">
             @if ($coverUrl)
                 <img src="{{ $coverUrl }}" alt="{{ $news->title }}" loading="lazy"
                      class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105">
@@ -34,19 +36,17 @@
                     </svg>
                 </div>
             @endif
-        </a>
+        </div>
 
         {{-- Заголовок новости --}}
         <h3 class="mt-4 text-[16px] font-semibold leading-[1.3] text-[#1A1A1A] transition-colors group-hover:text-brand sm:text-[18px] lg:text-[19px]">
-            <a href="{{ $detailUrl }}" class="transition-colors hover:text-brand">
-                {{ $news->title }}
-            </a>
+            {{ $news->title }}
         </h3>
     </div>
 
     {{-- Дата публикации (макет: Onest, цвет #91B5D5) --}}
     @if ($date)
-        <div class="mt-4 pt-2">
+        <div class="mt-4 pt-2 pointer-events-none">
             <span class="text-[13px] font-normal text-[#91B5D5] sm:text-[14px] 2xl:text-[15px]">
                 {{ $date }}
             </span>

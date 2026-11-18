@@ -56,23 +56,25 @@
                     @endphp
 
                     {{-- Карточка: размер до 1720x440 на десктопе, внутренний отступ 20px, фон #F3F4FB --}}
-                    <article class="flex w-full flex-col justify-between gap-5 rounded-[24px] bg-surface p-5 sm:p-5 lg:min-h-[440px] lg:flex-row lg:items-stretch lg:gap-8">
+                    <article class="group relative select-none cursor-pointer flex w-full flex-col justify-between gap-5 rounded-[24px] bg-surface p-5 border-[3px] border-transparent transition-all duration-300 hover:border-brand hover:shadow-lg sm:p-5 lg:min-h-[440px] lg:flex-row lg:items-stretch lg:gap-8">
+                        {{-- Ссылка на всю карточку --}}
+                        <a href="{{ $itemUrl }}" class="absolute inset-0 z-10 rounded-[inherit] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2" aria-label="Открыть направление «{{ $item->name }}»"></a>
+
                         {{-- Левая колонка: Заголовок 36px, кнопка «Подробнее» --}}
-                        <div class="flex flex-col justify-between max-lg:gap-4 lg:w-[260px] lg:shrink-0 xl:w-[300px]">
-                            <h2 class="text-[20px] font-medium leading-tight text-ink sm:text-[26px] lg:text-[36px]">
+                        <div class="flex flex-col justify-between max-lg:gap-4 lg:w-[260px] lg:shrink-0 xl:w-[300px] pointer-events-none">
+                            <h2 class="text-[20px] font-medium leading-tight text-ink transition-colors group-hover:text-brand sm:text-[26px] lg:text-[36px]">
                                 {{ $item->name }}
                             </h2>
 
                             <div class="hidden lg:block">
-                                <a href="{{ $itemUrl }}"
-                                   class="inline-flex items-center justify-center rounded-full bg-brand px-8 py-3.5 text-[16px] font-semibold text-white transition-colors hover:bg-brandh focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand">
+                                <span class="inline-flex items-center justify-center rounded-full bg-brand px-8 py-3.5 text-[16px] font-semibold text-white transition-all group-hover:bg-[#2A1A13] shadow-sm">
                                     Подробнее
-                                </a>
+                                </span>
                             </div>
                         </div>
 
                         {{-- Центральная колонка: Текст на карточке 20px (на мобиле скрыт/адаптирован как в макете) --}}
-                        <div class="hidden flex-1 items-center justify-center px-4 lg:flex">
+                        <div class="hidden flex-1 items-center justify-center px-4 lg:flex pointer-events-none">
                             @if ($item->description)
                                 <p class="max-w-[460px] text-[20px] font-normal leading-relaxed text-ink">
                                     {{ $item->description }}
@@ -81,10 +83,10 @@
                         </div>
 
                         {{-- Правая колонка: Картинка со скруглением краев 10px --}}
-                        <div class="relative h-[200px] w-full shrink-0 overflow-hidden rounded-[10px] bg-hero sm:h-[260px] lg:h-auto lg:w-[480px] xl:w-[540px] 2xl:w-[560px]">
+                        <div class="relative h-[200px] w-full shrink-0 overflow-hidden rounded-[10px] bg-hero sm:h-[260px] lg:h-auto lg:w-[480px] xl:w-[540px] 2xl:w-[560px] pointer-events-none">
                             @if ($cover)
                                 <img src="{{ $cover }}" alt="{{ $item->name }}" loading="lazy"
-                                     class="h-full w-full rounded-[10px] object-cover">
+                                     class="h-full w-full rounded-[10px] object-cover transition-transform duration-500 group-hover:scale-105">
                             @else
                                 <div class="grid h-full w-full place-items-center rounded-[10px] bg-[#E9ECF4]">
                                     <span class="font-serif text-[24px] italic font-semibold tracking-tight text-brand">Арт-Медика</span>
@@ -93,11 +95,10 @@
                         </div>
 
                         {{-- Кнопка «Подробнее» для планшетов и мобилок под карточкой/картинкой (если нужна) --}}
-                        <div class="block lg:hidden">
-                            <a href="{{ $itemUrl }}"
-                               class="inline-flex w-full items-center justify-center rounded-full bg-brand px-6 py-3 text-[15px] font-semibold text-white transition-colors hover:bg-brandh">
+                        <div class="block lg:hidden pointer-events-none">
+                            <span class="inline-flex w-full items-center justify-center rounded-full bg-brand px-6 py-3 text-[15px] font-semibold text-white transition-all group-hover:bg-[#2A1A13] shadow-sm">
                                 Подробнее
-                            </a>
+                            </span>
                         </div>
                     </article>
                 @endforeach

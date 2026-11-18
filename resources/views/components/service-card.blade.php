@@ -11,12 +11,12 @@
     {{-- Фон = одна картинка на всю карточку --}}
     @if ($image)
         <img src="{{ $image }}" alt="" loading="lazy"
-             class="pointer-events-none absolute inset-0 h-full w-full object-cover">
+             class="pointer-events-none absolute inset-0 h-full w-full object-cover object-right">
     @endif
 
-    {{-- Два затемнения #B6D3FF: 20% и 10% --}}
-    <div class="pointer-events-none absolute inset-0 bg-[rgba(182,211,255,0.2)]"></div>
-    <div class="pointer-events-none absolute inset-0 bg-[rgba(182,211,255,0.1)]"></div>
+    {{-- Полупрозрачная тонировка карточки под макет --}}
+    <div class="pointer-events-none absolute inset-0 bg-[#DEE8F8]/40"></div>
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#EBF2FC] via-[#EBF2FC]/80 to-transparent"></div>
 
     {{-- Заголовок: лево-верх --}}
     <h3 class="relative z-10 text-[36px] font-medium leading-tight text-[#212529] max-md:text-2xl">

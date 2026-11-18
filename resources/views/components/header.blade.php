@@ -4,17 +4,43 @@
     $phoneTel = preg_replace('/\D+/', '', (string) ($contacts['phone'] ?? ''));
     $nav      = [
         ['href' => '/o-centre',      'label' => 'О клинике'],
-        ['href' => '/uslugi', 'label' => 'Услуги'],
+        ['href' => '/uslugi',        'label' => 'Услуги'],
         ['href' => '/spetsialisty',  'label' => 'Специалисты'],
         ['href' => '/stock',         'label' => 'Акции'],
         ['href' => '/documents',     'label' => 'Документы'],
         ['href' => '/kontakty',      'label' => 'Контакты'],
     ];
+
+    $burgerServices = [
+        ['href' => '/uslugi/plasticheskaya-hirurgiya', 'label' => 'Пластическая хирургия'],
+        ['href' => '/uslugi/kosmetologiya',            'label' => 'Косметология'],
+        ['href' => '/uslugi/top-produkty',             'label' => 'Топ-продукты'],
+        ['href' => '/uslugi/dermatologiya',            'label' => 'Дерматология'],
+        ['href' => '/uslugi/otorinolaringologiya',     'label' => 'Оториноларингология'],
+        ['href' => '/uslugi/lor-hirurgiya',            'label' => 'Лор-хирургия'],
+        ['href' => '/uslugi/nevrologiya-i-refleksoterapiya', 'label' => 'Неврология и рефлексотерапия'],
+        ['href' => '/uslugi/esteticheskaya-ginekologiya', 'label' => 'Эстетическая гинекология'],
+        ['href' => '/uslugi/terapevticheskiy-priem',   'label' => 'Терапевтический приём'],
+        ['href' => '/uslugi/massazh',                  'label' => 'Массаж'],
+    ];
+
+    $burgerNav = [
+        ['href' => '/o-centre',      'label' => 'О клинике'],
+        ['href' => '/spetsialisty',  'label' => 'Специалисты'],
+        ['href' => '/uslugi',        'label' => 'Услуги'],
+        ['href' => '/proekty',       'label' => 'Проекты'],
+        ['href' => '/stock',         'label' => 'Акции'],
+        ['href' => '/news',          'label' => 'Новости'],
+        ['href' => '/prices',        'label' => 'Цены'],
+        ['href' => '/kontakty',      'label' => 'Контакты'],
+        ['href' => '/documents',     'label' => 'Документы'],
+        ['href' => '/faq',           'label' => 'Вопросы и ответы'],
+    ];
 @endphp
 
 <a href="#main-content" class="skip-to-content">Перейти к основному содержимому</a>
 
-<header x-data="{ menu: false }" @keydown.escape.window="menu = false" class="bg-white font-onest">
+<header x-data="{ menu: false, servicesOpen: false }" @keydown.escape.window="menu = false" class="bg-white font-onest">
     <div class="relative mx-auto flex w-full max-w-[1720px] items-center justify-between gap-6 px-4 py-3 sm:py-5 sm:px-6 md:px-10 2xl:px-0">
         <button type="button" @click="menu = !menu" :aria-expanded="menu" aria-controls="mobile-menu" aria-label="Открыть меню навигации"
                 class="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-border transition-all duration-150 hover:bg-surface active:scale-95 focus-visible:outline-offset-2 lg:hidden">
@@ -40,12 +66,82 @@
         </div>
     </div>
 
-    <div id="mobile-menu" x-show="menu" x-collapse x-cloak class="lg:hidden border-t border-border px-4 py-4">
-        <nav class="grid gap-1 text-[15px] font-medium text-body" aria-label="Мобильное меню">
-            @foreach ($nav as $item)
-                <a class="rounded-lg px-3 py-2 transition-colors hover:bg-surface active:scale-[0.98] focus-visible:outline-offset-2" href="{{ $item['href'] }}">{{ $item['label'] }}</a>
-            @endforeach
-            <a href="tel:{{ $phoneTel }}" class="mt-2 rounded-full bg-brand px-6 py-3 text-center font-semibold text-white transition-all hover:bg-brandh active:scale-95 focus-visible:outline-offset-2">Записаться</a>
-        </nav>
+    {{-- Мобильное выезжающее боковое меню (Drawer) по референсу --}}
+    <div x-show="menu" x-cloak class="fixed inset-0 z-[9999] lg:hidden" aria-modal="true" role="dialog">
+        {{-- Затемненный оверлей --}}
+        <div x-show="menu"
+             x-transition:enter="transition-opacity ease-out duration-300"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="transition-opacity ease-in duration-200"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0"
+             @click="menu = false"
+             class="fixed inset-0 bg-black/50 backdrop-blur-sm"></div>
+
+        {{-- Выезжающая белая панель меню слева --}}
+        <div x-show="menu"
+             x-transition:enter="transition ease-out duration-300 transform"
+             x-transition:enter-start="-translate-x-full"
+             x-transition:enter-end="translate-x-0"
+             x-transition:leave="transition ease-in duration-200 transform"
+             x-transition:leave-start="translate-x-0"
+             x-transition:leave-end="-translate-x-full"
+             class="relative flex h-full w-[82%] max-w-[340px] flex-col justify-between overflow-y-auto bg-white px-5 py-6 shadow-2xl">
+            <div>
+                {{-- Верхняя плашка: Логотип и кнопка закрытия (крестик) --}}
+                <div class="flex items-center justify-between pb-5 border-b border-border">
+                    <a href="{{ url('/') }}" @click="menu = false">
+                        <img src="{{ asset('images/logo.svg') }}" alt="Арт-Медика" class="h-8 w-auto">
+                    </a>
+                    <button type="button" @click="menu = false" aria-label="Закрыть меню"
+                            class="grid h-9 w-9 place-items-center rounded-lg text-ink hover:bg-surface active:scale-95">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+
+                {{-- Навигация меню --}}
+                <nav class="mt-4 space-y-1 text-[16px] font-semibold text-brand">
+                    {{-- Пункт «Услуги» с выпадающим аккордеоном --}}
+                    <div>
+                        <button type="button" @click="servicesOpen = !servicesOpen"
+                                class="flex w-full items-center justify-between py-2.5 text-left transition-colors hover:text-brandh">
+                            <span>Услуги</span>
+                            <svg class="h-4 w-4 text-brand transition-transform duration-200"
+                                 :class="servicesOpen ? 'rotate-180' : ''"
+                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m6 9 6 6 6-6"/>
+                            </svg>
+                        </button>
+                        <div x-show="servicesOpen" x-collapse x-cloak class="pl-3 pr-1 pb-2 space-y-2 text-[14px] font-normal text-body">
+                            @foreach ($burgerServices as $srv)
+                                <a href="{{ $srv['href'] }}" @click="menu = false" class="block py-1 transition-colors hover:text-brand">
+                                    {{ $srv['label'] }}
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    {{-- Остальные пункты меню по референсу --}}
+                    @foreach ($burgerNav as $item)
+                        <a href="{{ $item['href'] }}" @click="menu = false"
+                           class="block py-2.5 transition-colors hover:text-brandh">
+                            {{ $item['label'] }}
+                        </a>
+                    @endforeach
+                </nav>
+            </div>
+
+            {{-- Нижняя кнопка записи в бургере --}}
+            <div class="mt-8 pt-4 border-t border-border">
+                <a href="/stock" @click="menu = false"
+                   class="block w-full rounded-full bg-brand py-3 text-center text-[15px] font-semibold text-white transition-colors hover:bg-brandh active:scale-95">
+                    Записаться
+                </a>
+            </div>
+        </div>
     </div>
 </header>
