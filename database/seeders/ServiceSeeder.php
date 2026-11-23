@@ -95,7 +95,8 @@ class ServiceSeeder extends Seeder
             );
         }
 
-        // Обложки групп пластической хирургии
+        // Обложки групп пластической хирургии: цветные для /uslugi/plasticheskaya-hirurgiya,
+        // ч/б обложки для аккордеона на главной (коллекция «accordion»)
         $groupCovers = [
             'plastika-litsa'                    => 'gallery/service11.png',
             'plastika-grudi'                    => 'gallery/service12.png',
@@ -106,7 +107,22 @@ class ServiceSeeder extends Seeder
             'plasticheskaya-i-esteticheskaya-hirurgiya' => 'cover/room.png',
         ];
         foreach ($groupCovers as $gSlug => $gPath) {
+            $groups[$gSlug]->media()->where('collection', 'cover')->delete();
             $this->attachMedia($groups[$gSlug], 'cover', $gPath, $groups[$gSlug]->name);
+        }
+
+        $accordionCovers = [
+            'plastika-litsa'                   => 'cover/portrait-woman-with-dysmorphia 1.png',
+            'plastika-grudi'                   => 'cover/naked-woman-covering-herself1 1.png',
+            'plastika-tela'                    => 'cover/fit-woman-wearing-white-lingerie 1.png',
+            'intimnaya-plastika-dlya-muzhchin' => 'cover/image 34.png',
+            'drugie-uslugi'                    => 'cover/attractive-woman-apply-facial-cream-anti-aging-product1 2.png',
+        ];
+        foreach (array_keys($groupList) as $gSlug) {
+            $groups[$gSlug]->media()->where('collection', 'accordion')->delete();
+            if (isset($accordionCovers[$gSlug])) {
+                $this->attachMedia($groups[$gSlug], 'accordion', $accordionCovers[$gSlug], $groups[$gSlug]->name);
+            }
         }
 
         // ── Уровень 3: группы прайса с кодами МИС ──

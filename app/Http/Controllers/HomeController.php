@@ -42,13 +42,14 @@ class HomeController extends Controller
         $caseTabs = $cases->map(fn (ServiceCase $c) => $c->service?->name)->filter()->unique()->values();
 
         // Декоративные изображения: берутся из settings, если ключ добавлен в админке,
-        // иначе — фолбэки на репозиторий медиа
+        // иначе — фолбэки на локальное хранилище
+        $mediaBase  = rtrim((string) (config('media.base_url') ?: '/storage'), '/');
         $heroImage  = Setting::get('hero_image')
-            ?? 'https://raw.githubusercontent.com/mifshs/art-medika-media/main/cover/doctor-performing-physical-check-patient%202@2x.png';
+            ?? $mediaBase . '/cover/doctor-performing-physical-check-patient%202@2x.png';
         $aboutImage = Setting::get('about_image')
-            ?? config('media.base_url') . '/cover/room.png';
+            ?? $mediaBase . '/cover/room.png';
         $workImage  = Setting::get('work_image')
-            ?? config('media.base_url') . '/cover/side-view-doctor-checking-patient-before-rhinoplasty%201.png';
+            ?? $mediaBase . '/cover/side-view-doctor-checking-patient-before-rhinoplasty%201.png';
 
         return view('welcome', compact(
             'contacts',

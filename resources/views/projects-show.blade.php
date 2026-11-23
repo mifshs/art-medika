@@ -37,7 +37,7 @@
 
     {{-- Главный баннер проекта --}}
     @php
-        $heroCover = $project->coverUrl() ?: asset('images/placeholder.jpg');
+        $heroCover = $project->coverUrl() ?: '/storage/cover/room.png';
     @endphp
     <div class="mt-6 overflow-hidden rounded-[16px] sm:mt-8 sm:rounded-[20px] lg:rounded-[24px]">
         <img src="{{ $heroCover }}"

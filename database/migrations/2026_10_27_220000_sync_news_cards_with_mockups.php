@@ -154,9 +154,9 @@ return new class extends Migration
                     'collection' => 'cover',
                 ],
                 [
-                    'disk'       => 'github',
+                    'disk'       => 'public',
                     'path'       => $coverPath,
-                    'url'        => 'https://cdn.jsdelivr.net/gh/mifshs/art-medika-media@main/' . $coverPath,
+                    'url'        => '/storage/' . implode('/', array_map('rawurlencode', explode('/', $coverPath))),
                     'alt'        => $coverAlt,
                     'sort_order' => 0,
                     'created_at' => now(),

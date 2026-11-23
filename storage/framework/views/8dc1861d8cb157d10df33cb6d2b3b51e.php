@@ -37,20 +37,25 @@
                 <div class="mt-5 space-y-4 sm:mt-6 sm:space-y-5">
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $section['cards']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $card): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <?php $openCard = $firstCard; $firstCard = false; ?>
-                        <details class="price-card rounded-[16px] bg-surfaceh" <?php if($openCard): ?> open <?php endif; ?>>
-                            <summary class="flex list-none cursor-pointer items-center justify-between gap-4 rounded-[16px] px-6 py-5 transition-colors hover:bg-[#E2E7F1] sm:px-8 sm:py-6 2xl:px-10 2xl:py-7 [&::-webkit-details-marker]:hidden">
+                        <div x-data="{ open: <?php echo json_encode($openCard, 15, 512) ?> }" class="price-card rounded-[16px] bg-surfaceh">
+                            <button type="button" @click="open = !open" :aria-expanded="open"
+                                    class="no-scale flex w-full cursor-pointer items-center justify-between gap-4 rounded-[16px] px-6 py-5 text-left transition-colors duration-300 ease-out hover:bg-[#E2E7F1] active:bg-[#D8DFEC] sm:px-8 sm:py-6 2xl:px-10 2xl:py-7">
                                 <span class="min-w-0 text-[18px] font-medium text-ink sm:text-[20px] 2xl:text-[24px]"><?php echo e($card['name']); ?></span>
                                 <span class="flex shrink-0 items-center gap-4 sm:gap-7">
                                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($card['min'] !== null): ?>
                                         <span class="whitespace-nowrap text-[13px] text-muted sm:text-[14px] 2xl:text-[16px]">от <?php echo e(number_format($card['min'], 0, ',', ' ')); ?> ₽</span>
                                     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true" class="acc-arrow h-5 w-5 text-ink 2xl:h-6 2xl:w-6">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" aria-hidden="true"
+                                         :class="open ? 'rotate-180' : ''"
+                                         class="acc-arrow h-5 w-5 text-ink transition-transform duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] 2xl:h-6 2xl:w-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/>
                                     </svg>
                                 </span>
-                            </summary>
+                            </button>
 
-                            <div class="px-6 pb-8 pt-2 sm:px-8 2xl:px-10 2xl:pb-10">
+                            <div x-show="open" x-collapse.duration.450ms x-cloak>
+                                <div class="px-6 pb-8 pt-2 transition-opacity duration-[450ms] ease-out sm:px-8 2xl:px-10 2xl:pb-10"
+                                     :class="open ? 'opacity-100' : 'opacity-0'">
                                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(count($card['simple']) > 0): ?>
                                     <ul class="price-simple">
                                         <li class="<?php echo e($headColsSimple); ?>" aria-hidden="true">
@@ -150,8 +155,9 @@
                                         </ul>
                                     </div>
                                 <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+                                </div>
                             </div>
-                        </details>
+                        </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                 </div>
             </section>

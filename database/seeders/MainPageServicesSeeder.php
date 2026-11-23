@@ -71,10 +71,10 @@ class MainPageServicesSeeder extends Seeder
         ];
 
         $cosmoCovers = [
-            'apparatnaya-kosmetologiya'           => 'cover/laser-system.png',
+            'apparatnaya-kosmetologiya'           => 'cover/view-from-rejuvenation-beautiful-woman-enjoying-cosmetology-procedures-beauty-salon-dermatology-hands-blue-glows-healthcare-therapy-botox 1.png',
             'inekcionnaya-kosmetologiya'          => 'cover/close-up-woman-lip-filler-procedure 1.png',
             'uhody-za-licom-i-telom'              => 'cover/cosmetologist-doing-face-treatment-applying-face-mask 1.png',
-            'lazernaya-sistema-fotona-sp-dynamis' => 'cover/image 34.png',
+            'lazernaya-sistema-fotona-sp-dynamis' => 'cover/laser-system.png',
             'nitevoy-lifting-kosmetologiya'       => 'cover/woman-lifting.png',
         ];
 
@@ -88,6 +88,7 @@ class MainPageServicesSeeder extends Seeder
                     'sort_order' => $i++,
                 ],
             );
+            $group->media()->where('collection', 'cover')->delete();
             $this->attachMedia($group, 'cover', $cosmoCovers[$slug], $name);
 
             foreach ($services as $n => $serviceName) {
@@ -116,6 +117,12 @@ class MainPageServicesSeeder extends Seeder
                     'sort_order' => 1,
                 ],
             );
+
+            $rootCoverPath = $root->media()->where('collection', 'cover')->value('path');
+            if ($rootCoverPath) {
+                $child->media()->where('collection', 'cover')->delete();
+                $this->attachMedia($child, 'cover', $rootCoverPath, $root->name);
+            }
 
             $child->services()->updateOrCreate(
                 ['slug' => $rootSlug . '-osnovnoe-usluga'],

@@ -13,8 +13,9 @@ return new class extends Migration
             ->where('model_id', 1)
             ->where('collection', 'cover')
             ->update([
+                'disk' => 'public',
                 'path' => 'cover/project1.png',
-                'url'  => 'https://cdn.jsdelivr.net/gh/mifshs/art-medika-media@main/cover/project1.png',
+                'url'  => '/storage/cover/project1.png',
                 'alt'  => 'Социальный проект «Красота в тебе»',
                 'updated_at' => now(),
             ]);
@@ -55,8 +56,9 @@ return new class extends Migration
             ->where('model_id', 1)
             ->where('collection', 'cover')
             ->update([
+                'disk' => 'public',
                 'path' => 'cover/concert.png',
-                'url'  => 'https://cdn.jsdelivr.net/gh/mifshs/art-medika-media@main/cover/concert.png',
+                'url'  => '/storage/cover/concert.png',
                 'alt'  => 'Красота в тебе',
                 'updated_at' => now(),
             ]);

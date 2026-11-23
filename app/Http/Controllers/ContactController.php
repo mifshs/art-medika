@@ -28,7 +28,7 @@ class ContactController extends Controller
             'messages_label' => 'Telegram, MAX',
         ]);
 
-        $mediaBase = rtrim((string) config('media.base_url', '/storage'), '/');
+        $mediaBase = rtrim((string) (config('media.base_url') ?: '/storage'), '/');
 
         $socialIcons = Setting::get('social_icons', [
             'max'      => $mediaBase . '/docs/max-messenger-sign-logo%201.png',

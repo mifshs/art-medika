@@ -48,13 +48,13 @@
                     <button type="button"
                             @click="open = !open"
                             :aria-expanded="open"
-                            class="flex w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left transition-colors hover:text-brand sm:px-8 sm:py-6 2xl:px-10 2xl:py-7">
+                            class="no-scale flex w-full cursor-pointer items-center justify-between gap-4 rounded-[16px] px-5 py-4 text-left transition-colors duration-300 ease-out hover:bg-[#EAEFF9] hover:text-brand active:bg-[#E1E8F6] sm:rounded-[20px] sm:px-8 sm:py-6 2xl:rounded-[24px] 2xl:px-10 2xl:py-7">
                         <span class="text-[17px] font-semibold leading-tight text-body sm:text-[20px] lg:text-[22px] 2xl:text-[26px]">
                             {{ $categoryName }}
                         </span>
 
                         {{-- Стрелка аккордеона: при открытии поворачивается вверх ↑ (по макету) --}}
-                        <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center text-[#1A1A1A] transition-transform duration-300"
+                        <span class="inline-flex h-7 w-7 shrink-0 items-center justify-center text-[#1A1A1A] transition-transform duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
                               :class="{ 'rotate-180': open }">
                             <svg class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path d="M12 5v14M19 12l-7 7-7-7"/>
@@ -63,8 +63,9 @@
                     </button>
 
                     {{-- Содержимое категории: список файлов для скачивания --}}
-                    <div x-show="open" x-collapse x-cloak>
-                        <div class="px-5 pb-5 pt-1 sm:px-8 sm:pb-7 2xl:px-10 2xl:pb-8">
+                    <div x-show="open" x-collapse.duration.450ms x-cloak>
+                        <div class="px-5 pb-5 pt-1 transition-opacity duration-[450ms] ease-out sm:px-8 sm:pb-7 2xl:px-10 2xl:pb-8"
+                             :class="open ? 'opacity-100' : 'opacity-0'">
                             <div class="divide-y divide-[#E4E7EE]/60">
                                 @foreach ($docs as $doc)
                                     <x-document-item :document="$doc" />

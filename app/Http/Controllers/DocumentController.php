@@ -46,9 +46,10 @@ class DocumentController extends Controller
             return response()->download($publicPath, $downloadName);
         }
 
-        // Проверяем в storage/app/public/
-        if (Storage::disk('public')->exists($url)) {
-            $storagePath = Storage::disk('public')->path($url);
+        // Проверяем в storage/app/public/ (поддержка путей вида /storage/... и относительных путей)
+        $relative = preg_replace('#^/?storage/#', '', $url);
+        if (Storage::disk('public')->exists($relative)) {
+            $storagePath = Storage::disk('public')->path($relative);
             $ext = pathinfo($storagePath, PATHINFO_EXTENSION) ?: 'pdf';
             $downloadName = $document->title . '.' . $ext;
             return response()->download($storagePath, $downloadName);

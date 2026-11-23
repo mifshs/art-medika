@@ -13,10 +13,10 @@ class Accordion extends Component
     {
         $roots = ServiceCategory::query()
             ->whereNull('parent_id')
-            ->with(['children' => function ($q) {
+            ->with(['media', 'children' => function ($q) {
                 $q->whereNotIn('slug', ['plasticheskaya-i-esteticheskaya-hirurgiya'])
                   ->orderBy('sort_order')
-                  ->with(['services' => fn ($s) => $s->orderBy('sort_order')]);
+                  ->with(['media', 'services' => fn ($s) => $s->orderBy('sort_order')]);
             }])
             ->orderBy('sort_order')
             ->get();
@@ -25,7 +25,9 @@ class Accordion extends Component
             'title' => $root->name,
             'cards' => $root->children->map(fn ($group) => [
                 'title'    => $group->name,
-                'image'    => $group->coverUrl(),
+                'image'    => $group->slug === 'kombo-operacii'
+                    ? $group->mediaUrl('accordion')
+                    : ($group->mediaUrl('accordion') ?: $group->coverUrl() ?: $root->coverUrl()),
                 'services' => $group->services
                     ->unique('name')          // ← режет дубли по названию, что бы их ни наплодило
                     ->values()

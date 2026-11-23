@@ -79,11 +79,6 @@
     display: none;
 }
 
-/* Страница «Цены на услуги»: аккордеон на <details>, стрелка поворачивается при раскрытии */
-details.price-card summary::-webkit-details-marker { display: none; }
-details.price-card .acc-arrow { transition: transform 0.3s ease; }
-details.price-card[open] .acc-arrow { transform: rotate(180deg); }
-
 /* ==========================================================================
    1. Доступность с клавиатуры (Keyboard Navigation & Focus Visible)
    ========================================================================== */
@@ -138,29 +133,32 @@ details.price-card[open] .acc-arrow { transform: rotate(180deg); }
 
 /* Плавный переход для всех интерактивных элементов */
 a, button, [role="button"], summary, input, select, textarea {
-    transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-                background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-                box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Мягкий и деликатный тактильный отклик для кнопок и круглых иконок */
-button:active:not(:disabled),
-.rounded-full:active,
+button:active:not(:disabled):not([aria-expanded]),
+a.rounded-full:active,
 [role="button"]:active {
-    transform: scale(0.985);
-    transition-duration: 0.12s;
+    transform: scale(0.99);
+    transition-duration: 0.25s;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Обычные текстовые ссылки не сжимаются геометрически, а мягко приглушаются */
-a[href]:active {
-    opacity: 0.75;
-    transform: none;
+a[href]:not(.rounded-full):active {
+    opacity: 0.88;
+    transition-duration: 0.25s;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Отдельные элементы, где scale не должен деформировать контейнер */
+[aria-expanded]:active,
 summary:active,
 input:active,
 select:active,
@@ -210,7 +208,8 @@ textarea:active,
     background: rgba(0, 0, 0, 0.08);
 }
 .bvi-btn:active {
-    transform: scale(0.95);
+    transform: scale(0.99);
+    transition-duration: 0.25s;
 }
 .bvi-btn-active {
     background: #000000 !important;

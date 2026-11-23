@@ -103,21 +103,21 @@
         <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(!empty($socialIcons['max'])): ?>
             <a href="<?php echo e($socials['max'] ?? '#'); ?>" target="_blank" rel="noopener"
                aria-label="Написать нам в MAX"
-               class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-200 hover:scale-105 active:scale-95 focus-visible:outline-offset-2">
+               class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-300 ease-out hover:scale-105 focus-visible:outline-offset-2">
                 <img src="<?php echo e($socialIcons['max']); ?>" alt="MAX" class="h-12 w-12 object-contain">
             </a>
         <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
         <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(!empty($socialIcons['vk'])): ?>
             <a href="<?php echo e($socials['vk'] ?? '#'); ?>" target="_blank" rel="noopener"
                aria-label="Мы ВКонтакте"
-               class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-200 hover:scale-105 active:scale-95 focus-visible:outline-offset-2">
+               class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-300 ease-out hover:scale-105 focus-visible:outline-offset-2">
                 <img src="<?php echo e($socialIcons['vk']); ?>" alt="VK" class="h-12 w-12 object-contain">
             </a>
         <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
         <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(!empty($socialIcons['telegram'])): ?>
             <a href="<?php echo e($socials['telegram'] ?? '#'); ?>" target="_blank" rel="noopener"
                aria-label="Мы в Telegram"
-               class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-200 hover:scale-105 active:scale-95 focus-visible:outline-offset-2">
+               class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-300 ease-out hover:scale-105 focus-visible:outline-offset-2">
                 <img src="<?php echo e($socialIcons['telegram']); ?>" alt="Telegram" class="h-12 w-12 object-contain">
             </a>
         <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
@@ -231,21 +231,21 @@
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(!empty($socialIcons['max'])): ?>
                     <a href="<?php echo e($socials['max'] ?? '#'); ?>" target="_blank" rel="noopener"
                        aria-label="Написать нам в MAX"
-                       class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-200 hover:scale-110 active:scale-95 focus-visible:outline-offset-2 2xl:h-14 2xl:w-14">
+                       class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-300 ease-out hover:scale-110 focus-visible:outline-offset-2 2xl:h-14 2xl:w-14">
                         <img src="<?php echo e($socialIcons['max']); ?>" alt="MAX" class="h-12 w-12 object-contain 2xl:h-14 2xl:w-14">
                     </a>
                 <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(!empty($socialIcons['vk'])): ?>
                     <a href="<?php echo e($socials['vk'] ?? '#'); ?>" target="_blank" rel="noopener"
                        aria-label="Мы ВКонтакте"
-                       class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-200 hover:scale-110 active:scale-95 focus-visible:outline-offset-2 2xl:h-14 2xl:w-14">
+                       class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-300 ease-out hover:scale-110 focus-visible:outline-offset-2 2xl:h-14 2xl:w-14">
                         <img src="<?php echo e($socialIcons['vk']); ?>" alt="VK" class="h-12 w-12 object-contain 2xl:h-14 2xl:w-14">
                     </a>
                 <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(!empty($socialIcons['telegram'])): ?>
                     <a href="<?php echo e($socials['telegram'] ?? '#'); ?>" target="_blank" rel="noopener"
                        aria-label="Мы в Telegram"
-                       class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-200 hover:scale-110 active:scale-95 focus-visible:outline-offset-2 2xl:h-14 2xl:w-14">
+                       class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-300 ease-out hover:scale-110 focus-visible:outline-offset-2 2xl:h-14 2xl:w-14">
                         <img src="<?php echo e($socialIcons['telegram']); ?>" alt="Telegram" class="h-12 w-12 object-contain 2xl:h-14 2xl:w-14">
                     </a>
                 <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>

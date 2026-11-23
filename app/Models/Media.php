@@ -35,12 +35,22 @@ class Media extends Model
 
     public function getUrlAttribute(?string $value): string
     {
+        $path = ltrim((string) $this->path, '/');
+
+        if ($path !== ''
+            && Storage::disk('public')->exists($path)
+            && (empty($value) || str_contains($value, 'art-medika-media'))) {
+            $base = rtrim((string) (config('media.base_url') ?: '/storage'), '/');
+
+            return $base . '/' . implode('/', array_map('rawurlencode', explode('/', $path)));
+        }
+
         if (! empty($value)) {
             return $value;
         }
 
         /** @var FilesystemAdapter $disk */
-        $disk = Storage::disk($this->disk);
+        $disk = Storage::disk($this->disk === 'github' ? 'public' : $this->disk);
 
         return $disk->url($this->path);
     }

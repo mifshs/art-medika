@@ -66,21 +66,21 @@
         @if(!empty($socialIcons['max']))
             <a href="{{ $socials['max'] ?? '#' }}" target="_blank" rel="noopener"
                aria-label="Написать нам в MAX"
-               class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-200 hover:scale-105 active:scale-95 focus-visible:outline-offset-2">
+               class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-300 ease-out hover:scale-105 focus-visible:outline-offset-2">
                 <img src="{{ $socialIcons['max'] }}" alt="MAX" class="h-12 w-12 object-contain">
             </a>
         @endif
         @if(!empty($socialIcons['vk']))
             <a href="{{ $socials['vk'] ?? '#' }}" target="_blank" rel="noopener"
                aria-label="Мы ВКонтакте"
-               class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-200 hover:scale-105 active:scale-95 focus-visible:outline-offset-2">
+               class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-300 ease-out hover:scale-105 focus-visible:outline-offset-2">
                 <img src="{{ $socialIcons['vk'] }}" alt="VK" class="h-12 w-12 object-contain">
             </a>
         @endif
         @if(!empty($socialIcons['telegram']))
             <a href="{{ $socials['telegram'] ?? '#' }}" target="_blank" rel="noopener"
                aria-label="Мы в Telegram"
-               class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-200 hover:scale-105 active:scale-95 focus-visible:outline-offset-2">
+               class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-300 ease-out hover:scale-105 focus-visible:outline-offset-2">
                 <img src="{{ $socialIcons['telegram'] }}" alt="Telegram" class="h-12 w-12 object-contain">
             </a>
         @endif
@@ -188,21 +188,21 @@
                 @if(!empty($socialIcons['max']))
                     <a href="{{ $socials['max'] ?? '#' }}" target="_blank" rel="noopener"
                        aria-label="Написать нам в MAX"
-                       class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-200 hover:scale-110 active:scale-95 focus-visible:outline-offset-2 2xl:h-14 2xl:w-14">
+                       class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-300 ease-out hover:scale-110 focus-visible:outline-offset-2 2xl:h-14 2xl:w-14">
                         <img src="{{ $socialIcons['max'] }}" alt="MAX" class="h-12 w-12 object-contain 2xl:h-14 2xl:w-14">
                     </a>
                 @endif
                 @if(!empty($socialIcons['vk']))
                     <a href="{{ $socials['vk'] ?? '#' }}" target="_blank" rel="noopener"
                        aria-label="Мы ВКонтакте"
-                       class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-200 hover:scale-110 active:scale-95 focus-visible:outline-offset-2 2xl:h-14 2xl:w-14">
+                       class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-300 ease-out hover:scale-110 focus-visible:outline-offset-2 2xl:h-14 2xl:w-14">
                         <img src="{{ $socialIcons['vk'] }}" alt="VK" class="h-12 w-12 object-contain 2xl:h-14 2xl:w-14">
                     </a>
                 @endif
                 @if(!empty($socialIcons['telegram']))
                     <a href="{{ $socials['telegram'] ?? '#' }}" target="_blank" rel="noopener"
                        aria-label="Мы в Telegram"
-                       class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-200 hover:scale-110 active:scale-95 focus-visible:outline-offset-2 2xl:h-14 2xl:w-14">
+                       class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-300 ease-out hover:scale-110 focus-visible:outline-offset-2 2xl:h-14 2xl:w-14">
                         <img src="{{ $socialIcons['telegram'] }}" alt="Telegram" class="h-12 w-12 object-contain 2xl:h-14 2xl:w-14">
                     </a>
                 @endif

@@ -193,14 +193,12 @@ class ContentSeeder extends Seeder
             'gallery/perchatki.png',
         ];
         foreach ($galleryPaths as $n => $path) {
-            $base = config('media.base_url');
+            $base = rtrim((string) (config('media.base_url') ?: '/storage'), '/');
             $project->media()->updateOrCreate(
                 ['collection' => 'gallery', 'path' => $path],
                 [
-                    'disk' => 'github',
-                    'url'  => $base
-                        ? rtrim($base, '/') . '/' . implode('/', array_map('rawurlencode', explode('/', $path)))
-                        : 'https://picsum.photos/seed/project-gallery-' . $n . '/1200/800',
+                    'disk' => 'public',
+                    'url'  => $base . '/' . implode('/', array_map('rawurlencode', explode('/', ltrim($path, '/')))),
                     'alt'  => 'Фото проекта',
                     'sort_order' => $n + 1,
                 ],

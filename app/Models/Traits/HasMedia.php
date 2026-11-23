@@ -19,14 +19,19 @@ trait HasMedia
         return $this->media()->where('collection', $collection);
     }
 
+    public function mediaUrl(string $collection): ?string
+    {
+        return $this->media->firstWhere('collection', $collection)?->url;
+    }
+
     public function coverUrl(): ?string
     {
-        return $this->media->firstWhere('collection', 'cover')?->url;
+        return $this->mediaUrl('cover');
     }
 
     public function avatarUrl(): ?string
     {
-        return $this->media->firstWhere('collection', 'avatar')?->url;
+        return $this->mediaUrl('avatar');
     }
 
     public function gallery(): \Illuminate\Support\Collection

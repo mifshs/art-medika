@@ -77,7 +77,7 @@
 
     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(($contacts['phone'] ?? '')): ?>
         <a href="tel:<?php echo e(preg_replace('/\D+/', '', $contacts['phone'])); ?>" aria-label="Позвонить в клинику"
-           class="absolute bottom-6 right-4 grid h-12 w-12 place-items-center rounded-full bg-brand text-white shadow-xl transition-all duration-200 hover:bg-brandh active:scale-95 focus-visible:outline-offset-2 sm:bottom-10 sm:right-6 lg:bottom-12 lg:right-10 2xl:bottom-16 2xl:right-0 xl:h-14 xl:w-14 2xl:h-16 2xl:w-16">
+           class="absolute bottom-6 right-4 grid h-12 w-12 place-items-center rounded-full bg-brand text-white shadow-xl transition-all duration-300 ease-out hover:bg-brandh focus-visible:outline-offset-2 sm:bottom-10 sm:right-6 lg:bottom-12 lg:right-10 2xl:bottom-16 2xl:right-0 xl:h-14 xl:w-14 2xl:h-16 2xl:w-16">
             <svg class="h-6 w-6 2xl:h-7 2xl:w-7" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3h2.2c.7 0 1.3.5 1.4 1.2l.5 2.8c.1.6-.2 1.2-.7 1.5l-1.4.8a12.4 12.4 0 0 0 5.9 5.9l.8-1.4c.3-.5.9-.8 1.5-.7l2.8.5c.7.1 1.2.7 1.2 1.4v2.2c0 .9-.7 1.7-1.6 1.6C11 19.9 4.2 13.2 5 4.6 5 3.7 5.8 3 6.6 3Z" fill="currentColor"/></svg>
         </a>
     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>

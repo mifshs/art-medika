@@ -13,6 +13,7 @@ use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SpecialistController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -61,5 +62,20 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/storage/{path}', function (string $path) {
+    $root = realpath(Storage::disk('public')->path(''));
+    $full = $root !== false ? realpath($root . DIRECTORY_SEPARATOR . $path) : false;
+
+    abort_unless(
+        $root !== false
+        && $full !== false
+        && str_starts_with($full, $root . DIRECTORY_SEPARATOR)
+        && is_file($full),
+        404
+    );
+
+    return response()->file($full);
+})->where('path', '.*');
 
 require __DIR__.'/auth.php';

@@ -15,19 +15,16 @@ class MiscSeeder extends Seeder
     public function run(): void
     {
         // ── Отзывы-кейсы (блок «Кейсы клиентов») ──
-        $base = rtrim((string) config('media.base_url'), '/');
-        $gh = fn (string $p) => $base
-            ? $base . '/' . implode('/', array_map('rawurlencode', explode('/', $p)))
-            : null;
+        $base = rtrim((string) (config('media.base_url') ?: '/storage'), '/');
+        $gh = fn (string $p) => $base . '/' . implode('/', array_map('rawurlencode', explode('/', ltrim($p, '/'))));
         foreach ([
             ['Ольга', 5, 'К неврологу Фархутдиновой Э.Р. обратилась в первый раз. Узнала об этой специальности на портале Продокторов и при выборе ориентировалась на рейтинг.', 'Мне полностью понравилось, как прошёл приём у Эльмиры Ринатовны. Считаю, что всё было прекрасно. Специалист опросила, выполнила осмотр, а по итогу визита дала необходимые рекомендации.'],
             ['Ольга', 5, 'К Навиковой Татьяне Васильевне я обратилась не прямо в первый раз. Когда искала, к какому именно врачу записаться, ориентировалась на опыт работы врача, а также доктор подошёл по цене.', 'Мне понравилось, что от Татьяны Васильевны я услышала информацию по своей проблеме, также врач правильно подобрала терапию. Насколько помню, длилось посещение около часа.'],
         ] as $i => [$name, $rating, $history, $liked]) {
-            $review = Review::updateOrCreate(
+            Review::updateOrCreate(
                 ['author_name' => $name, 'history' => $history],
                 ['rating' => $rating, 'liked' => $liked, 'source' => 'prodoctoru', 'published_at' => '2025-04-07'],
             );
-            $this->attachMedia($review, 'avatar', "review-$i", $name, '200/200');
         }
 
         // ── FAQ ──
@@ -82,8 +79,8 @@ class MiscSeeder extends Seeder
         Setting::set('logo', '/storage/docs/logo.png');
         Setting::set('social_icons', [
             'vk'       => '/storage/docs/Vk_logo.png',
-            'telegram' => '/storage/docs/Telegram_logo 1.png',
-            'max'      => '/storage/docs/max-messenger-sign-logo 1.png',
+            'telegram' => '/storage/docs/Telegram_logo%201.png',
+            'max'      => '/storage/docs/max-messenger-sign-logo%201.png',
         ]);
         Setting::set('video_url', 'https://vkvideo.ru/video-211242323_456240899');
         Setting::set('disclaimer', 'ИМЕЮТСЯ ПРОТИВОПОКАЗАНИЯ. НЕОБХОДИМА КОНСУЛЬТАЦИЯ СПЕЦИАЛИСТА');

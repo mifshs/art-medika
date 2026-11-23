@@ -139,11 +139,11 @@
     {{-- Аккордеон 1: Данные об образовании из Федерального реестра медицинских работников --}}
     @if ($expert->educations->isNotEmpty())
         <div x-data="{ open: true }" class="mt-6 rounded-[20px] bg-[#F4F7FD] p-5 transition-colors sm:p-7 2xl:p-8">
-            <button type="button" @click="open = !open" :aria-expanded="open" class="flex w-full items-center justify-between text-left">
+            <button type="button" @click="open = !open" :aria-expanded="open" class="no-scale flex w-full items-center justify-between rounded-[12px] text-left transition-colors duration-300 ease-out hover:text-brandh active:opacity-85">
                 <span class="text-[16px] font-semibold text-brand sm:text-[19px] 2xl:text-[20px]">
                     Данные об образовании из Федерального реестра медицинских работников
                 </span>
-                <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center text-brand transition-transform duration-300"
+                <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center text-brand transition-transform duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
                       :class="{ 'rotate-180': !open }">
                     <svg class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M12 19V5M5 12l7-7 7 7"/>
@@ -151,8 +151,9 @@
                 </span>
             </button>
 
-            <div x-show="open" x-collapse x-cloak>
-                <div class="mt-5 overflow-x-auto no-scrollbar">
+            <div x-show="open" x-collapse.duration.450ms x-cloak>
+                <div class="mt-5 overflow-x-auto no-scrollbar transition-opacity duration-[450ms] ease-out"
+                     :class="open ? 'opacity-100' : 'opacity-0'">
                     <table class="w-full min-w-[700px] border-collapse text-left text-[12px] sm:text-[13px] 2xl:text-[14px]">
                         <thead>
                             <tr class="border-b border-[#E4E7EE] text-[12px] font-medium text-body sm:text-[13px]">
@@ -181,11 +182,11 @@
     {{-- Аккордеон 2: Аккредитация (сертификация) специалиста --}}
     @if ($expert->accreditations->isNotEmpty())
         <div x-data="{ open: true }" class="mt-6 rounded-[20px] bg-[#F4F7FD] p-5 transition-colors sm:p-7 2xl:p-8">
-            <button type="button" @click="open = !open" :aria-expanded="open" class="flex w-full items-center justify-between text-left">
+            <button type="button" @click="open = !open" :aria-expanded="open" class="no-scale flex w-full items-center justify-between rounded-[12px] text-left transition-colors duration-300 ease-out hover:text-brandh active:opacity-85">
                 <span class="text-[16px] font-semibold text-brand sm:text-[19px] 2xl:text-[20px]">
                     Аккредитация (сертификация) специалиста
                 </span>
-                <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center text-brand transition-transform duration-300"
+                <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center text-brand transition-transform duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
                       :class="{ 'rotate-180': !open }">
                     <svg class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M12 19V5M5 12l7-7 7 7"/>
@@ -193,8 +194,9 @@
                 </span>
             </button>
 
-            <div x-show="open" x-collapse x-cloak>
-                <div class="mt-5 overflow-x-auto no-scrollbar">
+            <div x-show="open" x-collapse.duration.450ms x-cloak>
+                <div class="mt-5 overflow-x-auto no-scrollbar transition-opacity duration-[450ms] ease-out"
+                     :class="open ? 'opacity-100' : 'opacity-0'">
                     <table class="w-full min-w-[800px] border-collapse text-left text-[12px] sm:text-[13px] 2xl:text-[14px]">
                         <thead>
                             <tr class="border-b border-[#E4E7EE] text-[12px] font-medium text-body sm:text-[13px]">

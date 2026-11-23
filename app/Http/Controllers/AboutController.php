@@ -15,7 +15,7 @@ class AboutController extends Controller
     {
         $aboutImage = Setting::get(
             'about_image',
-            asset('storage/cover/room.png')
+            rtrim((string) (config('media.base_url') ?: '/storage'), '/') . '/cover/room.png'
         );
 
         $aboutStats = Setting::get('about_stats', [
