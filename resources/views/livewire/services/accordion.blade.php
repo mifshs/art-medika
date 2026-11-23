@@ -1,5 +1,3 @@
-<style>[x-cloak]{display:none!important}</style>
-
 <div class="mx-auto w-full max-w-[1720px] space-y-3">
 
     @foreach ($directions as $direction)

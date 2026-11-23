@@ -43,7 +43,7 @@ unset($__defined_vars, $__key, $__value); ?>
     
     <div class="relative block shrink-0 overflow-hidden sm:w-[46%] lg:w-[45%] 2xl:w-[44%] pointer-events-none">
         <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($avatarUrl): ?>
-            <img src="<?php echo e($avatarUrl); ?>" alt="<?php echo e($expert->name); ?>" loading="lazy"
+            <img src="<?php echo e($avatarUrl); ?>" alt="<?php echo e($expert->name); ?>" width="380" height="460" loading="lazy" decoding="async"
                  class="h-[340px] w-full object-cover object-top transition-transform duration-500 group-hover:scale-105 sm:h-full sm:absolute sm:inset-0">
         <?php else: ?>
             <div class="flex h-[340px] w-full items-center justify-center bg-slate-200 text-slate-400 sm:h-full sm:absolute sm:inset-0">
@@ -57,7 +57,7 @@ unset($__defined_vars, $__key, $__value); ?>
     
     <div class="flex flex-1 flex-col justify-start p-5 sm:p-6 lg:p-8 pointer-events-none">
         
-        <div class="flex items-center justify-between gap-2 text-[13px] text-[#7E93AC] sm:text-[14px]">
+        <div class="flex items-center justify-between gap-2 text-[13px] text-steel sm:text-[14px]">
             <span><?php echo e($deptName); ?></span>
             <span class="inline-flex h-5 w-5 shrink-0 items-center justify-center text-[#1A1A1A] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand">
                 <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -67,10 +67,10 @@ unset($__defined_vars, $__key, $__value); ?>
         </div>
 
         
-        <h3 class="mt-3 text-[20px] font-medium leading-[1.2] text-body transition-colors group-hover:text-brand sm:text-[22px] lg:text-[24px] 2xl:text-[26px]">
+        <h2 class="mt-3 text-[20px] font-medium leading-[1.2] text-body transition-colors group-hover:text-brand sm:text-[22px] lg:text-[24px] 2xl:text-[26px]">
             <?php echo e($expert->name); ?>
 
-        </h3>
+        </h2>
 
         
         <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($expert->position): ?>

@@ -1,34 +1,38 @@
+@php
+    $seoTitle = $category->name . ' — Услуги клиники «Арт-Медика»';
+    $seoDesc = $category->description ?: ($category->subtitle ?: ('Услуги направления «' . $category->name . '» в клинике «Арт-Медика» в Челябинске.'));
+    $childNames = isset($groups) ? $groups->pluck('category.name')->filter()->implode(', ') : '';
+    $seoKeywords = trim($category->name . ($childNames ? ', ' . $childNames : '') . ', услуги Арт-Медика, Челябинск', ', ');
+    $seoImage = $category->coverUrl();
+@endphp
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Услуги направления «{{ $category->name }}» в клинике «Арт-Медика».">
-    <title>{{ $category->name }} — Услуги — Арт-Медика</title>
-    {{-- Шрифт Onest --}}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <x-seo-head
+        :title="$seoTitle"
+        :description="$seoDesc"
+        :keywords="$seoKeywords"
+        :ogImage="$seoImage"
+    />
 </head>
 <body class="bg-page font-onest text-body antialiased">
     @include('components.header')
 
-    <main class="mx-auto w-full max-w-[1720px] px-4 pb-20 sm:px-6 md:px-10 2xl:px-0">
+    <main id="main-content" class="mx-auto w-full max-w-[1720px] px-4 pb-20 sm:px-6 md:px-10 2xl:px-0">
         {{-- Хлебные крошки (макет: Onest 18px/15px, #37241B) --}}
         <nav aria-label="Хлебные крошки" class="flex items-center gap-2 pt-6 text-[15px] text-brand sm:text-[18px]">
             <a href="{{ url('/') }}" rel="home" class="transition-colors duration-200 hover:text-brandh">Арт-Медика</a>
-            <img src="{{ asset('images/_.svg') }}" alt="" class="h-3 w-auto" aria-hidden="true">
+            <img src="{{ asset('images/_.svg') }}" width="7" height="10" alt="" class="h-3 w-auto" aria-hidden="true">
             <a href="{{ route('services') }}" class="whitespace-nowrap transition-colors duration-200 hover:text-brandh">Услуги</a>
-            <img src="{{ asset('images/_.svg') }}" alt="" class="h-3 w-auto shrink-0" aria-hidden="true">
+            <img src="{{ asset('images/_.svg') }}" width="7" height="10" alt="" class="h-3 w-auto shrink-0" aria-hidden="true">
             <span class="font-medium text-brand">{{ $category->name }}</span>
         </nav>
 
         {{-- Заголовок страницы + описание: весь текст сверху 40px (на мобилке 20px) --}}
         <div class="flex flex-col items-start justify-between gap-4 pt-8 lg:flex-row lg:items-start lg:gap-8 lg:pt-10 2xl:pt-[52px]">
-            <h1 class="flex shrink-0 items-center gap-2 text-[20px] font-medium leading-[1.2] text-[#91B5D5] sm:text-[28px] lg:text-[40px]">
+            <h1 class="flex shrink-0 items-center gap-2 text-[20px] font-medium leading-[1.2] text-[#4A749B] sm:text-[28px] lg:text-[40px]">
                 {{ $category->name }}
-                <img src="{{ asset('images/Arrow_right_light.svg') }}" alt="" class="w-[30px] sm:w-[38px] lg:w-[50px]" aria-hidden="true">
+                <img src="{{ asset('images/Arrow_right_light.svg') }}" width="50" height="50" alt="" class="w-[30px] sm:w-[38px] lg:w-[50px]" aria-hidden="true">
             </h1>
             @php
                 $introText = $category->description ?: 'Подбираем для вас самые актуальные и интересные проекты из нашей практики, медицины и эстетической хирургии, с заботой о вас.';
@@ -85,7 +89,7 @@
                         {{-- Правая колонка: Картинка со скруглением краев 10px --}}
                         <div class="relative h-[200px] w-full shrink-0 overflow-hidden rounded-[10px] bg-hero sm:h-[260px] lg:h-auto lg:w-[480px] xl:w-[540px] 2xl:w-[560px] pointer-events-none">
                             @if ($cover)
-                                <img src="{{ $cover }}" alt="{{ $item->name }}" loading="lazy"
+                                <img src="{{ $cover }}" alt="{{ $item->name }}" width="560" height="360" loading="lazy" decoding="async"
                                      class="h-full w-full rounded-[10px] object-cover transition-transform duration-500 group-hover:scale-105">
                             @else
                                 <div class="grid h-full w-full place-items-center rounded-[10px] bg-[#E9ECF4]">

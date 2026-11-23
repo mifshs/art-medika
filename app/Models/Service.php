@@ -28,6 +28,11 @@ class Service extends Model
         'price_cat_3' => 'decimal:2',
     ];
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function scopeActive($q) { return $q->where('is_active', true); }
 
     public function category(): BelongsTo { return $this->belongsTo(ServiceCategory::class); }

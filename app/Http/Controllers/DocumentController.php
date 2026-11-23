@@ -48,6 +48,12 @@ class DocumentController extends Controller
 
         // Проверяем в storage/app/public/ (поддержка путей вида /storage/... и относительных путей)
         $relative = preg_replace('#^/?storage/#', '', $url);
+        if (! Storage::disk('public')->exists($relative) && preg_match('/\.png$/i', $relative)) {
+            $webpRelative = preg_replace('/\.png$/i', '.webp', $relative);
+            if ($webpRelative !== null && Storage::disk('public')->exists($webpRelative)) {
+                $relative = $webpRelative;
+            }
+        }
         if (Storage::disk('public')->exists($relative)) {
             $storagePath = Storage::disk('public')->path($relative);
             $ext = pathinfo($storagePath, PATHINFO_EXTENSION) ?: 'pdf';

@@ -22,7 +22,6 @@
     },
     "dependencies": {
         "@alpinejs/collapse": "^3.17.4",
-        "bootstrap": "^5.3.8",
         "swiper": "^14.3.0"
     }
 }

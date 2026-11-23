@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Livewire\Services\Accordion;
 use App\Models\Expert;
 use App\Models\Project;
 use App\Models\Review;
@@ -43,13 +44,19 @@ class HomeController extends Controller
 
         // Декоративные изображения: берутся из settings, если ключ добавлен в админке,
         // иначе — фолбэки на локальное хранилище
-        $mediaBase  = rtrim((string) (config('media.base_url') ?: '/storage'), '/');
-        $heroImage  = Setting::get('hero_image')
-            ?? $mediaBase . '/cover/doctor-performing-physical-check-patient%202@2x.png';
-        $aboutImage = Setting::get('about_image')
-            ?? $mediaBase . '/cover/room.png';
-        $workImage  = Setting::get('work_image')
-            ?? $mediaBase . '/cover/side-view-doctor-checking-patient-before-rhinoplasty%201.png';
+        $mediaBase       = rtrim((string) (config('media.base_url') ?: '/storage'), '/');
+        $heroImage       = Setting::get('hero_image')
+            ?? $mediaBase . '/cover/doctor-performing-physical-check-patient%202@2x.webp';
+        $heroImageMobile = preg_match('/^(.+)\.webp$/i', (string) $heroImage, $m)
+            && file_exists(storage_path('app/public/' . rawurldecode(preg_replace('#^/?storage/#', '', $m[1])) . '-mobile.webp'))
+            ? $m[1] . '-mobile.webp'
+            : $heroImage;
+        $aboutImage      = Setting::get('about_image')
+            ?? $mediaBase . '/cover/room.webp';
+        $workImage       = Setting::get('work_image')
+            ?? $mediaBase . '/cover/side-view-doctor-checking-patient-before-rhinoplasty%201.webp';
+
+        $directions = Accordion::buildDirections();
 
         return view('welcome', compact(
             'contacts',
@@ -66,8 +73,10 @@ class HomeController extends Controller
             'cases',
             'caseTabs',
             'heroImage',
+            'heroImageMobile',
             'aboutImage',
             'workImage',
+            'directions',
         ));
     }
 }

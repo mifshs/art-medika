@@ -1,6 +1,6 @@
 @php
     $contacts = \App\Models\Setting::get('contacts', ['address' => '', 'phone' => '', 'email' => '', 'work_hours' => '']);
-    $logo     = \App\Models\Setting::get('logo') ?: asset('images/logo.png');
+    $logo     = \App\Models\Setting::get('logo') ?: asset('images/logo.svg');
     $phoneTel = preg_replace('/\D+/', '', (string) ($contacts['phone'] ?? ''));
     $nav      = [
         ['href' => '/o-centre',      'label' => 'О клинике'],
@@ -48,12 +48,12 @@
         </button>
 
         <a href="{{ url('/') }}" class="flex shrink-0 items-center transition-all duration-300 ease-out hover:opacity-80 hover:scale-[1.03] focus-visible:outline-offset-2">
-            <img src="{{ asset('images/logo.svg') }}" alt="Медико-косметологический центр «Арт-Медика»" class="h-8 w-auto sm:h-12 md:h-14 lg:h-[56px] 2xl:h-[62px] object-contain">
+            <img src="{{ asset('images/logo.svg') }}" alt="Медико-косметологический центр «Арт-Медика»" width="270" height="64" class="h-8 w-auto sm:h-12 md:h-14 lg:h-[56px] 2xl:h-[62px] object-contain">
         </a>
 
         <nav class="hidden items-center gap-7 xl:gap-9 2xl:gap-11 text-[15px] xl:text-[16px] 2xl:text-[17px] font-medium text-body xl:flex" aria-label="Основное меню">
             @foreach ($nav as $item)
-                <a class="relative py-1 text-body transition-colors duration-300 ease-out hover:text-[#7E93AC] after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-[#7E93AC] after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100 focus-visible:outline-offset-2" href="{{ $item['href'] }}">{{ $item['label'] }}</a>
+                <a class="relative py-1 text-body transition-colors duration-300 ease-out hover:text-steel after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-steel after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100 focus-visible:outline-offset-2" href="{{ $item['href'] }}">{{ $item['label'] }}</a>
             @endforeach
         </nav>
 
@@ -92,7 +92,7 @@
                 {{-- Верхняя плашка: Логотип и кнопка закрытия (крестик) --}}
                 <div class="flex items-center justify-between pb-5 border-b border-border">
                     <a href="{{ url('/') }}" @click="menu = false" class="transition-all duration-300 ease-out hover:opacity-80">
-                        <img src="{{ asset('images/logo.svg') }}" alt="Арт-Медика" class="h-8 w-auto">
+                        <img src="{{ asset('images/logo.svg') }}" alt="Арт-Медика" width="270" height="64" class="h-8 w-auto">
                     </a>
                     <button type="button" @click="menu = false" aria-label="Закрыть меню"
                             class="grid h-9 w-9 place-items-center rounded-lg text-ink transition-all duration-300 ease-out hover:bg-surface hover:text-brand hover:rotate-90">
@@ -109,7 +109,7 @@
                     <div>
                         <button type="button" @click="servicesOpen = !servicesOpen"
                                 :aria-expanded="servicesOpen"
-                                class="no-scale flex w-full items-center justify-between rounded-lg px-2.5 -mx-2.5 py-2.5 text-left transition-all duration-300 ease-out hover:bg-surface hover:text-[#7E93AC] hover:translate-x-1 active:bg-[#E2E7F1]">
+                                class="no-scale flex w-full items-center justify-between rounded-lg px-2.5 -mx-2.5 py-2.5 text-left transition-all duration-300 ease-out hover:bg-surface hover:text-steel hover:translate-x-1 active:bg-[#E2E7F1]">
                             <span>Услуги</span>
                             <svg class="h-4 w-4 text-brand transition-transform duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
                                  :class="servicesOpen ? 'rotate-180' : ''"
@@ -121,7 +121,7 @@
                             <div class="pl-3 pr-1 pb-2 pt-1 space-y-2 text-[14px] font-normal text-body transition-opacity duration-[450ms] ease-out"
                                  :class="servicesOpen ? 'opacity-100' : 'opacity-0'">
                                 @foreach ($burgerServices as $srv)
-                                    <a href="{{ $srv['href'] }}" @click="menu = false" class="block rounded-lg px-2.5 -mx-2.5 py-1 transition-all duration-300 ease-out hover:bg-surface hover:text-[#7E93AC] hover:translate-x-1">
+                                    <a href="{{ $srv['href'] }}" @click="menu = false" class="block rounded-lg px-2.5 -mx-2.5 py-1 transition-all duration-300 ease-out hover:bg-surface hover:text-steel hover:translate-x-1">
                                         {{ $srv['label'] }}
                                     </a>
                                 @endforeach
@@ -132,7 +132,7 @@
                     {{-- Остальные пункты меню по референсу --}}
                     @foreach ($burgerNav as $item)
                         <a href="{{ $item['href'] }}" @click="menu = false"
-                           class="block rounded-lg px-2.5 -mx-2.5 py-2.5 transition-all duration-300 ease-out hover:bg-surface hover:text-[#7E93AC] hover:translate-x-1">
+                           class="block rounded-lg px-2.5 -mx-2.5 py-2.5 transition-all duration-300 ease-out hover:bg-surface hover:text-steel hover:translate-x-1">
                             {{ $item['label'] }}
                         </a>
                     @endforeach

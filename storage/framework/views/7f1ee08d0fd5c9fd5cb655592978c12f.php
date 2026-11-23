@@ -29,7 +29,7 @@ foreach ($attributes->all() as $__key => $__value) {
 unset($__defined_vars, $__key, $__value); ?>
 
 <?php
-    $downloadUrl = route('documents.download', $document->id);
+    $downloadUrl = route('documents.download', $document);
 ?>
 
 
@@ -39,7 +39,7 @@ unset($__defined_vars, $__key, $__value); ?>
    class="group flex items-center justify-between gap-4 py-3 sm:py-4 transition-colors hover:text-brand border-b border-[#E4E7EE]/50 last:border-b-0">
     <div class="flex items-center gap-3 sm:gap-4 min-w-0">
         
-        <span class="inline-flex h-6 w-6 sm:h-7 sm:w-7 shrink-0 items-center justify-center text-[#7E93AC] transition-colors group-hover:text-brand" aria-hidden="true">
+        <span class="inline-flex h-6 w-6 sm:h-7 sm:w-7 shrink-0 items-center justify-center text-steel transition-colors group-hover:text-brand" aria-hidden="true">
             <svg class="h-5 w-5 sm:h-6 sm:w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
                 <polyline points="14 2 14 8 20 8"/>

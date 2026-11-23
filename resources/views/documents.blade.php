@@ -1,31 +1,27 @@
 <!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Документы — Медико-косметологический центр «Арт-Медика»</title>
-    <x-favicon></x-favicon>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    {{-- Шрифт макета — Onest --}}
-    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <x-seo-head
+        title="Документы и лицензии — Медико-косметологический центр «Арт-Медика»"
+        description="Официальные документы, медицинские лицензии, нормативно-правовая информация и реквизиты клиники «Арт-Медика»."
+        keywords="документы Арт-Медика, медицинская лицензия, реквизиты клиники, правила платных медицинских услуг"
+    />
 </head>
 <body class="bg-page font-onest text-body antialiased">
 
 <x-header></x-header>
 
-<main class="mx-auto w-full max-w-[1720px] px-4 pb-16 sm:px-6 md:px-10 lg:pb-24 2xl:px-0">
+<main id="main-content" class="mx-auto w-full max-w-[1720px] px-4 pb-16 sm:px-6 md:px-10 lg:pb-24 2xl:px-0">
     {{-- Хлебные крошки (макет: Onest 18px, цвет #37241B) --}}
     <nav aria-label="Хлебные крошки" class="flex items-center gap-2 pt-5 text-[15px] text-brand sm:pt-6 sm:text-[16px] 2xl:text-[18px]">
         <a href="{{ url('/') }}" class="transition-colors duration-200 hover:text-brandh">Арт-Медика</a>
-        <img src="{{ asset('images/_.svg') }}" alt="" class="h-3 w-auto" aria-hidden="true">
+        <img src="{{ asset('images/_.svg') }}" width="7" height="10" alt="" class="h-3 w-auto" aria-hidden="true">
         <span class="font-medium">Документы</span>
     </nav>
 
     {{-- Заголовок страницы: «Документы ↗» (макет: Onest 40px, medium, цвет #91B5D5) --}}
     <div class="mt-7 sm:mt-8 lg:mt-12">
-        <h1 class="inline-flex items-baseline gap-2 text-[24px] font-medium text-[#91B5D5] sm:text-[28px] lg:text-[32px] 2xl:text-[40px]">
+        <h1 class="inline-flex items-baseline gap-2 text-[24px] font-medium text-[#4A749B] sm:text-[28px] lg:text-[32px] 2xl:text-[40px]">
             Документы
             <svg class="h-[0.8em] w-[0.8em] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M7 17L17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

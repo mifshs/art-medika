@@ -71,11 +71,11 @@ class MainPageServicesSeeder extends Seeder
         ];
 
         $cosmoCovers = [
-            'apparatnaya-kosmetologiya'           => 'cover/view-from-rejuvenation-beautiful-woman-enjoying-cosmetology-procedures-beauty-salon-dermatology-hands-blue-glows-healthcare-therapy-botox 1.png',
-            'inekcionnaya-kosmetologiya'          => 'cover/close-up-woman-lip-filler-procedure 1.png',
-            'uhody-za-licom-i-telom'              => 'cover/cosmetologist-doing-face-treatment-applying-face-mask 1.png',
-            'lazernaya-sistema-fotona-sp-dynamis' => 'cover/laser-system.png',
-            'nitevoy-lifting-kosmetologiya'       => 'cover/woman-lifting.png',
+            'apparatnaya-kosmetologiya'           => 'cover/view-from-rejuvenation-beautiful-woman-enjoying-cosmetology-procedures-beauty-salon-dermatology-hands-blue-glows-healthcare-therapy-botox 1.webp',
+            'inekcionnaya-kosmetologiya'          => 'cover/close-up-woman-lip-filler-procedure 1.webp',
+            'uhody-za-licom-i-telom'              => 'cover/cosmetologist-doing-face-treatment-applying-face-mask 1.webp',
+            'lazernaya-sistema-fotona-sp-dynamis' => 'cover/laser-system.webp',
+            'nitevoy-lifting-kosmetologiya'       => 'cover/woman-lifting.webp',
         ];
 
         $i = 1;

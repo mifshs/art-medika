@@ -23,6 +23,11 @@ class Expert extends Model
         'is_active'  => 'boolean',
     ];
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function scopeActive($q) { return $q->where('is_active', true); }
 
     public function department(): BelongsTo        { return $this->belongsTo(Department::class); }

@@ -1,14 +1,33 @@
+<?php
+    $categoryName = $news->category?->name ?? 'Новости';
+    $coverUrl = $news->coverUrl();
+    $seoTitle = $news->title . ' — Новости — Арт-Медика';
+    $seoDesc = $news->excerpt ?: \Illuminate\Support\Str::limit(strip_tags((string) $news->content), 160);
+    $seoKeywords = trim($news->title . ', ' . $categoryName . ', новости Арт-Медика, статьи о красоте и здоровье', ', ');
+?>
 <!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo e($news->title); ?> — Медико-косметологический центр «Арт-Медика»</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
-    <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
+    <?php if (isset($component)) { $__componentOriginal4232ba5ed77147a6b6573253fafb715d = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal4232ba5ed77147a6b6573253fafb715d = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.seo-head','data' => ['title' => $seoTitle,'description' => $seoDesc,'keywords' => $seoKeywords,'ogType' => 'article','ogImage' => $coverUrl,'preloadImage' => $coverUrl]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('seo-head'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['title' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($seoTitle),'description' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($seoDesc),'keywords' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($seoKeywords),'ogType' => 'article','ogImage' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($coverUrl),'preloadImage' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($coverUrl)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal4232ba5ed77147a6b6573253fafb715d)): ?>
+<?php $attributes = $__attributesOriginal4232ba5ed77147a6b6573253fafb715d; ?>
+<?php unset($__attributesOriginal4232ba5ed77147a6b6573253fafb715d); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal4232ba5ed77147a6b6573253fafb715d)): ?>
+<?php $component = $__componentOriginal4232ba5ed77147a6b6573253fafb715d; ?>
+<?php unset($__componentOriginal4232ba5ed77147a6b6573253fafb715d); ?>
+<?php endif; ?>
 </head>
 <body class="bg-page font-onest text-body antialiased">
 
@@ -32,55 +51,33 @@
 <?php unset($__componentOriginal2a2e454b2e62574a80c8110e5f128b60); ?>
 <?php endif; ?>
 
-<main class="mx-auto w-full max-w-[1720px] px-4 pb-14 sm:px-6 md:px-10 lg:pb-24 2xl:px-0">
+<main id="main-content" class="mx-auto w-full max-w-[1720px] px-4 pb-14 sm:px-6 md:px-10 lg:pb-24 2xl:px-0">
     
     <nav aria-label="Хлебные крошки" class="flex items-center gap-2 pt-5 text-[15px] text-brand sm:pt-6 sm:text-[16px] 2xl:text-[18px]">
         <a href="<?php echo e(url('/')); ?>" class="transition-colors duration-200 hover:text-brandh">Арт-Медика</a>
-        <img src="<?php echo e(asset('images/_.svg')); ?>" alt="" class="h-3 w-auto" aria-hidden="true">
+        <img src="<?php echo e(asset('images/_.svg')); ?>" alt="" width="7" height="10" class="h-3 w-auto" aria-hidden="true">
         <a href="<?php echo e(route('news')); ?>" class="transition-colors duration-200 hover:text-brandh">Новости</a>
-        <img src="<?php echo e(asset('images/_.svg')); ?>" alt="" class="h-3 w-auto" aria-hidden="true">
+        <img src="<?php echo e(asset('images/_.svg')); ?>" alt="" width="7" height="10" class="h-3 w-auto" aria-hidden="true">
         <span class="font-medium text-ink line-clamp-1 max-w-[280px] sm:max-w-md lg:max-w-xl">
             "<?php echo e(\Illuminate\Support\Str::limit($news->title, 40)); ?>"
         </span>
     </nav>
 
     
-    <?php
-        $categoryName = $news->category?->name ?? 'Хирургия';
-        $coverUrl = $news->coverUrl();
-    ?>
-
-    <div class="mt-7 sm:mt-8 lg:mt-12">
-        
-        <div class="lg:hidden">
-            <p class="inline-flex items-baseline gap-2 text-[24px] font-medium text-[#91B5D5] sm:text-[28px]">
-                <?php echo e($categoryName); ?>
-
+    <div class="mt-7 sm:mt-8 lg:mt-12 grid grid-cols-1 gap-3 lg:grid-cols-2 lg:gap-12 2xl:gap-16 items-start">
+        <div>
+            <p class="inline-flex items-baseline gap-2 text-[24px] font-medium text-[#4A749B] sm:text-[28px] lg:text-[32px] 2xl:text-[40px]">
+                <span class="lg:hidden"><?php echo e($categoryName); ?></span>
                 <svg class="h-[0.8em] w-[0.8em] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </p>
-            <h1 class="mt-3 text-center text-[20px] font-semibold leading-[1.3] text-brand sm:text-left sm:text-[24px]">
+        </div>
+        <div>
+            <h1 class="text-center text-[20px] font-semibold leading-[1.3] text-brand sm:text-left sm:text-[24px] lg:text-[34px] lg:font-medium lg:leading-[1.25] 2xl:text-[40px]">
                 <?php echo e($news->title); ?>
 
             </h1>
-        </div>
-
-        
-        <div class="hidden lg:grid lg:grid-cols-2 lg:gap-12 2xl:gap-16 items-start">
-            <div>
-                <p class="inline-flex items-baseline gap-2 text-[32px] 2xl:text-[40px] font-medium text-[#91B5D5]">
-                    <svg class="h-[0.8em] w-[0.8em] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </p>
-            </div>
-            <div>
-                <h1 class="text-[28px] sm:text-[32px] lg:text-[34px] 2xl:text-[40px] font-medium leading-[1.25] text-brand">
-                    <?php echo e($news->title); ?>
-
-                </h1>
-            </div>
         </div>
     </div>
 
@@ -89,7 +86,7 @@
         
         <div class="relative overflow-hidden rounded-[20px] sm:rounded-[24px]">
             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($coverUrl): ?>
-                <img src="<?php echo e($coverUrl); ?>" alt="<?php echo e($news->title); ?>"
+                <img src="<?php echo e($coverUrl); ?>" alt="<?php echo e($news->title); ?>" width="840" height="630" fetchpriority="high" decoding="async"
                      class="w-full object-cover rounded-[20px] sm:rounded-[24px] max-h-[580px] 2xl:max-h-[640px]">
             <?php else: ?>
                 <div class="flex aspect-[4/3] w-full items-center justify-center bg-slate-200 text-slate-400 rounded-[20px] sm:rounded-[24px]">
@@ -113,7 +110,7 @@
             
             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($news->published_at): ?>
                 <div class="mt-8 pt-2">
-                    <span class="text-[14px] sm:text-[16px] 2xl:text-[18px] font-normal text-[#91B5D5]">
+                    <span class="text-[14px] sm:text-[16px] 2xl:text-[18px] font-normal text-[#4A749B]">
                         <?php echo e($news->published_at->format('d.m.Y')); ?>
 
                     </span>

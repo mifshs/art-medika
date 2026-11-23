@@ -21,6 +21,11 @@ class News extends Model
         'is_active'    => 'boolean',
     ];
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function scopeActive($q)    { return $q->where('is_active', true); }
     public function scopePublished($q) { return $q->active()->whereNotNull('published_at'); }
 

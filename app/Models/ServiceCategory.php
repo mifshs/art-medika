@@ -18,6 +18,11 @@ class ServiceCategory extends Model
 
     protected $casts = ['is_active' => 'boolean'];
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function scopeActive($q) { return $q->where('is_active', true); }
 
     public function parent(): BelongsTo

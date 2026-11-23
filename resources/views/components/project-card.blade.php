@@ -24,7 +24,7 @@
         {{-- Фотография с внутренними скруглёнными краями --}}
         <div class="group/img relative block overflow-hidden rounded-[14px] sm:rounded-[18px]">
             @if ($coverUrl)
-                <img src="{{ $coverUrl }}" alt="{{ $project->title }}" width="960" height="640" loading="lazy"
+                <img src="{{ $coverUrl }}" alt="{{ $project->title }}" width="960" height="640" loading="lazy" decoding="async"
                      class="h-[220px] w-full object-cover transition-transform duration-500 group-hover:scale-105 sm:h-[260px] lg:h-full lg:min-h-[320px] 2xl:min-h-[380px]">
             @else
                 <div class="flex h-[220px] w-full items-center justify-center bg-surface sm:h-[260px] lg:h-full lg:min-h-[320px]">
@@ -80,7 +80,7 @@
             {{-- Дата публикации (макет: Onest 16px / 20px, #91B5D5) --}}
             @if ($date)
                 <div class="mt-5 lg:mt-auto 2xl:pt-4">
-                    <p class="text-[15px] font-normal text-[#91B5D5] sm:text-[16px] 2xl:text-[20px]">
+                    <p class="text-[15px] font-normal text-[#4A749B] sm:text-[16px] 2xl:text-[20px]">
                         {{ $date }}
                     </p>
                 </div>

@@ -14,16 +14,16 @@ class ServiceSeeder extends Seeder
     {
         // ── Карта обложек для 10 корневых направлений (сверено с макетами) ──
         $rootCovers = [
-            'kosmetologiya'                  => 'gallery/services1.png',
-            'top-produkty'                   => 'gallery/services2.png',
-            'otorinolaringologiya'           => 'gallery/services4.png',
-            'lor-hirurgiya'                  => 'gallery/services3.png',
-            'esteticheskaya-ginekologiya'    => 'gallery/services7.png',
-            'dermatologiya'                  => 'gallery/services5.png',
-            'massazh'                        => 'gallery/services8.png',
-            'plasticheskaya-hirurgiya'       => 'gallery/services6.png',
-            'nevrologiya-i-refleksoterapiya' => 'gallery/services9.png',
-            'terapevticheskiy-priem'         => 'gallery/services10.png',
+            'kosmetologiya'                  => 'gallery/services1.webp',
+            'top-produkty'                   => 'gallery/services2.webp',
+            'otorinolaringologiya'           => 'gallery/services4.webp',
+            'lor-hirurgiya'                  => 'gallery/services3.webp',
+            'esteticheskaya-ginekologiya'    => 'gallery/services7.webp',
+            'dermatologiya'                  => 'gallery/services5.webp',
+            'massazh'                        => 'gallery/services8.webp',
+            'plasticheskaya-hirurgiya'       => 'gallery/services6.webp',
+            'nevrologiya-i-refleksoterapiya' => 'gallery/services9.webp',
+            'terapevticheskiy-priem'         => 'gallery/services10.webp',
         ];
 
         // ── Уникальные подписи мобильного макета (image-7.png) ──
@@ -98,13 +98,13 @@ class ServiceSeeder extends Seeder
         // Обложки групп пластической хирургии: цветные для /uslugi/plasticheskaya-hirurgiya,
         // ч/б обложки для аккордеона на главной (коллекция «accordion»)
         $groupCovers = [
-            'plastika-litsa'                    => 'gallery/service11.png',
-            'plastika-grudi'                    => 'gallery/service12.png',
-            'plastika-tela'                     => 'gallery/service13.png',
-            'intimnaya-plastika-dlya-muzhchin'  => 'gallery/service14.png',
-            'kombo-operacii'                    => 'gallery/service15.png',
-            'drugie-uslugi'                     => 'gallery/service16.png',
-            'plasticheskaya-i-esteticheskaya-hirurgiya' => 'cover/room.png',
+            'plastika-litsa'                    => 'gallery/service11.webp',
+            'plastika-grudi'                    => 'gallery/service12.webp',
+            'plastika-tela'                     => 'gallery/service13.webp',
+            'intimnaya-plastika-dlya-muzhchin'  => 'gallery/service14.webp',
+            'kombo-operacii'                    => 'gallery/service15.webp',
+            'drugie-uslugi'                     => 'gallery/service16.webp',
+            'plasticheskaya-i-esteticheskaya-hirurgiya' => 'cover/room.webp',
         ];
         foreach ($groupCovers as $gSlug => $gPath) {
             $groups[$gSlug]->media()->where('collection', 'cover')->delete();
@@ -112,11 +112,11 @@ class ServiceSeeder extends Seeder
         }
 
         $accordionCovers = [
-            'plastika-litsa'                   => 'cover/portrait-woman-with-dysmorphia 1.png',
-            'plastika-grudi'                   => 'cover/naked-woman-covering-herself1 1.png',
-            'plastika-tela'                    => 'cover/fit-woman-wearing-white-lingerie 1.png',
-            'intimnaya-plastika-dlya-muzhchin' => 'cover/image 34.png',
-            'drugie-uslugi'                    => 'cover/attractive-woman-apply-facial-cream-anti-aging-product1 2.png',
+            'plastika-litsa'                   => 'cover/portrait-woman-with-dysmorphia 1.webp',
+            'plastika-grudi'                   => 'cover/naked-woman-covering-herself1 1.webp',
+            'plastika-tela'                    => 'cover/fit-woman-wearing-white-lingerie 1.webp',
+            'intimnaya-plastika-dlya-muzhchin' => 'cover/image 34.webp',
+            'drugie-uslugi'                    => 'cover/attractive-woman-apply-facial-cream-anti-aging-product1 2.webp',
         ];
         foreach (array_keys($groupList) as $gSlug) {
             $groups[$gSlug]->media()->where('collection', 'accordion')->delete();
@@ -281,12 +281,12 @@ class ServiceSeeder extends Seeder
 
         // ── Кейсы «виды» и «результаты» ──
         $cases = [
-            ['type',   'Верхняя блефаропластика',                       'Решение проблем нависание век, изменение разреза глаз.', 'gallery/compare1.png', 'gallery/compare2.png'],
-            ['type',   'Нижняя трансконъюнктивальная блефаропластика', 'Избавление от морщин, мешков под глазами.',              'gallery/compare3.png', 'gallery/compare4.png'],
-            ['result', null,                                            null,                                                     'gallery/compare5.png', 'gallery/compare6.png'],
-            ['result', null,                                            null,                                                     'gallery/compare7.png', 'gallery/facelift.png'],
-            ['result', null,                                            null,                                                     'gallery/facelift2.png', 'gallery/facelift2.png'],
-            ['result', null,                                            null,                                                     'gallery/compare1.png', 'gallery/compare5.png'],
+            ['type',   'Верхняя блефаропластика',                       'Решение проблем нависание век, изменение разреза глаз.', 'gallery/compare1.webp', 'gallery/compare2.webp'],
+            ['type',   'Нижняя трансконъюнктивальная блефаропластика', 'Избавление от морщин, мешков под глазами.',              'gallery/compare3.webp', 'gallery/compare4.webp'],
+            ['result', null,                                            null,                                                     'gallery/compare5.webp', 'gallery/compare6.webp'],
+            ['result', null,                                            null,                                                     'gallery/compare7.webp', 'gallery/facelift.webp'],
+            ['result', null,                                            null,                                                     'gallery/facelift2.webp', 'gallery/facelift2.webp'],
+            ['result', null,                                            null,                                                     'gallery/compare1.webp', 'gallery/compare5.webp'],
         ];
         foreach ($cases as $ci => [$kind, $title, $desc, $before, $after]) {
             $case = $blepharo->cases()->updateOrCreate(
@@ -300,8 +300,8 @@ class ServiceSeeder extends Seeder
         // ── Кейсы «результаты» маммопластики (gallery t1/t2/t3) ──
         $mammo = Service::where('slug', 'mammo-1')->first();
         foreach ([
-            ['gallery/t1.png', 'gallery/t2.png'],
-            ['gallery/t2.png', 'gallery/t3.png'],
+            ['gallery/t1.webp', 'gallery/t2.webp'],
+            ['gallery/t2.webp', 'gallery/t3.webp'],
         ] as $i => [$before, $after]) {
             $case = $mammo->cases()->updateOrCreate(
                 ['kind' => 'result', 'title' => null, 'sort_order' => 7 + $i],

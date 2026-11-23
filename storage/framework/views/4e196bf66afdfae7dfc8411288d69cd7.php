@@ -42,7 +42,7 @@ unset($__defined_vars, $__key, $__value); ?>
         
         <div class="relative h-[280px] w-full shrink-0 overflow-hidden rounded-[16px] bg-hero sm:h-full sm:w-[395px] sm:max-w-[50%] sm:min-h-0">
             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($cover): ?>
-                <img src="<?php echo e($cover); ?>" alt="<?php echo e($promotion->title); ?>" loading="lazy"
+                <img src="<?php echo e($cover); ?>" alt="<?php echo e($promotion->title); ?>" width="395" height="517" loading="lazy" decoding="async"
                      class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105">
             <?php else: ?>
                 <div class="absolute inset-0 grid place-items-center">
@@ -68,7 +68,7 @@ unset($__defined_vars, $__key, $__value); ?>
 
     <!-- Центральная часть: Заголовок и описание -->
     <div class="mt-3 sm:mt-4">
-        <h3 class="text-[36px] font-semibold leading-snug text-ink transition-colors group-hover:text-brand 2xl:text-[26px]"><?php echo e($promotion->title); ?></h3>
+        <h2 class="text-[36px] font-semibold leading-snug text-ink transition-colors group-hover:text-brand 2xl:text-[26px]"><?php echo e($promotion->title); ?></h2>
 
         <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($promotion->excerpt): ?>
             <p class="mt-2 overflow-hidden text-[20px] leading-relaxed text-body [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:4] 2xl:text-[15px]"><?php echo e($promotion->excerpt); ?></p>
@@ -77,7 +77,7 @@ unset($__defined_vars, $__key, $__value); ?>
 
     <!-- Нижняя часть: Дата -->
     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($date): ?>
-        <span class="pt-4 text-[20px] text-[#91B5D5]"><?php echo e($date); ?></span>
+        <span class="pt-4 text-[20px] text-[#4A749B]"><?php echo e($date); ?></span>
     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
 </div>

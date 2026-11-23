@@ -1,25 +1,31 @@
+@php
+    $heroCover = $project->coverUrl() ?: '/storage/cover/room.webp';
+    $seoTitle = $project->detail_title . ' — Проекты — Арт-Медика';
+    $seoDesc = $project->excerpt ?: ($project->description ?: ('Проект клиники «Арт-Медика»: ' . $project->detail_title . '.'));
+    $seoKeywords = trim($project->detail_title . ', проекты Арт-Медика, преображение, пластическая хирургия Челябинск', ', ');
+@endphp
 <!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $project->detail_title }} — Проекты — Медико-косметологический центр «Арт-Медика»</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <x-seo-head
+        :title="$seoTitle"
+        :description="$seoDesc"
+        :keywords="$seoKeywords"
+        :ogImage="$heroCover"
+        :preloadImage="$heroCover"
+    />
 </head>
 <body class="bg-page font-onest text-body antialiased">
 
 <x-header />
 
-<main class="mx-auto w-full max-w-[1720px] px-4 pb-16 sm:px-6 md:px-10 lg:pb-24 2xl:px-0">
+<main id="main-content" class="mx-auto w-full max-w-[1720px] px-4 pb-16 sm:px-6 md:px-10 lg:pb-24 2xl:px-0">
     {{-- Хлебные крошки: Onest, #37241B, на десктопе полный путь, на мобиле компактный как в макете --}}
     <nav aria-label="Хлебные крошки" class="flex items-center gap-2 pt-5 text-[15px] sm:pt-6 sm:text-[16px] 2xl:text-[18px] text-brand">
         <a href="{{ url('/') }}" class="hidden sm:inline transition-colors duration-200 hover:text-brandh">Арт-Медика</a>
-        <img src="{{ asset('images/_.svg') }}" alt="" class="hidden sm:inline h-3 w-auto" aria-hidden="true">
+        <img src="{{ asset('images/_.svg') }}" width="7" height="10" alt="" class="hidden sm:inline h-3 w-auto" aria-hidden="true">
         <a href="{{ route('projects') }}" class="transition-colors duration-200 hover:text-brandh">Проекты</a>
-        <img src="{{ asset('images/_.svg') }}" alt="" class="h-3 w-auto" aria-hidden="true">
+        <img src="{{ asset('images/_.svg') }}" width="7" height="10" alt="" class="h-3 w-auto" aria-hidden="true">
         <span class="font-medium truncate max-w-[240px] sm:max-w-none">{{ $project->detail_title }}</span>
     </nav>
 
@@ -29,21 +35,20 @@
             {{ $project->detail_title }}
         </h1>
         @if ($project->subtitle)
-            <p class="text-[16px] font-normal text-[#91B5D5] sm:text-[20px] lg:text-[24px] sm:text-right shrink-0">
+            <p class="text-[16px] font-normal text-[#4A749B] sm:text-[20px] lg:text-[24px] sm:text-right shrink-0">
                 {{ $project->subtitle }}
             </p>
         @endif
     </div>
 
     {{-- Главный баннер проекта --}}
-    @php
-        $heroCover = $project->coverUrl() ?: '/storage/cover/room.png';
-    @endphp
     <div class="mt-6 overflow-hidden rounded-[16px] sm:mt-8 sm:rounded-[20px] lg:rounded-[24px]">
         <img src="{{ $heroCover }}"
              alt="{{ $project->title }}"
              width="1720"
              height="640"
+             fetchpriority="high"
+             decoding="async"
              class="h-[220px] w-full object-cover sm:h-[360px] md:h-[440px] lg:h-[540px] 2xl:h-[600px]">
     </div>
 
@@ -99,7 +104,7 @@
                     <button type="button"
                             id="formats-scroll-btn"
                             aria-label="Прокрутить форматы"
-                            class="grid h-10 w-10 place-items-center rounded-[10px] bg-brand text-white transition-opacity hover:opacity-90 sm:h-11 sm:w-11">
+                            class="hidden sm:grid h-10 w-10 place-items-center rounded-[10px] bg-brand text-white transition-opacity hover:opacity-90 sm:h-11 sm:w-11">
                         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                         </svg>
@@ -117,7 +122,10 @@
                             @if ($formatCover)
                                 <img src="{{ $formatCover }}"
                                      alt="{{ $format->title }}"
+                                     width="480"
+                                     height="560"
                                      loading="lazy"
+                                     decoding="async"
                                      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105">
                             @else
                                 <div class="h-full w-full bg-slate-800"></div>
@@ -176,7 +184,7 @@
                         Фотографии
                     </h2>
                     @if ($gallery->count() > 1)
-                        <div class="flex items-center gap-2">
+                        <div class="hidden items-center gap-2 sm:flex">
                             <button type="button" id="photos-prev" aria-label="Предыдущее фото"
                                     class="grid h-10 w-10 place-items-center rounded-[10px] bg-brand text-white transition-opacity hover:opacity-90 sm:h-11 sm:w-11">
                                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -204,7 +212,10 @@
                                     <div class="swiper-slide overflow-hidden rounded-[16px] sm:rounded-[20px] lg:rounded-[24px]">
                                         <img src="{{ $photo->url }}"
                                              alt="{{ $photo->alt ?? 'Фото проекта' }}"
+                                             width="1400"
+                                             height="553"
                                              loading="lazy"
+                                             decoding="async"
                                              class="h-[240px] w-full object-cover sm:h-[380px] lg:h-[520px] 2xl:h-[580px]">
                                     </div>
                                 @endforeach
@@ -215,7 +226,10 @@
                         <div class="overflow-hidden rounded-[16px] sm:rounded-[20px] lg:rounded-[24px]">
                             <img src="{{ $singlePhoto->url }}"
                                  alt="{{ $singlePhoto->alt ?? 'Фото проекта' }}"
+                                 width="1400"
+                                 height="553"
                                  loading="lazy"
+                                 decoding="async"
                                  class="h-[240px] w-full object-cover sm:h-[380px] lg:h-[520px] 2xl:h-[580px]">
                         </div>
                     @endif

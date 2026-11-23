@@ -1,39 +1,58 @@
+<?php
+    $catName = $category?->name ?? 'Услуги';
+    $parentCatName = $category?->parent?->name;
+    $seoTitle = $service->name . ' — ' . $catName . ' — Арт-Медика';
+    $seoDesc = $service->description ?: ($service->name . ' в центре «Арт-Медика» (Челябинск): показания, подготовка, методика проведения, результаты и специалисты.');
+    $seoKeywords = trim(implode(', ', array_filter([$service->name, $catName, $parentCatName, 'Арт-Медика', 'Челябинск'])));
+    $seoImage = $service->coverUrl() ?: $category?->coverUrl();
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<?php echo e($service->name); ?> — услуги в клинике «Арт-Медика».">
-    <title><?php echo e($service->name); ?> — Арт-Медика</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
-    <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
+    <?php if (isset($component)) { $__componentOriginal4232ba5ed77147a6b6573253fafb715d = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal4232ba5ed77147a6b6573253fafb715d = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.seo-head','data' => ['title' => $seoTitle,'description' => $seoDesc,'keywords' => $seoKeywords,'ogImage' => $seoImage]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('seo-head'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['title' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($seoTitle),'description' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($seoDesc),'keywords' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($seoKeywords),'ogImage' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($seoImage)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal4232ba5ed77147a6b6573253fafb715d)): ?>
+<?php $attributes = $__attributesOriginal4232ba5ed77147a6b6573253fafb715d; ?>
+<?php unset($__attributesOriginal4232ba5ed77147a6b6573253fafb715d); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal4232ba5ed77147a6b6573253fafb715d)): ?>
+<?php $component = $__componentOriginal4232ba5ed77147a6b6573253fafb715d; ?>
+<?php unset($__componentOriginal4232ba5ed77147a6b6573253fafb715d); ?>
+<?php endif; ?>
 </head>
 <body class="bg-page font-onest text-body antialiased">
     <?php echo $__env->make('components.header', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
-    <main class="mx-auto w-full max-w-[1720px] px-4 pb-20 sm:px-6 md:px-10 2xl:px-0">
+    <main id="main-content" class="mx-auto w-full max-w-[1720px] px-4 pb-20 sm:px-6 md:px-10 2xl:px-0">
         
         <nav aria-label="Хлебные крошки" class="flex flex-wrap items-center gap-2 pt-6 text-[15px] text-brand sm:text-[18px]">
             <a href="<?php echo e(url('/')); ?>" rel="home" class="transition-colors duration-200 hover:text-brandh">Арт-Медика</a>
-            <img src="<?php echo e(asset('images/_.svg')); ?>" alt="" class="h-3 w-auto" aria-hidden="true">
+            <img src="<?php echo e(asset('images/_.svg')); ?>" width="7" height="10" alt="" class="h-3 w-auto" aria-hidden="true">
             <a href="<?php echo e(route('services')); ?>" class="whitespace-nowrap transition-colors duration-200 hover:text-brandh">Услуги</a>
             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($category): ?>
-                <img src="<?php echo e(asset('images/_.svg')); ?>" alt="" class="h-3 w-auto shrink-0" aria-hidden="true">
+                <img src="<?php echo e(asset('images/_.svg')); ?>" width="7" height="10" alt="" class="h-3 w-auto shrink-0" aria-hidden="true">
                 <a href="<?php echo e(route('services.show', $category->slug)); ?>" class="whitespace-nowrap transition-colors duration-200 hover:text-brandh"><?php echo e($category->name); ?></a>
             <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
-            <img src="<?php echo e(asset('images/_.svg')); ?>" alt="" class="h-3 w-auto shrink-0" aria-hidden="true">
+            <img src="<?php echo e(asset('images/_.svg')); ?>" width="7" height="10" alt="" class="h-3 w-auto shrink-0" aria-hidden="true">
             <span class="font-medium text-brand"><?php echo e($service->name); ?></span>
         </nav>
 
         
         <div class="flex flex-col items-start justify-between gap-4 pt-8 lg:flex-row lg:items-start lg:gap-8 lg:pt-10 2xl:pt-[52px]">
-            <h1 class="flex shrink-0 items-center gap-2 text-[20px] font-medium leading-[1.2] text-[#91B5D5] sm:text-[28px] lg:text-[40px]">
+            <h1 class="flex shrink-0 items-center gap-2 text-[20px] font-medium leading-[1.2] text-[#4A749B] sm:text-[28px] lg:text-[40px]">
                 <?php echo e($service->name); ?>
 
-                <img src="<?php echo e(asset('images/Arrow_right_light.svg')); ?>" alt="" class="w-[30px] sm:w-[40px] lg:w-[50px]" aria-hidden="true">
+                <img src="<?php echo e(asset('images/Arrow_right_light.svg')); ?>" width="50" height="50" alt="" class="w-[30px] sm:w-[40px] lg:w-[50px]" aria-hidden="true">
             </h1>
             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($service->description): ?>
                 <p class="max-w-[1140px] text-[20px] font-medium leading-[1.25] text-brand sm:text-[28px] lg:text-[40px] lg:leading-[1.2]">
@@ -75,9 +94,9 @@
             ?>
             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($typesCases->isNotEmpty()): ?>
                 <section class="mt-14 sm:mt-18 lg:mt-24">
-                    <h2 class="flex items-center gap-2 text-[20px] font-medium text-[#91B5D5] sm:text-[28px] lg:text-[36px]">
+                    <h2 class="flex items-center gap-2 text-[20px] font-medium text-[#4A749B] sm:text-[28px] lg:text-[36px]">
                         Виды блефаропластики
-                        <img src="<?php echo e(asset('images/Arrow_right_light.svg')); ?>" alt="" class="w-[26px] sm:w-[36px]" aria-hidden="true">
+                        <img src="<?php echo e(asset('images/Arrow_right_light.svg')); ?>" width="50" height="50" alt="" class="w-[26px] sm:w-[36px]" aria-hidden="true">
                     </h2>
 
                     
@@ -97,14 +116,14 @@
                                     
                                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($patient1Url): ?>
                                         <div class="relative overflow-hidden rounded-[16px] bg-hero">
-                                            <img src="<?php echo e($patient1Url); ?>" alt="<?php echo e($type->title); ?>" loading="lazy" class="h-auto w-full object-cover">
+                                            <img src="<?php echo e($patient1Url); ?>" alt="<?php echo e($type->title); ?>" width="415" height="622" loading="lazy" decoding="async" class="h-auto w-full object-cover">
                                         </div>
                                     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
                                     
                                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($patient2Url): ?>
                                         <div class="relative overflow-hidden rounded-[16px] bg-hero">
-                                            <img src="<?php echo e($patient2Url); ?>" alt="<?php echo e($type->title); ?>" loading="lazy" class="h-auto w-full object-cover">
+                                            <img src="<?php echo e($patient2Url); ?>" alt="<?php echo e($type->title); ?>" width="415" height="622" loading="lazy" decoding="async" class="h-auto w-full object-cover">
                                         </div>
                                     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                                 </div>
@@ -118,9 +137,9 @@
             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($service->preparation): ?>
                 <section class="mt-14 sm:mt-18 lg:mt-24">
                     <div class="flex flex-col items-start justify-between gap-4 lg:flex-row lg:gap-12">
-                        <h2 class="flex shrink-0 items-center gap-2 text-[20px] font-medium text-[#91B5D5] sm:text-[28px] lg:text-[36px]">
+                        <h2 class="flex shrink-0 items-center gap-2 text-[20px] font-medium text-[#4A749B] sm:text-[28px] lg:text-[36px]">
                             Подготовка к операции
-                            <img src="<?php echo e(asset('images/Arrow_right_light.svg')); ?>" alt="" class="w-[26px] sm:w-[36px]" aria-hidden="true">
+                            <img src="<?php echo e(asset('images/Arrow_right_light.svg')); ?>" width="50" height="50" alt="" class="w-[26px] sm:w-[36px]" aria-hidden="true">
                         </h2>
                         <p class="max-w-[1140px] text-[16px] font-medium leading-relaxed text-ink sm:text-[20px] lg:text-[36px]">
                             <?php echo e($service->preparation); ?>
@@ -163,9 +182,9 @@
             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($service->execution): ?>
                 <section class="mt-14 sm:mt-18 lg:mt-24">
                     <div class="flex flex-col items-start justify-between gap-4 lg:flex-row lg:gap-12">
-                        <h2 class="flex shrink-0 items-center gap-2 text-[20px] font-medium text-[#91B5D5] sm:text-[28px] lg:text-[36px]">
+                        <h2 class="flex shrink-0 items-center gap-2 text-[20px] font-medium text-[#4A749B] sm:text-[28px] lg:text-[36px]">
                             Способ выполнения <br> блефаропластики
-                            <img src="<?php echo e(asset('images/Arrow_right_light.svg')); ?>" alt="" class="w-[26px] sm:w-[36px]" aria-hidden="true">
+                            <img src="<?php echo e(asset('images/Arrow_right_light.svg')); ?>" width="50" height="50" alt="" class="w-[26px] sm:w-[36px]" aria-hidden="true">
                         </h2>
                         <p class="max-w-[1140px] text-[16px] font-medium leading-relaxed text-ink sm:text-[20px] lg:text-[36px]">
                             <?php echo e($service->execution); ?>
@@ -193,7 +212,7 @@
                             ?>
                             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($imageUrl): ?>
                                 <div class="relative overflow-hidden rounded-[16px] bg-hero">
-                                    <img src="<?php echo e($imageUrl); ?>" alt="Результат блефаропластики" loading="lazy" class="h-auto w-full object-cover">
+                                    <img src="<?php echo e($imageUrl); ?>" alt="Результат блефаропластики" width="415" height="622" loading="lazy" decoding="async" class="h-auto w-full object-cover">
                                 </div>
                             <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
@@ -204,9 +223,9 @@
             
             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($service->experts->isNotEmpty()): ?>
                 <section class="mt-14 sm:mt-18 lg:mt-24">
-                    <h2 class="flex items-center gap-2 text-[20px] font-medium text-[#91B5D5] sm:text-[28px] lg:text-[36px]">
+                    <h2 class="flex items-center gap-2 text-[20px] font-medium text-[#4A749B] sm:text-[28px] lg:text-[36px]">
                         Врачи, проводящие процедуру
-                        <img src="<?php echo e(asset('images/Arrow_right_light.svg')); ?>" alt="" class="w-[26px] sm:w-[36px]" aria-hidden="true">
+                        <img src="<?php echo e(asset('images/Arrow_right_light.svg')); ?>" width="50" height="50" alt="" class="w-[26px] sm:w-[36px]" aria-hidden="true">
                     </h2>
 
                     <div class="mt-6 flex flex-wrap gap-6">
@@ -218,7 +237,7 @@
                             <article class="flex w-full max-w-[850px] flex-col rounded-[24px] bg-[#F3F4FB] p-5 sm:min-h-[557px] sm:flex-row sm:gap-6">
                                 <a href="<?php echo e($detailUrl); ?>" class="relative block h-[320px] w-full shrink-0 overflow-hidden rounded-[16px] bg-hero sm:h-auto sm:w-[395px]">
                                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($avatarUrl): ?>
-                                        <img src="<?php echo e($avatarUrl); ?>" alt="<?php echo e($expert->name); ?>" loading="lazy"
+                                        <img src="<?php echo e($avatarUrl); ?>" alt="<?php echo e($expert->name); ?>" width="395" height="517" loading="lazy" decoding="async"
                                              class="h-full w-full object-cover object-top transition-transform duration-500 hover:scale-105">
                                     <?php else: ?>
                                         <div class="grid h-full w-full place-items-center text-slate-400">
@@ -233,8 +252,8 @@
                                     <div>
                                         <div class="flex items-center justify-between text-[16px] text-brand">
                                             <span>Руководство</span>
-                                            <a href="<?php echo e($detailUrl); ?>" class="text-ink transition-transform duration-300 hover:translate-x-0.5 hover:-translate-y-0.5">
-                                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <a href="<?php echo e($detailUrl); ?>" aria-label="Открыть профиль специалиста <?php echo e($expert->name); ?>" class="text-ink transition-transform duration-300 hover:translate-x-0.5 hover:-translate-y-0.5">
+                                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                                     <path d="M7 17L17 7H8.5M17 7v8.5"/>
                                                 </svg>
                                             </a>

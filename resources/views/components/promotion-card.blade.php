@@ -14,7 +14,7 @@
         {{-- Обложка из БД (media, collection «cover»): 395×517 внутри карточки, обрез до карточного соотношения --}}
         <div class="relative h-[280px] w-full shrink-0 overflow-hidden rounded-[16px] bg-hero sm:h-full sm:w-[395px] sm:max-w-[50%] sm:min-h-0">
             @if ($cover)
-                <img src="{{ $cover }}" alt="{{ $promotion->title }}" loading="lazy"
+                <img src="{{ $cover }}" alt="{{ $promotion->title }}" width="395" height="517" loading="lazy" decoding="async"
                      class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105">
             @else
                 <div class="absolute inset-0 grid place-items-center">
@@ -40,7 +40,7 @@
 
     <!-- Центральная часть: Заголовок и описание -->
     <div class="mt-3 sm:mt-4">
-        <h3 class="text-[36px] font-semibold leading-snug text-ink transition-colors group-hover:text-brand 2xl:text-[26px]">{{ $promotion->title }}</h3>
+        <h2 class="text-[36px] font-semibold leading-snug text-ink transition-colors group-hover:text-brand 2xl:text-[26px]">{{ $promotion->title }}</h2>
 
         @if ($promotion->excerpt)
             <p class="mt-2 overflow-hidden text-[20px] leading-relaxed text-body [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:4] 2xl:text-[15px]">{{ $promotion->excerpt }}</p>
@@ -49,7 +49,7 @@
 
     <!-- Нижняя часть: Дата -->
     @if ($date)
-        <span class="pt-4 text-[20px] text-[#91B5D5]">{{ $date }}</span>
+        <span class="pt-4 text-[20px] text-[#4A749B]">{{ $date }}</span>
     @endif
 
 </div>

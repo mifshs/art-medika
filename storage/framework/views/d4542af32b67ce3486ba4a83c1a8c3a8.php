@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Направления клиники «Арт-Медика»: пластическая хирургия, косметология, дерматология, ЛОР-хирургия и другие медицинские и эстетические услуги.">
-    <title>Услуги — Арт-Медика</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
-    <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
+    <?php if (isset($component)) { $__componentOriginal4232ba5ed77147a6b6573253fafb715d = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal4232ba5ed77147a6b6573253fafb715d = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.seo-head','data' => ['title' => 'Услуги — Медико-косметологический центр «Арт-Медика»','description' => 'Направления клиники «Арт-Медика»: пластическая хирургия, косметология, дерматология, ЛОР-хирургия, гинекология, неврология, массаж и диагностика.','keywords' => 'услуги Арт-Медика, пластическая хирургия, косметология, дерматология, оториноларингология, эстетическая гинекология, массаж','ogImage' => $categories->first()?->coverUrl()]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('seo-head'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['title' => 'Услуги — Медико-косметологический центр «Арт-Медика»','description' => 'Направления клиники «Арт-Медика»: пластическая хирургия, косметология, дерматология, ЛОР-хирургия, гинекология, неврология, массаж и диагностика.','keywords' => 'услуги Арт-Медика, пластическая хирургия, косметология, дерматология, оториноларингология, эстетическая гинекология, массаж','ogImage' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($categories->first()?->coverUrl())]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal4232ba5ed77147a6b6573253fafb715d)): ?>
+<?php $attributes = $__attributesOriginal4232ba5ed77147a6b6573253fafb715d; ?>
+<?php unset($__attributesOriginal4232ba5ed77147a6b6573253fafb715d); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal4232ba5ed77147a6b6573253fafb715d)): ?>
+<?php $component = $__componentOriginal4232ba5ed77147a6b6573253fafb715d; ?>
+<?php unset($__componentOriginal4232ba5ed77147a6b6573253fafb715d); ?>
+<?php endif; ?>
 </head>
 <body class="bg-page font-onest text-body antialiased">
     <?php echo $__env->make('components.header', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
-    <main class="mx-auto w-full max-w-[1720px] px-4 pb-20 sm:px-6 md:px-10 2xl:px-0">
+    <main id="main-content" class="mx-auto w-full max-w-[1720px] px-4 pb-20 sm:px-6 md:px-10 2xl:px-0">
         
         <nav aria-label="Хлебные крошки" class="flex items-center gap-2 pt-6 text-[18px] text-brand">
             <a href="<?php echo e(url('/')); ?>" rel="home" class="transition-colors duration-200 hover:text-brandh">Арт-Медика</a>
-            <img src="<?php echo e(asset('images/_.svg')); ?>" alt="" class="h-3 w-auto" aria-hidden="true">
+            <img src="<?php echo e(asset('images/_.svg')); ?>" width="7" height="10" alt="" class="h-3 w-auto" aria-hidden="true">
             <span class="font-medium">Услуги</span>
         </nav>
 
         
         <div class="flex flex-col items-start justify-between max-sm:gap-1 gap-8 max-sm:pt-8 lg:pt-10 lg:flex-row lg:items-start 2xl:pt-[52px]">
-            <h1 class="flex shrink-0 items-center gap-2 text-[24px] font-medium leading-[32px] text-[#91B5D5] lg:text-[40px] lg:leading-[52px]">
+            <h1 class="flex shrink-0 items-center gap-2 text-[24px] font-medium leading-[32px] text-[#4A749B] lg:text-[40px] lg:leading-[52px]">
                 Услуги
-                <img src="<?php echo e(asset('images/Arrow_right_light.svg')); ?>" alt="" class="w-[50px] max-lg:w-[38px]" aria-hidden="true">
+                <img src="<?php echo e(asset('images/Arrow_right_light.svg')); ?>" width="50" height="50" alt="" class="w-[50px] max-lg:w-[38px]" aria-hidden="true">
             </h1>
             <p class="max-w-[1140px] text-[24px] font-medium leading-[32px] text-brand [text-indent:25%] lg:text-[40px] lg:leading-[52px] lg:[text-indent:290px]">
                 <?php echo e($intro); ?>

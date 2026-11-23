@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Цены на услуги клиники «Арт-Медика»: направления, поднаправления, стоимость и время приёма.">
-    <title>Цены на услуги — Арт-Медика</title>
-    <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
+    <?php if (isset($component)) { $__componentOriginal4232ba5ed77147a6b6573253fafb715d = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal4232ba5ed77147a6b6573253fafb715d = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.seo-head','data' => ['title' => 'Цены на услуги — Медико-косметологический центр «Арт-Медика»','description' => 'Прайс-лист на услуги клиники «Арт-Медика» в Челябинске: пластическая хирургия, косметология, дерматология, гинекология, ЛОР, стоимость и время приёма.','keywords' => 'цены Арт-Медика, прайс-лист пластическая хирургия, стоимость косметологии Челябинск, цены на приём врача']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('seo-head'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['title' => 'Цены на услуги — Медико-косметологический центр «Арт-Медика»','description' => 'Прайс-лист на услуги клиники «Арт-Медика» в Челябинске: пластическая хирургия, косметология, дерматология, гинекология, ЛОР, стоимость и время приёма.','keywords' => 'цены Арт-Медика, прайс-лист пластическая хирургия, стоимость косметологии Челябинск, цены на приём врача']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal4232ba5ed77147a6b6573253fafb715d)): ?>
+<?php $attributes = $__attributesOriginal4232ba5ed77147a6b6573253fafb715d; ?>
+<?php unset($__attributesOriginal4232ba5ed77147a6b6573253fafb715d); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal4232ba5ed77147a6b6573253fafb715d)): ?>
+<?php $component = $__componentOriginal4232ba5ed77147a6b6573253fafb715d; ?>
+<?php unset($__componentOriginal4232ba5ed77147a6b6573253fafb715d); ?>
+<?php endif; ?>
 </head>
 <?php
     $currency = fn ($value) => $value === null ? '—' : number_format((float) $value, 0, ',', ' ') . ' ₽';
@@ -23,10 +38,10 @@
 <body>
     <?php echo $__env->make('components.header', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
-    <main class="mx-auto w-full max-w-[1720px] px-4 pb-20 sm:px-6 md:px-10 2xl:px-0">
-        <h1 class="flex items-center gap-3 pt-6 text-[40px] font-medium leading-none text-[#91B5D5] max-lg:text-3xl 2xl:pt-10">
+    <main id="main-content" class="mx-auto w-full max-w-[1720px] px-4 pb-20 sm:px-6 md:px-10 2xl:px-0">
+        <h1 class="flex items-center gap-3 pt-6 text-[40px] font-medium leading-none text-[#4A749B] max-lg:text-3xl 2xl:pt-10">
             Цены на услуги
-            <img src="<?php echo e(asset('images/Arrow_right_light.svg')); ?>" alt="" class="w-[50px] shrink-0 max-lg:w-[38px]" aria-hidden="true">
+            <img src="<?php echo e(asset('images/Arrow_right_light.svg')); ?>" width="50" height="50" alt="" class="w-[50px] shrink-0 max-lg:w-[38px]" aria-hidden="true">
         </h1>
 
         <?php $firstCard = true; ?>

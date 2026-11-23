@@ -52,7 +52,7 @@ unset($__defined_vars, $__key, $__value); ?>
         
         <div class="group/img relative block overflow-hidden rounded-[14px] sm:rounded-[18px]">
             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($coverUrl): ?>
-                <img src="<?php echo e($coverUrl); ?>" alt="<?php echo e($project->title); ?>" width="960" height="640" loading="lazy"
+                <img src="<?php echo e($coverUrl); ?>" alt="<?php echo e($project->title); ?>" width="960" height="640" loading="lazy" decoding="async"
                      class="h-[220px] w-full object-cover transition-transform duration-500 group-hover:scale-105 sm:h-[260px] lg:h-full lg:min-h-[320px] 2xl:min-h-[380px]">
             <?php else: ?>
                 <div class="flex h-[220px] w-full items-center justify-center bg-surface sm:h-[260px] lg:h-full lg:min-h-[320px]">
@@ -112,7 +112,7 @@ unset($__defined_vars, $__key, $__value); ?>
             
             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($date): ?>
                 <div class="mt-5 lg:mt-auto 2xl:pt-4">
-                    <p class="text-[15px] font-normal text-[#91B5D5] sm:text-[16px] 2xl:text-[20px]">
+                    <p class="text-[15px] font-normal text-[#4A749B] sm:text-[16px] 2xl:text-[20px]">
                         <?php echo e($date); ?>
 
                     </p>

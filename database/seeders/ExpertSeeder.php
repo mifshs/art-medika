@@ -34,11 +34,11 @@ class ExpertSeeder extends Seeder
 
         // ── Аватары из репозитория ──
         $avatars = [
-            'kuznecova-irina'     => 'avatar/irina.png',
-            'busygina-anastasiya' => 'avatar/anastasia.png',
-            'perevezencev-yuriy'  => 'avatar/juri.png',
-            'sergeeva-evgeniya'   => 'avatar/evgenia.png',
-            'dr-gaja'             => 'cover/side-view-doctor-checking-patient-before-rhinoplasty 1.png',
+            'kuznecova-irina'     => 'avatar/irina.webp',
+            'busygina-anastasiya' => 'avatar/anastasia.webp',
+            'perevezencev-yuriy'  => 'avatar/juri.webp',
+            'sergeeva-evgeniya'   => 'avatar/evgenia.webp',
+            'dr-gaja'             => 'cover/side-view-doctor-checking-patient-before-rhinoplasty 1.webp',
         ];
 
         // ── Специалисты ──

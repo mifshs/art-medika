@@ -4,11 +4,11 @@
     $socials     = \App\Models\Setting::get('socials', []);
     $mediaBase   = rtrim((string) (config('media.base_url') ?: '/storage'), '/');
     $socialIcons = \App\Models\Setting::get('social_icons') ?: [
-        'max'      => $mediaBase . '/docs/max-messenger-sign-logo%201.png',
-        'vk'       => $mediaBase . '/docs/Vk_logo.png',
-        'telegram' => $mediaBase . '/docs/Telegram_logo%201.png',
+        'max'      => $mediaBase . '/docs/max-messenger-sign-logo%201.webp',
+        'vk'       => $mediaBase . '/docs/Vk_logo.webp',
+        'telegram' => $mediaBase . '/docs/Telegram_logo%201.webp',
     ];
-    $logo        = \App\Models\Setting::get('logo') ?: asset('images/logo.png');
+    $logo        = \App\Models\Setting::get('logo') ?: asset('images/logo.svg');
     $phoneTel    = preg_replace('/\D+/', '', (string) ($contacts['phone'] ?? ''));
 
     $companyNav = [
@@ -44,7 +44,7 @@
         
         <div class="flex items-center justify-between gap-4">
             <a href="<?php echo e(url('/')); ?>" class="inline-flex items-center transition-all duration-300 ease-out hover:opacity-80 hover:scale-[1.03] focus-visible:outline-offset-2">
-                <img src="<?php echo e(asset('images/logo.svg')); ?>" alt="Медико-косметологический центр «Арт-Медика»" class="h-8 w-auto sm:h-9">
+                <img src="<?php echo e(asset('images/logo.svg')); ?>" alt="Медико-косметологический центр «Арт-Медика»" width="270" height="64" class="h-8 w-auto sm:h-9">
             </a>
 
             <div class="flex items-center gap-2.5">
@@ -52,7 +52,7 @@
                     <a href="<?php echo e($socials[$network] ?? '#'); ?>" target="_blank" rel="noopener"
                        aria-label="Мы в <?php echo e(mb_strtoupper($network)); ?>"
                        class="grid h-10 w-10 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-[1px] hover:shadow-md hover:bg-surfaceh">
-                        <img src="<?php echo e($icon); ?>" alt="" class="h-10 w-10 object-contain">
+                        <img src="<?php echo e($icon); ?>" alt="" width="40" height="40" loading="lazy" decoding="async" class="h-10 w-10 object-contain">
                     </a>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
             </div>
@@ -66,11 +66,11 @@
             </li>
             <li class="flex items-start gap-2.5">
                 <svg class="mt-0.5 h-3.5 w-3.5 shrink-0 text-ink" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 3h2.2c.7 0 1.3.5 1.4 1.2l.5 2.8c.1.6-.2 1.2-.7 1.5l-1.4.8a12.4 12.4 0 0 0 5.9 5.9l.8-1.4c.3-.5.9-.8 1.5-.7l2.8.5c.7.1 1.2.7 1.2 1.4v2.2c0 .9-.7 1.7-1.6 1.6C11 19.9 4.2 13.2 5 4.6 5 3.7 5.8 3 6.6 3Z"/></svg>
-                <a href="tel:<?php echo e($phoneTel); ?>" class="relative inline-block py-0.5 transition-colors duration-300 ease-out hover:text-[#7E93AC] after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-[#7E93AC] after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"><?php echo e($contacts['phone'] ?? ''); ?></a>
+                <a href="tel:<?php echo e($phoneTel); ?>" class="relative inline-block py-0.5 transition-colors duration-300 ease-out hover:text-steel after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-steel after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"><?php echo e($contacts['phone'] ?? ''); ?></a>
             </li>
             <li class="flex items-start gap-2.5">
                 <svg class="mt-0.5 h-3.5 w-3.5 shrink-0 text-ink" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1.4 2 6.6 5.2L18.6 7H5.4Z"/></svg>
-                <a href="mailto:<?php echo e($contacts['email'] ?? ''); ?>" class="relative inline-block py-0.5 transition-colors duration-300 ease-out hover:text-[#7E93AC] after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-[#7E93AC] after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"><?php echo e($contacts['email'] ?? ''); ?></a>
+                <a href="mailto:<?php echo e($contacts['email'] ?? ''); ?>" class="relative inline-block py-0.5 transition-colors duration-300 ease-out hover:text-steel after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-steel after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"><?php echo e($contacts['email'] ?? ''); ?></a>
             </li>
             <li class="flex items-start gap-2.5">
                 <svg class="mt-0.5 h-3.5 w-3.5 shrink-0 text-ink" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 5v5l4 2.4-.9 1.5-4.9-3V7h1.9Z"/></svg>
@@ -92,10 +92,10 @@
         </div>
 
         
-        <button type="button" data-bvi-toggle aria-label="Включить версию для слабовидящих"
+        <button type="button" data-bvi-toggle
                 class="group mt-5 inline-flex items-center gap-2 text-left transition-all duration-300 ease-out focus-visible:outline-offset-2">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="text-ink transition-colors duration-300 ease-out group-hover:text-[#7E93AC]"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.7"/></svg>
-            <span class="relative py-0.5 text-[12px] font-medium text-ink transition-colors duration-300 ease-out group-hover:text-[#7E93AC] after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-[#7E93AC] after:transition-transform after:duration-300 after:ease-out group-hover:after:scale-x-100">Версия для слабовидящих</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="text-ink transition-colors duration-300 ease-out group-hover:text-steel"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.7"/></svg>
+            <span class="relative py-0.5 text-[12px] font-medium text-ink transition-colors duration-300 ease-out group-hover:text-steel after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-steel after:transition-transform after:duration-300 after:ease-out group-hover:after:scale-x-100">Версия для слабовидящих</span>
         </button>
 
         
@@ -111,7 +111,7 @@
             
             <div>
                 <a href="<?php echo e(url('/')); ?>" class="inline-flex items-center transition-all duration-300 ease-out hover:opacity-80 hover:scale-[1.03] focus-visible:outline-offset-2">
-                    <img src="<?php echo e(asset('images/logo.svg')); ?>" alt="Медико-косметологический центр «Арт-Медика»" class="h-10 w-auto sm:h-12">
+                    <img src="<?php echo e(asset('images/logo.svg')); ?>" alt="Медико-косметологический центр «Арт-Медика»" width="270" height="64" class="h-10 w-auto sm:h-12">
                 </a>
 
                 <div class="mt-6 flex items-center gap-3">
@@ -119,17 +119,17 @@
                         <a href="<?php echo e($socials[$network] ?? '#'); ?>" target="_blank" rel="noopener"
                            aria-label="Мы в <?php echo e(mb_strtoupper($network)); ?>"
                            class="grid h-10 w-10 2xl:h-11 2xl:w-11 place-items-center overflow-hidden rounded-full bg-white transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-[1px] hover:shadow-md hover:bg-surfaceh">
-                            <img src="<?php echo e($icon); ?>" alt="" class="h-10 w-10 2xl:h-11 2xl:w-11" width="44" height="44">
+                            <img src="<?php echo e($icon); ?>" alt="" loading="lazy" decoding="async" class="h-10 w-10 2xl:h-11 2xl:w-11" width="44" height="44">
                         </a>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                 </div>
 
-                <button type="button" data-bvi-toggle aria-label="Включить версию для слабовидящих"
+                <button type="button" data-bvi-toggle
                         class="group mt-6 inline-flex items-center gap-2.5 text-left transition-all duration-300 ease-out focus-visible:outline-offset-2">
                     <span class="grid h-7 w-7 place-items-center rounded-full bg-brand transition-all duration-300 ease-out group-hover:bg-[#5A3E32] group-hover:scale-105">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="text-white"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.7"/></svg>
                     </span>
-                    <span class="relative py-0.5 text-[15px] font-semibold text-brand transition-colors duration-300 ease-out group-hover:text-[#7E93AC] after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-[#7E93AC] after:transition-transform after:duration-300 after:ease-out group-hover:after:scale-x-100">Версия для слабовидящих</span>
+                    <span class="relative py-0.5 text-[15px] font-semibold text-brand transition-colors duration-300 ease-out group-hover:text-steel after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-steel after:transition-transform after:duration-300 after:ease-out group-hover:after:scale-x-100">Версия для слабовидящих</span>
                 </button>
 
                 <p class="mt-5 text-[13px] leading-relaxed text-body">© Медико-косметологический центр Арт-медика <?php echo e(now()->year); ?><br>Категория 18+</p>
@@ -140,7 +140,7 @@
                 <p class="text-[16px] font-bold text-ink 2xl:text-[18px]">Клиника</p>
                 <ul class="mt-4 space-y-3 text-[14px] text-body sm:text-[15px]">
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $companyNav; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <li><a href="<?php echo e($item['href']); ?>" class="relative inline-block py-0.5 transition-colors duration-300 ease-out hover:text-[#7E93AC] after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-[#7E93AC] after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"><?php echo e($item['label']); ?></a></li>
+                        <li><a href="<?php echo e($item['href']); ?>" class="relative inline-block py-0.5 transition-colors duration-300 ease-out hover:text-steel after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-steel after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"><?php echo e($item['label']); ?></a></li>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                 </ul>
             </nav>
@@ -150,7 +150,7 @@
                 <p class="text-[16px] font-bold text-ink 2xl:text-[18px]">Услуги</p>
                 <ul class="mt-4 space-y-3 text-[14px] text-body sm:text-[15px]">
                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php $__currentLoopData = $serviceNav; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <li><a href="<?php echo e($item['href']); ?>" class="relative inline-block py-0.5 transition-colors duration-300 ease-out hover:text-[#7E93AC] after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-[#7E93AC] after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"><?php echo e($item['label']); ?></a></li>
+                        <li><a href="<?php echo e($item['href']); ?>" class="relative inline-block py-0.5 transition-colors duration-300 ease-out hover:text-steel after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-steel after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"><?php echo e($item['label']); ?></a></li>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                 </ul>
             </nav>
@@ -165,11 +165,11 @@
                     </li>
                     <li class="flex items-start gap-2.5">
                         <svg class="mt-0.5 h-[15px] w-[15px] shrink-0 text-ink" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 3h2.2c.7 0 1.3.5 1.4 1.2l.5 2.8c.1.6-.2 1.2-.7 1.5l-1.4.8a12.4 12.4 0 0 0 5.9 5.9l.8-1.4c.3-.5.9-.8 1.5-.7l2.8.5c.7.1 1.2.7 1.2 1.4v2.2c0 .9-.7 1.7-1.6 1.6C11 19.9 4.2 13.2 5 4.6 5 3.7 5.8 3 6.6 3Z"/></svg>
-                        <a href="tel:<?php echo e($phoneTel); ?>" class="relative inline-block py-0.5 transition-colors duration-300 ease-out hover:text-[#7E93AC] after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-[#7E93AC] after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"><?php echo e($contacts['phone'] ?? ''); ?></a>
+                        <a href="tel:<?php echo e($phoneTel); ?>" class="relative inline-block py-0.5 transition-colors duration-300 ease-out hover:text-steel after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-steel after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"><?php echo e($contacts['phone'] ?? ''); ?></a>
                     </li>
                     <li class="flex items-start gap-2.5">
                         <svg class="mt-0.5 h-[15px] w-[15px] shrink-0 text-ink" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1.4 2 6.6 5.2L18.6 7H5.4Z"/></svg>
-                        <a href="mailto:<?php echo e($contacts['email'] ?? ''); ?>" class="relative inline-block py-0.5 transition-colors duration-300 ease-out hover:text-[#7E93AC] after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-[#7E93AC] after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"><?php echo e($contacts['email'] ?? ''); ?></a>
+                        <a href="mailto:<?php echo e($contacts['email'] ?? ''); ?>" class="relative inline-block py-0.5 transition-colors duration-300 ease-out hover:text-steel after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:rounded-full after:bg-steel after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100"><?php echo e($contacts['email'] ?? ''); ?></a>
                     </li>
                     <li class="flex items-start gap-2.5">
                         <svg class="mt-0.5 h-[15px] w-[15px] shrink-0 text-ink" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 5v5l4 2.4-.9 1.5-4.9-3V7h1.9Z"/></svg>

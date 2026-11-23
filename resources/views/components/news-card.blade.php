@@ -15,7 +15,7 @@
 
     <div class="flex flex-col pointer-events-none">
         {{-- Верхняя строка: Категория контента и стрелка перехода ↗ --}}
-        <div class="flex items-center justify-between gap-2 text-[13px] text-[#7E93AC] sm:text-[14px]">
+        <div class="flex items-center justify-between gap-2 text-[13px] text-steel sm:text-[14px]">
             <span>{{ $typeLabel }} / {{ $categoryName }}</span>
             <span class="inline-flex h-5 w-5 shrink-0 items-center justify-center text-[#1A1A1A] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand">
                 <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -27,7 +27,7 @@
         {{-- Фотография с внутренними скруглёнными краями --}}
         <div class="mt-3 block overflow-hidden rounded-[14px] sm:rounded-[18px]">
             @if ($coverUrl)
-                <img src="{{ $coverUrl }}" alt="{{ $news->title }}" loading="lazy"
+                <img src="{{ $coverUrl }}" alt="{{ $news->title }}" width="480" height="360" loading="lazy" decoding="async"
                      class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105">
             @else
                 <div class="flex aspect-[4/3] w-full items-center justify-center bg-slate-200 text-slate-400">
@@ -39,15 +39,15 @@
         </div>
 
         {{-- Заголовок новости --}}
-        <h3 class="mt-4 text-[16px] font-semibold leading-[1.3] text-[#1A1A1A] transition-colors group-hover:text-brand sm:text-[18px] lg:text-[19px]">
+        <h2 class="mt-4 text-[16px] font-semibold leading-[1.3] text-[#1A1A1A] transition-colors group-hover:text-brand sm:text-[18px] lg:text-[19px]">
             {{ $news->title }}
-        </h3>
+        </h2>
     </div>
 
     {{-- Дата публикации (макет: Onest, цвет #91B5D5) --}}
     @if ($date)
         <div class="mt-4 pt-2 pointer-events-none">
-            <span class="text-[13px] font-normal text-[#91B5D5] sm:text-[14px] 2xl:text-[15px]">
+            <span class="text-[13px] font-normal text-[#4A749B] sm:text-[14px] 2xl:text-[15px]">
                 {{ $date }}
             </span>
         </div>

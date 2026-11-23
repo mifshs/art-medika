@@ -50,7 +50,7 @@
 
             <!-- Дата прижата к низу -->
             <div class="mt-auto pt-6">
-                <span class="text-[#91B5D5] text-base md:text-lg">
+                <span class="text-[#4A749B] text-base md:text-lg">
                     {{ $project['date'] }}
                 </span>
             </div>

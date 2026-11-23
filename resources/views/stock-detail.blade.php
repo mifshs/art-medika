@@ -1,39 +1,41 @@
+@php
+    $sectionName = $promotion->service?->name ?? $promotion->title;
+    $promoCover = $promotion->coverUrl();
+    $seoTitle = $promotion->title . ' — Акции — Арт-Медика';
+    $seoDesc = $promotion->excerpt ?: \Illuminate\Support\Str::limit(strip_tags((string) $promotion->content), 160);
+    $seoKeywords = trim(implode(', ', array_filter([$promotion->title, $promotion->service?->name, 'акции Арт-Медика', 'скидки Челябинск'])));
+@endphp
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $promotion->title }}</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <x-seo-head
+        :title="$seoTitle"
+        :description="$seoDesc"
+        :keywords="$seoKeywords"
+        :ogImage="$promoCover"
+        :preloadImage="$promoCover"
+    />
 </head>
-<body>
+<body class="bg-page font-onest text-body antialiased">
     @include('components.header')
-    
 
-    @php
-        $sectionName = $promotion->service?->name ?? $promotion->title;
-    @endphp
-
-    <main class="mx-auto w-full max-w-[1720px] px-4 pb-16 sm:px-6 md:px-10 2xl:px-0">
+    <main id="main-content" class="mx-auto w-full max-w-[1720px] px-4 pb-16 sm:px-6 md:px-10 2xl:px-0">
         {{-- Хлебные крошки --}}
         <nav aria-label="Хлебные крошки" class="flex items-center gap-2 pt-6 text-[15px] text-body">
             <a href="{{ url('/') }}" class="transition-colors hover:text-brand">Арт-Медика</a>
-            <img src="{{ asset('images/_.svg') }}" alt="" class="h-3 w-auto" aria-hidden="true">
+            <img src="{{ asset('images/_.svg') }}" alt="" width="7" height="10" class="h-3 w-auto" aria-hidden="true">
             <span class="font-medium text-ink">{{ $sectionName }}</span>
         </nav>
 
         {{-- Акция: синий заголовок и фото слева, текст справа --}}
         <div class="flex flex-col gap-8 pt-8 lg:flex-row lg:gap-16 2xl:gap-20 2xl:pt-10">
             <div class="w-full shrink-0 lg:w-[42%]">
-                <h1 class="flex items-center gap-2 text-[40px] font-medium leading-none text-[#91B5D5] max-lg:text-3xl">
+                <h1 class="flex items-center gap-2 text-[40px] font-medium leading-none text-[#4A749B] max-lg:text-3xl">
                     {{ $sectionName }}
-                    <img src="{{ asset('images/Arrow_right_light.svg') }}" alt="" class="w-[50px] max-lg:w-[38px]" aria-hidden="true">
+                    <img src="{{ asset('images/Arrow_right_light.svg') }}" alt="" width="50" height="50" class="w-[50px] max-lg:w-[38px]" aria-hidden="true">
                 </h1>
-                @if ($promotion->coverUrl())
-                    <img src="{{ $promotion->coverUrl() }}" alt="{{ $promotion->title }}" loading="lazy"
+                @if ($promoCover)
+                    <img src="{{ $promoCover }}" alt="{{ $promotion->title }}" fetchpriority="high" decoding="async"
                          width="395" height="517"
                          class="mt-8 w-full rounded-[24px] bg-hero object-cover object-top">
                 @endif
@@ -47,7 +49,7 @@
                 </div>
 
                 @if ($promotion->published_at)
-                    <span class="mt-8 text-[24px] text-[#91B5D5]">{{ $promotion->published_at->format('d.m.Y') }}</span>
+                    <span class="mt-8 text-[24px] text-[#4A749B]">{{ $promotion->published_at->format('d.m.Y') }}</span>
                 @endif
             </div>
         </div>

@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Проекты — Медико-косметологический центр «Арт-Медика»</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
-    <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
+    <?php if (isset($component)) { $__componentOriginal4232ba5ed77147a6b6573253fafb715d = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal4232ba5ed77147a6b6573253fafb715d = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.seo-head','data' => ['title' => 'Проекты — Медико-косметологический центр «Арт-Медика»','description' => 'Социальные и международные проекты клиники «Арт-Медика»: «Красота в тебе», российско-итальянские программы пластической хирургии и омоложения.','keywords' => 'проекты Арт-Медика, Красота в тебе, доступная пластическая хирургия из Милана, медицинские проекты','ogImage' => $projects->first()?->coverUrl()]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('seo-head'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['title' => 'Проекты — Медико-косметологический центр «Арт-Медика»','description' => 'Социальные и международные проекты клиники «Арт-Медика»: «Красота в тебе», российско-итальянские программы пластической хирургии и омоложения.','keywords' => 'проекты Арт-Медика, Красота в тебе, доступная пластическая хирургия из Милана, медицинские проекты','ogImage' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($projects->first()?->coverUrl())]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal4232ba5ed77147a6b6573253fafb715d)): ?>
+<?php $attributes = $__attributesOriginal4232ba5ed77147a6b6573253fafb715d; ?>
+<?php unset($__attributesOriginal4232ba5ed77147a6b6573253fafb715d); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal4232ba5ed77147a6b6573253fafb715d)): ?>
+<?php $component = $__componentOriginal4232ba5ed77147a6b6573253fafb715d; ?>
+<?php unset($__componentOriginal4232ba5ed77147a6b6573253fafb715d); ?>
+<?php endif; ?>
 </head>
   <body class="bg-page font-onest text-body antialiased">
 
@@ -32,11 +44,11 @@
 <?php unset($__componentOriginal2a2e454b2e62574a80c8110e5f128b60); ?>
 <?php endif; ?>
 
-<main class="mx-auto w-full max-w-[1720px] px-[18px] pb-14 sm:px-6 md:px-10 lg:pb-24 2xl:px-0">
+<main id="main-content" class="mx-auto w-full max-w-[1720px] px-[18px] pb-14 sm:px-6 md:px-10 lg:pb-24 2xl:px-0">
     
     <nav aria-label="Хлебные крошки" class="flex items-center gap-2 pt-5 sm:pt-6 text-[15px] sm:text-[16px] 2xl:text-[18px] text-brand">
         <a href="<?php echo e(url('/')); ?>" class="transition-colors duration-200 hover:text-brandh">Арт-Медика</a>
-        <img src="<?php echo e(asset('images/_.svg')); ?>" alt="" class="h-3 w-auto" aria-hidden="true">
+        <img src="<?php echo e(asset('images/_.svg')); ?>" width="7" height="10" alt="" class="h-3 w-auto" aria-hidden="true">
         <span class="font-medium">Проекты</span>
     </nav>
 
@@ -45,7 +57,7 @@
         <div class="grid gap-4 lg:grid-cols-[1fr_2fr] lg:gap-10">
             
             <div>
-                <p class="inline-flex items-baseline gap-2 text-[24px] font-medium text-[#91B5D5] sm:text-[28px] lg:text-[32px] 2xl:text-[40px]">
+                <p class="inline-flex items-baseline gap-2 text-[24px] font-medium text-[#4A749B] sm:text-[28px] lg:text-[32px] 2xl:text-[40px]">
                     Проекты
                     <svg class="h-[0.8em] w-[0.8em] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

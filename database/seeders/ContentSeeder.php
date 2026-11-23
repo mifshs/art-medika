@@ -28,9 +28,9 @@ class ContentSeeder extends Seeder
 
         // ── Новости и статьи ──
         $newsCovers = [
-            'osvezhitsya-no-ne-bolee'       => 'gallery/news.png',
-            'otzyvy-pacientov-nasha-gordost' => 'cover/project1.png',
-            'final-4-sezona-krasota-v-tebe' => 'cover/concert2.png',
+            'osvezhitsya-no-ne-bolee'       => 'gallery/news.webp',
+            'otzyvy-pacientov-nasha-gordost' => 'cover/project1.webp',
+            'final-4-sezona-krasota-v-tebe' => 'cover/concert2.webp',
         ];
 
         $news = [
@@ -84,8 +84,8 @@ class ContentSeeder extends Seeder
 
         // ── Акции ──
         $promoCovers = [
-            'nitevoy-lifting-lepestok-skidka-50' => 'cover/woman-lifting.png',
-            'pure-molecule'                      => 'cover/attractive-woman-apply-facial-cream-anti-aging-product1 2.png',
+            'nitevoy-lifting-lepestok-skidka-50' => 'cover/woman-lifting.webp',
+            'pure-molecule'                      => 'cover/attractive-woman-apply-facial-cream-anti-aging-product1 2.webp',
         ];
 
         $promotions = [
@@ -141,10 +141,10 @@ class ContentSeeder extends Seeder
                 'published_at' => '2025-04-07',
             ],
         );
-        $this->attachMedia($project, 'cover', 'cover/concert.png', 'Красота в тебе');
+        $this->attachMedia($project, 'cover', 'cover/concert.webp', 'Красота в тебе');
 
         // Форматы работы
-        $formatCovers = ['gallery/gallery-cell1.png', 'gallery/gallery-cell2.png', 'gallery/gallery-cell3.png'];
+        $formatCovers = ['gallery/gallery-cell1.webp', 'gallery/gallery-cell2.webp', 'gallery/gallery-cell3.webp'];
         foreach ([
             ['Индивидуальное преображение', 'Это отправная точка к новым возможностям, вдохновению и качественным переменам в жизни.'],
             ['Женский клуб «Красота в тебе»', 'Масштабное сообщество, открывающее женщинам широкие возможности для мотивации, вдохновения, самореализации, отдыха общения и развития'],
@@ -187,10 +187,10 @@ class ContentSeeder extends Seeder
 
         // Галерея проекта
         $galleryPaths = [
-            'cover/concert2.png',
-            'cover/concert2-adapt.png',
-            'cover/concert3.png',
-            'gallery/perchatki.png',
+            'cover/concert2.webp',
+            'cover/concert2-adapt.webp',
+            'cover/concert3.webp',
+            'gallery/perchatki.webp',
         ];
         foreach ($galleryPaths as $n => $path) {
             $base = rtrim((string) (config('media.base_url') ?: '/storage'), '/');
@@ -207,8 +207,8 @@ class ContentSeeder extends Seeder
 
         // ── Остальные проекты ──
         $otherCovers = [
-            'dostupnaya-plasticheskaya-hirurgiya-iz-milana' => 'cover/project2.png',
-            'evropeyskaya-blefaroplastika-2025'             => 'cover/project3.png',
+            'dostupnaya-plasticheskaya-hirurgiya-iz-milana' => 'cover/project2.webp',
+            'evropeyskaya-blefaroplastika-2025'             => 'cover/project3.webp',
         ];
 
         foreach ([

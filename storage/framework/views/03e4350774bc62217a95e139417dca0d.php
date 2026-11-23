@@ -1,35 +1,53 @@
+<?php
+    $seoTitle = $category->name . ' — Услуги клиники «Арт-Медика»';
+    $seoDesc = $category->description ?: ($category->subtitle ?: ('Услуги направления «' . $category->name . '» в клинике «Арт-Медика» в Челябинске.'));
+    $childNames = isset($groups) ? $groups->pluck('category.name')->filter()->implode(', ') : '';
+    $seoKeywords = trim($category->name . ($childNames ? ', ' . $childNames : '') . ', услуги Арт-Медика, Челябинск', ', ');
+    $seoImage = $category->coverUrl();
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Услуги направления «<?php echo e($category->name); ?>» в клинике «Арт-Медика».">
-    <title><?php echo e($category->name); ?> — Услуги — Арт-Медика</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
-    <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
+    <?php if (isset($component)) { $__componentOriginal4232ba5ed77147a6b6573253fafb715d = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal4232ba5ed77147a6b6573253fafb715d = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.seo-head','data' => ['title' => $seoTitle,'description' => $seoDesc,'keywords' => $seoKeywords,'ogImage' => $seoImage]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('seo-head'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['title' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($seoTitle),'description' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($seoDesc),'keywords' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($seoKeywords),'ogImage' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($seoImage)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal4232ba5ed77147a6b6573253fafb715d)): ?>
+<?php $attributes = $__attributesOriginal4232ba5ed77147a6b6573253fafb715d; ?>
+<?php unset($__attributesOriginal4232ba5ed77147a6b6573253fafb715d); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal4232ba5ed77147a6b6573253fafb715d)): ?>
+<?php $component = $__componentOriginal4232ba5ed77147a6b6573253fafb715d; ?>
+<?php unset($__componentOriginal4232ba5ed77147a6b6573253fafb715d); ?>
+<?php endif; ?>
 </head>
 <body class="bg-page font-onest text-body antialiased">
     <?php echo $__env->make('components.header', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
-    <main class="mx-auto w-full max-w-[1720px] px-4 pb-20 sm:px-6 md:px-10 2xl:px-0">
+    <main id="main-content" class="mx-auto w-full max-w-[1720px] px-4 pb-20 sm:px-6 md:px-10 2xl:px-0">
         
         <nav aria-label="Хлебные крошки" class="flex items-center gap-2 pt-6 text-[15px] text-brand sm:text-[18px]">
             <a href="<?php echo e(url('/')); ?>" rel="home" class="transition-colors duration-200 hover:text-brandh">Арт-Медика</a>
-            <img src="<?php echo e(asset('images/_.svg')); ?>" alt="" class="h-3 w-auto" aria-hidden="true">
+            <img src="<?php echo e(asset('images/_.svg')); ?>" width="7" height="10" alt="" class="h-3 w-auto" aria-hidden="true">
             <a href="<?php echo e(route('services')); ?>" class="whitespace-nowrap transition-colors duration-200 hover:text-brandh">Услуги</a>
-            <img src="<?php echo e(asset('images/_.svg')); ?>" alt="" class="h-3 w-auto shrink-0" aria-hidden="true">
+            <img src="<?php echo e(asset('images/_.svg')); ?>" width="7" height="10" alt="" class="h-3 w-auto shrink-0" aria-hidden="true">
             <span class="font-medium text-brand"><?php echo e($category->name); ?></span>
         </nav>
 
         
         <div class="flex flex-col items-start justify-between gap-4 pt-8 lg:flex-row lg:items-start lg:gap-8 lg:pt-10 2xl:pt-[52px]">
-            <h1 class="flex shrink-0 items-center gap-2 text-[20px] font-medium leading-[1.2] text-[#91B5D5] sm:text-[28px] lg:text-[40px]">
+            <h1 class="flex shrink-0 items-center gap-2 text-[20px] font-medium leading-[1.2] text-[#4A749B] sm:text-[28px] lg:text-[40px]">
                 <?php echo e($category->name); ?>
 
-                <img src="<?php echo e(asset('images/Arrow_right_light.svg')); ?>" alt="" class="w-[30px] sm:w-[38px] lg:w-[50px]" aria-hidden="true">
+                <img src="<?php echo e(asset('images/Arrow_right_light.svg')); ?>" width="50" height="50" alt="" class="w-[30px] sm:w-[38px] lg:w-[50px]" aria-hidden="true">
             </h1>
             <?php
                 $introText = $category->description ?: 'Подбираем для вас самые актуальные и интересные проекты из нашей практики, медицины и эстетической хирургии, с заботой о вас.';
@@ -89,7 +107,7 @@
                         
                         <div class="relative h-[200px] w-full shrink-0 overflow-hidden rounded-[10px] bg-hero sm:h-[260px] lg:h-auto lg:w-[480px] xl:w-[540px] 2xl:w-[560px] pointer-events-none">
                             <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($cover): ?>
-                                <img src="<?php echo e($cover); ?>" alt="<?php echo e($item->name); ?>" loading="lazy"
+                                <img src="<?php echo e($cover); ?>" alt="<?php echo e($item->name); ?>" width="560" height="360" loading="lazy" decoding="async"
                                      class="h-full w-full rounded-[10px] object-cover transition-transform duration-500 group-hover:scale-105">
                             <?php else: ?>
                                 <div class="grid h-full w-full place-items-center rounded-[10px] bg-[#E9ECF4]">

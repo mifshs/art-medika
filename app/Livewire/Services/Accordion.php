@@ -11,6 +11,11 @@ class Accordion extends Component
 
     public function mount(): void
     {
+        $this->directions = self::buildDirections();
+    }
+
+    public static function buildDirections(): array
+    {
         $roots = ServiceCategory::query()
             ->whereNull('parent_id')
             ->with(['media', 'children' => function ($q) {
@@ -21,7 +26,7 @@ class Accordion extends Component
             ->orderBy('sort_order')
             ->get();
 
-        $this->directions = $roots->map(fn ($root) => [
+        return $roots->map(fn ($root) => [
             'title' => $root->name,
             'cards' => $root->children->map(fn ($group) => [
                 'title'    => $group->name,

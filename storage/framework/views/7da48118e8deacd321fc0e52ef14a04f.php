@@ -7,7 +7,7 @@
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\App\View\Components\GuestLayout::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes([]); ?>
+<?php $component->withAttributes(['title' => 'Подтверждение пароля']); ?>
     <div class="mb-4 text-sm text-gray-600">
         <?php echo e(__('This is a secure area of the application. Please confirm your password before continuing.')); ?>
 

@@ -33,16 +33,33 @@ class Media extends Model
         return $this->morphTo();
     }
 
+    private function encodeStorageUrl(string $path): string
+    {
+        $base = rtrim((string) (config('media.base_url') ?: '/storage'), '/');
+
+        return $base . '/' . implode('/', array_map('rawurlencode', explode('/', $path)));
+    }
+
     public function getUrlAttribute(?string $value): string
     {
         $path = ltrim((string) $this->path, '/');
 
-        if ($path !== ''
-            && Storage::disk('public')->exists($path)
-            && (empty($value) || str_contains($value, 'art-medika-media'))) {
-            $base = rtrim((string) (config('media.base_url') ?: '/storage'), '/');
+        if ($path !== '') {
+            if (str_ends_with(strtolower($path), '.png')) {
+                $webpPath = preg_replace('/\.png$/i', '.webp', $path);
+                if ($webpPath !== null && Storage::disk('public')->exists($webpPath)) {
+                    $path = $webpPath;
+                }
+            }
 
-            return $base . '/' . implode('/', array_map('rawurlencode', explode('/', $path)));
+            $isLocalOrCdn = empty($value)
+                || str_contains($value, 'art-medika-media')
+                || str_starts_with($value, '/storage/')
+                || str_ends_with(strtolower($value), '.png');
+
+            if ($isLocalOrCdn && Storage::disk('public')->exists($path)) {
+                return $this->encodeStorageUrl($path);
+            }
         }
 
         if (! empty($value)) {

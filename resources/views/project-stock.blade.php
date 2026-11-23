@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Акции</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <x-seo-head
+        title="Акции и спецпредложения — Медико-косметологический центр «Арт-Медика»"
+        description="Выгодные акции, скидки и специальные программы на услуги косметологии и пластической хирургии в клинике «Арт-Медика»."
+        keywords="акции Арт-Медика, скидки на косметологию, спецпредложения пластическая хирургия Челябинск"
+    />
 </head>
 <body>
     @include('components.header')
 
-    <main class="mx-auto w-full max-w-[1720px] px-4 pb-16 sm:px-6 md:px-10 2xl:px-0">
+    <main id="main-content" class="mx-auto w-full max-w-[1720px] px-4 pb-16 sm:px-6 md:px-10 2xl:px-0">
         {{-- Хлебные крошки --}}
     <nav aria-label="Хлебные крошки" class="flex items-center gap-2 pt-5 text-[15px] text-brand sm:pt-6 sm:text-[16px] 2xl:text-[18px]">
             <a href="{{ url('/') }}" class="transition-colors hover:text-brand">Арт-Медика</a>
-            <img src="{{ asset('images/_.svg') }}" alt="" class="h-3 w-auto" aria-hidden="true">
+            <img src="{{ asset('images/_.svg') }}" width="7" height="10" alt="" class="h-3 w-auto" aria-hidden="true">
             <span class="font-medium text-ink">Акции</span>
         </nav>
 
         {{-- Заголовок + вводный текст --}}
         <div class="flex flex-col items-start justify-between gap-8 pt-10 lg:flex-row lg:items-start 2xl:pt-[52px]">
-            <h1 class="flex shrink-0 items-center gap-2 text-[40px] font-medium leading-none text-[#91B5D5] max-lg:text-3xl">
+            <h1 class="flex shrink-0 items-center gap-2 text-[40px] font-medium leading-none text-[#4A749B] max-lg:text-3xl">
                 Акции
-                <img src="{{ asset('images/Arrow_right_light.svg') }}" alt="" class="w-[50px] max-lg:w-[38px]" aria-hidden="true">
+                <img src="{{ asset('images/Arrow_right_light.svg') }}" width="50" height="50" alt="" class="w-[50px] max-lg:w-[38px]" aria-hidden="true">
             </h1>
             <p class="max-w-[1140px] text-[40px] font-medium leading-tight text-brand max-lg:text-2xl">
                 Мы регулярно предлагаем выгодные акции и специальные предложения на популярные

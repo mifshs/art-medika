@@ -1,32 +1,26 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Арт-Медика — медико-эстетический центр</title>
-    <?php if (isset($component)) { $__componentOriginal82e3f864bb766fbb95cb0a10b750823c = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal82e3f864bb766fbb95cb0a10b750823c = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.favicon','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('favicon'); ?>
+    <?php if (isset($component)) { $__componentOriginal4232ba5ed77147a6b6573253fafb715d = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal4232ba5ed77147a6b6573253fafb715d = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.seo-head','data' => ['title' => 'Арт-Медика — медико-косметологический центр в Челябинске','description' => 'Многопрофильный медико-косметологический центр «Арт-Медика» в Челябинске: пластическая хирургия, косметология, дерматология, ЛОР-хирургия, гинекология и диагностика.','keywords' => 'Арт-Медика, медико-косметологический центр, пластическая хирургия Челябинск, косметология, блефаропластика, дерматология, клиника','ogImage' => $heroImage,'preloadFonts' => ['onest-cyrillic-wght-normal.woff2', 'inter-cyrillic-wght-normal.woff2'],'preloadImage' => $heroImage,'preloadImageSrcset' => $heroImageMobile . ' 960w, ' . $heroImage . ' 1920w','preloadImageSizes' => '100vw']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('seo-head'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes([]); ?> <?php echo $__env->renderComponent(); ?>
+<?php $component->withAttributes(['title' => 'Арт-Медика — медико-косметологический центр в Челябинске','description' => 'Многопрофильный медико-косметологический центр «Арт-Медика» в Челябинске: пластическая хирургия, косметология, дерматология, ЛОР-хирургия, гинекология и диагностика.','keywords' => 'Арт-Медика, медико-косметологический центр, пластическая хирургия Челябинск, косметология, блефаропластика, дерматология, клиника','ogImage' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($heroImage),'preloadFonts' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(['onest-cyrillic-wght-normal.woff2', 'inter-cyrillic-wght-normal.woff2']),'preloadImage' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($heroImage),'preloadImageSrcset' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($heroImageMobile . ' 960w, ' . $heroImage . ' 1920w'),'preloadImageSizes' => '100vw']); ?>
+<?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
-<?php if (isset($__attributesOriginal82e3f864bb766fbb95cb0a10b750823c)): ?>
-<?php $attributes = $__attributesOriginal82e3f864bb766fbb95cb0a10b750823c; ?>
-<?php unset($__attributesOriginal82e3f864bb766fbb95cb0a10b750823c); ?>
+<?php if (isset($__attributesOriginal4232ba5ed77147a6b6573253fafb715d)): ?>
+<?php $attributes = $__attributesOriginal4232ba5ed77147a6b6573253fafb715d; ?>
+<?php unset($__attributesOriginal4232ba5ed77147a6b6573253fafb715d); ?>
 <?php endif; ?>
-<?php if (isset($__componentOriginal82e3f864bb766fbb95cb0a10b750823c)): ?>
-<?php $component = $__componentOriginal82e3f864bb766fbb95cb0a10b750823c; ?>
-<?php unset($__componentOriginal82e3f864bb766fbb95cb0a10b750823c); ?>
+<?php if (isset($__componentOriginal4232ba5ed77147a6b6573253fafb715d)): ?>
+<?php $component = $__componentOriginal4232ba5ed77147a6b6573253fafb715d; ?>
+<?php unset($__componentOriginal4232ba5ed77147a6b6573253fafb715d); ?>
 <?php endif; ?>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
 </head>
 <body class="bg-page font-sans text-body antialiased">
 <?php if (isset($component)) { $__componentOriginal2a2e454b2e62574a80c8110e5f128b60 = $component; } ?>
@@ -49,9 +43,15 @@
 <?php unset($__componentOriginal2a2e454b2e62574a80c8110e5f128b60); ?>
 <?php endif; ?>
 
+<main id="main-content">
 
 <section class="relative overflow-hidden font-onest">
-    <img src="<?php echo e($heroImage); ?>" alt="Врач клиники осматривает пациентку" width="1920" height="960"
+    <img src="<?php echo e($heroImage); ?>"
+         srcset="<?php echo e($heroImageMobile); ?> 960w, <?php echo e($heroImage); ?> 1920w"
+         sizes="100vw"
+         alt="Врач клиники осматривает пациентку"
+         width="1920" height="899"
+         fetchpriority="high" decoding="async"
          class="block h-[560px] w-full object-cover object-[55%_30%] sm:h-[640px] lg:h-[720px] 2xl:h-[820px]">
     <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/25 via-black/5 to-black/20" aria-hidden="true"></div>
 
@@ -87,37 +87,17 @@
 <section id="uslugi" class="mt-14 px-4 sm:px-6 lg:mt-24">
     <div class="mx-auto w-full max-w-[1720px]">
         <div class="grid gap-4 lg:grid-cols-[1fr_2fr] lg:gap-10">
-            <p class="inline-flex items-baseline gap-2 text-[18px] font-semibold text-steel lg:text-[22px] 2xl:text-[30px]">
+            <h2 class="inline-flex items-baseline gap-2 text-[18px] font-semibold text-steel lg:text-[22px] 2xl:text-[30px]">
                 Услуги
                 <svg class="h-[0.8em] w-[0.8em] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </p>
+            </h2>
             <p class="text-[17px] leading-snug text-body sm:text-lg lg:text-[26px] lg:leading-[1.35] 2xl:text-[32px] lg:[text-indent:240px] 2xl:[text-indent:320px]">
                 В клинике «Арт-Медика» мы объединяем многолетний опыт врачей и современный арсенал медицинских возможностей, чтобы вы могли получать весь спектр медико-эстетических услуг.
             </p>
         </div>
     </div>
     <div class="mx-auto mt-8 w-full max-w-[1720px] lg:mt-12">
-        <?php
-$__split = function ($name, $params = []) {
-    return [$name, $params];
-};
-[$__name, $__params] = $__split('services.accordion', []);
-
-$__key = null;
-
-$__key ??= \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::generateKey('lw-3726934157-0', $__key);
-
-$__html = app('livewire')->mount($__name, $__params, $__key);
-
-echo $__html;
-
-unset($__html);
-unset($__key);
-unset($__name);
-unset($__params);
-unset($__split);
-if (isset($__slots)) unset($__slots);
-?>
+        <?php echo $__env->make('livewire.services.accordion', ['directions' => $directions], array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
     </div>
 </section>
 
@@ -193,7 +173,7 @@ if (isset($__slots)) unset($__slots);
             </div>
         </div>
 
-        <div class="mt-6 flex items-center justify-between lg:mt-8">
+        <div class="mt-6 hidden items-center justify-between sm:flex lg:mt-8">
             <button type="button" id="results-prev" aria-label="Предыдущие фото" class="grid h-11 w-11 place-items-center rounded-[10px] bg-brand text-white transition-opacity hover:bg-brandh 2xl:h-14 2xl:w-14">
                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m0 0l6-6m-6 6l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
@@ -241,7 +221,7 @@ if (isset($__slots)) unset($__slots);
             </div>
         </div>
 
-        <div class="mt-6 flex items-center justify-between lg:mt-8">
+        <div class="mt-6 hidden items-center justify-between sm:flex lg:mt-8">
             <button type="button" id="experts-prev" aria-label="Предыдущие специалисты" class="grid h-11 w-11 place-items-center rounded-[10px] bg-brand text-white transition-opacity hover:bg-brandh 2xl:h-14 2xl:w-14">
                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m0 0l6-6m-6 6l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
@@ -272,7 +252,7 @@ if (isset($__slots)) unset($__slots);
                     <article class="swiper-slide group relative select-none cursor-pointer rounded-[20px] bg-surface p-4 sm:p-5 lg:grid-cols-[46%_1fr] lg:gap-6 lg:p-5 2xl:gap-8 2xl:p-6 border-[3px] border-transparent transition-all duration-300 hover:border-brand hover:shadow-lg">
                         <a href="<?php echo e(route('projects')); ?>#project-<?php echo e($projectBig->slug); ?>" class="absolute inset-0 z-10 rounded-[inherit] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2" aria-label="Открыть проект «<?php echo e($projectBig->title); ?>»"></a>
                         <div class="block overflow-hidden rounded-[14px]">
-                            <img src="<?php echo e($projectBig->coverUrl()); ?>" alt="<?php echo e($projectBig->title); ?>" width="1024" height="576"
+                            <img src="<?php echo e($projectBig->coverUrl()); ?>" alt="<?php echo e($projectBig->title); ?>" width="1024" height="576" loading="lazy" decoding="async"
                                  class="h-[240px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.02] sm:h-[300px] lg:h-full">
                         </div>
                         <div class="flex min-w-0 flex-col pt-5 lg:py-1 lg:pr-6 2xl:pr-8 pointer-events-none">
@@ -294,7 +274,7 @@ if (isset($__slots)) unset($__slots);
 
                                 </p>
                             </div>
-                            <p class="text-[14px] text-[#91B5D5] 2xl:text-[15px]"><?php echo e($projectBig->published_at ? \Illuminate\Support\Carbon::parse($projectBig->published_at)->format('d.m.Y') : ''); ?></p>
+                            <p class="text-[14px] text-[#4A749B] 2xl:text-[15px]"><?php echo e($projectBig->published_at ? \Illuminate\Support\Carbon::parse($projectBig->published_at)->format('d.m.Y') : ''); ?></p>
                         </div>
                     </article>
 
@@ -317,7 +297,7 @@ if (isset($__slots)) unset($__slots);
 
                                 </span>
                             </h3>
-                            <p class="mt-auto pt-4 text-[14px] text-[#91B5D5] 2xl:text-[15px]"><?php echo e($project->published_at ? \Illuminate\Support\Carbon::parse($project->published_at)->format('d.m.Y') : ''); ?></p>
+                            <p class="mt-auto pt-4 text-[14px] text-[#4A749B] 2xl:text-[15px]"><?php echo e($project->published_at ? \Illuminate\Support\Carbon::parse($project->published_at)->format('d.m.Y') : ''); ?></p>
                         </article>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
@@ -345,7 +325,7 @@ if (isset($__slots)) unset($__slots);
                 </div>
             </div>
 
-            <div class="mt-6 flex items-center justify-between lg:mt-8">
+            <div class="mt-6 hidden items-center justify-between sm:flex lg:mt-8">
                 <button type="button" id="projects-prev" aria-label="Предыдущие проекты" class="grid h-11 w-11 place-items-center rounded-[10px] bg-brand text-white transition-opacity hover:bg-brandh 2xl:h-14 2xl:w-14">
                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m0 0l6-6m-6 6l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
@@ -381,7 +361,7 @@ if (isset($__slots)) unset($__slots);
     </div>
 </section>
 
-<section id="otzyvy" class="mt-14 px-4 sm:px-6 lg:mt-24">
+<section id="otzyvy" class="mt-14 mb-16 px-4 sm:mb-[120px] sm:px-6 lg:mt-24">
     <div class="mx-auto w-full max-w-[1720px]">
         <div class="grid gap-4 lg:grid-cols-[1fr_2fr] lg:gap-10">
             <p class="inline-flex items-baseline gap-2 text-[18px] font-semibold text-steel lg:text-[22px] 2xl:text-[30px]">
@@ -402,7 +382,7 @@ if (isset($__slots)) unset($__slots);
                         <div class="flex items-start justify-between gap-4">
                             <div>
                                 <h3 class="text-[20px] font-semibold leading-tight text-ink sm:text-[22px] 2xl:text-[26px]"><?php echo e($review->author_name); ?></h3>
-                                <div class="mt-1.5 flex items-center gap-[3px]" aria-label="Оценка: <?php echo e($review->rating); ?> из 5">
+                                <div role="img" class="mt-1.5 flex items-center gap-[3px]" aria-label="Оценка: <?php echo e($review->rating); ?> из 5">
                                     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php for($i = 1; $i <= 5; $i++): ?>
                                         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" class="<?php echo e($i <= (int) $review->rating ? 'text-ink' : 'text-[#D7DEEA]'); ?> sm:h-[17px] sm:w-[17px] 2xl:h-5 2xl:w-5" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L2.5 9.4l6.6-.9 2.9-6z"/></svg>
                                     <?php endfor; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
@@ -431,7 +411,7 @@ if (isset($__slots)) unset($__slots);
                 </div>
             </div>
 
-            <div class="mt-6 flex items-center justify-between lg:mt-8 mb-[120px]">
+            <div class="mt-6 hidden items-center justify-between sm:flex lg:mt-8">
                 <button type="button" id="reviews-prev" aria-label="Предыдущие отзывы" class="grid h-11 w-11 place-items-center rounded-[10px] bg-brand text-white transition-opacity hover:bg-brandh 2xl:h-14 2xl:w-14">
                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m0 0l6-6m-6 6l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
@@ -442,6 +422,7 @@ if (isset($__slots)) unset($__slots);
         <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
     </div>
 </section>
+</main>
 
 <?php if (isset($component)) { $__componentOriginal8a8716efb3c62a45938aca52e78e0322 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal8a8716efb3c62a45938aca52e78e0322 = $attributes; } ?>
@@ -468,7 +449,7 @@ if (isset($__slots)) unset($__slots);
         btn.addEventListener('click', function () {
             var group = btn.dataset.tabGroup;
             var active = ['bg-brand', 'text-white', 'hover:bg-brandh'];
-            var idle = ['bg-surfaceh', 'hover:bg-[#E2E7F1]'];
+            var idle = ['bg-surfaceh', 'text-body', 'hover:bg-[#E2E7F1]'];
             document.querySelectorAll('[data-tabfilter][data-tab-group="' + group + '"]').forEach(function (b) {
                 if (b === btn) {
                     active.forEach(function (c) { b.classList.add(c); });

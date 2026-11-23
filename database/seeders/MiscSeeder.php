@@ -37,11 +37,11 @@ class MiscSeeder extends Seeder
             Faq::updateOrCreate(['question' => $q], ['answer' => $a, 'sort_order' => $i + 1]);
         }
 
-        // ── Документы (ссылки на PDF, не файлы в проекте) ──
+        // ── Документы (ссылки на PDF / изображения) ──
         foreach ([
-            ['Лицензии', 'Лицензия на осуществление медицинской деятельности', 'docs/sertificate1.png', '2024-01-01'],
-            ['Лицензии', 'Приложение к лицензии (сертификаты специалистов)', 'docs/sertificate2.png', '2024-01-01'],
-            ['Реквизиты', 'Логотип и фирменный блок клиники', 'docs/logo.png', '2024-01-01'],
+            ['Лицензии', 'Лицензия на осуществление медицинской деятельности', 'docs/sertificate1.webp', '2024-01-01'],
+            ['Лицензии', 'Приложение к лицензии (сертификаты специалистов)', 'docs/sertificate2.webp', '2024-01-01'],
+            ['Реквизиты', 'Логотип и фирменный блок клиники', 'docs/logo.webp', '2024-01-01'],
         ] as $i => [$cat, $title, $file, $date]) {
             Document::updateOrCreate(
                 ['title' => $title],
@@ -76,11 +76,11 @@ class MiscSeeder extends Seeder
             'telegram' => 'https://t.me/artmedica',
             'ok'       => 'https://ok.ru/artmedica',
         ]);
-        Setting::set('logo', '/storage/docs/logo.png');
+        Setting::set('logo', '/storage/docs/logo.webp');
         Setting::set('social_icons', [
-            'vk'       => '/storage/docs/Vk_logo.png',
-            'telegram' => '/storage/docs/Telegram_logo%201.png',
-            'max'      => '/storage/docs/max-messenger-sign-logo%201.png',
+            'vk'       => '/storage/docs/Vk_logo.webp',
+            'telegram' => '/storage/docs/Telegram_logo%201.webp',
+            'max'      => '/storage/docs/max-messenger-sign-logo%201.webp',
         ]);
         Setting::set('video_url', 'https://vkvideo.ru/video-211242323_456240899');
         Setting::set('disclaimer', 'ИМЕЮТСЯ ПРОТИВОПОКАЗАНИЯ. НЕОБХОДИМА КОНСУЛЬТАЦИЯ СПЕЦИАЛИСТА');

@@ -27,7 +27,7 @@
     {{-- Обложка направления из БД (media, collection «cover»); мобайл 8:5 (242px при 388), десктоп 12:7 --}}
     <div class="relative aspect-[8/5] w-full overflow-hidden rounded-[14px] bg-hero sm:aspect-[12/7] sm:rounded-[16px]">
         @if ($cover)
-            <img src="{{ $cover }}" alt="Направление клиники: {{ $category->name }}" loading="lazy"
+            <img src="{{ $cover }}" alt="Направление клиники: {{ $category->name }}" width="840" height="490" loading="lazy" decoding="async"
                  class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105">
         @else
             <div class="absolute inset-0 grid place-items-center">
@@ -37,13 +37,13 @@
     </div>
 
     {{-- Заголовок (макет: Onest 500; 24/32 мобайл #1C1B1F, 36/44 десктоп #212529) --}}
-    <h3 class="mt-[20px] text-[24px] font-medium leading-[32px] text-[#1C1B1F] transition-colors group-hover:text-brand sm:mt-5 sm:leading-tight sm:text-[28px] sm:text-body xl:text-[32px] 2xl:text-[36px] 2xl:leading-[44px]">
+    <h2 class="mt-[20px] text-[24px] font-medium leading-[32px] text-[#1C1B1F] transition-colors group-hover:text-brand sm:mt-5 sm:leading-tight sm:text-[28px] sm:text-body xl:text-[32px] 2xl:text-[36px] 2xl:leading-[44px]">
         {{ $category->name }}
-    </h3>
+    </h2>
 
     @if ($category->description)
         {{-- Описание мобильного макета: Onest 400 16/24 #A09CAB, отступ 10px --}}
-        <p class="mt-2.5 hidden max-w-[680px] text-[16px] leading-[24px] text-[#A09CAB] max-sm:block">
+        <p class="mt-2.5 hidden max-w-[680px] text-[16px] leading-[24px] text-[#5F5B6B] max-sm:block">
             {{ $category->description }}
         </p>
     @endif

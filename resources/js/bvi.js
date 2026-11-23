@@ -119,31 +119,27 @@ function renderBviPanel(font, theme, images) {
             </div>
 
             <div class="flex flex-wrap items-center gap-4 text-[14px]">
-                {{-- Размер шрифта --}}
-                <div class="flex items-center gap-1.5" role="group" aria-label="Размер шрифта">
+                <div class="flex flex-wrap items-center gap-1.5" role="group" aria-label="Размер шрифта">
                     <span class="font-semibold mr-1">Шрифт:</span>
                     <button type="button" data-bvi-set-font="normal" class="bvi-btn ${font === 'normal' ? 'bvi-btn-active' : ''}" aria-pressed="${font === 'normal'}">A</button>
                     <button type="button" data-bvi-set-font="large" class="bvi-btn font-bold ${font === 'large' ? 'bvi-btn-active' : ''}" aria-pressed="${font === 'large'}">A+</button>
                     <button type="button" data-bvi-set-font="xlarge" class="bvi-btn text-base font-extrabold ${font === 'xlarge' ? 'bvi-btn-active' : ''}" aria-pressed="${font === 'xlarge'}">A++</button>
                 </div>
 
-                {{-- Цветовая схема --}}
-                <div class="flex items-center gap-1.5" role="group" aria-label="Цветовая схема">
+                <div class="flex flex-wrap items-center gap-1.5" role="group" aria-label="Цветовая схема">
                     <span class="font-semibold mr-1">Цвет:</span>
                     <button type="button" data-bvi-set-theme="bw" class="bvi-btn ${theme === 'bw' ? 'bvi-btn-active' : ''}" aria-pressed="${theme === 'bw'}">Ч/Б</button>
                     <button type="button" data-bvi-set-theme="invert" class="bvi-btn ${theme === 'invert' ? 'bvi-btn-active' : ''}" aria-pressed="${theme === 'invert'}">Инверсия</button>
                     <button type="button" data-bvi-set-theme="blue" class="bvi-btn ${theme === 'blue' ? 'bvi-btn-active' : ''}" aria-pressed="${theme === 'blue'}">Синий</button>
                 </div>
 
-                {{-- Изображения --}}
-                <div class="flex items-center gap-1.5" role="group" aria-label="Отображение изображений">
+                <div class="flex flex-wrap items-center gap-1.5" role="group" aria-label="Отображение изображений">
                     <span class="font-semibold mr-1">Изображения:</span>
                     <button type="button" data-bvi-set-images="${images === 'on' ? 'off' : 'on'}" class="bvi-btn" aria-pressed="${images === 'off'}">
                         ${images === 'on' ? 'Вкл' : 'Выкл'}
                     </button>
                 </div>
 
-                {{-- Обычная версия (закрыть режим) --}}
                 <button type="button" id="bvi-close-btn" class="bvi-btn bvi-btn-exit inline-flex items-center gap-1.5 font-bold">
                     <span>Обычная версия</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>

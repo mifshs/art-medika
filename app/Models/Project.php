@@ -21,6 +21,11 @@ class Project extends Model
         'is_active'    => 'boolean',
     ];
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function formats(): HasMany  { return $this->hasMany(ProjectFormat::class)->orderBy('sort_order'); }
     public function stages(): HasMany   { return $this->hasMany(ProjectStage::class)->orderBy('sort_order'); }
     public function partners(): HasMany { return $this->hasMany(ProjectPartner::class)->orderBy('sort_order'); }

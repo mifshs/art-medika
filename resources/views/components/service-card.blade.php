@@ -10,7 +10,7 @@
 
     {{-- Фон = одна ч/б картинка справа с мягким градиентным переходом --}}
     @if ($image)
-        <img src="{{ $image }}" alt="" loading="lazy"
+        <img src="{{ $image }}" alt="" width="450" height="373" loading="lazy" decoding="async"
              style="-webkit-mask-image: linear-gradient(to right, transparent 0%, black 18%); mask-image: linear-gradient(to right, transparent 0%, black 18%);"
              class="pointer-events-none absolute right-0 top-0 h-full w-auto max-w-none grayscale mix-blend-multiply opacity-90">
     @endif

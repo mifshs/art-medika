@@ -21,6 +21,11 @@ class Promotion extends Model
         'is_active'    => 'boolean',
     ];
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function scopeActive($q)    { return $q->where('is_active', true); }
     public function scopePublished($q) { return $q->active()->whereNotNull('published_at'); }
     public function scopeValid($q)     { return $q->where(fn ($qq) => $qq->whereNull('valid_until')->orWhere('valid_until', '>=', today())); }

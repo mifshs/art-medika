@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>О клинике — Медико-косметологический центр «Арт-Медика»</title>
-    <x-favicon></x-favicon>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    {{-- Шрифт макета — Onest --}}
-    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <x-seo-head
+        title="О клинике — Медико-косметологический центр «Арт-Медика»"
+        :description="'О центре «Арт-Медика» в Челябинске: ' . $introText"
+        keywords="о клинике Арт-Медика, партнер ЮУГМУ, пластическая хирургия из Милана, стационар Челябинск, медицинский центр"
+        :ogImage="$aboutImage"
+    />
 </head>
 <body class="bg-page font-onest text-body antialiased">
 
 <x-header></x-header>
 
-<main class="mx-auto w-full max-w-[1720px] px-4 pb-16 sm:px-6 md:px-10 lg:pb-24 2xl:px-0">
+<main id="main-content" class="mx-auto w-full max-w-[1720px] px-4 pb-16 sm:px-6 md:px-10 lg:pb-24 2xl:px-0">
     {{-- Хлебные крошки (макет: Onest 18px, цвет #37241B) --}}
     <nav aria-label="Хлебные крошки" class="flex items-center gap-2 pt-5 text-[15px] text-brand sm:pt-6 sm:text-[16px] 2xl:text-[18px]">
         <a href="{{ url('/') }}" class="transition-colors duration-200 hover:text-brandh">Арт-Медика</a>
-        <img src="{{ asset('images/_.svg') }}" alt="" class="h-3 w-auto" aria-hidden="true">
+        <img src="{{ asset('images/_.svg') }}" width="7" height="10" alt="" class="h-3 w-auto" aria-hidden="true">
         <span class="font-medium">О клинике</span>
     </nav>
 
@@ -27,7 +24,7 @@
     <div class="mt-7 sm:mt-8 lg:mt-12">
         <div class="grid gap-4 lg:grid-cols-[1fr_2.5fr] lg:gap-10 items-start">
             <div>
-                <p class="inline-flex items-baseline gap-2 text-[24px] font-medium text-[#91B5D5] sm:text-[28px] lg:text-[32px] 2xl:text-[40px]">
+                <p class="inline-flex items-baseline gap-2 text-[24px] font-medium text-[#4A749B] sm:text-[28px] lg:text-[32px] 2xl:text-[40px]">
                     О клинике
                     <svg class="h-[0.8em] w-[0.8em] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -45,7 +42,7 @@
     <div class="mt-8 grid grid-cols-1 gap-6 sm:mt-10 sm:gap-8 lg:grid-cols-[46%_1fr] lg:gap-10 2xl:grid-cols-[48%_1fr] 2xl:gap-12 items-stretch">
         {{-- Фотография клиники (кабинет, оборудование) --}}
         <div class="overflow-hidden rounded-[20px] sm:rounded-[24px]">
-            <img src="{{ $aboutImage }}" alt="Медико-косметологический центр «Арт-Медика»" loading="lazy"
+            <img src="{{ $aboutImage }}" alt="Медико-косметологический центр «Арт-Медика»" width="800" height="533" fetchpriority="high" decoding="async"
                  class="h-[260px] w-full object-cover sm:h-[340px] lg:h-full lg:min-h-[380px]">
         </div>
 
@@ -107,7 +104,7 @@
                 <ul class="mt-5 space-y-2.5 sm:space-y-3">
                     @foreach ($polyclinicDirections as $direction)
                         <li class="flex items-center gap-2.5 text-[14px] font-medium text-body sm:text-[15px] 2xl:text-[16px]">
-                            <svg class="h-4 w-4 shrink-0 text-[#7E93AC]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <svg class="h-4 w-4 shrink-0 text-steel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path d="M7 17L17 7M17 7H8.5M17 7v8.5"/>
                             </svg>
                             <span>{{ $direction }}</span>
@@ -142,7 +139,7 @@
                         Подробнее
                     </a>
 
-                    <div class="flex flex-col text-[11px] leading-snug text-[#7E93AC] sm:text-right">
+                    <div class="flex flex-col text-[11px] leading-snug text-steel sm:text-right">
                         <a href="https://minzdrav.gov.ru" target="_blank" rel="noopener" class="underline hover:text-brand transition-colors">
                             Сайт Министерства здравоохранения Российской Федерации
                         </a>
@@ -160,7 +157,7 @@
         <section class="mt-14 sm:mt-16 lg:mt-24">
             <div class="grid gap-4 lg:grid-cols-[1fr_2.5fr] lg:gap-10 items-start">
                 <div>
-                    <p class="inline-flex items-baseline gap-2 text-[24px] font-medium text-[#91B5D5] sm:text-[28px] lg:text-[32px] 2xl:text-[40px]">
+                    <p class="inline-flex items-baseline gap-2 text-[24px] font-medium text-[#4A749B] sm:text-[28px] lg:text-[32px] 2xl:text-[40px]">
                         Результат операций
                         <svg class="h-[0.8em] w-[0.8em] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                             <path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -207,7 +204,7 @@
             </div>
 
             {{-- Стрелки навигации слайдера Swiper --}}
-            <div class="mt-6 flex items-center justify-between lg:mt-8">
+            <div class="mt-6 hidden items-center justify-between sm:flex lg:mt-8">
                 <button type="button" id="about-results-prev" aria-label="Предыдущие фото"
                         class="grid h-11 w-11 place-items-center rounded-[10px] bg-brand text-white transition-opacity hover:bg-brandh disabled:opacity-40 2xl:h-14 2xl:w-14">
                     <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

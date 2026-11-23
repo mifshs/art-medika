@@ -1,40 +1,55 @@
+<?php
+    $sectionName = $promotion->service?->name ?? $promotion->title;
+    $promoCover = $promotion->coverUrl();
+    $seoTitle = $promotion->title . ' — Акции — Арт-Медика';
+    $seoDesc = $promotion->excerpt ?: \Illuminate\Support\Str::limit(strip_tags((string) $promotion->content), 160);
+    $seoKeywords = trim(implode(', ', array_filter([$promotion->title, $promotion->service?->name, 'акции Арт-Медика', 'скидки Челябинск'])));
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo e($promotion->title); ?></title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
-    <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
+    <?php if (isset($component)) { $__componentOriginal4232ba5ed77147a6b6573253fafb715d = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal4232ba5ed77147a6b6573253fafb715d = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.seo-head','data' => ['title' => $seoTitle,'description' => $seoDesc,'keywords' => $seoKeywords,'ogImage' => $promoCover,'preloadImage' => $promoCover]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('seo-head'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['title' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($seoTitle),'description' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($seoDesc),'keywords' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($seoKeywords),'ogImage' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($promoCover),'preloadImage' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($promoCover)]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal4232ba5ed77147a6b6573253fafb715d)): ?>
+<?php $attributes = $__attributesOriginal4232ba5ed77147a6b6573253fafb715d; ?>
+<?php unset($__attributesOriginal4232ba5ed77147a6b6573253fafb715d); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal4232ba5ed77147a6b6573253fafb715d)): ?>
+<?php $component = $__componentOriginal4232ba5ed77147a6b6573253fafb715d; ?>
+<?php unset($__componentOriginal4232ba5ed77147a6b6573253fafb715d); ?>
+<?php endif; ?>
 </head>
-<body>
+<body class="bg-page font-onest text-body antialiased">
     <?php echo $__env->make('components.header', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
-    
 
-    <?php
-        $sectionName = $promotion->service?->name ?? $promotion->title;
-    ?>
-
-    <main class="mx-auto w-full max-w-[1720px] px-4 pb-16 sm:px-6 md:px-10 2xl:px-0">
+    <main id="main-content" class="mx-auto w-full max-w-[1720px] px-4 pb-16 sm:px-6 md:px-10 2xl:px-0">
         
         <nav aria-label="Хлебные крошки" class="flex items-center gap-2 pt-6 text-[15px] text-body">
             <a href="<?php echo e(url('/')); ?>" class="transition-colors hover:text-brand">Арт-Медика</a>
-            <img src="<?php echo e(asset('images/_.svg')); ?>" alt="" class="h-3 w-auto" aria-hidden="true">
+            <img src="<?php echo e(asset('images/_.svg')); ?>" alt="" width="7" height="10" class="h-3 w-auto" aria-hidden="true">
             <span class="font-medium text-ink"><?php echo e($sectionName); ?></span>
         </nav>
 
         
         <div class="flex flex-col gap-8 pt-8 lg:flex-row lg:gap-16 2xl:gap-20 2xl:pt-10">
             <div class="w-full shrink-0 lg:w-[42%]">
-                <h1 class="flex items-center gap-2 text-[40px] font-medium leading-none text-[#91B5D5] max-lg:text-3xl">
+                <h1 class="flex items-center gap-2 text-[40px] font-medium leading-none text-[#4A749B] max-lg:text-3xl">
                     <?php echo e($sectionName); ?>
 
-                    <img src="<?php echo e(asset('images/Arrow_right_light.svg')); ?>" alt="" class="w-[50px] max-lg:w-[38px]" aria-hidden="true">
+                    <img src="<?php echo e(asset('images/Arrow_right_light.svg')); ?>" alt="" width="50" height="50" class="w-[50px] max-lg:w-[38px]" aria-hidden="true">
                 </h1>
-                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($promotion->coverUrl()): ?>
-                    <img src="<?php echo e($promotion->coverUrl()); ?>" alt="<?php echo e($promotion->title); ?>" loading="lazy"
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($promoCover): ?>
+                    <img src="<?php echo e($promoCover); ?>" alt="<?php echo e($promotion->title); ?>" fetchpriority="high" decoding="async"
                          width="395" height="517"
                          class="mt-8 w-full rounded-[24px] bg-hero object-cover object-top">
                 <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
@@ -49,7 +64,7 @@
                 </div>
 
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($promotion->published_at): ?>
-                    <span class="mt-8 text-[24px] text-[#91B5D5]"><?php echo e($promotion->published_at->format('d.m.Y')); ?></span>
+                    <span class="mt-8 text-[24px] text-[#4A749B]"><?php echo e($promotion->published_at->format('d.m.Y')); ?></span>
                 <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
             </div>
         </div>

@@ -31,9 +31,9 @@ class ContactController extends Controller
         $mediaBase = rtrim((string) (config('media.base_url') ?: '/storage'), '/');
 
         $socialIcons = Setting::get('social_icons', [
-            'max'      => $mediaBase . '/docs/max-messenger-sign-logo%201.png',
-            'vk'       => $mediaBase . '/docs/Vk_logo.png',
-            'telegram' => $mediaBase . '/docs/Telegram_logo%201.png',
+            'max'      => $mediaBase . '/docs/max-messenger-sign-logo%201.webp',
+            'vk'       => $mediaBase . '/docs/Vk_logo.webp',
+            'telegram' => $mediaBase . '/docs/Telegram_logo%201.webp',
         ]);
 
         $socials = Setting::get('socials', [

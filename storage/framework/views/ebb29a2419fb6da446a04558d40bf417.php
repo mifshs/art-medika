@@ -1,33 +1,26 @@
 <!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакты — Медико-косметологический центр «Арт-Медика»</title>
-    <?php if (isset($component)) { $__componentOriginal82e3f864bb766fbb95cb0a10b750823c = $component; } ?>
-<?php if (isset($attributes)) { $__attributesOriginal82e3f864bb766fbb95cb0a10b750823c = $attributes; } ?>
-<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.favicon','data' => []] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
-<?php $component->withName('favicon'); ?>
+    <?php if (isset($component)) { $__componentOriginal4232ba5ed77147a6b6573253fafb715d = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal4232ba5ed77147a6b6573253fafb715d = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.seo-head','data' => ['title' => 'Контакты — Медико-косметологический центр «Арт-Медика»','description' => 'Адрес, телефоны, режим работы и карта проезда в медико-косметологический центр «Арт-Медика» в Челябинске (пр. Ленина, 12А).','keywords' => 'контакты Арт-Медика, адрес Челябинск проспект Ленина 12А, телефон записи, режим работы клиники']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('seo-head'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
-<?php $component->withAttributes([]); ?> <?php echo $__env->renderComponent(); ?>
+<?php $component->withAttributes(['title' => 'Контакты — Медико-косметологический центр «Арт-Медика»','description' => 'Адрес, телефоны, режим работы и карта проезда в медико-косметологический центр «Арт-Медика» в Челябинске (пр. Ленина, 12А).','keywords' => 'контакты Арт-Медика, адрес Челябинск проспект Ленина 12А, телефон записи, режим работы клиники']); ?>
+<?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
-<?php if (isset($__attributesOriginal82e3f864bb766fbb95cb0a10b750823c)): ?>
-<?php $attributes = $__attributesOriginal82e3f864bb766fbb95cb0a10b750823c; ?>
-<?php unset($__attributesOriginal82e3f864bb766fbb95cb0a10b750823c); ?>
+<?php if (isset($__attributesOriginal4232ba5ed77147a6b6573253fafb715d)): ?>
+<?php $attributes = $__attributesOriginal4232ba5ed77147a6b6573253fafb715d; ?>
+<?php unset($__attributesOriginal4232ba5ed77147a6b6573253fafb715d); ?>
 <?php endif; ?>
-<?php if (isset($__componentOriginal82e3f864bb766fbb95cb0a10b750823c)): ?>
-<?php $component = $__componentOriginal82e3f864bb766fbb95cb0a10b750823c; ?>
-<?php unset($__componentOriginal82e3f864bb766fbb95cb0a10b750823c); ?>
+<?php if (isset($__componentOriginal4232ba5ed77147a6b6573253fafb715d)): ?>
+<?php $component = $__componentOriginal4232ba5ed77147a6b6573253fafb715d; ?>
+<?php unset($__componentOriginal4232ba5ed77147a6b6573253fafb715d); ?>
 <?php endif; ?>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
-    <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
 </head>
 <body class="bg-page font-onest text-body antialiased">
 
@@ -55,7 +48,7 @@
     
     <nav aria-label="Хлебные крошки" class="flex items-center gap-2 pt-5 text-[15px] text-brand sm:pt-6 sm:text-[16px] 2xl:text-[18px]">
         <a href="<?php echo e(url('/')); ?>" class="transition-colors duration-200 hover:text-brandh focus-visible:outline-offset-2">Арт-Медика</a>
-        <img src="<?php echo e(asset('images/_.svg')); ?>" alt="" class="h-3 w-auto" aria-hidden="true">
+        <img src="<?php echo e(asset('images/_.svg')); ?>" width="7" height="10" alt="" class="h-3 w-auto" aria-hidden="true">
         <span class="font-medium">Контакты</span>
     </nav>
 
@@ -63,7 +56,7 @@
     <div class="mt-7 sm:mt-8 lg:mt-12">
         <div class="grid gap-4 lg:grid-cols-[1fr_2.5fr] lg:gap-10 items-start">
             <div>
-                <p class="inline-flex items-baseline gap-2 text-[24px] font-medium text-[#91B5D5] sm:text-[28px] lg:text-[32px] 2xl:text-[40px]">
+                <p class="inline-flex items-baseline gap-2 text-[24px] font-medium text-[#4A749B] sm:text-[28px] lg:text-[32px] 2xl:text-[40px]">
                     Контакты
                     <svg class="h-[0.8em] w-[0.8em] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -79,22 +72,21 @@
     </div>
 
     
+    <?php
+        $yandexEmbedUrl = 'https://yandex.ru/map-widget/v1/?ll=' . $mapCoordinates['lng'] . '%2C' . $mapCoordinates['lat'] . '&z=' . $mapCoordinates['zoom'] . '&pt=' . $mapCoordinates['lng'] . '%2C' . $mapCoordinates['lat'] . ',pm2blm';
+    ?>
     <section aria-label="Расположение центра на карте" class="mt-8 sm:mt-10 lg:mt-12">
-        <div class="relative h-[320px] w-full overflow-hidden rounded-[20px] border border-[#E8EEF8] bg-[#F5F8FF] sm:h-[400px] sm:rounded-[24px] lg:h-[480px] 2xl:h-[540px]">
-            
-            <div id="yandex-map" class="h-full w-full" data-lat="<?php echo e($mapCoordinates['lat']); ?>" data-lng="<?php echo e($mapCoordinates['lng']); ?>" data-zoom="<?php echo e($mapCoordinates['zoom']); ?>">
-                
-                <iframe
-                    src="https://yandex.ru/map-widget/v1/?ll=<?php echo e($mapCoordinates['lng']); ?>%2C<?php echo e($mapCoordinates['lat']); ?>&z=<?php echo e($mapCoordinates['zoom']); ?>&pt=<?php echo e($mapCoordinates['lng']); ?>%2C<?php echo e($mapCoordinates['lat']); ?>%2Cpm2blm"
-                    width="100%"
-                    height="100%"
-                    frameborder="0"
-                    allowfullscreen="true"
-                    loading="lazy"
-                    title="Карта проезда: Челябинск, проспект Ленина 12А, МКЦ «Арт-Медика»"
-                    class="h-full w-full border-0">
-                </iframe>
-            </div>
+        <div id="yandex-map"
+             class="relative h-[320px] w-full overflow-hidden rounded-[20px] border border-[#E8EEF8] bg-[#F5F8FF] sm:h-[400px] sm:rounded-[24px] lg:h-[480px] 2xl:h-[540px]">
+            <iframe
+                src="<?php echo e($yandexEmbedUrl); ?>"
+                width="100%"
+                height="100%"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Карта проезда: Челябинск, проспект Ленина 12А, МКЦ «Арт-Медика»"
+                class="h-full w-full border-0">
+            </iframe>
         </div>
     </section>
 
@@ -104,21 +96,21 @@
             <a href="<?php echo e($socials['max'] ?? '#'); ?>" target="_blank" rel="noopener"
                aria-label="Написать нам в MAX"
                class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-300 ease-out hover:scale-105 focus-visible:outline-offset-2">
-                <img src="<?php echo e($socialIcons['max']); ?>" alt="MAX" class="h-12 w-12 object-contain">
+                <img src="<?php echo e($socialIcons['max']); ?>" alt="MAX" width="48" height="48" loading="lazy" decoding="async" class="h-12 w-12 object-contain">
             </a>
         <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
         <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(!empty($socialIcons['vk'])): ?>
             <a href="<?php echo e($socials['vk'] ?? '#'); ?>" target="_blank" rel="noopener"
                aria-label="Мы ВКонтакте"
                class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-300 ease-out hover:scale-105 focus-visible:outline-offset-2">
-                <img src="<?php echo e($socialIcons['vk']); ?>" alt="VK" class="h-12 w-12 object-contain">
+                <img src="<?php echo e($socialIcons['vk']); ?>" alt="VK" width="48" height="48" loading="lazy" decoding="async" class="h-12 w-12 object-contain">
             </a>
         <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
         <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(!empty($socialIcons['telegram'])): ?>
             <a href="<?php echo e($socials['telegram'] ?? '#'); ?>" target="_blank" rel="noopener"
                aria-label="Мы в Telegram"
                class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-300 ease-out hover:scale-105 focus-visible:outline-offset-2">
-                <img src="<?php echo e($socialIcons['telegram']); ?>" alt="Telegram" class="h-12 w-12 object-contain">
+                <img src="<?php echo e($socialIcons['telegram']); ?>" alt="Telegram" width="48" height="48" loading="lazy" decoding="async" class="h-12 w-12 object-contain">
             </a>
         <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
     </div>
@@ -232,21 +224,21 @@
                     <a href="<?php echo e($socials['max'] ?? '#'); ?>" target="_blank" rel="noopener"
                        aria-label="Написать нам в MAX"
                        class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-300 ease-out hover:scale-110 focus-visible:outline-offset-2 2xl:h-14 2xl:w-14">
-                        <img src="<?php echo e($socialIcons['max']); ?>" alt="MAX" class="h-12 w-12 object-contain 2xl:h-14 2xl:w-14">
+                        <img src="<?php echo e($socialIcons['max']); ?>" alt="MAX" width="48" height="48" loading="lazy" decoding="async" class="h-12 w-12 object-contain 2xl:h-14 2xl:w-14">
                     </a>
                 <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(!empty($socialIcons['vk'])): ?>
                     <a href="<?php echo e($socials['vk'] ?? '#'); ?>" target="_blank" rel="noopener"
                        aria-label="Мы ВКонтакте"
                        class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-300 ease-out hover:scale-110 focus-visible:outline-offset-2 2xl:h-14 2xl:w-14">
-                        <img src="<?php echo e($socialIcons['vk']); ?>" alt="VK" class="h-12 w-12 object-contain 2xl:h-14 2xl:w-14">
+                        <img src="<?php echo e($socialIcons['vk']); ?>" alt="VK" width="48" height="48" loading="lazy" decoding="async" class="h-12 w-12 object-contain 2xl:h-14 2xl:w-14">
                     </a>
                 <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
                 <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(!empty($socialIcons['telegram'])): ?>
                     <a href="<?php echo e($socials['telegram'] ?? '#'); ?>" target="_blank" rel="noopener"
                        aria-label="Мы в Telegram"
                        class="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-white shadow-sm transition-transform duration-300 ease-out hover:scale-110 focus-visible:outline-offset-2 2xl:h-14 2xl:w-14">
-                        <img src="<?php echo e($socialIcons['telegram']); ?>" alt="Telegram" class="h-12 w-12 object-contain 2xl:h-14 2xl:w-14">
+                        <img src="<?php echo e($socialIcons['telegram']); ?>" alt="Telegram" width="48" height="48" loading="lazy" decoding="async" class="h-12 w-12 object-contain 2xl:h-14 2xl:w-14">
                     </a>
                 <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
             </div>
@@ -273,45 +265,6 @@
 <?php $component = $__componentOriginal8a8716efb3c62a45938aca52e78e0322; ?>
 <?php unset($__componentOriginal8a8716efb3c62a45938aca52e78e0322); ?>
 <?php endif; ?>
-
-
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-<script>
-    if (typeof ymaps !== 'undefined') {
-        ymaps.ready(function () {
-            var container = document.getElementById('yandex-map');
-            if (!container) return;
-            var lat = parseFloat(container.dataset.lat) || 55.161095;
-            var lng = parseFloat(container.dataset.lng) || 61.448844;
-            var zoom = parseInt(container.dataset.zoom, 10) || 16;
-
-            // Очищаем контейнер от iframe-фолбэка перед инициализацией полноценного API
-            container.innerHTML = '';
-
-            var map = new ymaps.Map(container, {
-                center: [lat, lng],
-                zoom: zoom,
-                controls: ['zoomControl', 'fullscreenControl']
-            });
-
-            var placemark = new ymaps.Placemark([lat, lng], {
-                hintContent: 'Медико-косметологический центр «Арт-Медика»',
-                balloonContentHeader: '<div style="font-weight:700;font-size:15px;color:#37241B;">Арт-Медика</div>',
-                balloonContentBody: '<div style="font-size:13px;color:#212529;line-height:1.4;">' +
-                    '<p><strong>Адрес:</strong> Челябинск, пр. Ленина 12А (здание 12а рядом с Театром ЧТЗ)</p>' +
-                    '<p><strong>Режим:</strong> ПН-СБ с 9:00 до 20:00</p>' +
-                    '<p><strong>Телефон:</strong> <a href="tel:+73517751918">+7 (351) 775-19-18</a></p>' +
-                '</div>',
-                balloonContentFooter: '<a href="https://yandex.ru/maps/?rtext=~' + lat + ',' + lng + '" target="_blank" rel="noopener" style="color:#2563EB;font-weight:600;">Проложить маршрут в Яндекс.Картах →</a>'
-            }, {
-                preset: 'islands#blueDotIcon'
-            });
-
-            map.geoObjects.add(placemark);
-            map.behaviors.disable('scrollZoom');
-        });
-    }
-</script>
 
 </body>
 </html>

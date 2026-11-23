@@ -1,65 +1,52 @@
+@php
+    $categoryName = $news->category?->name ?? 'Новости';
+    $coverUrl = $news->coverUrl();
+    $seoTitle = $news->title . ' — Новости — Арт-Медика';
+    $seoDesc = $news->excerpt ?: \Illuminate\Support\Str::limit(strip_tags((string) $news->content), 160);
+    $seoKeywords = trim($news->title . ', ' . $categoryName . ', новости Арт-Медика, статьи о красоте и здоровье', ', ');
+@endphp
 <!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $news->title }} — Медико-косметологический центр «Арт-Медика»</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    {{-- Шрифт макета — Onest --}}
-    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <x-seo-head
+        :title="$seoTitle"
+        :description="$seoDesc"
+        :keywords="$seoKeywords"
+        ogType="article"
+        :ogImage="$coverUrl"
+        :preloadImage="$coverUrl"
+    />
 </head>
 <body class="bg-page font-onest text-body antialiased">
 
 <x-header></x-header>
 
-<main class="mx-auto w-full max-w-[1720px] px-4 pb-14 sm:px-6 md:px-10 lg:pb-24 2xl:px-0">
+<main id="main-content" class="mx-auto w-full max-w-[1720px] px-4 pb-14 sm:px-6 md:px-10 lg:pb-24 2xl:px-0">
     {{-- Хлебные крошки (макет: Onest 18px, цвет #37241B) --}}
     <nav aria-label="Хлебные крошки" class="flex items-center gap-2 pt-5 text-[15px] text-brand sm:pt-6 sm:text-[16px] 2xl:text-[18px]">
         <a href="{{ url('/') }}" class="transition-colors duration-200 hover:text-brandh">Арт-Медика</a>
-        <img src="{{ asset('images/_.svg') }}" alt="" class="h-3 w-auto" aria-hidden="true">
+        <img src="{{ asset('images/_.svg') }}" alt="" width="7" height="10" class="h-3 w-auto" aria-hidden="true">
         <a href="{{ route('news') }}" class="transition-colors duration-200 hover:text-brandh">Новости</a>
-        <img src="{{ asset('images/_.svg') }}" alt="" class="h-3 w-auto" aria-hidden="true">
+        <img src="{{ asset('images/_.svg') }}" alt="" width="7" height="10" class="h-3 w-auto" aria-hidden="true">
         <span class="font-medium text-ink line-clamp-1 max-w-[280px] sm:max-w-md lg:max-w-xl">
             "{{ \Illuminate\Support\Str::limit($news->title, 40) }}"
         </span>
     </nav>
 
-    {{-- Заголовок: категория со стрелкой и название статьи/новости --}}
-    @php
-        $categoryName = $news->category?->name ?? 'Хирургия';
-        $coverUrl = $news->coverUrl();
-    @endphp
-
-    <div class="mt-7 sm:mt-8 lg:mt-12">
-        {{-- Мобильный вариант заголовка (категория слева, заголовок по центру) --}}
-        <div class="lg:hidden">
-            <p class="inline-flex items-baseline gap-2 text-[24px] font-medium text-[#91B5D5] sm:text-[28px]">
-                {{ $categoryName }}
+    {{-- Единый заголовок H1: на мобилке над текстом с категорией, на десктопе — в правой колонке --}}
+    <div class="mt-7 sm:mt-8 lg:mt-12 grid grid-cols-1 gap-3 lg:grid-cols-2 lg:gap-12 2xl:gap-16 items-start">
+        <div>
+            <p class="inline-flex items-baseline gap-2 text-[24px] font-medium text-[#4A749B] sm:text-[28px] lg:text-[32px] 2xl:text-[40px]">
+                <span class="lg:hidden">{{ $categoryName }}</span>
                 <svg class="h-[0.8em] w-[0.8em] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </p>
-            <h1 class="mt-3 text-center text-[20px] font-semibold leading-[1.3] text-brand sm:text-left sm:text-[24px]">
+        </div>
+        <div>
+            <h1 class="text-center text-[20px] font-semibold leading-[1.3] text-brand sm:text-left sm:text-[24px] lg:text-[34px] lg:font-medium lg:leading-[1.25] 2xl:text-[40px]">
                 {{ $news->title }}
             </h1>
-        </div>
-
-        {{-- Десктопный вариант заголовка (стрелка в левой колонке, заголовок в правой) --}}
-        <div class="hidden lg:grid lg:grid-cols-2 lg:gap-12 2xl:gap-16 items-start">
-            <div>
-                <p class="inline-flex items-baseline gap-2 text-[32px] 2xl:text-[40px] font-medium text-[#91B5D5]">
-                    <svg class="h-[0.8em] w-[0.8em] shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M7 17L17 7M17 7H8.5M17 7v8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </p>
-            </div>
-            <div>
-                <h1 class="text-[28px] sm:text-[32px] lg:text-[34px] 2xl:text-[40px] font-medium leading-[1.25] text-brand">
-                    {{ $news->title }}
-                </h1>
-            </div>
         </div>
     </div>
 
@@ -68,7 +55,7 @@
         {{-- Левая колонка: фотография новости с декоративным белым диагональным уголком из макета --}}
         <div class="relative overflow-hidden rounded-[20px] sm:rounded-[24px]">
             @if ($coverUrl)
-                <img src="{{ $coverUrl }}" alt="{{ $news->title }}"
+                <img src="{{ $coverUrl }}" alt="{{ $news->title }}" width="840" height="630" fetchpriority="high" decoding="async"
                      class="w-full object-cover rounded-[20px] sm:rounded-[24px] max-h-[580px] 2xl:max-h-[640px]">
             @else
                 <div class="flex aspect-[4/3] w-full items-center justify-center bg-slate-200 text-slate-400 rounded-[20px] sm:rounded-[24px]">
@@ -91,7 +78,7 @@
             {{-- Дата публикации статьи (макет: Onest, цвет #91B5D5) --}}
             @if ($news->published_at)
                 <div class="mt-8 pt-2">
-                    <span class="text-[14px] sm:text-[16px] 2xl:text-[18px] font-normal text-[#91B5D5]">
+                    <span class="text-[14px] sm:text-[16px] 2xl:text-[18px] font-normal text-[#4A749B]">
                         {{ $news->published_at->format('d.m.Y') }}
                     </span>
                 </div>

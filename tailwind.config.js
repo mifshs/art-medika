@@ -5,7 +5,6 @@ import forms from '@tailwindcss/forms';
 export default {
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
-        './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './app/Livewire/**/*.php',
     ],
@@ -24,8 +23,8 @@ export default {
                 border:  '#E4E7EE',
                 ink:     '#1A1A1A',
                 body:    '#212529',
-                muted:   '#6B7280',
-                steel:   '#7E93AC',
+                muted:   '#4B5563',
+                steel:   '#4B6582',
                 brand:   '#37241B',
                 brandh:  '#4A3128',
             },
