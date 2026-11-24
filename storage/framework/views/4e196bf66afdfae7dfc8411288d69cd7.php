@@ -56,11 +56,11 @@ unset($__defined_vars, $__key, $__value); ?>
     
     <!-- Верхняя часть: Тег и стрелка -->
     <div class="flex items-start justify-between gap-4">
-        <span class="min-w-0 truncate text-[16px] font-medium text-brand"><?php echo e($tag); ?></span>
+        <span class="min-w-0 truncate text-[12px] font-medium text-brand sm:text-[14px] 2xl:text-[16px]"><?php echo e($tag); ?></span>
         <span class="shrink-0 rounded-md p-0.5 text-body transition-transform group-hover:translate-x-0.5 group-hover:text-brand">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor" aria-hidden="true"
-                 class="h-[22px] w-[22px]">
+                 class="h-[18px] w-[18px] sm:h-[22px] sm:w-[22px]">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8 16 16 8M16 8H9.5M16 8v6.5"/>
             </svg>
         </span>
@@ -68,16 +68,16 @@ unset($__defined_vars, $__key, $__value); ?>
 
     <!-- Центральная часть: Заголовок и описание -->
     <div class="mt-3 sm:mt-4">
-        <h2 class="text-[36px] font-semibold leading-snug text-ink transition-colors group-hover:text-brand 2xl:text-[26px]"><?php echo e($promotion->title); ?></h2>
+        <h2 class="text-[18px] font-semibold leading-snug text-ink transition-colors group-hover:text-brand sm:text-[22px] lg:text-[24px] 2xl:text-[26px]"><?php echo e($promotion->title); ?></h2>
 
         <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($promotion->excerpt): ?>
-            <p class="mt-2 overflow-hidden text-[20px] leading-relaxed text-body [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:4] 2xl:text-[15px]"><?php echo e($promotion->excerpt); ?></p>
+            <p class="mt-2 overflow-hidden text-[13px] leading-relaxed text-body [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:4] sm:text-[14px] 2xl:text-[15px]"><?php echo e($promotion->excerpt); ?></p>
         <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
     </div>
 
     <!-- Нижняя часть: Дата -->
     <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($date): ?>
-        <span class="pt-4 text-[20px] text-[#4A749B]"><?php echo e($date); ?></span>
+        <span class="pt-4 text-[13px] text-[#4A749B] sm:text-[14px] 2xl:text-[16px]"><?php echo e($date); ?></span>
     <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
 
 </div>

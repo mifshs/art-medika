@@ -19,12 +19,12 @@
         </nav>
 
         {{-- Заголовок + вводный текст --}}
-        <div class="flex flex-col items-start justify-between gap-8 pt-10 lg:flex-row lg:items-start 2xl:pt-[52px]">
-            <h1 class="flex shrink-0 items-center gap-2 text-[40px] font-medium leading-none text-[#4A749B] max-lg:text-3xl">
+        <div class="flex flex-col items-start justify-between gap-4 pt-6 sm:gap-6 sm:pt-8 lg:flex-row lg:items-start lg:gap-8 lg:pt-10 2xl:pt-[52px]">
+            <h1 class="flex shrink-0 items-center gap-2 text-[20px] font-medium leading-none text-[#4A749B] sm:text-[26px] lg:text-[32px] 2xl:text-[40px]">
                 Акции
-                <img src="{{ asset('images/Arrow_right_light.svg') }}" width="50" height="50" alt="" class="w-[50px] max-lg:w-[38px]" aria-hidden="true">
+                <img src="{{ asset('images/Arrow_right_light.svg') }}" width="50" height="50" alt="" class="w-[22px] sm:w-[34px] lg:w-[42px] 2xl:w-[50px]" aria-hidden="true">
             </h1>
-            <p class="max-w-[1140px] text-[40px] font-medium leading-tight text-brand max-lg:text-2xl">
+            <p class="max-w-[1140px] text-[18px] font-medium leading-snug text-brand [text-indent:25%] sm:text-[24px] lg:text-[34px] lg:leading-tight lg:[text-indent:0] 2xl:text-[40px]">
                 Мы регулярно предлагаем выгодные акции и специальные предложения на популярные
                 услуги, чтобы вы могли получать качественную медицинскую помощь по привлекательной стоимости
             </p>

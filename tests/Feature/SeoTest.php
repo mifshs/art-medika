@@ -175,6 +175,11 @@ class SeoTest extends TestCase
         $this->get('/documents/download/' . $doc->id)
             ->assertStatus(200)
             ->assertHeader('content-disposition');
+
+        // Fallback на id, если у записи в БД на хостинге пустой slug
+        Document::whereKey($doc->id)->update(['slug' => null]);
+        $fallbackPage = $this->get('/documents')->assertStatus(200)->getContent();
+        $this->assertStringContainsString('/documents/download/' . $doc->id, $fallbackPage);
     }
 
     public function test_auth_pages_are_noindex_and_have_no_external_fonts(): void

@@ -28,11 +28,11 @@
     
     <!-- Верхняя часть: Тег и стрелка -->
     <div class="flex items-start justify-between gap-4">
-        <span class="min-w-0 truncate text-[16px] font-medium text-brand">{{ $tag }}</span>
+        <span class="min-w-0 truncate text-[12px] font-medium text-brand sm:text-[14px] 2xl:text-[16px]">{{ $tag }}</span>
         <span class="shrink-0 rounded-md p-0.5 text-body transition-transform group-hover:translate-x-0.5 group-hover:text-brand">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor" aria-hidden="true"
-                 class="h-[22px] w-[22px]">
+                 class="h-[18px] w-[18px] sm:h-[22px] sm:w-[22px]">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8 16 16 8M16 8H9.5M16 8v6.5"/>
             </svg>
         </span>
@@ -40,16 +40,16 @@
 
     <!-- Центральная часть: Заголовок и описание -->
     <div class="mt-3 sm:mt-4">
-        <h2 class="text-[36px] font-semibold leading-snug text-ink transition-colors group-hover:text-brand 2xl:text-[26px]">{{ $promotion->title }}</h2>
+        <h2 class="text-[18px] font-semibold leading-snug text-ink transition-colors group-hover:text-brand sm:text-[22px] lg:text-[24px] 2xl:text-[26px]">{{ $promotion->title }}</h2>
 
         @if ($promotion->excerpt)
-            <p class="mt-2 overflow-hidden text-[20px] leading-relaxed text-body [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:4] 2xl:text-[15px]">{{ $promotion->excerpt }}</p>
+            <p class="mt-2 overflow-hidden text-[13px] leading-relaxed text-body [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:4] sm:text-[14px] 2xl:text-[15px]">{{ $promotion->excerpt }}</p>
         @endif
     </div>
 
     <!-- Нижняя часть: Дата -->
     @if ($date)
-        <span class="pt-4 text-[20px] text-[#4A749B]">{{ $date }}</span>
+        <span class="pt-4 text-[13px] text-[#4A749B] sm:text-[14px] 2xl:text-[16px]">{{ $date }}</span>
     @endif
 
 </div>

@@ -28,28 +28,28 @@
         </nav>
 
         {{-- Акция: синий заголовок и фото слева, текст справа --}}
-        <div class="flex flex-col gap-8 pt-8 lg:flex-row lg:gap-16 2xl:gap-20 2xl:pt-10">
+        <div class="flex flex-col gap-5 pt-6 sm:gap-8 sm:pt-8 lg:flex-row lg:gap-16 2xl:gap-20 2xl:pt-10">
             <div class="w-full shrink-0 lg:w-[42%]">
-                <h1 class="flex items-center gap-2 text-[40px] font-medium leading-none text-[#4A749B] max-lg:text-3xl">
+                <h1 class="flex items-center gap-2 text-[18px] font-medium leading-none text-[#4A749B] sm:text-[24px] lg:text-[32px] 2xl:text-[40px]">
                     {{ $sectionName }}
-                    <img src="{{ asset('images/Arrow_right_light.svg') }}" alt="" width="50" height="50" class="w-[50px] max-lg:w-[38px]" aria-hidden="true">
+                    <img src="{{ asset('images/Arrow_right_light.svg') }}" alt="" width="50" height="50" class="w-[22px] sm:w-[32px] lg:w-[42px] 2xl:w-[50px]" aria-hidden="true">
                 </h1>
                 @if ($promoCover)
                     <img src="{{ $promoCover }}" alt="{{ $promotion->title }}" fetchpriority="high" decoding="async"
                          width="395" height="517"
-                         class="mt-8 w-full rounded-[24px] bg-hero object-cover object-top">
+                         class="mt-5 sm:mt-8 w-full rounded-[24px] bg-hero object-cover object-top">
                 @endif
             </div>
 
             <div class="flex min-w-0 flex-1 flex-col">
-                <p class="text-center text-[40px] font-semibold leading-snug text-brand max-lg:text-left max-lg:text-2xl">{{ $promotion->title }}</p>
+                <p class="text-left text-[20px] font-semibold leading-snug text-brand sm:text-[26px] lg:text-center lg:text-[34px] 2xl:text-[40px]">{{ $promotion->title }}</p>
 
-                <div class="mt-6 [&>p]:mt-0 [&>p+p]:mt-4 [&>p]:text-[28px] [&>p]:leading-relaxed [&>p]:text-body 2xl:text-[28px]">
+                <div class="mt-4 sm:mt-6 [&>p]:mt-0 [&>p+p]:mt-4 text-[15px] leading-relaxed text-body sm:text-[17px] lg:text-[22px] 2xl:text-[28px] [&>p]:text-[15px] sm:[&>p]:text-[17px] lg:[&>p]:text-[22px] 2xl:[&>p]:text-[28px] [&>p]:leading-relaxed [&>p]:text-body">
                     {!! $promotion->content !!}
                 </div>
 
                 @if ($promotion->published_at)
-                    <span class="mt-8 text-[24px] text-[#4A749B]">{{ $promotion->published_at->format('d.m.Y') }}</span>
+                    <span class="mt-5 sm:mt-8 text-[14px] text-[#4A749B] sm:text-[16px] lg:text-[20px] 2xl:text-[24px]">{{ $promotion->published_at->format('d.m.Y') }}</span>
                 @endif
             </div>
         </div>

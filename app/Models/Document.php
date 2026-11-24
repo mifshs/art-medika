@@ -32,6 +32,11 @@ class Document extends Model
         return 'slug';
     }
 
+    public function getRouteKey()
+    {
+        return $this->slug ?: $this->getKey();
+    }
+
     public function resolveRouteBinding($value, $field = null): ?Model
     {
         if ($field === null) {
