@@ -59,7 +59,7 @@ class UserResource extends Resource
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Дата регистрации')
-                    ->dateTime()
+                    ->dateTime('d.m.Y H:i')
                     ->sortable(),
             ])
             ->filters([

@@ -35,7 +35,7 @@ class Service extends Model
 
     public function scopeActive($q) { return $q->where('is_active', true); }
 
-    public function category(): BelongsTo { return $this->belongsTo(ServiceCategory::class); }
+    public function category(): BelongsTo { return $this->belongsTo(ServiceCategory::class, 'service_category_id'); }
     public function cases(): HasMany      { return $this->hasMany(ServiceCase::class)->orderBy('sort_order'); }
     public function experts(): BelongsToMany { return $this->belongsToMany(Expert::class); }
 

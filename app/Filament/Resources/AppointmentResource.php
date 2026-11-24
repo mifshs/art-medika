@@ -86,11 +86,18 @@ class AppointmentResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('desired_date')
                     ->label('Дата')
-                    ->date()
+                    ->date('d.m.Y')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status')
                     ->label('Статус')
                     ->badge()
+                    ->formatStateUsing(fn (string $state): string => match ($state) {
+                        'new' => 'Новая',
+                        'confirmed' => 'Подтверждена',
+                        'completed' => 'Завершена',
+                        'cancelled' => 'Отменена',
+                        default => $state,
+                    })
                     ->color(fn (string $state): string => match ($state) {
                         'new' => 'warning',
                         'confirmed', 'completed' => 'success',
@@ -99,7 +106,7 @@ class AppointmentResource extends Resource
                     }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Создана')
-                    ->dateTime()
+                    ->dateTime('d.m.Y H:i')
                     ->sortable(),
             ])
             ->filters([

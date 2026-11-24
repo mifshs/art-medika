@@ -5,6 +5,14 @@
 
     RewriteEngine On
 
+    # Redirect HTTP to HTTPS (when served from document root)
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteCond %{HTTP_HOST} !^localhost:[0-9]+$ [NC]
+    RewriteCond %{HTTP_HOST} !^127\.0\.0\.1:[0-9]+$
+    RewriteCond %{REQUEST_URI} !^/art-medika/ [NC]
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

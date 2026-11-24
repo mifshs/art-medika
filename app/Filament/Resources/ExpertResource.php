@@ -3,12 +3,14 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ExpertResource\Pages;
+use App\Filament\Support\MediaUpload;
 use App\Models\Expert;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 
 class ExpertResource extends Resource
@@ -57,6 +59,13 @@ class ExpertResource extends Resource
                             ->label('Должность и подробное описание')
                             ->rows(4)
                             ->columnSpanFull(),
+
+                        MediaUpload::field(
+                            name: 'media_avatar',
+                            collection: 'avatar',
+                            directory: 'avatar',
+                            label: 'Фотография специалиста (превью)',
+                        )->columnSpanFull(),
                     ]),
 
                 Forms\Components\Section::make('Показатели и стаж')
@@ -103,10 +112,17 @@ class ExpertResource extends Resource
             ]);
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->with('media');
+    }
+
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
+                MediaUpload::column('avatar_preview', 'avatar', 'Фото', circular: true),
+
                 Tables\Columns\TextColumn::make('name')
                     ->label('ФИО')
                     ->searchable()

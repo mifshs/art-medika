@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\DocumentResource\Pages;
+use App\Filament\Support\MediaUpload;
 use App\Models\Document;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -47,9 +48,12 @@ class DocumentResource extends Resource
                             ->label('Файл документа (PDF, DOC, DOCX, изображения)')
                             ->disk('public')
                             ->directory('documents')
+                            ->visibility('public')
+                            ->imagePreviewHeight('200')
                             ->preserveFilenames()
                             ->openable()
                             ->downloadable()
+                            ->getUploadedFileUsing(MediaUpload::uploadedFileCallback())
                             ->columnSpanFull(),
 
                         Forms\Components\Grid::make(2)
@@ -72,6 +76,26 @@ class DocumentResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('preview')
+                    ->label('Превью')
+                    ->disk('public')
+                    ->height(48)
+                    ->width(64)
+                    ->extraImgAttributes(['class' => 'rounded object-cover'])
+                    ->checkFileExistence(false)
+                    ->getStateUsing(static function (Document $record): ?string {
+                        $resolved = MediaUpload::resolvePublicPath($record->file_url);
+                        if ($resolved !== null && MediaUpload::isImagePath($resolved)) {
+                            return MediaUpload::encodePath($resolved);
+                        }
+
+                        if (is_string($record->file_url) && preg_match('#^https?://#i', $record->file_url) && MediaUpload::isImagePath($record->file_url)) {
+                            return $record->file_url;
+                        }
+
+                        return null;
+                    }),
+
                 Tables\Columns\TextColumn::make('category')
                     ->label('Категория')
                     ->badge()

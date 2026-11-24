@@ -3,12 +3,14 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ReviewResource\Pages;
+use App\Filament\Support\MediaUpload;
 use App\Models\Review;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class ReviewResource extends Resource
 {
@@ -52,6 +54,12 @@ class ReviewResource extends Resource
                 Forms\Components\Toggle::make('is_active')
                     ->label('Опубликован')
                     ->default(true),
+                MediaUpload::field(
+                    name: 'media_avatar',
+                    collection: 'avatar',
+                    directory: 'avatar',
+                    label: 'Фото автора (превью)',
+                )->columnSpanFull(),
                 Forms\Components\Textarea::make('history')
                     ->label('Текст отзыва')
                     ->required()
@@ -62,10 +70,16 @@ class ReviewResource extends Resource
             ]);
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->with('media');
+    }
+
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
+                MediaUpload::column('avatar_preview', 'avatar', 'Фото', circular: true),
                 Tables\Columns\TextColumn::make('author_name')
                     ->label('Автор')
                     ->searchable(),
@@ -76,7 +90,7 @@ class ReviewResource extends Resource
                     ->label('Врач'),
                 Tables\Columns\TextColumn::make('published_at')
                     ->label('Дата')
-                    ->date()
+                    ->date('d.m.Y')
                     ->sortable(),
                 Tables\Columns\IconColumn::make('is_active')
                     ->label('Активен')

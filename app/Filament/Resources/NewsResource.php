@@ -3,12 +3,14 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\NewsResource\Pages;
+use App\Filament\Support\MediaUpload;
 use App\Models\News;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 
 class NewsResource extends Resource
@@ -77,6 +79,13 @@ class NewsResource extends Resource
                             ->rows(3)
                             ->columnSpanFull(),
 
+                        MediaUpload::field(
+                            name: 'media_cover',
+                            collection: 'cover',
+                            directory: 'cover',
+                            label: 'Обложка (превью)',
+                        )->columnSpanFull(),
+
                         Forms\Components\RichEditor::make('content')
                             ->label('Полный текст публикации')
                             ->required()
@@ -99,10 +108,17 @@ class NewsResource extends Resource
             ]);
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->with('media');
+    }
+
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
+                MediaUpload::column('cover_preview', 'cover', 'Превью'),
+
                 Tables\Columns\TextColumn::make('title')
                     ->label('Заголовок')
                     ->searchable()

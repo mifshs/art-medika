@@ -3,12 +3,15 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProjectResource\Pages;
+use App\Filament\Resources\ProjectResource\RelationManagers\FormatsRelationManager;
+use App\Filament\Support\MediaUpload;
 use App\Models\Project;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class ProjectResource extends Resource
 {
@@ -39,6 +42,19 @@ class ProjectResource extends Resource
                 Forms\Components\Toggle::make('is_active')
                     ->label('Активен')
                     ->default(true),
+                MediaUpload::field(
+                    name: 'media_cover',
+                    collection: 'cover',
+                    directory: 'cover',
+                    label: 'Обложка проекта (превью)',
+                )->columnSpanFull(),
+                MediaUpload::field(
+                    name: 'media_gallery',
+                    collection: 'gallery',
+                    directory: 'gallery',
+                    label: 'Галерея фотографий проекта',
+                    multiple: true,
+                )->columnSpanFull(),
                 Forms\Components\Textarea::make('excerpt')
                     ->label('Краткое описание')
                     ->columnSpanFull(),
@@ -48,10 +64,16 @@ class ProjectResource extends Resource
             ]);
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->with('media');
+    }
+
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
+                MediaUpload::column('cover_preview', 'cover', 'Превью'),
                 Tables\Columns\TextColumn::make('title')
                     ->label('Название')
                     ->searchable(),
@@ -60,7 +82,7 @@ class ProjectResource extends Resource
                     ->limit(30),
                 Tables\Columns\TextColumn::make('published_at')
                     ->label('Опубликован')
-                    ->date()
+                    ->date('d.m.Y')
                     ->sortable(),
                 Tables\Columns\IconColumn::make('is_active')
                     ->label('Активен')
@@ -83,7 +105,7 @@ class ProjectResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            FormatsRelationManager::class,
         ];
     }
 

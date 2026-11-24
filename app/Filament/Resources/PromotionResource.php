@@ -3,12 +3,14 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PromotionResource\Pages;
+use App\Filament\Support\MediaUpload;
 use App\Models\Promotion;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class PromotionResource extends Resource
 {
@@ -46,6 +48,12 @@ class PromotionResource extends Resource
                 Forms\Components\Toggle::make('is_active')
                     ->label('Активна')
                     ->default(true),
+                MediaUpload::field(
+                    name: 'media_cover',
+                    collection: 'cover',
+                    directory: 'cover',
+                    label: 'Обложка акции (превью)',
+                )->columnSpanFull(),
                 Forms\Components\Textarea::make('excerpt')
                     ->label('Краткое описание')
                     ->columnSpanFull(),
@@ -55,10 +63,16 @@ class PromotionResource extends Resource
             ]);
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->with('media');
+    }
+
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
+                MediaUpload::column('cover_preview', 'cover', 'Превью'),
                 Tables\Columns\TextColumn::make('title')
                     ->label('Заголовок')
                     ->searchable(),
@@ -71,7 +85,7 @@ class PromotionResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('valid_until')
                     ->label('Срок действия')
-                    ->date()
+                    ->date('d.m.Y')
                     ->sortable(),
                 Tables\Columns\IconColumn::make('is_active')
                     ->label('Активна')

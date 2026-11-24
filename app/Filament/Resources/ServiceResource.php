@@ -3,12 +3,15 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ServiceResource\Pages;
+use App\Filament\Resources\ServiceResource\RelationManagers\CasesRelationManager;
+use App\Filament\Support\MediaUpload;
 use App\Models\Service;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class ServiceResource extends Resource
 {
@@ -50,6 +53,12 @@ class ServiceResource extends Resource
                 Forms\Components\Toggle::make('is_active')
                     ->label('Активна')
                     ->default(true),
+                MediaUpload::field(
+                    name: 'media_cover',
+                    collection: 'cover',
+                    directory: 'cover',
+                    label: 'Обложка услуги (превью)',
+                )->columnSpanFull(),
                 Forms\Components\Textarea::make('description')
                     ->label('Краткое описание')
                     ->columnSpanFull(),
@@ -62,10 +71,27 @@ class ServiceResource extends Resource
             ]);
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->with(['media', 'category.media', 'category.parent.media']);
+    }
+
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('cover_preview')
+                    ->label('Превью')
+                    ->disk('public')
+                    ->height(48)
+                    ->width(64)
+                    ->extraImgAttributes(['class' => 'rounded object-cover'])
+                    ->checkFileExistence(false)
+                    ->getStateUsing(static function (Service $record): ?string {
+                        return MediaUpload::getRecordPreviewState($record, 'cover')
+                            ?? ($record->category ? MediaUpload::getRecordPreviewState($record->category, 'cover') : null)
+                            ?? ($record->category?->parent ? MediaUpload::getRecordPreviewState($record->category->parent, 'cover') : null);
+                    }),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Название')
                     ->searchable(),
@@ -100,7 +126,7 @@ class ServiceResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            CasesRelationManager::class,
         ];
     }
 
